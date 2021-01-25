@@ -46,6 +46,62 @@
 
 
 
+    
+        <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        
+            load: ['[tex]/mhchem'],
+        
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        
+            packages: {'[+]': ['mhchem']},
+        
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
           
 
 
@@ -53,7 +109,7 @@
     
     <title>
         
-            Hello World | CZH&#39;s BLOG
+            写出第一个C++程序 | CZH&#39;s BLOG
         
     </title>
     
@@ -210,19 +266,19 @@
     
     
       <div class="post-header"> 
-  <a class="post-header-title" href="/2021/01/18/hello-world/">Hello World</a>
+  <a class="post-header-title" href="/2019/11/18/%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/">写出第一个C++程序</a>
   <div class="post-header-meta">
     <span>
       <span class="iconfont icon-calendar"></span>
-      发布于:&nbsp;2021-01-18
+      发布于:&nbsp;2019-11-18
     </span>
     <span>
       <span class="iconfont icon-calendar-check"></span>
-      更新于:&nbsp;2021-01-18
+      更新于:&nbsp;2021-01-25
     </span>
     <span>
       <span class="iconfont icon-folder"></span>
-      分类于:&nbsp;
+      分类于:&nbsp;<a class="category-link" href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84C-%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">从零开始的C++学习生活</a> > <a class="category-link" href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84C-%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E2%85%A0-%E6%84%89%E5%BF%AB%E7%9A%84%E7%BC%96%E5%86%99C-%E7%A8%8B%E5%BA%8F/">Ⅰ.愉快的编写C++程序</a>
     </span>
     
       <span>
@@ -244,25 +300,25 @@
       <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
       <ul class="mdui-menu" id="share_menu">
         <li class="mdui-menu-item">
-          <a href="http://service.weibo.com/share/share.php?appkey=&title=Hello World&url=http://example.com/2021/01/18/hello-world/&pic=http://example.com/icons/favicon.jpg&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=写出第一个C++程序&url=http://example.com/2019/11/18/%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/&pic=http://example.com/icons/favicon.jpg&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
         </li>
         <li class="mdui-menu-item">
-          <a href="https://twitter.com/intent/tweet?text=Hello World&url=http://example.com/2021/01/18/hello-world/&via=Cheng Ziheng" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+          <a href="https://twitter.com/intent/tweet?text=写出第一个C++程序&url=http://example.com/2019/11/18/%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/&via=Cheng Ziheng" target="_blank" class="mdui-ripple">分享到 Twitter</a>
         </li>
         <li class="mdui-menu-item">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2021/01/18/hello-world/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2019/11/18/%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
         </li>
         <li class="mdui-menu-item">
-          <a href="https://plus.google.com/share?url=http://example.com/2021/01/18/hello-world/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+          <a href="https://plus.google.com/share?url=http://example.com/2019/11/18/%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/" target="_blank" class="mdui-ripple">分享到 Google+</a>
         </li>
         <li class="mdui-menu-item">
-          <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://example.com/2021/01/18/hello-world/&title=Hello World" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://example.com/2019/11/18/%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/&title=写出第一个C++程序" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
         </li>
         <li class="mdui-menu-item">
-          <a href="http://connect.qq.com/widget/shareqq/index.html?site=CZH&#39;s BLOG&title=Hello World&summary=That&#39;s♂good!&pics=http://example.com/icons/favicon.jpg&url=http://example.com/2021/01/18/hello-world/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=CZH&#39;s BLOG&title=写出第一个C++程序&summary=That&#39;s♂good!&pics=http://example.com/icons/favicon.jpg&url=http://example.com/2019/11/18/%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/" target="_blank" class="mdui-ripple">分享到 QQ</a>
         </li>
         <li class="mdui-menu-item">
-          <a href="https://telegram.me/share/url?url=http://example.com/2021/01/18/hello-world/&text=Hello World" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+          <a href="https://telegram.me/share/url?url=http://example.com/2019/11/18/%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/&text=写出第一个C++程序" target="_blank" class="mdui-ripple">分享到 Telegram</a>
         </li>
       </ul>
     
@@ -272,17 +328,27 @@
   
   
   
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/C/ >C++</a>
+      </i>
+    
+  </div>
+
   
   <div class="mdui-card-content mdui-typo mdui-p-x-4">
-    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <p>$ Pascal $ 作为我参加信息学竞赛使用的语言，伴随我走过了多年的时光，但随着计算机语言的发展，它已经逐渐被淘汰。我也必须跟上步伐，学习现在普遍使用的高级语言 $ C++ $ 。</p>
+<hr>
+<h2 id="第一个程序-Hello-World"><a href="#第一个程序-Hello-World" class="headerlink" title="第一个程序 $ Hello \ World $"></a>第一个程序 $ Hello \ World $</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cout &lt;&lt; &quot;Hello World&quot; &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这可以算作是一个模板的 $ C++ $ 程序，首先要写出使用的头文件，之后是主函数（main），主函数在程序中一定最先开始执行。主函数如果正常结束就会返回 $ 0 $ ，否则会返回其他的值。</p>
+<h2 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h2><p>使用 $ C++ $ 编写程序和 $ Pascal $ 还是有很大的不同的，最为主要的就是 $ C++ $ 中的<font color='red'>头文件</font>，这些是调用 $ C++ $ 函数库的必须手段。</p>
+<p>其使用方式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;头文件名称&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="这里先总结一些常用的头文件："><a href="#这里先总结一些常用的头文件：" class="headerlink" title="这里先总结一些常用的头文件："></a>这里先总结一些常用的头文件：</h3><h4 id="Ⅰ-iostream"><a href="#Ⅰ-iostream" class="headerlink" title="Ⅰ. $ iostream $ :"></a>Ⅰ. $ iostream $ :</h4><p>包括函数：$ cin,cout,endl $</p>
+<p>注意：该头文件没有定义全局命名空间，必须使用 $ using \ namespace \ std; $</p>
+<h4 id="Ⅱ-cstdio"><a href="#Ⅱ-cstdio" class="headerlink" title="Ⅱ. $cstdio $ :"></a>Ⅱ. $cstdio $ :</h4><p>包括函数：$ getchar,putchar,scanf,printf,freopen $</p>
+<h4 id="Ⅲ-cstring"><a href="#Ⅲ-cstring" class="headerlink" title="Ⅲ. $ cstring $ :"></a>Ⅲ. $ cstring $ :</h4><p>包括函数：$ memset $</p>
 
   </div>
   <!--文末结束语-->
@@ -295,6 +361,11 @@
   
   <nav>
     
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2019/12/08/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>基础语法-顺序结构</span>
+      </a>
+    
     
   </nav>
 </article>
@@ -306,8 +377,8 @@
     <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
     <ul class="mdui-menu" id="toc">
       <li class="mdui-menu-item">
-        <a href="/2021/01/18/hello-world/" id="toc-header" class="mdui-ripple">文章目录</a>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <a href="/2019/11/18/%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/" id="toc-header" class="mdui-ripple">文章目录</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F-Hello-World"><span class="toc-number">1.</span> <span class="toc-text">第一个程序 $ Hello \ World $</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E9%87%8C%E5%85%88%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">这里先总结一些常用的头文件：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%85%A0-iostream"><span class="toc-number">2.1.1.</span> <span class="toc-text">Ⅰ. $ iostream $ :</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%85%A1-cstdio"><span class="toc-number">2.1.2.</span> <span class="toc-text">Ⅱ. $cstdio $ :</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%85%A2-cstring"><span class="toc-number">2.1.3.</span> <span class="toc-text">Ⅲ. $ cstring $ :</span></a></li></ol></li></ol></li></ol>
       </li>
     </ul>
   </div>
