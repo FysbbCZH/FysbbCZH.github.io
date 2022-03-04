@@ -746,3 +746,6 @@ figure,
   color: #fff;
   background: #009688;
 }
+.mermaid {
+  background: transparent;
+}
