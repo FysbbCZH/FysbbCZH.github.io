@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
+    
+    
+    
+        <link rel="shortcut icon" href="/icons/favicon.jpg">
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
+
+    
+    
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        
+            load: ['[tex]/mhchem'],
+        
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        
+            packages: {'[+]': ['mhchem']},
+        
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+          
+
+
+    
+    
+    <title>
+        
+            红黑树学习记录 | CZH&#39;s BLOG
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  
+  <header class="mdui-appbar mdui-appbar-fixed">
+  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+    <a href="/" class="mdui-typo-headline">CZH&#39;s BLOG</a>
+    <a href="/" class="header-subtitle mdui-typo-headline"></a>
+    <div class="mdui-toolbar-spacer"></div>
+    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
+  </div>
+</header>
+
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
+    </div>
+
+    
+    <div id="sidebar-tab1" class="mdui-p-a-1">
+        <div class="mdui-list">
+            
+                
+                <a href="/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-home"></i>
+                    </div>
+                    <div class="mdui-list-item-content">主页</div>
+                </a>
+            
+                
+                <a href="/tags/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-bookmark"></i>
+                    </div>
+                    <div class="mdui-list-item-content">标签</div>
+                </a>
+            
+                
+                <a href="/categories/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-folder"></i>
+                    </div>
+                    <div class="mdui-list-item-content">分类</div>
+                </a>
+            
+                
+                <a href="/archives/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-archive"></i>
+                    </div>
+                    <div class="mdui-list-item-content">归档</div>
+                </a>
+            
+                
+                <a href="/about/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-user"></i>
+                    </div>
+                    <div class="mdui-list-item-content">关于</div>
+                </a>
+            
+            <div class="mdui-list-item mdui-ripple">
+                <div class="mdui-list-item-icon">
+                    <i class="iconfont icon-moon"></i>
+                </div>
+                <div class="mdui-list-item-content">夜间模式</div>
+                <label class="mdui-switch" id="darkmode">
+                  <input type="checkbox" id="nightmode_switch"/>
+                  <i class="mdui-switch-icon"></i>
+                </label>
+            </div>           
+        </div>
+    </div>
+
+    
+    <div id="sidebar-tab2" class="mdui-p-a-1">
+        <div class="sidebar-overview">
+            <div class="sidebar-avatar">
+                
+                    <img src="/icons/avatar.jpg"/>
+                
+            </div>
+            <div class="sidebar-author-name">Cheng Ziheng</div>
+            <div class="sidebar-description">That&#39;s♂good!</div>
+        </div>
+        <div class="sidebar-links">
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
+                    <a href="mailto:2568858327@qq.com" class="mdui-chip-title">E-Mail</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-steam"></i></span>
+                    <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198318522568" class="mdui-chip-title">Steam</a>
+                </div>
+            
+        </div>
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-collapse-item">
+                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-link"></i>
+                    </div>
+                    <div class="mdui-list-item-content">友情链接</div>
+                    <div class="mdui-collapse-item-arrow">
+                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
+                    </div>
+                </div>
+                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mdui-divider"></div>
+    
+    
+</aside>
+  
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
+  <header class="mdui-card-media">
+    
+    
+      <div class="post-header"> 
+  <a class="post-header-title" href="/2022/03/27/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E7%BA%A2%E9%BB%91%E6%A0%91/">红黑树学习记录</a>
+  <div class="post-header-meta">
+    <span>
+      <span class="iconfont icon-calendar"></span>
+      发布于:&nbsp;2022-03-27
+    </span>
+    <span>
+      <span class="iconfont icon-calendar-check"></span>
+      更新于:&nbsp;2022-03-28
+    </span>
+    <span>
+      <span class="iconfont icon-folder"></span>
+      分类于:&nbsp;<a class="category-link" href="/categories/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3/">总结归纳</a>
+    </span>
+    
+      <span>
+        <span class="iconfont icon-eye"></span>
+        阅读次数:&nbsp;
+        <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+      </span>
+    
+  </div>
+</div>   
+    
+
+
+
+    
+    
+    <div class="mdui-card-menu">
+    
+      <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
+      <ul class="mdui-menu" id="share_menu">
+        <li class="mdui-menu-item">
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=红黑树学习记录&url=https://fysbbczh.github.io/2022/03/27/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E7%BA%A2%E9%BB%91%E6%A0%91/&pic=https://fysbbczh.github.io/icons/favicon.jpg&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://twitter.com/intent/tweet?text=红黑树学习记录&url=https://fysbbczh.github.io/2022/03/27/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E7%BA%A2%E9%BB%91%E6%A0%91/&via=Cheng Ziheng" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://fysbbczh.github.io/2022/03/27/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E7%BA%A2%E9%BB%91%E6%A0%91/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://plus.google.com/share?url=https://fysbbczh.github.io/2022/03/27/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E7%BA%A2%E9%BB%91%E6%A0%91/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://fysbbczh.github.io/2022/03/27/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E7%BA%A2%E9%BB%91%E6%A0%91/&title=红黑树学习记录" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=CZH&#39;s BLOG&title=红黑树学习记录&summary=That&#39;s♂good!&pics=https://fysbbczh.github.io/icons/favicon.jpg&url=https://fysbbczh.github.io/2022/03/27/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E7%BA%A2%E9%BB%91%E6%A0%91/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://telegram.me/share/url?url=https://fysbbczh.github.io/2022/03/27/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E7%BA%A2%E9%BB%91%E6%A0%91/&text=红黑树学习记录" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+        </li>
+      </ul>
+    
+  </div>
+  </header>
+  
+  
+  
+  
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/C/ >C++</a>
+      </i>
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/ >数据结构</a>
+      </i>
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/ >平衡树</a>
+      </i>
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/%E7%BA%A2%E9%BB%91%E6%A0%91/ >红黑树</a>
+      </i>
+    
+  </div>
+
+  
+  <div class="mdui-card-content mdui-typo mdui-p-x-4">
+    <h3 id="红黑树性质"><a href="#红黑树性质" class="headerlink" title="红黑树性质"></a>红黑树性质</h3><p>红黑树和基本 $AVL$ 不同，不需要频繁进行高度平衡判断，而是使用黑节点的个数，对树型进行维护。</p>
+<p>具有一下性质：</p>
+<ol>
+<li>每个节点有黑、红两种颜色</li>
+<li>根节点一定为黑色，外节点看作黑色</li>
+<li>不能有两个相连的节点同为红色<font color="red"></li>
+<li>从根到任何一个外节点的路径上，黑色节点个数相同</font>
+
+</li>
+</ol>
+<p>其中 $4$ 性质最为重要，对红黑树的插入、删除更新，都是为满足其性质进行的。</p>
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>首先需要明确，新插入一个节点时，应该是什么颜色。</p>
+<p>考虑如果是黑色，那新节点插入的路径上，黑色个数增加，显然需要向上进行调整，以确保 $4$ 性质的成立，这就增加了额外的操作。</p>
+<p>所以新增加的节点，颜色应为红色。</p>
+<p>为解释方便，插入部分各节点关系如下：</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/27/sawtOlEiYTgd49P.png" alt="B-0.png"></p>
+</center>
+
+<p>其中，$0$ 表示左子树，$1$ 表示右子树。</p>
+<p>$No$ 为插入的节点，插入时，按照普通二叉查找树的方式进行插入，待新节点插入到位后，再按照以下情况进行调整。</p>
+<p>处理过程中，要特别<strong>注意对根节点的处理</strong>。</p>
+<p>这里主要讲解插入节点为左子树的情况，右子树的处理就是其镜像变换，可以通过代码简单描述。</p>
+<h4 id="1-0-father为黑"><a href="#1-0-father为黑" class="headerlink" title="1.0 father为黑"></a>1.0 father为黑</h4><p>显然，插入后的树满足所有的性质，无需进行更新。</p>
+<h4 id="1-1-father、uncle为红"><a href="#1-1-father、uncle为红" class="headerlink" title="1.1 father、uncle为红"></a>1.1 father、uncle为红</h4><p>此时，将 $fa,uncle$ 变为黑色，$ffa$ 变为红色。但这种处理可能导致 $ffa$ 出现双红冲突，所以需要继续对 $ffa$ 进行处理（此时 $ffa$ 相当于 $No$）。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/27/ohJUi6VHz49tZnk.png" alt="B-1-1.png"></p>
+</center>
+
+<h4 id="1-2-father为红，uncle为黑"><a href="#1-2-father为红，uncle为黑" class="headerlink" title="1.2 father为红，uncle为黑"></a>1.2 father为红，uncle为黑</h4><p>需注意，$uncle$ 为外节点的话，颜色也是黑色。</p>
+<h5 id="1-2-1-fa、No不在同一方向"><a href="#1-2-1-fa、No不在同一方向" class="headerlink" title="1.2.1 fa、No不在同一方向"></a>1.2.1 fa、No不在同一方向</h5><p>将 $No$ 左旋，变为 $1.2.2$ 所属情况，同时待处理的节点变为 $fa$ 。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/28/pwLS4qgbtuvGXWD.png" alt="B-1-2-1.png"></p>
+</center>
+
+<h5 id="1-2-2-fa、No在同一方向"><a href="#1-2-2-fa、No在同一方向" class="headerlink" title="1.2.2 fa、No在同一方向"></a>1.2.2 fa、No在同一方向</h5><p>将 $fa$ 右旋，同时 $fa,ffa$ 颜色互换。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/27/rvOJ1jiwt6hdYzN.png" alt="B-1-2-2.png"></p>
+</center>
+
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>红黑树的删除较为复杂，需针对多种情况进行处理。</p>
+<p>此部分的节点关系如下：</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/28/UHAopJG1WqaOwCk.png" alt="B-2.png"></p>
+</center>
+
+<p>其中 $No$ 为待删除的节点。</p>
+<h4 id="2-0-No有两个子树"><a href="#2-0-No有两个子树" class="headerlink" title="2.0 No有两个子树"></a>2.0 No有两个子树</h4><p>处理方式同二叉查找树，先将 $No$ 和后继 $p$ 交换，然后再进行删除。之后情况便转换为 $2.1、2.2、2.3$ 其中之一。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/28/VYU31ziHI76qol5.png" alt="B-2-0.png"></p>
+</center>
+
+<h4 id="2-1-No为红色叶节点"><a href="#2-1-No为红色叶节点" class="headerlink" title="2.1 No为红色叶节点"></a>2.1 No为红色叶节点</h4><p>直接将 $No$ 删去即可，并不会影响树的性质，此处 $fa$ 为白色，表示其颜色无需考虑（之后同理）。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/28/hG8g75pjRwkcqbE.png" alt="B-2-1.png"></p>
+</center>
+
+<h4 id="2-2-No为黑色，且只有一个子树"><a href="#2-2-No为黑色，且只有一个子树" class="headerlink" title="2.2 No为黑色，且只有一个子树"></a>2.2 No为黑色，且只有一个子树</h4><p>此时 $No$ 唯一的一个子节点一定是红色，将 $No$ 删除后，用 $fa$ 连接到其子节点，并将子节点颜色改为黑色。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/28/jWRTAop6ZSkMbnD.png" alt="B-2-2.png"></p>
+</center>
+
+<h4 id="2-3-No为黑色叶节点"><a href="#2-3-No为黑色叶节点" class="headerlink" title="2.3 No为黑色叶节点"></a>2.3 No为黑色叶节点</h4><h5 id="2-3-1-br为红色"><a href="#2-3-1-br为红色" class="headerlink" title="2.3.1 br为红色"></a>2.3.1 br为红色</h5><p>将 $br$ 左旋，同时 $br,fa$ 颜色互换。之后继续在调整后的树上，对 $No$ 进行调整。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/28/ScyEAW6wmZfkNKG.png" alt="B-2-3-1.png"></p>
+</center>
+
+<h5 id="2-3-2-br为黑，远侄子为黑，近侄子为红"><a href="#2-3-2-br为黑，远侄子为黑，近侄子为红" class="headerlink" title="2.3.2 br为黑，远侄子为黑，近侄子为红"></a>2.3.2 br为黑，远侄子为黑，近侄子为红</h5><p>此时远侄子一定是外节点，将 $bls$ 右旋，同时 $br,bls$ 颜色互换，情况变为 $2.3.3$ ，之后继续在调整后的树上，对 $No$ 进行调整。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/28/h5ycHtBNrbG93jD.png" alt="B-2-3-3.png"></p>
+</center>
+
+<h5 id="2-3-3-br为黑，远侄子为红"><a href="#2-3-3-br为黑，远侄子为红" class="headerlink" title="2.3.3 br为黑，远侄子为红"></a>2.3.3 br为黑，远侄子为红</h5><p>将 $br$ 左旋，同时 $br,fa$ 颜色互换，$brs$ 变为黑色，删除 $No$ 后，$fa$ 左儿子为空。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/28/w6n5hkdgY2aXfHS.png" alt="B-2-3-2.png"></p>
+</center>
+
+<h5 id="2-3-4-fa为红，br为黑叶子"><a href="#2-3-4-fa为红，br为黑叶子" class="headerlink" title="2.3.4 fa为红，br为黑叶子"></a>2.3.4 fa为红，br为黑叶子</h5><p>$nls,nrs,bls,brs$ 此时全为外节点，将 $No$ 删除，$fa$ 左儿子为空，同时 $fa,br$ 颜色互换。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/28/7wrZ93k5MYKOnV4.png" alt="B-2-4.png"></p>
+</center>
+
+<h5 id="2-3-5-fa为黑，br为黑叶子"><a href="#2-3-5-fa为黑，br为黑叶子" class="headerlink" title="2.3.5 fa为黑，br为黑叶子"></a>2.3.5 fa为黑，br为黑叶子</h5><p>与 $2.3.4$ 处理方式相同，不过处理完 $No$ 后，要将 $fa$ 当成新的待处理节点，继续向上更新。</p>
+<h3 id="部分代码"><a href="#部分代码" class="headerlink" title="部分代码"></a>部分代码</h3><h4 id="节点结构体"><a href="#节点结构体" class="headerlink" title="节点结构体"></a>节点结构体</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">/* 存放数据 */</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="comment">/* 颜色，0红，1黑 */</span></span><br><span class="line">    <span class="keyword">int</span> color;</span><br><span class="line">    <span class="comment">/* 0左，1右，之后涉及到方向都这么规定 */</span></span><br><span class="line">    Node *next[<span class="number">2</span>];</span><br><span class="line">    <span class="comment">/* 父亲 */</span></span><br><span class="line">    Node *father;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里将左右子节点的指针放到一个数组中，而不是分别开两个变量，是为了简化后续操作做好准备</p>
+<h4 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h4><p>显然，旋转分为左旋和右旋，而不同的旋转，需要操作不同的指针。</p>
+<p>但观察旋转方式可以发现，旋转时各指针操作的相对位置是一样的，比如都是保留和自己同方向的子节点，而反方向的子节点接到父节点的同方向。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/28/aZskHiIfWRKSmvu.png" alt="B-3-1.png"><br>注意观察，左右子节点的变化规律</p>
+</center>
+
+<p>因此，借助结构体的定义方式，我们可以通过一个函数，解决所有旋转操作。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 将No按照direction反方向旋转 */</span></span><br><span class="line"><span class="comment">/* 如No右旋时，No为左子树，direction=0 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(Node *No, <span class="keyword">int</span> direction)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* 获取No的父亲和祖先 */</span></span><br><span class="line">    Node *fa = No-&gt;father, *ffa = fa-&gt;father;</span><br><span class="line">    <span class="comment">/* 对父亲进行更改 */</span></span><br><span class="line">    No-&gt;father = fa-&gt;father;</span><br><span class="line">    fa-&gt;father = No;</span><br><span class="line">    <span class="comment">/* 父亲同方向连接No反方向叶节点 */</span></span><br><span class="line">    fa-&gt;next[direction] = No-&gt;next[direction ^ <span class="number">1</span>];</span><br><span class="line">    <span class="comment">/* 注意子树是否存在 */</span></span><br><span class="line">    <span class="keyword">if</span> (No-&gt;next[direction ^ <span class="number">1</span>])</span><br><span class="line">        No-&gt;next[direction ^ <span class="number">1</span>]-&gt;father = fa;</span><br><span class="line">    <span class="comment">/* 父亲变为反方向叶节点 */</span></span><br><span class="line">    No-&gt;next[direction ^ <span class="number">1</span>] = fa;</span><br><span class="line">    <span class="comment">/* 根节点特判 */</span></span><br><span class="line">    <span class="keyword">if</span> (!ffa)</span><br><span class="line">    &#123;</span><br><span class="line">        root = No;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 处理祖先 */</span></span><br><span class="line">    <span class="keyword">if</span> (ffa-&gt;next[<span class="number">0</span>] == fa)</span><br><span class="line">        ffa-&gt;next[<span class="number">0</span>] = No;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        ffa-&gt;next[<span class="number">1</span>] = No;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><p>想要完成插入或者删除，则必须先有查找。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 查找值域为x的节点，找到返回节点，否则返回最后查找失败的叶节点 */</span></span><br><span class="line"><span class="function">Node *<span class="title">findNode</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* 树为空 */</span></span><br><span class="line">    <span class="keyword">if</span> (!root)</span><br><span class="line">        <span class="comment">/* 返回无效值 */</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">/* 从根开始 */</span></span><br><span class="line">    Node *No = root;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* 去右子树 */</span></span><br><span class="line">        <span class="keyword">if</span> (x &gt; No-&gt;data)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (No-&gt;next[<span class="number">1</span>])</span><br><span class="line">                No = No-&gt;next[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> No;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* 去左子树 */</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; No-&gt;data)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (No-&gt;next[<span class="number">0</span>])</span><br><span class="line">                No = No-&gt;next[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> No;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* 找到x */</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> No;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="插入-1"><a href="#插入-1" class="headerlink" title="插入"></a>插入</h4><p>插入时，需要先进行查找，如果值存在，则无需插入，否则，在失败叶节点下插入新节点，并对新节点更新。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 对No进行更新 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertUpdate</span><span class="params">(Node *No)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* getDirection确定No的方向 */</span></span><br><span class="line">        <span class="keyword">int</span> direction = getDirection(No);</span><br><span class="line">        <span class="comment">/* 处理到根节点 */</span></span><br><span class="line">        <span class="keyword">if</span> (direction == <span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* root_color is black */</span></span><br><span class="line">            No-&gt;color = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* 意义同之前的介绍 */</span></span><br><span class="line">        Node *fa, *ffa, *uncle;</span><br><span class="line">        fa = No-&gt;father;</span><br><span class="line">        <span class="comment">/* fa黑色，无需处理 */</span></span><br><span class="line">        <span class="keyword">if</span> (fa-&gt;color)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        ffa = fa-&gt;father;</span><br><span class="line">        <span class="comment">/* uncle为fa的反向节点 */</span></span><br><span class="line">        uncle = ffa-&gt;next[getDirection(fa) ^ <span class="number">1</span>];</span><br><span class="line">        <span class="comment">/* 1.1情况 */</span></span><br><span class="line">        <span class="keyword">if</span> (uncle &amp;&amp; uncle-&gt;color == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* changeColor改变节点颜色 */</span></span><br><span class="line">            fa-&gt;changeColor();</span><br><span class="line">            ffa-&gt;changeColor();</span><br><span class="line">            uncle-&gt;changeColor();</span><br><span class="line">            No = ffa;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* 1.2情况 */</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* 1.2.1情况 */</span></span><br><span class="line">            <span class="keyword">if</span> (ffa-&gt;next[direction] != fa)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">/* 旋转No */</span></span><br><span class="line">                rotate(No, direction);</span><br><span class="line">                No = fa;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/* 1.2.2情况 */</span></span><br><span class="line">            rotate(fa, direction);</span><br><span class="line">            fa-&gt;changeColor();</span><br><span class="line">            ffa-&gt;changeColor();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 插入x */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* 树为空，则直接创建根节点 */</span></span><br><span class="line">    <span class="keyword">if</span> (!root)</span><br><span class="line">    &#123;</span><br><span class="line">        root = <span class="keyword">new</span> Node(x, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 查找x */</span></span><br><span class="line">    Node *No = findNode(x);</span><br><span class="line">    <span class="comment">/* 建立右子树 */</span></span><br><span class="line">    <span class="keyword">if</span> (x &gt; No-&gt;data)</span><br><span class="line">    &#123;</span><br><span class="line">        No-&gt;next[<span class="number">1</span>] = <span class="keyword">new</span> Node(x, <span class="number">0</span>, No);</span><br><span class="line">        <span class="comment">/* 对新节点进行更新 */</span></span><br><span class="line">        insertUpdate(No-&gt;next[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 建立左子树 */</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; No-&gt;data)</span><br><span class="line">    &#123;</span><br><span class="line">        No-&gt;next[<span class="number">0</span>] = <span class="keyword">new</span> Node(x, <span class="number">0</span>, No);</span><br><span class="line">        insertUpdate(No-&gt;next[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="删除-1"><a href="#删除-1" class="headerlink" title="删除"></a>删除</h4><p>删除操作较为复杂，尤其是删除黑色叶节点，需要注意顺序，一种一种情况去处理。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 针对2.0情况，寻找No的后继 */</span></span><br><span class="line"><span class="function">Node *<span class="title">removeChange</span><span class="params">(Node *No)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* Ne是要寻找的后继，初始为No右子树 */</span></span><br><span class="line">    Node *Ne = No-&gt;next[<span class="number">1</span>];</span><br><span class="line">    <span class="comment">/* 不断向下，直到Ne没有左子树 */</span></span><br><span class="line">    <span class="keyword">while</span> (Ne-&gt;next[<span class="number">0</span>])</span><br><span class="line">        Ne = Ne-&gt;next[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">/* 交换No，Ne */</span></span><br><span class="line">    No-&gt;data = Ne-&gt;data;</span><br><span class="line">    <span class="comment">/* 将后继返回 */</span></span><br><span class="line">    <span class="keyword">return</span> Ne;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 针对2.3情况，黑叶子删除后的更新 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">removeblackNode</span><span class="params">(Node *No)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* 确定No方向 */</span></span><br><span class="line">        <span class="keyword">int</span> direction = getDirection(No);</span><br><span class="line">        <span class="comment">/* 处理到根节点为止 */</span></span><br><span class="line">        <span class="keyword">if</span> (direction == <span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            No-&gt;color = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* fa，brother(br)意义同介绍 */</span></span><br><span class="line">        Node *fa = No-&gt;father;</span><br><span class="line">        <span class="comment">/* br是No反向节点 */</span></span><br><span class="line">        Node *brother = fa-&gt;next[direction ^ <span class="number">1</span>];</span><br><span class="line">        <span class="comment">/* 2.3.1情况 */</span></span><br><span class="line">        <span class="keyword">if</span> (brother-&gt;color == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            rotate(brother, direction ^ <span class="number">1</span>);</span><br><span class="line">            swap(fa-&gt;color, brother-&gt;color);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* br为黑色 */</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (brother-&gt;color == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* 2.3.3情况 */</span></span><br><span class="line">            <span class="keyword">if</span> (brother-&gt;next[direction ^ <span class="number">1</span>] &amp;&amp; brother-&gt;next[direction ^ <span class="number">1</span>]-&gt;color == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                rotate(brother, direction ^ <span class="number">1</span>);</span><br><span class="line">                swap(fa-&gt;color, brother-&gt;color);</span><br><span class="line">                brother-&gt;next[direction ^ <span class="number">1</span>]-&gt;color = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/* 2.3.2情况 */</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (brother-&gt;next[direction] &amp;&amp; brother-&gt;next[direction]-&gt;color == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                swap(brother-&gt;color, brother-&gt;next[direction]-&gt;color);</span><br><span class="line">                rotate(brother-&gt;next[direction], direction);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/* br是黑叶子 */</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">/* 2.3.4情况 */</span></span><br><span class="line">                <span class="keyword">if</span> (fa-&gt;color == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    fa-&gt;changeColor();</span><br><span class="line">                    fa-&gt;next[direction ^ <span class="number">1</span>]-&gt;changeColor();</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">/* 2.3.5情况 */</span></span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    fa-&gt;next[direction ^ <span class="number">1</span>]-&gt;changeColor();</span><br><span class="line">                    <span class="comment">/* 继续处理fa */</span></span><br><span class="line">                    No = fa;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* No删除后的更新 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">removeUpdate</span><span class="params">(Node *No)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* 确定No方向 */</span></span><br><span class="line">        <span class="keyword">int</span> direction = getDirection(No);</span><br><span class="line">        Node *fa = No-&gt;father;</span><br><span class="line">        <span class="comment">/* No为叶节点 */</span></span><br><span class="line">        <span class="keyword">if</span> (!(No-&gt;next[<span class="number">0</span>] || No-&gt;next[<span class="number">1</span>]))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* 根节点特判 */</span></span><br><span class="line">            <span class="keyword">if</span> (No == root)</span><br><span class="line">            &#123;</span><br><span class="line">                root = <span class="literal">NULL</span>;</span><br><span class="line">                <span class="comment">/* 处理结束 */</span></span><br><span class="line">                <span class="keyword">goto</span> removeUpdateEnd;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/* 2.1情况 */</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (No-&gt;color == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                fa-&gt;next[direction] = <span class="literal">NULL</span>;</span><br><span class="line">                <span class="keyword">goto</span> removeUpdateEnd;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/* 2.3情况 */</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">/* 针对5种情况处理 */</span></span><br><span class="line">                removeblackNode(No);</span><br><span class="line">                No-&gt;father-&gt;next[direction] = <span class="literal">NULL</span>;</span><br><span class="line">                <span class="keyword">goto</span> removeUpdateEnd;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* 2.0情况，No两个子树 */</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (No-&gt;next[<span class="number">0</span>] &amp;&amp; No-&gt;next[<span class="number">1</span>])</span><br><span class="line">            No = removeChange(No);</span><br><span class="line">        <span class="comment">/* 2.2情况，No只有一个子树 */</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">1</span>; ++i)</span><br><span class="line">                <span class="keyword">if</span> (No-&gt;next[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">/* 注意根节点的特殊处理 */</span></span><br><span class="line">                    <span class="keyword">if</span> (fa)</span><br><span class="line">                        fa-&gt;next[direction] = No-&gt;next[i];</span><br><span class="line">                    <span class="keyword">if</span> (No == root)</span><br><span class="line">                        root = No-&gt;next[i];</span><br><span class="line">                    No-&gt;next[i]-&gt;father = fa;</span><br><span class="line">                    No-&gt;next[i]-&gt;color = <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">goto</span> removeUpdateEnd;</span><br><span class="line">                &#125;</span><br><span class="line">    &#125;</span><br><span class="line">removeUpdateEnd:</span><br><span class="line">    <span class="comment">/* 更新完成后再删除No */</span></span><br><span class="line">    <span class="keyword">delete</span> No;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 删除值为x的节点 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* 查找x */</span></span><br><span class="line">    Node *No = findNode(x);</span><br><span class="line">    <span class="comment">/* 树为空 || 值为x的节点不存在 , 无需处理 */</span></span><br><span class="line">    <span class="keyword">if</span> (!No || No-&gt;data != x)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">/* 进行删除和更新 */</span></span><br><span class="line">    removeUpdate(No);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>红黑树的代码算是平衡树中比较复杂的，不过虽然看起来代码冗长和复杂，其实就是对之前分析的几种情况的模拟，以上红黑树主要实现部分的代码，删去注释和多余的括号空行后，大概180多行，对于一个复杂的平衡树代码来说，已经算是很正常的了。大部分数据结构的原理都比较简单，代码实现才是难点。</p>
+
+  </div>
+  <!--文末结束语-->
+  
+    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="iconfont icon-heartbeat" style="font-size:24px;"></i> The End --- </div>
+  
+  <!--页脚广告-->
+  
+  <div class="mdui-divider"></div>
+  
+  <nav>
+    
+    
+      <a rel="next" class="post-nav-item mdui-float-right" href="/2022/03/11/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220311%E4%B8%8A%E6%9C%BA%E9%A2%98/">
+        <span>学校数据结构2022-03-11上机题</span>
+        <i class="iconfont icon-angle-right"></i>
+      </a>
+    
+  </nav>
+</article>
+
+
+
+
+  <div class="toc-button"  style="z-index: 100;">
+    <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item">
+        <a href="/2022/03/27/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E7%BA%A2%E9%BB%91%E6%A0%91/" id="toc-header" class="mdui-ripple">文章目录</a>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91%E6%80%A7%E8%B4%A8"><span class="toc-number">1.</span> <span class="toc-text">红黑树性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5"><span class="toc-number">2.</span> <span class="toc-text">插入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-0-father%E4%B8%BA%E9%BB%91"><span class="toc-number">2.1.</span> <span class="toc-text">1.0 father为黑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-father%E3%80%81uncle%E4%B8%BA%E7%BA%A2"><span class="toc-number">2.2.</span> <span class="toc-text">1.1 father、uncle为红</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-father%E4%B8%BA%E7%BA%A2%EF%BC%8Cuncle%E4%B8%BA%E9%BB%91"><span class="toc-number">2.3.</span> <span class="toc-text">1.2 father为红，uncle为黑</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-fa%E3%80%81No%E4%B8%8D%E5%9C%A8%E5%90%8C%E4%B8%80%E6%96%B9%E5%90%91"><span class="toc-number">2.3.1.</span> <span class="toc-text">1.2.1 fa、No不在同一方向</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-fa%E3%80%81No%E5%9C%A8%E5%90%8C%E4%B8%80%E6%96%B9%E5%90%91"><span class="toc-number">2.3.2.</span> <span class="toc-text">1.2.2 fa、No在同一方向</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4"><span class="toc-number">3.</span> <span class="toc-text">删除</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-0-No%E6%9C%89%E4%B8%A4%E4%B8%AA%E5%AD%90%E6%A0%91"><span class="toc-number">3.1.</span> <span class="toc-text">2.0 No有两个子树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-No%E4%B8%BA%E7%BA%A2%E8%89%B2%E5%8F%B6%E8%8A%82%E7%82%B9"><span class="toc-number">3.2.</span> <span class="toc-text">2.1 No为红色叶节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-No%E4%B8%BA%E9%BB%91%E8%89%B2%EF%BC%8C%E4%B8%94%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AA%E5%AD%90%E6%A0%91"><span class="toc-number">3.3.</span> <span class="toc-text">2.2 No为黑色，且只有一个子树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-No%E4%B8%BA%E9%BB%91%E8%89%B2%E5%8F%B6%E8%8A%82%E7%82%B9"><span class="toc-number">3.4.</span> <span class="toc-text">2.3 No为黑色叶节点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-1-br%E4%B8%BA%E7%BA%A2%E8%89%B2"><span class="toc-number">3.4.1.</span> <span class="toc-text">2.3.1 br为红色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2-br%E4%B8%BA%E9%BB%91%EF%BC%8C%E8%BF%9C%E4%BE%84%E5%AD%90%E4%B8%BA%E9%BB%91%EF%BC%8C%E8%BF%91%E4%BE%84%E5%AD%90%E4%B8%BA%E7%BA%A2"><span class="toc-number">3.4.2.</span> <span class="toc-text">2.3.2 br为黑，远侄子为黑，近侄子为红</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-3-br%E4%B8%BA%E9%BB%91%EF%BC%8C%E8%BF%9C%E4%BE%84%E5%AD%90%E4%B8%BA%E7%BA%A2"><span class="toc-number">3.4.3.</span> <span class="toc-text">2.3.3 br为黑，远侄子为红</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-4-fa%E4%B8%BA%E7%BA%A2%EF%BC%8Cbr%E4%B8%BA%E9%BB%91%E5%8F%B6%E5%AD%90"><span class="toc-number">3.4.4.</span> <span class="toc-text">2.3.4 fa为红，br为黑叶子</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-5-fa%E4%B8%BA%E9%BB%91%EF%BC%8Cbr%E4%B8%BA%E9%BB%91%E5%8F%B6%E5%AD%90"><span class="toc-number">3.4.5.</span> <span class="toc-text">2.3.5 fa为黑，br为黑叶子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">部分代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">4.1.</span> <span class="toc-text">节点结构体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%8B%E8%BD%AC"><span class="toc-number">4.2.</span> <span class="toc-text">旋转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-number">4.3.</span> <span class="toc-text">查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5-1"><span class="toc-number">4.4.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4-1"><span class="toc-number">4.5.</span> <span class="toc-text">删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.6.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+      </li>
+    </ul>
+  </div>
+
+
+
+    <div id="comment" class="mdui-card mdui-p-a-2 mdui-m-b-5">
+      <div class="mdui-tab" mdui-tab>
+        
+          <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
+        
+          <a href="#comment-tab1" class="mdui-ripple">livere</a>
+        
+      </div>
+      
+        <div id="comment-tab0" class="mdui-p-a-2">
+          <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: [''],
+    id:  md5(location.pathname) ,
+    distractionFreeMode: 'true',
+  });
+  gitalk.render('gitalk-container');
+</script>
+        </div>
+      
+        <div id="comment-tab1" class="mdui-p-a-2">
+          <div id="lv-container" data-id="city" data-uid="">
+  <script type="text/javascript">
+    (function (d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+  <noscript>Please enable JavaScript to view the comments powered by LiveRe.</noscript>
+</div>
+        </div>
+      
+    </div>
+
+  </main>
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+  <div class="mdui-container">
+    <div class="mdui-row">
+      
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
+      
+      <span>
+        &copy; 2015 - 2022 
+        
+          <span style="color:#d9333f" class="iconfont icon-heart"></span>
+        
+        Cheng Ziheng
+      </span>
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span>Theme: <a href="https://github.com/kb1000fx/Meadow" rel="noopener" target="_blank">Meadow</a></span>
+        </div>
+      
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span id="busuanzi_container_site_uv" style="display: none;"> <span class="iconfont icon-user"></span>总访客量 <span id="busuanzi_value_site_uv"></span></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span id="busuanzi_container_site_pv" style="display: none;"> <span class="iconfont icon-eye"></span>总访问量 <span id="busuanzi_value_site_pv"></span></span>
+        </div>
+      
+    </div>
+ </div>
+</footer>
+  
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+  
+  
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+    
+<script src="/js/mdui.min.v1.0.0.js"></script>
+
+
+
+
+<script src="/js/meadow.js"></script>
+
+</body>
+</html >
