@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
+    
+    
+    
+        <link rel="shortcut icon" href="/icons/favicon.jpg">
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
+
+    
+    
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        
+            load: ['[tex]/mhchem'],
+        
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        
+            packages: {'[+]': ['mhchem']},
+        
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+          
+
+
+    
+    
+    <title>
+        
+            长沙集训Day1 | CZH&#39;s BLOG
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  
+  <header class="mdui-appbar mdui-appbar-fixed">
+  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+    <a href="/" class="mdui-typo-headline">CZH&#39;s BLOG</a>
+    <a href="/" class="header-subtitle mdui-typo-headline"></a>
+    <div class="mdui-toolbar-spacer"></div>
+    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
+  </div>
+</header>
+
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
+    </div>
+
+    
+    <div id="sidebar-tab1" class="mdui-p-a-1">
+        <div class="mdui-list">
+            
+                
+                <a href="/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-home"></i>
+                    </div>
+                    <div class="mdui-list-item-content">主页</div>
+                </a>
+            
+                
+                <a href="/tags/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-bookmark"></i>
+                    </div>
+                    <div class="mdui-list-item-content">标签</div>
+                </a>
+            
+                
+                <a href="/categories/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-folder"></i>
+                    </div>
+                    <div class="mdui-list-item-content">分类</div>
+                </a>
+            
+                
+                <a href="/archives/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-archive"></i>
+                    </div>
+                    <div class="mdui-list-item-content">归档</div>
+                </a>
+            
+                
+                <a href="/about/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-user"></i>
+                    </div>
+                    <div class="mdui-list-item-content">关于</div>
+                </a>
+            
+            <div class="mdui-list-item mdui-ripple">
+                <div class="mdui-list-item-icon">
+                    <i class="iconfont icon-moon"></i>
+                </div>
+                <div class="mdui-list-item-content">夜间模式</div>
+                <label class="mdui-switch" id="darkmode">
+                  <input type="checkbox" id="nightmode_switch"/>
+                  <i class="mdui-switch-icon"></i>
+                </label>
+            </div>           
+        </div>
+    </div>
+
+    
+    <div id="sidebar-tab2" class="mdui-p-a-1">
+        <div class="sidebar-overview">
+            <div class="sidebar-avatar">
+                
+                    <img src="/icons/avatar.jpg"/>
+                
+            </div>
+            <div class="sidebar-author-name">Cheng Ziheng</div>
+            <div class="sidebar-description">That&#39;s♂good!</div>
+        </div>
+        <div class="sidebar-links">
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
+                    <a href="mailto:2568858327@qq.com" class="mdui-chip-title">E-Mail</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-steam"></i></span>
+                    <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198318522568" class="mdui-chip-title">Steam</a>
+                </div>
+            
+        </div>
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-collapse-item">
+                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-link"></i>
+                    </div>
+                    <div class="mdui-list-item-content">友情链接</div>
+                    <div class="mdui-collapse-item-arrow">
+                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
+                    </div>
+                </div>
+                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mdui-divider"></div>
+    
+    
+</aside>
+  
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
+  <header class="mdui-card-media">
+    
+    
+      <div class="post-header"> 
+  <a class="post-header-title" href="/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/">长沙集训Day1</a>
+  <div class="post-header-meta">
+    <span>
+      <span class="iconfont icon-calendar"></span>
+      发布于:&nbsp;2019-02-15
+    </span>
+    <span>
+      <span class="iconfont icon-calendar-check"></span>
+      更新于:&nbsp;2023-11-04
+    </span>
+    <span>
+      <span class="iconfont icon-folder"></span>
+      分类于:&nbsp;
+    </span>
+    
+      <span>
+        <span class="iconfont icon-eye"></span>
+        阅读次数:&nbsp;
+        <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+      </span>
+    
+  </div>
+</div>   
+    
+
+
+
+    
+    
+    <div class="mdui-card-menu">
+    
+      <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
+      <ul class="mdui-menu" id="share_menu">
+        <li class="mdui-menu-item">
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=长沙集训Day1&url=https://fysbbczh.github.io/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/&pic=https://fysbbczh.github.io/icons/favicon.jpg&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://twitter.com/intent/tweet?text=长沙集训Day1&url=https://fysbbczh.github.io/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/&via=Cheng Ziheng" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://fysbbczh.github.io/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://plus.google.com/share?url=https://fysbbczh.github.io/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://fysbbczh.github.io/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/&title=长沙集训Day1" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=CZH&#39;s BLOG&title=长沙集训Day1&summary=That&#39;s♂good!&pics=https://fysbbczh.github.io/icons/favicon.jpg&url=https://fysbbczh.github.io/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://telegram.me/share/url?url=https://fysbbczh.github.io/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/&text=长沙集训Day1" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+        </li>
+      </ul>
+    
+  </div>
+  </header>
+  
+  
+  
+  
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/Pascal/ >Pascal</a>
+      </i>
+    
+  </div>
+
+  
+  <div class="mdui-card-content mdui-typo mdui-p-x-4">
+    <h5 id="2019-2-11"><a href="#2019-2-11" class="headerlink" title="2019.2.11"></a>2019.2.11</h5><h1 id="长沙集训-Day1"><a href="#长沙集训-Day1" class="headerlink" title="长沙集训 $ Day1 $"></a>长沙集训 $ Day1 $</h1><p>今天是长沙集训的第一天，今天的题目还是比较简单的。</p>
+<p><del>其实是老师特别出了简单题，照顾我这个蒟蒻！！！</del></p>
+<hr>
+<h2 id="T1完美子串"><a href="#T1完美子串" class="headerlink" title="T1完美子串"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62243">T1完美子串</a></h2><p>这题是普通的模拟，从字符串首开始，将尾指针向后移动。每移动一位就将该位上的字符放入桶中计数。</p>
+<p>如果 $ 26 $ 个字母均已出现，则开始移动头指针，并将头指针处的字符从桶中去除。在所有子串中选择长度最小的作为答案。</p>
+<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">program str;</span><br><span class="line">var</span><br><span class="line">   s:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.2000005</span>]of <span class="keyword">char</span>;</span><br><span class="line">   sum:<span class="built_in">array</span>[<span class="string">&#x27;A&#x27;</span>.<span class="number">.&#x27;</span>Z<span class="number">&#x27;</span>]of longint;</span><br><span class="line">   len,ans:longint;</span><br><span class="line"></span><br><span class="line">procedure re;</span><br><span class="line">var st:ansistring;</span><br><span class="line">    i:longint;</span><br><span class="line">begin</span><br><span class="line">  readln(st);</span><br><span class="line">  len:=length(st);</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to len <span class="keyword">do</span> s[i]:=st[i];</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">function sc:boolean;</span><br><span class="line">var i:<span class="keyword">char</span>;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="string">&#x27;A&#x27;</span> to <span class="string">&#x27;Z&#x27;</span> <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> sum[i]=<span class="number">0</span> then <span class="built_in">exit</span>(<span class="literal">false</span>);</span><br><span class="line">  <span class="built_in">exit</span>(<span class="literal">true</span>);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure main;</span><br><span class="line">var head,tail:longint;</span><br><span class="line">begin</span><br><span class="line">  ans:=<span class="number">100000000</span>;</span><br><span class="line">  head:=<span class="number">0</span>;</span><br><span class="line">  tail:=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> tail&lt;=len <span class="keyword">do</span> begin</span><br><span class="line">    inc(sum[s[tail]]);</span><br><span class="line">    <span class="keyword">while</span> sc=<span class="literal">true</span> <span class="keyword">do</span> begin</span><br><span class="line">      <span class="keyword">if</span> tail-head&lt;ans then ans:=tail-head;</span><br><span class="line">      inc(head);</span><br><span class="line">      dec(sum[s[head]]);</span><br><span class="line">    end;</span><br><span class="line">    inc(tail);</span><br><span class="line">  end;</span><br><span class="line">  if ans=100000000 then writeln(&#x27;QwQ&#x27;)</span><br><span class="line">    <span class="keyword">else</span> writeln(ans);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">  re;</span><br><span class="line">  main;</span><br><span class="line">end.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="T2游戏"><a href="#T2游戏" class="headerlink" title="T2游戏"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62244">T2游戏</a></h2><p>此题是一道数学题，若不是有 $ CRN $ 巨佬的思路我估计就爆零了……</p>
+<p>假设局游戏的分数是 $ k_{1} \ \ k_{2} \ \ k_{3} ……$</p>
+<p>因为每人的得分只能是 $ k^{2} $ 或 $ k $ ，所以设两人的得分相乘为 $ P $ ， $ P=(k_{1} \cdot k_{2} \cdot k_{3} \cdot … \cdot k_{n})^{3}$ ,所以 $ \sqrt[3]{P} $ 一定是一个整数。</p>
+<p>设 $ Q= \sqrt[3]{P} $ ，两人的得分也一定能被 $ Q $ 整除。</p>
+<p>所以：</p>
+<ol>
+<li>$ Q $ 不为整数，输出 $ No $</li>
+<li>两人得分不能被 $ Q $ 整除，输出 $ No $</li>
+<li>$ Q $ 为整数，且两人得分都能被 $ Q $ 整除，输出 $ Yes $</li>
+</ol>
+<p>$ Q $ 可以用二分快速求出，<strong>记得用 $ int64 $ !!!</strong></p>
+<h3 id="程序-1"><a href="#程序-1" class="headerlink" title="程序"></a>程序</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">program game;</span><br><span class="line">var</span><br><span class="line">   t:longint;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">sc</span><span class="params">(q:int64)</span>:int64</span>;</span><br><span class="line">var l,r,mid,ans:int64;</span><br><span class="line">begin</span><br><span class="line">  ans:=<span class="number">-1</span>;</span><br><span class="line">  l:=<span class="number">0</span>;</span><br><span class="line">  r:=<span class="number">1000001</span>;</span><br><span class="line">  <span class="keyword">while</span> l&lt;=r <span class="keyword">do</span> begin</span><br><span class="line">    mid:=(l+r) shr <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> mid*mid*mid=q then begin ans:=mid;<span class="keyword">break</span>; end;</span><br><span class="line">    <span class="keyword">if</span> mid*mid*mid&lt;q then l:=mid+<span class="number">1</span></span><br><span class="line">      <span class="keyword">else</span> r:=mid<span class="number">-1</span>;</span><br><span class="line">  end;</span><br><span class="line">  <span class="built_in">exit</span>(ans);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure main;</span><br><span class="line">var x,y,z:int64;</span><br><span class="line">    i:longint;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to t <span class="keyword">do</span> begin</span><br><span class="line">    read(x,y);</span><br><span class="line">    z:=sc(x*y);   </span><br><span class="line">    if z=-1 then writeln(&#x27;No&#x27;)</span><br><span class="line">      else if (x mod z=0) and (y mod z=0) then writeln(&#x27;Yes&#x27;)</span><br><span class="line">        else writeln(&#x27;No&#x27;);</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">  read(t);</span><br><span class="line">  main;</span><br><span class="line">end.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="T3泥泞的牧场"><a href="#T3泥泞的牧场" class="headerlink" title="T3泥泞的牧场"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62245">T3泥泞的牧场</a></h2><p>这题是二分图匹配的模板题。</p>
+<h3 id="二分图"><a href="#二分图" class="headerlink" title="二分图"></a>二分图</h3><p><img src="https://i.loli.net/2019/02/11/5c616a84c2947.png"></p>
+<p>如此，像这种可以分成两份，每一份中的点互不相交的图就是二分图。</p>
+<h3 id="二分图匹配"><a href="#二分图匹配" class="headerlink" title="二分图匹配"></a>二分图匹配</h3><p><img src="https://i.loli.net/2019/02/11/5c616bbabb9b2.png"></p>
+<p>如此，连接像这样无公共顶点的两条边，就是一个二分图匹配。</p>
+<h3 id="最大匹配"><a href="#最大匹配" class="headerlink" title="最大匹配"></a>最大匹配</h3><p><img src="https://i.loli.net/2019/02/11/5c616c5c173f4.png"></p>
+<p>最大匹配就是选择尽量多的边，使得选中的边中任意两条边均没有公共点。如果所有的点都是匹配点那就是一个完美匹配。</p>
+<p>上图的最大匹配便是 $ 3 $ 。</p>
+<p>求解二分图匹配的基本算法是<strong>匈牙利算法</strong>。</p>
+<h3 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h3><h4 id="增广路"><a href="#增广路" class="headerlink" title="增广路"></a>增广路</h4><p>从一个未匹配的点开始，依次走过未匹配边，匹配边，未匹配边，匹配边…… 如果最后的终点是一个未匹配点（即最后一条边是一条未匹配边），那么这条路就是一条增广路。而将增广路上的未匹配边和匹配边进行互换，就会使得匹配边多一条。</p>
+<p>匈牙利算法便是利用增广路进行处理。</p>
+<h4 id="处理方法"><a href="#处理方法" class="headerlink" title="处理方法"></a>处理方法</h4><p>1.对于一个节点，遍历与其相连的节点，如果可以直接连接，就立即进行连接。</p>
+<p><img src="https://i.loli.net/2019/02/11/5c616ed223423.png"></p>
+<p>2.继续下一个节点，发现直连节点已被占用。</p>
+<p><img src="https://i.loli.net/2019/02/11/5c616f49f33b5.png"></p>
+<p>3.搜索到增广路。</p>
+<p><img src="https://i.loli.net/2019/02/11/5c616f6e5b06a.png"></p>
+<p>4.依靠增广路进行扩展。</p>
+<p><img src="https://i.loli.net/2019/02/11/5c616fcfc2c8b.png"></p>
+<p>5.非增广路，不进行扩展。</p>
+<p><img src="https://i.loli.net/2019/02/11/5c6170266968f.png"></p>
+<p>6.无增广路，左侧无空节点，处理结束。</p>
+<p><img src="https://i.loli.net/2019/02/11/5c617090e7260.png"></p>
+<h3 id="本题转化"><a href="#本题转化" class="headerlink" title="本题转化"></a>本题转化</h3><p>本题题面虽与二分图无关，但可以通过奇妙的变化，转为二分图匹配问题。</p>
+<p>我们将连续行的 $ * $ 设为左侧图，连续列的 $ * $ 设为右侧图，行列的交点设为在两节点之间连了一条边。</p>
+<p><img src="https://i.loli.net/2019/02/11/5c617372afd5f.png"><br><img src="https://i.loli.net/2019/02/11/5c6173824a289.png"></p>
+<p>之后我们要求出此图的最小顶点覆盖，因为我们在一行&amp;一列放上木板，相当于选取了图中的一个点，覆盖的泥地相当于图中与此顶点相连的边。所以用最少的木板覆盖全部泥地相当于选最少的顶点覆盖全部的边。</p>
+<p>根据二分图特点，最小顶点覆盖=最大匹配，求出该图的最大匹配就是答案。</p>
+<h3 id="程序-2"><a href="#程序-2" class="headerlink" title="程序"></a>程序</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">program cover;</span><br><span class="line">var</span><br><span class="line">   f:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.55</span>,<span class="number">0.</span><span class="number">.55</span>]of <span class="keyword">char</span>;</span><br><span class="line">   x,y:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.55</span>,<span class="number">0.</span><span class="number">.55</span>]of longint;</span><br><span class="line">   p:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.505</span>,<span class="number">0.</span><span class="number">.505</span>]of longint;</span><br><span class="line">   next,next_f:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.505</span>]of longint;</span><br><span class="line">   tf:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.505</span>,<span class="number">0.</span><span class="number">.505</span>]of boolean;</span><br><span class="line">   t:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.505</span>]of boolean;</span><br><span class="line">   n,m,ans,totx,toty:longint;</span><br><span class="line"></span><br><span class="line">procedure re;</span><br><span class="line">var i,j:longint;</span><br><span class="line">    s:<span class="built_in">string</span>;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">0</span> to <span class="number">55</span> <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">for</span> j:=<span class="number">0</span> to <span class="number">55</span> <span class="keyword">do</span> f[i,j]:=<span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to n <span class="keyword">do</span> begin</span><br><span class="line">    readln(s);</span><br><span class="line">    <span class="keyword">for</span> j:=<span class="number">1</span> to m <span class="keyword">do</span> f[i,j]:=s[j];</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">cover1</span><span class="params">(p,q:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">for</span> i:=q to m <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> f[p,i]=<span class="string">&#x27;*&#x27;</span> then x[p,i]:=totx</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> f[p,i]=<span class="string">&#x27;.&#x27;</span> then <span class="keyword">break</span>;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">cover2</span><span class="params">(p,q:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">for</span> i:=q to n <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> f[i,p]=<span class="string">&#x27;*&#x27;</span> then y[i,p]:=toty</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> f[i,p]=<span class="string">&#x27;.&#x27;</span> then <span class="keyword">break</span>;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure dfs_first;</span><br><span class="line">var i,j:longint;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to n <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">for</span> j:=<span class="number">1</span> to m <span class="keyword">do</span></span><br><span class="line">      <span class="keyword">if</span> f[i,j]=<span class="string">&#x27;*&#x27;</span> then begin</span><br><span class="line">        <span class="keyword">if</span> f[i,j<span class="number">-1</span>]=<span class="string">&#x27;.&#x27;</span> then begin</span><br><span class="line">          inc(totx);</span><br><span class="line">          cover1(i,j);</span><br><span class="line">        end;</span><br><span class="line">        <span class="keyword">if</span> f[i<span class="number">-1</span>,j]=<span class="string">&#x27;.&#x27;</span> then begin</span><br><span class="line">          inc(toty);</span><br><span class="line">          cover2(j,i);</span><br><span class="line">        end;</span><br><span class="line">      end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure dfs_up;</span><br><span class="line">var i,j:longint;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to n <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">for</span> j:=<span class="number">1</span> to m <span class="keyword">do</span></span><br><span class="line">      <span class="keyword">if</span> tf[x[i,j],y[i,j]]=<span class="literal">false</span> then begin</span><br><span class="line">        tf[x[i,j],y[i,j]]:=<span class="literal">true</span>;</span><br><span class="line">        inc(p[x[i,j],<span class="number">0</span>]);</span><br><span class="line">        p[x[i,j],p[x[i,j],<span class="number">0</span>]]:=y[i,j];</span><br><span class="line">      end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">dfs</span><span class="params">(q:longint)</span>:boolean</span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  dfs:=<span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to p[q,<span class="number">0</span>] <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> next_f[q]&lt;&gt;p[q,i] then</span><br><span class="line">      <span class="keyword">if</span> next[p[q,i]]=<span class="number">0</span> then begin</span><br><span class="line">        next[p[q,i]]:=q;</span><br><span class="line">        next_f[q]:=p[q,i];</span><br><span class="line">        <span class="built_in">exit</span>(<span class="literal">true</span>);</span><br><span class="line">      end;</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to p[q,<span class="number">0</span>] <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> (next_f[q]&lt;&gt;p[q,i]) <span class="keyword">and</span> (t[p[q,i]]=<span class="literal">false</span>) then begin</span><br><span class="line">      t[p[q,i]]:=<span class="literal">true</span>;</span><br><span class="line">      <span class="function"><span class="keyword">if</span> <span class="title">dfs</span><span class="params">(next[p[q,i]])</span></span>=<span class="literal">true</span> then begin</span><br><span class="line">        next[p[q,i]]:=q;</span><br><span class="line">        next_f[q]:=p[q,i];</span><br><span class="line">        <span class="built_in">exit</span>(<span class="literal">true</span>);</span><br><span class="line">      end;</span><br><span class="line">    end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure main;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  ans:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to totx <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> dfs(i)=<span class="literal">true</span> then inc(ans);</span><br><span class="line">    fillchar(t,<span class="keyword">sizeof</span>(t),<span class="literal">false</span>);</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">  readln(n,m);</span><br><span class="line">  re;</span><br><span class="line">  dfs_first;</span><br><span class="line">  dfs_up;</span><br><span class="line">  main;</span><br><span class="line">  writeln(ans);</span><br><span class="line">end.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  </div>
+  <!--文末结束语-->
+  
+    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="iconfont icon-heartbeat" style="font-size:24px;"></i> The End --- </div>
+  
+  <!--页脚广告-->
+  
+  <div class="mdui-divider"></div>
+  
+  <nav>
+    
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2019/02/16/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay2/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>长沙集训Day2</span>
+      </a>
+    
+    
+      <a rel="next" class="post-nav-item mdui-float-right" href="/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/">
+        <span>NOIP2018赛后总结</span>
+        <i class="iconfont icon-angle-right"></i>
+      </a>
+    
+  </nav>
+</article>
+
+
+
+
+  <div class="toc-button"  style="z-index: 100;">
+    <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item">
+        <a href="/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/" id="toc-header" class="mdui-ripple">文章目录</a>
+        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-11"><span class="toc-number">1.</span> <span class="toc-text">2019.2.11</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day1"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day1 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1%E5%AE%8C%E7%BE%8E%E5%AD%90%E4%B8%B2"><span class="toc-number"></span> <span class="toc-text">T1完美子串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2%E6%B8%B8%E6%88%8F"><span class="toc-number"></span> <span class="toc-text">T2游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3%E6%B3%A5%E6%B3%9E%E7%9A%84%E7%89%A7%E5%9C%BA"><span class="toc-number"></span> <span class="toc-text">T3泥泞的牧场</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E5%9B%BE"><span class="toc-number"></span> <span class="toc-text">二分图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D"><span class="toc-number"></span> <span class="toc-text">二分图匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%8C%B9%E9%85%8D"><span class="toc-number"></span> <span class="toc-text">最大匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">匈牙利算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E%E5%B9%BF%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">增广路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">处理方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E9%A2%98%E8%BD%AC%E5%8C%96"><span class="toc-number"></span> <span class="toc-text">本题转化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text">程序</span></a>
+      </li>
+    </ul>
+  </div>
+
+
+
+    <div id="comment" class="mdui-card mdui-p-a-2 mdui-m-b-5">
+      <div class="mdui-tab" mdui-tab>
+        
+          <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
+        
+          <a href="#comment-tab1" class="mdui-ripple">livere</a>
+        
+      </div>
+      
+        <div id="comment-tab0" class="mdui-p-a-2">
+          <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: [''],
+    id:  md5(location.pathname) ,
+    distractionFreeMode: 'true',
+  });
+  gitalk.render('gitalk-container');
+</script>
+        </div>
+      
+        <div id="comment-tab1" class="mdui-p-a-2">
+          <div id="lv-container" data-id="city" data-uid="">
+  <script type="text/javascript">
+    (function (d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+  <noscript>Please enable JavaScript to view the comments powered by LiveRe.</noscript>
+</div>
+        </div>
+      
+    </div>
+
+  </main>
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+  <div class="mdui-container">
+    <div class="mdui-row">
+      
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
+      
+      <span>
+        &copy; 2015 - 2023 
+        
+          <span style="color:#d9333f" class="iconfont icon-heart"></span>
+        
+        Cheng Ziheng
+      </span>
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span>Theme: <a href="https://github.com/kb1000fx/Meadow" rel="noopener" target="_blank">Meadow</a></span>
+        </div>
+      
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span id="busuanzi_container_site_uv" style="display: none;"> <span class="iconfont icon-user"></span>总访客量 <span id="busuanzi_value_site_uv"></span></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span id="busuanzi_container_site_pv" style="display: none;"> <span class="iconfont icon-eye"></span>总访问量 <span id="busuanzi_value_site_pv"></span></span>
+        </div>
+      
+    </div>
+ </div>
+</footer>
+  
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+  
+  
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+    
+<script src="/js/mdui.min.v1.0.0.js"></script>
+
+
+
+
+<script src="/js/meadow.js"></script>
+
+</body>
+</html >

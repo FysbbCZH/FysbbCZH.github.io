@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
+    
+    
+    
+        <link rel="shortcut icon" href="/icons/favicon.jpg">
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
+
+    
+    
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        
+            load: ['[tex]/mhchem'],
+        
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        
+            packages: {'[+]': ['mhchem']},
+        
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+          
+
+
+    
+    
+    <title>
+        
+            长沙集训-2019-08-21 | CZH&#39;s BLOG
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  
+  <header class="mdui-appbar mdui-appbar-fixed">
+  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+    <a href="/" class="mdui-typo-headline">CZH&#39;s BLOG</a>
+    <a href="/" class="header-subtitle mdui-typo-headline"></a>
+    <div class="mdui-toolbar-spacer"></div>
+    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
+  </div>
+</header>
+
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
+    </div>
+
+    
+    <div id="sidebar-tab1" class="mdui-p-a-1">
+        <div class="mdui-list">
+            
+                
+                <a href="/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-home"></i>
+                    </div>
+                    <div class="mdui-list-item-content">主页</div>
+                </a>
+            
+                
+                <a href="/tags/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-bookmark"></i>
+                    </div>
+                    <div class="mdui-list-item-content">标签</div>
+                </a>
+            
+                
+                <a href="/categories/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-folder"></i>
+                    </div>
+                    <div class="mdui-list-item-content">分类</div>
+                </a>
+            
+                
+                <a href="/archives/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-archive"></i>
+                    </div>
+                    <div class="mdui-list-item-content">归档</div>
+                </a>
+            
+                
+                <a href="/about/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-user"></i>
+                    </div>
+                    <div class="mdui-list-item-content">关于</div>
+                </a>
+            
+            <div class="mdui-list-item mdui-ripple">
+                <div class="mdui-list-item-icon">
+                    <i class="iconfont icon-moon"></i>
+                </div>
+                <div class="mdui-list-item-content">夜间模式</div>
+                <label class="mdui-switch" id="darkmode">
+                  <input type="checkbox" id="nightmode_switch"/>
+                  <i class="mdui-switch-icon"></i>
+                </label>
+            </div>           
+        </div>
+    </div>
+
+    
+    <div id="sidebar-tab2" class="mdui-p-a-1">
+        <div class="sidebar-overview">
+            <div class="sidebar-avatar">
+                
+                    <img src="/icons/avatar.jpg"/>
+                
+            </div>
+            <div class="sidebar-author-name">Cheng Ziheng</div>
+            <div class="sidebar-description">That&#39;s♂good!</div>
+        </div>
+        <div class="sidebar-links">
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
+                    <a href="mailto:2568858327@qq.com" class="mdui-chip-title">E-Mail</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-steam"></i></span>
+                    <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198318522568" class="mdui-chip-title">Steam</a>
+                </div>
+            
+        </div>
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-collapse-item">
+                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-link"></i>
+                    </div>
+                    <div class="mdui-list-item-content">友情链接</div>
+                    <div class="mdui-collapse-item-arrow">
+                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
+                    </div>
+                </div>
+                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mdui-divider"></div>
+    
+    
+</aside>
+  
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
+  <header class="mdui-card-media">
+    
+    
+      <div class="post-header"> 
+  <a class="post-header-title" href="/2019/08/21/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-2019-08-21/">长沙集训-2019-08-21</a>
+  <div class="post-header-meta">
+    <span>
+      <span class="iconfont icon-calendar"></span>
+      发布于:&nbsp;2019-08-21
+    </span>
+    <span>
+      <span class="iconfont icon-calendar-check"></span>
+      更新于:&nbsp;2023-11-04
+    </span>
+    <span>
+      <span class="iconfont icon-folder"></span>
+      分类于:&nbsp;
+    </span>
+    
+      <span>
+        <span class="iconfont icon-eye"></span>
+        阅读次数:&nbsp;
+        <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+      </span>
+    
+  </div>
+</div>   
+    
+
+
+
+    
+    
+    <div class="mdui-card-menu">
+    
+      <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
+      <ul class="mdui-menu" id="share_menu">
+        <li class="mdui-menu-item">
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=长沙集训-2019-08-21&url=https://fysbbczh.github.io/2019/08/21/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-2019-08-21/&pic=https://fysbbczh.github.io/icons/favicon.jpg&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://twitter.com/intent/tweet?text=长沙集训-2019-08-21&url=https://fysbbczh.github.io/2019/08/21/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-2019-08-21/&via=Cheng Ziheng" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://fysbbczh.github.io/2019/08/21/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-2019-08-21/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://plus.google.com/share?url=https://fysbbczh.github.io/2019/08/21/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-2019-08-21/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://fysbbczh.github.io/2019/08/21/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-2019-08-21/&title=长沙集训-2019-08-21" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=CZH&#39;s BLOG&title=长沙集训-2019-08-21&summary=That&#39;s♂good!&pics=https://fysbbczh.github.io/icons/favicon.jpg&url=https://fysbbczh.github.io/2019/08/21/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-2019-08-21/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://telegram.me/share/url?url=https://fysbbczh.github.io/2019/08/21/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-2019-08-21/&text=长沙集训-2019-08-21" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+        </li>
+      </ul>
+    
+  </div>
+  </header>
+  
+  
+  
+  
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/Pascal/ >Pascal</a>
+      </i>
+    
+  </div>
+
+  
+  <div class="mdui-card-content mdui-typo mdui-p-x-4">
+    <h1 id="lt-center-gt-长沙集训-Day-3-2019-08-21-lt-center-gt"><a href="#lt-center-gt-长沙集训-Day-3-2019-08-21-lt-center-gt" class="headerlink" title="&lt;center&gt;长沙集训 $ Day 3 $ 2019-08-21 &lt;/center&gt;"></a><code>&lt;center&gt;</code>长沙集训 $ Day 3 $ 2019-08-21 <code>&lt;/center&gt;</code></h1><h4 id="得分：-193-300"><a href="#得分：-193-300" class="headerlink" title="得分：$ 193/300 $"></a>得分：$ 193/300 $</h4><hr>
+<h2 id="T1-Matrix"><a href="#T1-Matrix" class="headerlink" title="T1 $ Matrix $"></a>T1 $ Matrix $</h2><p><img src="https://i.loli.net/2019/08/21/ERI3gOzW2SjCPGx.png"></p>
+<h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h3><p>此题可以用枚举解决，分别枚举每一列作为矩形中间点统计答案，最后取最大值。每次统计答案时，分别算出每一列相邻的 $ 1 $ 的个数 $ sum $：</p>
+<p><img src="https://i.loli.net/2019/08/21/VeirquZhHXjpPd4.png"></p>
+<p>之后从该列向两边查找（其实只向一边也可以），如果当前枚举的列为 $ k $ ，查找到的列为 $ i $ ，则答案为 $ |i-j| \cdot sum[i] $ 。</p>
+<p>直接暴力查找的时间复杂度时 $ O(n \cdot m^2) $ ，为了加快速度，可以预处理出以 $ i $ 为中心的每行连续 $ 1 $ 的左右端点，之后计算 $ sum $ 时用前缀和处理。使时间复杂度降低为 $ O(n \cdot m) $ 。</p>
+<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">program matrix;</span><br><span class="line"></span><br><span class="line">type tp&#x3D;record</span><br><span class="line">  l,r:longint;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">var</span><br><span class="line">   f:array[0..1005,0..1005]of tp;</span><br><span class="line">   a:array[0..1005,0..1005]of integer;</span><br><span class="line">   sum:array[0..1005]of longint;</span><br><span class="line">   n,m:longint;</span><br><span class="line"></span><br><span class="line">function max(a,b:longint):longint;</span><br><span class="line">begin</span><br><span class="line">  if a&gt;b then exit(a)</span><br><span class="line">    else exit(b);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure re;</span><br><span class="line">var i,j:longint;</span><br><span class="line">    s:ansistring;</span><br><span class="line">begin</span><br><span class="line">  for i:&#x3D;1 to n do begin</span><br><span class="line">    readln(s);</span><br><span class="line">    for j:&#x3D;1 to m do</span><br><span class="line">      if s[j]&#x3D;&#39;0&#39; then a[i,j]:&#x3D;0</span><br><span class="line">        else a[i,j]:&#x3D;1;</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure first;</span><br><span class="line">var i,j,loc:longint;</span><br><span class="line">    t:boolean;</span><br><span class="line">begin</span><br><span class="line">  for i:&#x3D;1 to n do begin</span><br><span class="line">    loc:&#x3D;1;</span><br><span class="line">    t:&#x3D;false;</span><br><span class="line">    for j:&#x3D;1 to m do</span><br><span class="line">      if a[i,j]&lt;&gt;0 then begin</span><br><span class="line">        if t&#x3D;true then begin</span><br><span class="line">          f[i,j].l:&#x3D;f[i,j-1].l;</span><br><span class="line">          f[i,j].r:&#x3D;f[i,j-1].r;</span><br><span class="line">        end</span><br><span class="line">          else begin</span><br><span class="line">            while a[i,loc]&lt;&gt;0 do inc(loc);</span><br><span class="line">            t:&#x3D;true;</span><br><span class="line">            f[i,j].l:&#x3D;j;</span><br><span class="line">            f[i,j].r:&#x3D;loc;</span><br><span class="line">          end;</span><br><span class="line">      end</span><br><span class="line">        else begin</span><br><span class="line">          t:&#x3D;false;</span><br><span class="line">          inc(loc);</span><br><span class="line">        end;</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">function ans(x:longint):longint;</span><br><span class="line">var i,t:longint;</span><br><span class="line">begin</span><br><span class="line">  fillchar(sum,sizeof(sum),0);</span><br><span class="line">  for i:&#x3D;1 to n do</span><br><span class="line">    if a[i,x]&#x3D;1 then begin</span><br><span class="line">      inc(sum[f[i,x].l]);</span><br><span class="line">      dec(sum[f[i,x].r]);</span><br><span class="line">    end;</span><br><span class="line">  for i:&#x3D;1 to n do</span><br><span class="line">    sum[i]:&#x3D;sum[i]+sum[i-1];</span><br><span class="line">  ans:&#x3D;0;</span><br><span class="line">  t:&#x3D;0;</span><br><span class="line">  for i:&#x3D;x+1 to n do</span><br><span class="line">    if sum[i]&#x3D;sum[i-1] then inc(t)</span><br><span class="line">      else break;</span><br><span class="line">  for i:&#x3D;x downto 1 do begin</span><br><span class="line">    inc(t);</span><br><span class="line">    ans:&#x3D;max(ans,sum[i]*t);</span><br><span class="line">  end;</span><br><span class="line">  t:&#x3D;0;</span><br><span class="line">  for i:&#x3D;x-1 downto 1 do</span><br><span class="line">    if sum[i]&#x3D;sum[i+1] then inc(t)</span><br><span class="line">      else break;</span><br><span class="line">  for i:&#x3D;x to n do begin</span><br><span class="line">    inc(t);</span><br><span class="line">    ans:&#x3D;max(ans,sum[i]*t);</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure main;</span><br><span class="line">var i,j,anss:longint;</span><br><span class="line">begin</span><br><span class="line">  anss:&#x3D;0;</span><br><span class="line">  for i:&#x3D;1 to m do </span><br><span class="line">    anss:&#x3D;max(anss,ans(i));</span><br><span class="line">  writeln(anss);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">  readln(n,m);</span><br><span class="line">  re;</span><br><span class="line">  first;</span><br><span class="line">  main;</span><br><span class="line">end.</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="T2-Present"><a href="#T2-Present" class="headerlink" title="T2 $ Present $"></a>T2 $ Present $</h2><p><img src="https://i.loli.net/2019/08/21/ZjITie9PNhWsE7a.png"></p>
+<h3 id="基本思路-1"><a href="#基本思路-1" class="headerlink" title="基本思路"></a>基本思路</h3><p>刚看到题面，第一反应：“这不是背包板子吗！”。看到数据范围：“。。。”。</p>
+<p>这三天的 $ T2 $ 都异常巧妙，昨天考了最小生成树，今天的 $ T2 $ 则是一个最短路径。从原题上完全看不出和图论的联系，但是却能根据题目的特点进行转化：</p>
+<p>假设所有的物品中，价值最小为 $ p_{min} $ 。如果一个值 $ W = \sum_{i=1}^n p_i \cdot k_i $ 可以被组成，那么 $ W = \sum_{i=1}^n p_i \cdot (k_i + p_{min} \cdot s_i) $ 也一定能被组成。</p>
+<p>可以借此降低背包的上界，将最大容量从 $ 4 \times 10^7 $ 降为 $ p_{min} \cdot \sum_{i=1}^n p_i $ ，时间复杂度为 $ O(n \cdot p_{min} \cdot \sum_{i=1}^n p_i ) $ 。可以通过 $ 60 $% 的数据。</p>
+<p>接下来，解决方法就非常巧妙了。由上可知，对于每一个询问 $ Q = C + p_{min} \cdot k $ ，只要判断 $ Q \mod p_{min} $ 能否被组成即可。所以我们只要知道能够被组成的数 $ K(K \mod p_{min} = C) $ ，的最小值是否小于 $ Q $ 即可。而解决这个问题，可以将 $ [0,p_{min}-1] $ 的每个数当成一个点，对于点 $ f $ ，将其向 $ (f + p_i) \mod p_{min} $ 的点连一条权值为 $ p_i $ 的无向边，最后算出从 $ 0 $ 到 $ i $ 的最短路便是 $ K(K \mod p_{min} = i) $ 的最小值。</p>
+<h3 id="程序-1"><a href="#程序-1" class="headerlink" title="程序"></a>程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">program present;</span><br><span class="line">var</span><br><span class="line">   dis:array[0..10005]of longint;</span><br><span class="line">   a:array[0..505]of longint;</span><br><span class="line">   n,m,w:longint;</span><br><span class="line"></span><br><span class="line">function min(a,b:longint):longint;</span><br><span class="line">begin</span><br><span class="line">  if a&lt;b then exit(a)</span><br><span class="line">    else exit(b);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure re;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  w:&#x3D;maxint;</span><br><span class="line">  for i:&#x3D;1 to n do begin</span><br><span class="line">    read(a[i]);</span><br><span class="line">    w:&#x3D;min(w,a[i]);</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure spfa;</span><br><span class="line">var i,head,tail,f,v:longint;</span><br><span class="line">    p:array[0..10005]of longint;</span><br><span class="line">    tf:array[0..10005]of boolean;</span><br><span class="line">begin</span><br><span class="line">  fillchar(dis,sizeof(dis),$3f);</span><br><span class="line">  fillchar(tf,sizeof(tf),0);</span><br><span class="line">  dis[0]:&#x3D;0;</span><br><span class="line">  head:&#x3D;0;</span><br><span class="line">  tail:&#x3D;1;</span><br><span class="line">  p[tail]:&#x3D;0;</span><br><span class="line">  tf[0]:&#x3D;true;</span><br><span class="line">  while head&lt;tail do begin</span><br><span class="line">    inc(head);</span><br><span class="line">    head:&#x3D;head mod 10000;</span><br><span class="line">    f:&#x3D;p[head];</span><br><span class="line">    for i:&#x3D;1 to n do begin</span><br><span class="line">      v:&#x3D;(f+a[i]) mod w;</span><br><span class="line">      if (a[i]&lt;&gt;w) and (dis[f]+a[i]&lt;dis[v]) then begin</span><br><span class="line">        dis[v]:&#x3D;dis[f]+a[i];</span><br><span class="line">        if tf[v]&#x3D;false then begin</span><br><span class="line">          inc(tail);</span><br><span class="line">          tail:&#x3D;tail mod 10000;</span><br><span class="line">          p[tail]:&#x3D;v;</span><br><span class="line">          tf[v]:&#x3D;true;</span><br><span class="line">        end;</span><br><span class="line">      end;</span><br><span class="line">    end;</span><br><span class="line">    tf[f]:&#x3D;false;</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure main;</span><br><span class="line">var i,ans,x:longint;</span><br><span class="line">begin</span><br><span class="line">  spfa;</span><br><span class="line">  ans:&#x3D;0;</span><br><span class="line">  for i:&#x3D;1 to m do begin</span><br><span class="line">    read(x);</span><br><span class="line">    if dis[x mod w]&lt;&#x3D;x then inc(ans);</span><br><span class="line">  end;</span><br><span class="line">  writeln(ans);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">  read(n,m);</span><br><span class="line">  re;</span><br><span class="line">  main;</span><br><span class="line">end.</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="T3-Mahjong"><a href="#T3-Mahjong" class="headerlink" title="T3 $ Mahjong $"></a>T3 $ Mahjong $</h2><p><img src="https://i.loli.net/2019/08/21/FI547kP6BDe9cXf.png"></p>
+<p><img src="https://i.loli.net/2019/08/21/Y1b7rSeflECn5gH.png"></p>
+<h3 id="基本思路-2"><a href="#基本思路-2" class="headerlink" title="基本思路"></a>基本思路</h3><p>这是三天中最水的 $ T3 $ ，没有任何算法，就是按照题意模拟和枚举。主意好细节就可以，注意要先确定雀头，再查找顺子和刻子。对特殊牌型先行处理。</p>
+<p>这题说明了看题是多重要，我没看到“字牌不能成顺子”，结果 $ 100 \to 63 $ 。</p>
+<h3 id="程序-2"><a href="#程序-2" class="headerlink" title="程序"></a>程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br></pre></td><td class="code"><pre><span class="line">program mahjong;</span><br><span class="line"></span><br><span class="line">type arr&#x3D;array[1..15]of longint;</span><br><span class="line"></span><br><span class="line">type tp&#x3D;record</span><br><span class="line">  a:longint;</span><br><span class="line">  b:char;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">var</span><br><span class="line">   m,s,p,c:arr;</span><br><span class="line">   ans:array[0..105]of tp;</span><br><span class="line">   t:longint;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">procedure re;</span><br><span class="line">var ss:string;</span><br><span class="line">    i,t:longint;</span><br><span class="line">begin</span><br><span class="line">  readln(ss);</span><br><span class="line">  i:&#x3D;1;</span><br><span class="line">  while i&lt;&#x3D;length(ss) do begin</span><br><span class="line">    val(ss[i],t);</span><br><span class="line">    case ss[i+1] of</span><br><span class="line">      &#39;m&#39;:inc(m[t]);</span><br><span class="line">      &#39;s&#39;:inc(s[t]);</span><br><span class="line">      &#39;p&#39;:inc(p[t]);</span><br><span class="line">      &#39;c&#39;:inc(c[t]);</span><br><span class="line">    end;</span><br><span class="line">    inc(i,3);</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">function sc(m,s,p,c:arr):boolean;</span><br><span class="line">var i,sum:longint;</span><br><span class="line">begin</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;找刻子和顺子</span><br><span class="line">  sum:&#x3D;0;</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if m[i]&gt;0 then begin</span><br><span class="line">      if m[i]&lt;3 then while (m[i]&gt;0) and (m[i+1]&gt;0) and (m[i+2]&gt;0) do begin</span><br><span class="line">        inc(sum);</span><br><span class="line">        dec(m[i]);</span><br><span class="line">        dec(m[i+1]);</span><br><span class="line">        dec(m[i+2]);</span><br><span class="line">      end;</span><br><span class="line">      if m[i]&gt;&#x3D;3 then begin</span><br><span class="line">        inc(sum);</span><br><span class="line">        dec(m[i],3);</span><br><span class="line">      end;</span><br><span class="line">      while (m[i]&gt;0) and (m[i+1]&gt;0) and (m[i+2]&gt;0) do begin</span><br><span class="line">        inc(sum);</span><br><span class="line">        dec(m[i]);</span><br><span class="line">        dec(m[i+1]);</span><br><span class="line">        dec(m[i+2]);</span><br><span class="line">      end;</span><br><span class="line">    end;</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if s[i]&gt;0 then begin</span><br><span class="line">      if s[i]&lt;3 then while (s[i]&gt;0) and (s[i+1]&gt;0) and (s[i+2]&gt;0) do begin</span><br><span class="line">        inc(sum);</span><br><span class="line">        dec(s[i]);</span><br><span class="line">        dec(s[i+1]);</span><br><span class="line">        dec(s[i+2]);</span><br><span class="line">      end;</span><br><span class="line">      if s[i]&gt;&#x3D;3 then begin</span><br><span class="line">        inc(sum);</span><br><span class="line">        dec(s[i],3);</span><br><span class="line">      end;</span><br><span class="line">      while (s[i]&gt;0) and (s[i+1]&gt;0) and (s[i+2]&gt;0) do begin</span><br><span class="line">        inc(sum);</span><br><span class="line">        dec(s[i]);</span><br><span class="line">        dec(s[i+1]);</span><br><span class="line">        dec(s[i+2]);</span><br><span class="line">      end;</span><br><span class="line">    end;</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if p[i]&gt;0 then begin</span><br><span class="line">      if p[i]&lt;3 then while (p[i]&gt;0) and (p[i+1]&gt;0) and (p[i+2]&gt;0) do begin</span><br><span class="line">        inc(sum);</span><br><span class="line">        dec(p[i]);</span><br><span class="line">        dec(p[i+1]);</span><br><span class="line">        dec(p[i+2]);</span><br><span class="line">      end;</span><br><span class="line">      if p[i]&gt;&#x3D;3 then begin</span><br><span class="line">        inc(sum);</span><br><span class="line">        dec(p[i],3);</span><br><span class="line">      end;</span><br><span class="line">      while (p[i]&gt;0) and (p[i+1]&gt;0) and (p[i+2]&gt;0) do begin</span><br><span class="line">        inc(sum);</span><br><span class="line">        dec(p[i]);</span><br><span class="line">        dec(p[i+1]);</span><br><span class="line">        dec(p[i+2]);</span><br><span class="line">      end;</span><br><span class="line">    end;</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if c[i]&gt;&#x3D;3 then begin</span><br><span class="line">      inc(sum);</span><br><span class="line">      dec(c[i],3);</span><br><span class="line">    end;</span><br><span class="line">  if sum&lt;4 then exit(false)</span><br><span class="line">    else exit(true);</span><br><span class="line">  &#x2F;&#x2F;</span><br><span class="line"></span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">function check(m,s,p,c:arr):boolean;</span><br><span class="line">var i,sum:longint;</span><br><span class="line">    tf:boolean;</span><br><span class="line">begin</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;七对子</span><br><span class="line">  sum:&#x3D;0;</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if m[i]&gt;&#x3D;2 then inc(sum);</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if s[i]&gt;&#x3D;2 then inc(sum);</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if p[i]&gt;&#x3D;2 then inc(sum);</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if c[i]&gt;&#x3D;2 then inc(sum);</span><br><span class="line">  if sum&#x3D;7 then exit(true);</span><br><span class="line">  if sum&#x3D;0 then exit(false);</span><br><span class="line">  &#x2F;&#x2F;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;国士无双</span><br><span class="line">  tf:&#x3D;true;</span><br><span class="line">  for i:&#x3D;2 to 8 do</span><br><span class="line">    if m[i]&lt;&gt;0 then tf:&#x3D;false;</span><br><span class="line">  for i:&#x3D;2 to 8 do</span><br><span class="line">    if s[i]&lt;&gt;0 then tf:&#x3D;false;</span><br><span class="line">  for i:&#x3D;2 to 8 do</span><br><span class="line">    if p[i]&lt;&gt;0 then tf:&#x3D;false;</span><br><span class="line">  for i:&#x3D;1 to 7 do</span><br><span class="line">    if c[i]&#x3D;0 then tf:&#x3D;false;</span><br><span class="line">  if (tf&#x3D;true) and (m[1]&gt;0) and (m[9]&gt;0) and (s[1]&gt;0) and (s[9]&gt;0) and (p[1]&gt;0) and (p[9]&gt;0) then exit(true);</span><br><span class="line">  &#x2F;&#x2F;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;找对子</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if m[i]&gt;&#x3D;2 then begin</span><br><span class="line">      dec(m[i],2);</span><br><span class="line">      if sc(m,s,p,c)&#x3D;true then exit(true);</span><br><span class="line">      inc(m[i],2);</span><br><span class="line">    end;</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if s[i]&gt;&#x3D;2 then begin</span><br><span class="line">      dec(s[i],2);</span><br><span class="line">      if sc(m,s,p,c)&#x3D;true then exit(true);</span><br><span class="line">      inc(s[i],2);</span><br><span class="line">    end;</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if p[i]&gt;&#x3D;2 then begin</span><br><span class="line">      dec(p[i],2);</span><br><span class="line">      if sc(m,s,p,c)&#x3D;true then exit(true);</span><br><span class="line">      inc(p[i],2);</span><br><span class="line">    end;</span><br><span class="line">  for i:&#x3D;1 to 7 do</span><br><span class="line">    if c[i]&gt;&#x3D;2 then begin</span><br><span class="line">      dec(c[i],2);</span><br><span class="line">      if sc(m,s,p,c)&#x3D;true then exit(true);</span><br><span class="line">      inc(c[i],2);</span><br><span class="line">    end;</span><br><span class="line">  &#x2F;&#x2F;</span><br><span class="line"></span><br><span class="line">  exit(false);</span><br><span class="line"></span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure main;</span><br><span class="line">var i,t:longint;</span><br><span class="line">begin</span><br><span class="line">  t:&#x3D;0;</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if m[i]+1&lt;5 then begin</span><br><span class="line">      inc(m[i]);</span><br><span class="line">      if check(m,s,p,c)&#x3D;true then begin</span><br><span class="line">        inc(t);</span><br><span class="line">        ans[t].a:&#x3D;i;</span><br><span class="line">        ans[t].b:&#x3D;&#39;m&#39;;</span><br><span class="line">      end;</span><br><span class="line">      dec(m[i]);</span><br><span class="line">    end;</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if s[i]+1&lt;5 then begin</span><br><span class="line">      inc(s[i]);</span><br><span class="line">      if check(m,s,p,c)&#x3D;true then begin</span><br><span class="line">        inc(t);</span><br><span class="line">        ans[t].a:&#x3D;i;</span><br><span class="line">        ans[t].b:&#x3D;&#39;s&#39;;</span><br><span class="line">      end;</span><br><span class="line">      dec(s[i]);</span><br><span class="line">    end;</span><br><span class="line">  for i:&#x3D;1 to 9 do</span><br><span class="line">    if p[i]+1&lt;5 then begin</span><br><span class="line">      inc(p[i]);</span><br><span class="line">      if check(m,s,p,c)&#x3D;true then begin</span><br><span class="line">        inc(t);</span><br><span class="line">        ans[t].a:&#x3D;i;</span><br><span class="line">        ans[t].b:&#x3D;&#39;p&#39;;</span><br><span class="line">      end;</span><br><span class="line">      dec(p[i]);</span><br><span class="line">    end;</span><br><span class="line">  for i:&#x3D;1 to 7 do</span><br><span class="line">    if c[i]+1&lt;5 then begin</span><br><span class="line">      inc(c[i]);</span><br><span class="line">      if check(m,s,p,c)&#x3D;true then begin</span><br><span class="line">        inc(t);</span><br><span class="line">        ans[t].a:&#x3D;i;</span><br><span class="line">        ans[t].b:&#x3D;&#39;c&#39;;</span><br><span class="line">      end;</span><br><span class="line">      dec(c[i]);</span><br><span class="line">    end;</span><br><span class="line">  if t&#x3D;0 then writeln(&#39;Nooten&#39;)</span><br><span class="line">    else begin</span><br><span class="line">      write(t,&#39; &#39;);</span><br><span class="line">      for i:&#x3D;1 to t do</span><br><span class="line">        write(ans[i].a,ans[i].b,&#39; &#39;);</span><br><span class="line">      writeln;</span><br><span class="line">    end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">  readln(t);</span><br><span class="line">  while t&gt;0 do begin</span><br><span class="line">    fillchar(m,sizeof(m),0);</span><br><span class="line">    fillchar(s,sizeof(s),0);</span><br><span class="line">    fillchar(p,sizeof(p),0);</span><br><span class="line">    fillchar(c,sizeof(c),0);</span><br><span class="line">    dec(t);</span><br><span class="line">    re;</span><br><span class="line">    main;</span><br><span class="line">  end;</span><br><span class="line">end.</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  </div>
+  <!--文末结束语-->
+  
+    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="iconfont icon-heartbeat" style="font-size:24px;"></i> The End --- </div>
+  
+  <!--页脚广告-->
+  
+  <div class="mdui-divider"></div>
+  
+  <nav>
+    
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2019/11/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>写出第一个C++程序</span>
+      </a>
+    
+    
+      <a rel="next" class="post-nav-item mdui-float-right" href="/2019/08/20/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-2019-08-20/">
+        <span>长沙集训-2019-08-20</span>
+        <i class="iconfont icon-angle-right"></i>
+      </a>
+    
+  </nav>
+</article>
+
+
+
+
+  <div class="toc-button"  style="z-index: 100;">
+    <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item">
+        <a href="/2019/08/21/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-2019-08-21/" id="toc-header" class="mdui-ripple">文章目录</a>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lt-center-gt-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-3-2019-08-21-lt-center-gt"><span class="toc-number">1.</span> <span class="toc-text">&lt;center&gt;长沙集训 $ Day 3 $ 2019-08-21 &lt;&#x2F;center&gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%97%E5%88%86%EF%BC%9A-193-300"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">得分：$ 193&#x2F;300 $</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-Matrix"><span class="toc-number">1.1.</span> <span class="toc-text">T1 $ Matrix $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.1.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-Present"><span class="toc-number">1.2.</span> <span class="toc-text">T2 $ Present $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-Mahjong"><span class="toc-number">1.3.</span> <span class="toc-text">T3 $ Mahjong $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">程序</span></a></li></ol></li></ol></li></ol>
+      </li>
+    </ul>
+  </div>
+
+
+
+    <div id="comment" class="mdui-card mdui-p-a-2 mdui-m-b-5">
+      <div class="mdui-tab" mdui-tab>
+        
+          <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
+        
+          <a href="#comment-tab1" class="mdui-ripple">livere</a>
+        
+      </div>
+      
+        <div id="comment-tab0" class="mdui-p-a-2">
+          <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: [''],
+    id:  md5(location.pathname) ,
+    distractionFreeMode: 'true',
+  });
+  gitalk.render('gitalk-container');
+</script>
+        </div>
+      
+        <div id="comment-tab1" class="mdui-p-a-2">
+          <div id="lv-container" data-id="city" data-uid="">
+  <script type="text/javascript">
+    (function (d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+  <noscript>Please enable JavaScript to view the comments powered by LiveRe.</noscript>
+</div>
+        </div>
+      
+    </div>
+
+  </main>
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+  <div class="mdui-container">
+    <div class="mdui-row">
+      
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
+      
+      <span>
+        &copy; 2015 - 2023 
+        
+          <span style="color:#d9333f" class="iconfont icon-heart"></span>
+        
+        Cheng Ziheng
+      </span>
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span>Theme: <a href="https://github.com/kb1000fx/Meadow" rel="noopener" target="_blank">Meadow</a></span>
+        </div>
+      
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span id="busuanzi_container_site_uv" style="display: none;"> <span class="iconfont icon-user"></span>总访客量 <span id="busuanzi_value_site_uv"></span></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span id="busuanzi_container_site_pv" style="display: none;"> <span class="iconfont icon-eye"></span>总访问量 <span id="busuanzi_value_site_pv"></span></span>
+        </div>
+      
+    </div>
+ </div>
+</footer>
+  
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+  
+  
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+    
+<script src="/js/mdui.min.v1.0.0.js"></script>
+
+
+
+
+<script src="/js/meadow.js"></script>
+
+</body>
+</html >

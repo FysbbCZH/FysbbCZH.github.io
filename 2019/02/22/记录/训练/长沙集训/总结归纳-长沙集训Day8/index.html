@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
+    
+    
+    
+        <link rel="shortcut icon" href="/icons/favicon.jpg">
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
+
+    
+    
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        
+            load: ['[tex]/mhchem'],
+        
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        
+            packages: {'[+]': ['mhchem']},
+        
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+          
+
+
+    
+    
+    <title>
+        
+            长沙集训Day8 | CZH&#39;s BLOG
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  
+  <header class="mdui-appbar mdui-appbar-fixed">
+  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+    <a href="/" class="mdui-typo-headline">CZH&#39;s BLOG</a>
+    <a href="/" class="header-subtitle mdui-typo-headline"></a>
+    <div class="mdui-toolbar-spacer"></div>
+    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
+  </div>
+</header>
+
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
+    </div>
+
+    
+    <div id="sidebar-tab1" class="mdui-p-a-1">
+        <div class="mdui-list">
+            
+                
+                <a href="/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-home"></i>
+                    </div>
+                    <div class="mdui-list-item-content">主页</div>
+                </a>
+            
+                
+                <a href="/tags/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-bookmark"></i>
+                    </div>
+                    <div class="mdui-list-item-content">标签</div>
+                </a>
+            
+                
+                <a href="/categories/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-folder"></i>
+                    </div>
+                    <div class="mdui-list-item-content">分类</div>
+                </a>
+            
+                
+                <a href="/archives/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-archive"></i>
+                    </div>
+                    <div class="mdui-list-item-content">归档</div>
+                </a>
+            
+                
+                <a href="/about/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-user"></i>
+                    </div>
+                    <div class="mdui-list-item-content">关于</div>
+                </a>
+            
+            <div class="mdui-list-item mdui-ripple">
+                <div class="mdui-list-item-icon">
+                    <i class="iconfont icon-moon"></i>
+                </div>
+                <div class="mdui-list-item-content">夜间模式</div>
+                <label class="mdui-switch" id="darkmode">
+                  <input type="checkbox" id="nightmode_switch"/>
+                  <i class="mdui-switch-icon"></i>
+                </label>
+            </div>           
+        </div>
+    </div>
+
+    
+    <div id="sidebar-tab2" class="mdui-p-a-1">
+        <div class="sidebar-overview">
+            <div class="sidebar-avatar">
+                
+                    <img src="/icons/avatar.jpg"/>
+                
+            </div>
+            <div class="sidebar-author-name">Cheng Ziheng</div>
+            <div class="sidebar-description">That&#39;s♂good!</div>
+        </div>
+        <div class="sidebar-links">
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
+                    <a href="mailto:2568858327@qq.com" class="mdui-chip-title">E-Mail</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-steam"></i></span>
+                    <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198318522568" class="mdui-chip-title">Steam</a>
+                </div>
+            
+        </div>
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-collapse-item">
+                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-link"></i>
+                    </div>
+                    <div class="mdui-list-item-content">友情链接</div>
+                    <div class="mdui-collapse-item-arrow">
+                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
+                    </div>
+                </div>
+                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mdui-divider"></div>
+    
+    
+</aside>
+  
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
+  <header class="mdui-card-media">
+    
+    
+      <div class="post-header"> 
+  <a class="post-header-title" href="/2019/02/22/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay8/">长沙集训Day8</a>
+  <div class="post-header-meta">
+    <span>
+      <span class="iconfont icon-calendar"></span>
+      发布于:&nbsp;2019-02-22
+    </span>
+    <span>
+      <span class="iconfont icon-calendar-check"></span>
+      更新于:&nbsp;2023-11-04
+    </span>
+    <span>
+      <span class="iconfont icon-folder"></span>
+      分类于:&nbsp;<a class="category-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a> > <a class="category-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/">训练</a> > <a class="category-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/">长沙集训</a>
+    </span>
+    
+      <span>
+        <span class="iconfont icon-eye"></span>
+        阅读次数:&nbsp;
+        <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+      </span>
+    
+  </div>
+</div>   
+    
+
+
+
+    
+    
+    <div class="mdui-card-menu">
+    
+      <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
+      <ul class="mdui-menu" id="share_menu">
+        <li class="mdui-menu-item">
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=长沙集训Day8&url=https://fysbbczh.github.io/2019/02/22/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay8/&pic=https://fysbbczh.github.io/icons/favicon.jpg&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://twitter.com/intent/tweet?text=长沙集训Day8&url=https://fysbbczh.github.io/2019/02/22/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay8/&via=Cheng Ziheng" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://fysbbczh.github.io/2019/02/22/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay8/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://plus.google.com/share?url=https://fysbbczh.github.io/2019/02/22/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay8/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://fysbbczh.github.io/2019/02/22/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay8/&title=长沙集训Day8" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=CZH&#39;s BLOG&title=长沙集训Day8&summary=That&#39;s♂good!&pics=https://fysbbczh.github.io/icons/favicon.jpg&url=https://fysbbczh.github.io/2019/02/22/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay8/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://telegram.me/share/url?url=https://fysbbczh.github.io/2019/02/22/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay8/&text=长沙集训Day8" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+        </li>
+      </ul>
+    
+  </div>
+  </header>
+  
+  
+  
+  
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/Pascal/ >Pascal</a>
+      </i>
+    
+  </div>
+
+  
+  <div class="mdui-card-content mdui-typo mdui-p-x-4">
+    <h5 id="2019-2-18"><a href="#2019-2-18" class="headerlink" title="2019.2.18"></a>2019.2.18</h5><h1 id="长沙集训-Day-8"><a href="#长沙集训-Day-8" class="headerlink" title="长沙集训 $ Day 8 $"></a>长沙集训 $ Day 8 $</h1><p>$ Day 6 $ 讲解了 $ CDQ $ 分治，今天有学到了一种树上分治方法——点分治。</p>
+<hr>
+<h2 id="点分治"><a href="#点分治" class="headerlink" title="点分治:"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3806">点分治:</a></h2><p>给出一棵树，询问树上有无距离为 $ k $ 的点对存在。</p>
+<p>对于此类问题，最基础的方法是 $ DFS $ 树上的每一条链，寻找有无链长为 $ k $ ,但是这样的做法时间复杂度为 $ O(n^{2}) $ ,肯定会 $ TLE $ 。这时，我们便可使用<strong>点分治</strong>来解决问题。</p>
+<p>实际上，如果选一个节点为根，树上的链可以分成两种，即<strong>经过树根</strong>和<strong>在子树中</strong>。</p>
+<p><img src="https://i.loli.net/2019/02/23/5c71233a768a9.png"></p>
+<p>而这便是点分治的基础，我们选择一个根，进行一次 $ DFS $ ，处理完所有经过根的路径，之后我们将根删除。原有的树被分为多棵子树，在所有子树中进行同样的操作，直到所有节点都被删除。</p>
+<p>但根节点的选择也是有技巧的，如上图中选择 $ R $ 为根和选择 $ K $ 为根，分治的次数是不同的，如何选取一个节点，使分治次数最少？事实上，这个点就是树的<strong>重心</strong>。</p>
+<h3 id="树的重心"><a href="#树的重心" class="headerlink" title="树的重心"></a>树的重心</h3><p>性质：以删去重心后，形成所有子树中，<strong>最大的子树最小</strong>。</p>
+<p>如上图中，树的重心为 $ R $ 。因为以 $ R $ 为根时，最大子树为 $ 4 $ ，其余各点为根时，没有任何一个点能使最大子树小于 $ 4 $ 。</p>
+<p>我们可以利用性质来寻找树的重心，只需通过一次树形 $ DP $ ，找出每个点的最大子树即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure <span class="title">find</span><span class="params">(f,fa,sum_root:longint)</span></span>;  <span class="comment">//sum_root为整棵树的大小，f为当前节点，fa为f的父节点</span></span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  i:=r[f];</span><br><span class="line">  sum[f]:=<span class="number">0</span>;          <span class="comment">//sum[f]记录以f为根的子树的大小，max_next[f]记录删去f后形成的最大子树大小</span></span><br><span class="line">  max_next[f]:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> (v[i]&lt;&gt;fa) <span class="keyword">and</span> (tf[v[i]]=<span class="literal">false</span>) then begin</span><br><span class="line">      find(v[i],f,sum_root);</span><br><span class="line">      inc(sum[f],sum[v[i]]);</span><br><span class="line">      max_next[f]:=max(max_next[f],sum[v[i]]);</span><br><span class="line">    end;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">  inc(sum[f]);</span><br><span class="line">  max_next[f]:=max(max_next[f],sum_root-sum[f]);</span><br><span class="line">  <span class="keyword">if</span> (max_next[f]&lt;max_next[find_root]) <span class="keyword">or</span> (find_root=<span class="number">0</span>) then find_root:=f;    <span class="comment">//  find_root记录重心</span></span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+<h3 id="分治处理"><a href="#分治处理" class="headerlink" title="分治处理"></a>分治处理</h3><p>找到重心后，我们便可以通过DFS查找答案，但此时要注意这种特殊情况。</p>
+<p><img src="https://i.loli.net/2019/02/23/5c712aadc3dae.png"></p>
+<p>像这样的两条链是不能将他们的长度加在一起的，但显然这种情况在记录答案时是不好处理的，所以我们可以跑两遍 $ DFS $ ，第一遍记录答案（不论正误），第二遍将错误的答案减掉。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">procedure <span class="title">dfs</span><span class="params">(f,fa,len:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  i:=r[f];</span><br><span class="line">  inc(tot);</span><br><span class="line">  dis[tot]:=len;</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> (v[i]&lt;&gt;fa) <span class="keyword">and</span> (tf[v[i]]=<span class="literal">false</span>) <span class="function">then <span class="title">dfs</span><span class="params">(v[i],f,len+w[i])</span></span>;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">solve</span><span class="params">(q,k:longint;len:int64)</span>:int64</span>;</span><br><span class="line">var i,j:longint;</span><br><span class="line">begin</span><br><span class="line">  tot:=<span class="number">0</span>;  </span><br><span class="line">  dfs(q,<span class="number">0</span>,len);</span><br><span class="line">  <span class="keyword">if</span> k=<span class="number">1</span> then begin</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">      <span class="keyword">for</span> j:=i+<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">        inc(ans[dis[i]+dis[j]]);</span><br><span class="line">  end</span><br><span class="line">    <span class="keyword">else</span> begin</span><br><span class="line">      <span class="keyword">for</span> i:=<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">for</span> j:=i+<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">          dec(ans[dis[i]+dis[j]]);</span><br><span class="line">    end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">next</span><span class="params">(q:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  tf[q]:=<span class="literal">true</span>;</span><br><span class="line">  solve(q,<span class="number">1</span>,<span class="number">0</span>);             <span class="comment">//注意这两次solve时参数的不同</span></span><br><span class="line">  i:=r[q];  </span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> tf[v[i]]=<span class="literal">false</span> then begin</span><br><span class="line">      solve(v[i],<span class="number">0</span>,w[i]);  </span><br><span class="line">      find_root:=<span class="number">0</span>;</span><br><span class="line">      find(v[i],q,sum[v[i]]); </span><br><span class="line">      next(find_root);</span><br><span class="line">    end;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>根据树的重心的性质，我们可以确定分治次数不超过 $ \log n $ 次，由此可得出算法的时间复杂度：</p>
+<ol>
+<li>分治 $ O(\log n) $</li>
+<li>查找答案 $ O(n) $</li>
+</ol>
+<p>总时间复杂度接近 $ O(n \log n) $</p>
+<p>其实点分治的难点并不在分治，而是在计算答案的过程，某些题目中不能单纯使用暴力计算答案，还要和其他算法、数据结构相结合（如二分、树状数组），又或者计算答案的过程十分繁琐（如<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P2664">树上游戏</a>），所以还是需要熟练运用多种算法才能顺利解决点分治问题。</p>
+<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">program project1;</span><br><span class="line">var</span><br><span class="line">   r,sum,max_next,dis:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.10005</span>]of longint;</span><br><span class="line">   tf:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.10005</span>]of boolean;</span><br><span class="line">   ans:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.10000005</span>]of longint;</span><br><span class="line">   l,v,w:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.20005</span>]of longint;</span><br><span class="line">   n,m,find_root,tot:longint;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">max</span><span class="params">(a,b:int64)</span>:int64</span>;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">if</span> a&gt;<span class="function">b then <span class="title">exit</span><span class="params">(a)</span> <span class="keyword">else</span> <span class="title">exit</span><span class="params">(b)</span></span>;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure re;</span><br><span class="line">var i,t,x,y,z:longint;</span><br><span class="line">begin</span><br><span class="line">  t:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to n<span class="number">-1</span> <span class="keyword">do</span> begin</span><br><span class="line">    read(x,y,z);</span><br><span class="line">    inc(t);</span><br><span class="line">    l[t]:=r[x];</span><br><span class="line">    r[x]:=t;</span><br><span class="line">    v[t]:=y;</span><br><span class="line">    w[t]:=z;</span><br><span class="line">    inc(t);</span><br><span class="line">    l[t]:=r[y];</span><br><span class="line">    r[y]:=t;</span><br><span class="line">    v[t]:=x;</span><br><span class="line">    w[t]:=z;</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">find</span><span class="params">(f,fa,sum_root:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  i:=r[f];</span><br><span class="line">  sum[f]:=<span class="number">0</span>;</span><br><span class="line">  max_next[f]:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> (v[i]&lt;&gt;fa) <span class="keyword">and</span> (tf[v[i]]=<span class="literal">false</span>) then begin</span><br><span class="line">      find(v[i],f,sum_root);</span><br><span class="line">      inc(sum[f],sum[v[i]]);</span><br><span class="line">      max_next[f]:=max(max_next[f],sum[v[i]]);</span><br><span class="line">    end;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">  inc(sum[f]);</span><br><span class="line">  max_next[f]:=max(max_next[f],sum_root-sum[f]);</span><br><span class="line">  <span class="keyword">if</span> (max_next[f]&lt;max_next[find_root]) <span class="keyword">or</span> (find_root=<span class="number">0</span>) then find_root:=f;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">dfs</span><span class="params">(f,fa,len:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  i:=r[f];</span><br><span class="line">  inc(tot);</span><br><span class="line">  dis[tot]:=len;</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> (v[i]&lt;&gt;fa) <span class="keyword">and</span> (tf[v[i]]=<span class="literal">false</span>) <span class="function">then <span class="title">dfs</span><span class="params">(v[i],f,len+w[i])</span></span>;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">solve</span><span class="params">(q,k:longint;len:int64)</span>:int64</span>;</span><br><span class="line">var i,j:longint;</span><br><span class="line">begin</span><br><span class="line">  tot:=<span class="number">0</span>;   </span><br><span class="line">  dfs(q,<span class="number">0</span>,len);</span><br><span class="line">  <span class="keyword">if</span> k=<span class="number">1</span> then begin</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">      <span class="keyword">for</span> j:=i+<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">        inc(ans[dis[i]+dis[j]]);</span><br><span class="line">  end</span><br><span class="line">    <span class="keyword">else</span> begin</span><br><span class="line">      <span class="keyword">for</span> i:=<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">for</span> j:=i+<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">          dec(ans[dis[i]+dis[j]]);</span><br><span class="line">    end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">next</span><span class="params">(q:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  tf[q]:=<span class="literal">true</span>;</span><br><span class="line">  solve(q,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">  i:=r[q];  </span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> tf[v[i]]=<span class="literal">false</span> then begin</span><br><span class="line">      solve(v[i],<span class="number">0</span>,w[i]);</span><br><span class="line">      find_root:=<span class="number">0</span>;</span><br><span class="line">      find(v[i],q,sum[v[i]]); </span><br><span class="line">      next(find_root);</span><br><span class="line">    end;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure main;</span><br><span class="line">var i,x:longint;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to m <span class="keyword">do</span> begin</span><br><span class="line">    read(x);</span><br><span class="line">    if ans[x]&lt;&gt;0 then writeln(&#x27;AYE&#x27;)</span><br><span class="line">      else writeln(&#x27;NAY&#x27;);</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">  read(n,m);</span><br><span class="line">  re;</span><br><span class="line">  find_root:=<span class="number">0</span>;</span><br><span class="line">  find(<span class="number">1</span>,<span class="number">0</span>,n); </span><br><span class="line">  next(find_root);</span><br><span class="line">  main;</span><br><span class="line">end.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  </div>
+  <!--文末结束语-->
+  
+    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="iconfont icon-heartbeat" style="font-size:24px;"></i> The End --- </div>
+  
+  <!--页脚广告-->
+  
+  <div class="mdui-divider"></div>
+  
+  <nav>
+    
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2019/02/23/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay9/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>长沙集训Day9</span>
+      </a>
+    
+    
+      <a rel="next" class="post-nav-item mdui-float-right" href="/2019/02/21/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay7/">
+        <span>长沙集训Day7</span>
+        <i class="iconfont icon-angle-right"></i>
+      </a>
+    
+  </nav>
+</article>
+
+
+
+
+  <div class="toc-button"  style="z-index: 100;">
+    <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item">
+        <a href="/2019/02/22/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay8/" id="toc-header" class="mdui-ripple">文章目录</a>
+        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-18"><span class="toc-number">1.</span> <span class="toc-text">2019.2.18</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-8"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 8 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9%E5%88%86%E6%B2%BB"><span class="toc-number"></span> <span class="toc-text">点分治:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E9%87%8D%E5%BF%83"><span class="toc-number"></span> <span class="toc-text">树的重心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%B2%BB%E5%A4%84%E7%90%86"><span class="toc-number"></span> <span class="toc-text">分治处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number"></span> <span class="toc-text">复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">程序</span></a>
+      </li>
+    </ul>
+  </div>
+
+
+
+    <div id="comment" class="mdui-card mdui-p-a-2 mdui-m-b-5">
+      <div class="mdui-tab" mdui-tab>
+        
+          <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
+        
+          <a href="#comment-tab1" class="mdui-ripple">livere</a>
+        
+      </div>
+      
+        <div id="comment-tab0" class="mdui-p-a-2">
+          <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: [''],
+    id:  md5(location.pathname) ,
+    distractionFreeMode: 'true',
+  });
+  gitalk.render('gitalk-container');
+</script>
+        </div>
+      
+        <div id="comment-tab1" class="mdui-p-a-2">
+          <div id="lv-container" data-id="city" data-uid="">
+  <script type="text/javascript">
+    (function (d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+  <noscript>Please enable JavaScript to view the comments powered by LiveRe.</noscript>
+</div>
+        </div>
+      
+    </div>
+
+  </main>
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+  <div class="mdui-container">
+    <div class="mdui-row">
+      
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
+      
+      <span>
+        &copy; 2015 - 2023 
+        
+          <span style="color:#d9333f" class="iconfont icon-heart"></span>
+        
+        Cheng Ziheng
+      </span>
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span>Theme: <a href="https://github.com/kb1000fx/Meadow" rel="noopener" target="_blank">Meadow</a></span>
+        </div>
+      
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span id="busuanzi_container_site_uv" style="display: none;"> <span class="iconfont icon-user"></span>总访客量 <span id="busuanzi_value_site_uv"></span></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span id="busuanzi_container_site_pv" style="display: none;"> <span class="iconfont icon-eye"></span>总访问量 <span id="busuanzi_value_site_pv"></span></span>
+        </div>
+      
+    </div>
+ </div>
+</footer>
+  
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+  
+  
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+    
+<script src="/js/mdui.min.v1.0.0.js"></script>
+
+
+
+
+<script src="/js/meadow.js"></script>
+
+</body>
+</html >

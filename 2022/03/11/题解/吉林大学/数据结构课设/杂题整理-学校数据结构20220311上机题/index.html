@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
+    
+    
+    
+        <link rel="shortcut icon" href="/icons/favicon.jpg">
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
+
+    
+    
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        
+            load: ['[tex]/mhchem'],
+        
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        
+            packages: {'[+]': ['mhchem']},
+        
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+          
+
+
+    
+    
+    <title>
+        
+            学校数据结构2022-03-11上机题 | CZH&#39;s BLOG
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  
+  <header class="mdui-appbar mdui-appbar-fixed">
+  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+    <a href="/" class="mdui-typo-headline">CZH&#39;s BLOG</a>
+    <a href="/" class="header-subtitle mdui-typo-headline"></a>
+    <div class="mdui-toolbar-spacer"></div>
+    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
+  </div>
+</header>
+
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
+    </div>
+
+    
+    <div id="sidebar-tab1" class="mdui-p-a-1">
+        <div class="mdui-list">
+            
+                
+                <a href="/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-home"></i>
+                    </div>
+                    <div class="mdui-list-item-content">主页</div>
+                </a>
+            
+                
+                <a href="/tags/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-bookmark"></i>
+                    </div>
+                    <div class="mdui-list-item-content">标签</div>
+                </a>
+            
+                
+                <a href="/categories/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-folder"></i>
+                    </div>
+                    <div class="mdui-list-item-content">分类</div>
+                </a>
+            
+                
+                <a href="/archives/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-archive"></i>
+                    </div>
+                    <div class="mdui-list-item-content">归档</div>
+                </a>
+            
+                
+                <a href="/about/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-user"></i>
+                    </div>
+                    <div class="mdui-list-item-content">关于</div>
+                </a>
+            
+            <div class="mdui-list-item mdui-ripple">
+                <div class="mdui-list-item-icon">
+                    <i class="iconfont icon-moon"></i>
+                </div>
+                <div class="mdui-list-item-content">夜间模式</div>
+                <label class="mdui-switch" id="darkmode">
+                  <input type="checkbox" id="nightmode_switch"/>
+                  <i class="mdui-switch-icon"></i>
+                </label>
+            </div>           
+        </div>
+    </div>
+
+    
+    <div id="sidebar-tab2" class="mdui-p-a-1">
+        <div class="sidebar-overview">
+            <div class="sidebar-avatar">
+                
+                    <img src="/icons/avatar.jpg"/>
+                
+            </div>
+            <div class="sidebar-author-name">Cheng Ziheng</div>
+            <div class="sidebar-description">That&#39;s♂good!</div>
+        </div>
+        <div class="sidebar-links">
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
+                    <a href="mailto:2568858327@qq.com" class="mdui-chip-title">E-Mail</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-steam"></i></span>
+                    <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198318522568" class="mdui-chip-title">Steam</a>
+                </div>
+            
+        </div>
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-collapse-item">
+                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-link"></i>
+                    </div>
+                    <div class="mdui-list-item-content">友情链接</div>
+                    <div class="mdui-collapse-item-arrow">
+                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
+                    </div>
+                </div>
+                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mdui-divider"></div>
+    
+    
+</aside>
+  
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
+  <header class="mdui-card-media">
+    
+    
+      <div class="post-header"> 
+  <a class="post-header-title" href="/2022/03/11/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220311%E4%B8%8A%E6%9C%BA%E9%A2%98/">学校数据结构2022-03-11上机题</a>
+  <div class="post-header-meta">
+    <span>
+      <span class="iconfont icon-calendar"></span>
+      发布于:&nbsp;2022-03-11
+    </span>
+    <span>
+      <span class="iconfont icon-calendar-check"></span>
+      更新于:&nbsp;2023-11-04
+    </span>
+    <span>
+      <span class="iconfont icon-folder"></span>
+      分类于:&nbsp;<a class="category-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a> > <a class="category-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/">吉林大学</a> > <a class="category-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/">数据结构课设</a>
+    </span>
+    
+      <span>
+        <span class="iconfont icon-eye"></span>
+        阅读次数:&nbsp;
+        <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+      </span>
+    
+  </div>
+</div>   
+    
+
+
+
+    
+    
+    <div class="mdui-card-menu">
+    
+      <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
+      <ul class="mdui-menu" id="share_menu">
+        <li class="mdui-menu-item">
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=学校数据结构2022-03-11上机题&url=https://fysbbczh.github.io/2022/03/11/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220311%E4%B8%8A%E6%9C%BA%E9%A2%98/&pic=https://fysbbczh.github.io/icons/favicon.jpg&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://twitter.com/intent/tweet?text=学校数据结构2022-03-11上机题&url=https://fysbbczh.github.io/2022/03/11/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220311%E4%B8%8A%E6%9C%BA%E9%A2%98/&via=Cheng Ziheng" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://fysbbczh.github.io/2022/03/11/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220311%E4%B8%8A%E6%9C%BA%E9%A2%98/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://plus.google.com/share?url=https://fysbbczh.github.io/2022/03/11/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220311%E4%B8%8A%E6%9C%BA%E9%A2%98/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://fysbbczh.github.io/2022/03/11/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220311%E4%B8%8A%E6%9C%BA%E9%A2%98/&title=学校数据结构2022-03-11上机题" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=CZH&#39;s BLOG&title=学校数据结构2022-03-11上机题&summary=That&#39;s♂good!&pics=https://fysbbczh.github.io/icons/favicon.jpg&url=https://fysbbczh.github.io/2022/03/11/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220311%E4%B8%8A%E6%9C%BA%E9%A2%98/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://telegram.me/share/url?url=https://fysbbczh.github.io/2022/03/11/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220311%E4%B8%8A%E6%9C%BA%E9%A2%98/&text=学校数据结构2022-03-11上机题" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+        </li>
+      </ul>
+    
+  </div>
+  </header>
+  
+  
+  
+  
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/C/ >C++</a>
+      </i>
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/ >快速排序</a>
+      </i>
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/BFS/ >BFS</a>
+      </i>
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/ >字符串</a>
+      </i>
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/ >动态规划</a>
+      </i>
+    
+  </div>
+
+  
+  <div class="mdui-card-content mdui-typo mdui-p-x-4">
+    <h3 id="T1-手撕STL-sort"><a href="#T1-手撕STL-sort" class="headerlink" title="T1 手撕STL sort"></a>T1 手撕STL sort</h3><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>模拟实现C++中STL sort的功能。</p>
+<p>设数组 $a$ 中有 $n$ 个元素，有三个要求。</p>
+<ol>
+<li>当递归区间小于设定值时，直接返回。</li>
+<li>当递归深度超过 $\lfloor 2 \cdot \log_{2}{n} \rfloor$ 时，转为堆排序。</li>
+<li>最后对整个数组进行直接插入排序。</li>
+</ol>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>这题解法都已经给好了，就对着书上把相应的代码抄下来，然后按照题意组合就行了。注意若区间足够小，一定是先返回，只有当要求 $1$ 不满足时，才考虑堆排序。</p>
+<h3 id="T2-冬奥会接驳车"><a href="#T2-冬奥会接驳车" class="headerlink" title="T2 冬奥会接驳车"></a>T2 冬奥会接驳车</h3><h4 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h4><p>一个 $n \times m$ 的矩阵，其中每个元素为，$0$ 空地，$1$ 障碍，$3$ 起点，$4$ 终点。</p>
+<p>一个人从起点出发，只能上下左右移动，不能碰到障碍，求最少几步能够到终点。</p>
+<p>$1 \le n,m \le 100$</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>显而易见的 $BFS$ 问题，从起点开始，每次向四个方向扩展，走到的地方如果不是障碍且步数更少就入队，直到走到终点即可。如果所有元素出队后，终点仍未入队（没走到），则无解。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">(X,Y) &#x3D;&gt; 队列Q;   </span><br><span class="line">dis(X,Y) &#x3D; 0;   &#x2F;&#x2F;起点入队，dis记录步数</span><br><span class="line">while (head &lt; tail)     &#x2F;&#x2F;队列不空</span><br><span class="line">&#123;</span><br><span class="line">    Q &#x3D;&gt; (X,Y);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 4; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        (X,Y) + next[i] -&gt; (x,y);   &#x2F;&#x2F;向四个方向扩展</span><br><span class="line">        if (x,y)未过边界 &amp;&amp; (x,y)不是障碍 &amp;&amp; (dis(X,Y) + 1 &lt; dis(x,y))</span><br><span class="line">        &#123;</span><br><span class="line">            dis(x,y) &#x3D; dis(X,Y) + 1;</span><br><span class="line">            (x,y) &#x3D;&gt; Q;     &#x2F;&#x2F;新点入队</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度 $O(n \cdot m)$ 。</p>
+<h3 id="T3-自动纠错"><a href="#T3-自动纠错" class="headerlink" title="T3 自动纠错"></a>T3 自动纠错</h3><h4 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h4><p>两个字符串 $s1,s2$ 之间的距离 $dis$ 定义为，有三种操作：</p>
+<ol>
+<li>删去任意位置一个字符</li>
+<li>增加任意位置一个字符</li>
+<li>改变任意位置一个字符</li>
+</ol>
+<p>$s1$ 改变为 $s2$ 所需要的最小的操作次数，为两者间的距离。如图所示的距离（上 $s1$ ，下 $s2$ ）为 $4$ 。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/11/UyEMOYqlTj6mJvi.png" alt="C-1.png"></p>
+</center>
+
+<p>现有一个字典，其中有 $n$ 个元素，每个元素为字符串 $s$ 和其对应的频率 $p$ 。</p>
+<p>给出 $m$ 个询问，每个询问为一个字符串 $q$ ，问字典中哪些字符串和 $q$ 的距离在 $d$ 之内，并输出其中频率最高的（频率相同时字典序更小）。</p>
+<p>$ n \le 10^4,m \le 10^3,d \le 2 $</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><h5 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h5><p>具体的数据结构题目已经很明显的给出了：</p>
+<p>一种高效的处理方法是：结合各单词间的距离，将字典组织成一棵多叉树。在该树中，每个结点表示一个单词，对于每个结点 $p$ ，其第 $i$ 棵子树包含与 $p$ 的距离为 $i$ 的所有单词对应的结点。</p>
+<p>树的创建过程如下：取字典中任意单词作为根结点，比如第一个单词。然后将剩余单词逐个插入到树中，插入一个新单词 $w$ 时，首先计算该单词与根结点的距离 $d$ 。若根结点的第 $d$ 个子树为空，则将单词 $w$ 对应的结点作为根结点的第 $d$ 个子结点。若根结点的第 $d$ 个子树非空，即根结点已有第 $d$ 个子结点 $p_d$ 。则按上述规则将单词 $w$ 递归插入以 $p_d$ 为根的子树，即计算 $w$ 与 $p_d$ 的距离……。</p>
+<p>例如字典为 $help, hell, hello, shell, helper, sloop, helps, troop$ ，将 $help$ 作为根结点，然后将 $hell$ 插入，$hell$ 与 $help$ 的距离为 $1$ ，故 $hell$ 作为 $help$ 的第一个子结点。$hello$ 与 $help$ 的距离为 $2$ ，故 $hello$ 作为 $help$ 的第 $2$ 个子结点。如下图 $(a)$ 所示。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/11/Qh6NvmztUFoIHrc.png" alt="C-2.png"></p>
+</center>
+
+<p>然后插入 $shell,shell$ 与 $help$ 的距离为 $2$ ，故应在 $help$ 的第 $2$ 个子树里，但 $help$ 已经有第 $2$ 个子结点 $hello$ 了，此时将 $shell$ 递归插入以 $hello$ 为根结点的子树：计算 $shell$ 与 $hello$ 的距离为 $2$ ，将 $shell$ 作为 $hello$ 的第 $2$ 个子结点，如上图 $(b)$ 所示。插入 $helper$ 时，$helper$ 与 $help$ 的距离为 $2$ ，将 $helper$ 递归插入以 $hello$ 为根结点的子树：计算 $helper$ 与 $hello$ 的距离为 $3$ ，将 $helper$ 作为 $hello$ 的第 $3$ 个子结点。以此类推，最终上述字典对应的树结构如上图 $(c)$ 所示。该树结构保证与任意结点距离为 $d$ 的单词都在该结点的第 $d$ 棵子树里。</p>
+<p>假定我们需要向用户返回与错误单词距离不超过 $n$ 的单词，当用户输入一个单词 $w$ 时，在树中查询 $w$ ，计算 $w$ 与根结点 $T$ 的距离 $d$ ，接下来我们不必考察 $T$ 的所有子树中是否包含与 $w$ 距离不超过 $n$ 的结点/单词，而只需要递归考察根结点 $T$ 的第 $d-n$ 到第 $d+n$ 棵子树即可。例如 $n=1,d=5$ ，我们只需要递归考察根 $T$ 的第 $4$ 、第$5$、第$6$棵子树是否包含与$w$距离不超过$1$的结点/单词。其他子树无需考察，为什么呢？举个例子，我们考虑根$T$的第$3$棵子树的任意结点$P$。$w$与$T$的距离为$d=5$，即$w$最少经过$5$步操作才能转换为$T$，$T$与$P$的距离为$3$，$T$经过最少$3$步操作才能变为$P$，这意味着$w$至少需要$2$步操作才能变为$P$。不可能通过$1$步操作变为$P$。故第$3$棵子树的所有结点都不满足条件。</p>
+<center>
+
+<p><img src="https://s2.loli.net/2022/03/11/LphTFE7JosH2ZBD.png" alt="C-3.png"></p>
+</center>
+
+<p>由于$n$通常很小，因此该方法在查询时往往可以排除很多子树，进而节省时间。当考察一个结点时，计算$w$与该结点的距离$d$；若$d=0$，意味着用户输入的单词$w$在字典中，是正确的单词；若$d &gt; n$则该结点不是候选单词，继续递归考察该结点第$d-n$到$d+n$的子树。若$d ≤ n$则该结点就是候选单词之一，此时可有两种策略，一是将该单词直接返回给用户，二是继续向下考察子树，找出所有候选单词并选择用户历史使用频率最高的单词返回给用户。</p>
+<p>以上为题目给出的算法，注意这个算法时间复杂度并不严格，只是能在某种程度上减少比较次数，但可以确保通过此题（**<em>需注意实现算法的常数**</em>）。</p>
+<h5 id="计算字符串距离"><a href="#计算字符串距离" class="headerlink" title="计算字符串距离"></a>计算字符串距离</h5><p>除此以外，还有一个重要的问题就是，如何计算两个字符串的距离。</p>
+<p>可见每个位置都有三种操作，如果直接暴力比较，虽然字符串的长度只有 $15$ ，也仍然需要 $3^{15}$ 次比较，显然是无法接受的。</p>
+<p>这里提出一种有效的解决方案，这个问题可以使用动态规划解决。</p>
+<p>设 $dp[i][j]$ 为 $s1$ 考虑到 $i$ 位置，$s2$ 考虑到 $j$ 位置，$s1_{1 \cdots i},s2_{1 \cdots j} $ （前缀）的距离。显然对于 $i,j$ 有两种情况：</p>
+<ol>
+<li>$s1[i]=s2[j]$ ，此时 $dp[i][j]=dp[i-1][j-1]$</li>
+<li>$s1[i] \not = s2[j]$ ，此时 $dp[i][j]=min{dp[i-1][j-1],dp[i-1][j],dp[i][j-1]}+1$</li>
+</ol>
+<p>对于 $1$ 很好理解，两个位置相同，就没必要操作，直接从之前的状态扩展即可。</p>
+<p>对于 $2$ ，三个式子正好对应三种操作（改变，增加，减少），因为要次数最少，所以取三者最小值，再加上一次操作次数，拓展到新状态。</p>
+<p>边界条件可根据状态得出：</p>
+<ol>
+<li>$dp[i][0]=i$ 显然 $s2$ 是空，则 $s1$ 最少通过减 $i$ 个字符与其相同。</li>
+<li>$dp[0][j]=j$ 同上。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int Dis(char *s1, char *s2)</span><br><span class="line">&#123;</span><br><span class="line">    int len1 &#x3D; strlen(s1);</span><br><span class="line">    int len2 &#x3D; strlen(s2);</span><br><span class="line">    int dp[Max_len][Max_len] &#x3D; &#123;0&#125;;</span><br><span class="line">    int len &#x3D; max(len1, len2);</span><br><span class="line">    for (register int i &#x3D; 0; i &lt;&#x3D; len; ++i)</span><br><span class="line">        dp[i][0] &#x3D; dp[0][i] &#x3D; i;       &#x2F;&#x2F;边界条件</span><br><span class="line">    for (register int i &#x3D; 1; i &lt;&#x3D; len1; ++i)</span><br><span class="line">        for (register int j &#x3D; 1; j &lt;&#x3D; len2; ++j)</span><br><span class="line">            if (s1[i - 1] &#x3D;&#x3D; s2[j - 1])</span><br><span class="line">                dp[i][j] &#x3D; dp[i - 1][j - 1];    &#x2F;&#x2F;情况1</span><br><span class="line">            else</span><br><span class="line">                dp[i][j] &#x3D; min(dp[i - 1][j - 1], min(dp[i - 1][j], dp[i][j - 1])) + 1;      &#x2F;&#x2F;情况2</span><br><span class="line">    return dp[len1][len2];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度 $O(len^2)$ ，$len$ 为字符串长度。</p>
+
+  </div>
+  <!--文末结束语-->
+  
+    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="iconfont icon-heartbeat" style="font-size:24px;"></i> The End --- </div>
+  
+  <!--页脚广告-->
+  
+  <div class="mdui-divider"></div>
+  
+  <nav>
+    
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2022/03/27/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E7%BA%A2%E9%BB%91%E6%A0%91/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>红黑树学习记录</span>
+      </a>
+    
+    
+      <a rel="next" class="post-nav-item mdui-float-right" href="/2022/03/04/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220304%E4%B8%8A%E6%9C%BA%E9%A2%98/">
+        <span>学校数据结构2022-03-04上机题</span>
+        <i class="iconfont icon-angle-right"></i>
+      </a>
+    
+  </nav>
+</article>
+
+
+
+
+  <div class="toc-button"  style="z-index: 100;">
+    <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item">
+        <a href="/2022/03/11/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220311%E4%B8%8A%E6%9C%BA%E9%A2%98/" id="toc-header" class="mdui-ripple">文章目录</a>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#T1-%E6%89%8B%E6%92%95STL-sort"><span class="toc-number">1.</span> <span class="toc-text">T1 手撕STL sort</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="toc-number">1.2.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T2-%E5%86%AC%E5%A5%A5%E4%BC%9A%E6%8E%A5%E9%A9%B3%E8%BD%A6"><span class="toc-number">2.</span> <span class="toc-text">T2 冬奥会接驳车</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-1"><span class="toc-number">2.1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="toc-number">2.2.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T3-%E8%87%AA%E5%8A%A8%E7%BA%A0%E9%94%99"><span class="toc-number">3.</span> <span class="toc-text">T3 自动纠错</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-2"><span class="toc-number">3.1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-2"><span class="toc-number">3.2.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">3.2.1.</span> <span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%B7%9D%E7%A6%BB"><span class="toc-number">3.2.2.</span> <span class="toc-text">计算字符串距离</span></a></li></ol></li></ol></li></ol>
+      </li>
+    </ul>
+  </div>
+
+
+
+    <div id="comment" class="mdui-card mdui-p-a-2 mdui-m-b-5">
+      <div class="mdui-tab" mdui-tab>
+        
+          <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
+        
+          <a href="#comment-tab1" class="mdui-ripple">livere</a>
+        
+      </div>
+      
+        <div id="comment-tab0" class="mdui-p-a-2">
+          <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: [''],
+    id:  md5(location.pathname) ,
+    distractionFreeMode: 'true',
+  });
+  gitalk.render('gitalk-container');
+</script>
+        </div>
+      
+        <div id="comment-tab1" class="mdui-p-a-2">
+          <div id="lv-container" data-id="city" data-uid="">
+  <script type="text/javascript">
+    (function (d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+  <noscript>Please enable JavaScript to view the comments powered by LiveRe.</noscript>
+</div>
+        </div>
+      
+    </div>
+
+  </main>
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+  <div class="mdui-container">
+    <div class="mdui-row">
+      
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
+      
+      <span>
+        &copy; 2015 - 2023 
+        
+          <span style="color:#d9333f" class="iconfont icon-heart"></span>
+        
+        Cheng Ziheng
+      </span>
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span>Theme: <a href="https://github.com/kb1000fx/Meadow" rel="noopener" target="_blank">Meadow</a></span>
+        </div>
+      
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span id="busuanzi_container_site_uv" style="display: none;"> <span class="iconfont icon-user"></span>总访客量 <span id="busuanzi_value_site_uv"></span></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span id="busuanzi_container_site_pv" style="display: none;"> <span class="iconfont icon-eye"></span>总访问量 <span id="busuanzi_value_site_pv"></span></span>
+        </div>
+      
+    </div>
+ </div>
+</footer>
+  
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+  
+  
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+    
+<script src="/js/mdui.min.v1.0.0.js"></script>
+
+
+
+
+<script src="/js/meadow.js"></script>
+
+</body>
+</html >

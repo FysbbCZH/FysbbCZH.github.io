@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
+    
+    
+    
+        <link rel="shortcut icon" href="/icons/favicon.jpg">
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
+
+    
+    
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        
+            load: ['[tex]/mhchem'],
+        
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        
+            packages: {'[+]': ['mhchem']},
+        
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+          
+
+
+    
+    
+    <title>
+        
+            NOIP2018赛后总结 | CZH&#39;s BLOG
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  
+  <header class="mdui-appbar mdui-appbar-fixed">
+  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+    <a href="/" class="mdui-typo-headline">CZH&#39;s BLOG</a>
+    <a href="/" class="header-subtitle mdui-typo-headline"></a>
+    <div class="mdui-toolbar-spacer"></div>
+    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
+  </div>
+</header>
+
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
+    </div>
+
+    
+    <div id="sidebar-tab1" class="mdui-p-a-1">
+        <div class="mdui-list">
+            
+                
+                <a href="/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-home"></i>
+                    </div>
+                    <div class="mdui-list-item-content">主页</div>
+                </a>
+            
+                
+                <a href="/tags/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-bookmark"></i>
+                    </div>
+                    <div class="mdui-list-item-content">标签</div>
+                </a>
+            
+                
+                <a href="/categories/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-folder"></i>
+                    </div>
+                    <div class="mdui-list-item-content">分类</div>
+                </a>
+            
+                
+                <a href="/archives/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-archive"></i>
+                    </div>
+                    <div class="mdui-list-item-content">归档</div>
+                </a>
+            
+                
+                <a href="/about/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-user"></i>
+                    </div>
+                    <div class="mdui-list-item-content">关于</div>
+                </a>
+            
+            <div class="mdui-list-item mdui-ripple">
+                <div class="mdui-list-item-icon">
+                    <i class="iconfont icon-moon"></i>
+                </div>
+                <div class="mdui-list-item-content">夜间模式</div>
+                <label class="mdui-switch" id="darkmode">
+                  <input type="checkbox" id="nightmode_switch"/>
+                  <i class="mdui-switch-icon"></i>
+                </label>
+            </div>           
+        </div>
+    </div>
+
+    
+    <div id="sidebar-tab2" class="mdui-p-a-1">
+        <div class="sidebar-overview">
+            <div class="sidebar-avatar">
+                
+                    <img src="/icons/avatar.jpg"/>
+                
+            </div>
+            <div class="sidebar-author-name">Cheng Ziheng</div>
+            <div class="sidebar-description">That&#39;s♂good!</div>
+        </div>
+        <div class="sidebar-links">
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
+                    <a href="mailto:2568858327@qq.com" class="mdui-chip-title">E-Mail</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-steam"></i></span>
+                    <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198318522568" class="mdui-chip-title">Steam</a>
+                </div>
+            
+        </div>
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-collapse-item">
+                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-link"></i>
+                    </div>
+                    <div class="mdui-list-item-content">友情链接</div>
+                    <div class="mdui-collapse-item-arrow">
+                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
+                    </div>
+                </div>
+                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mdui-divider"></div>
+    
+    
+</aside>
+  
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
+  <header class="mdui-card-media">
+    
+    
+      <div class="post-header"> 
+  <a class="post-header-title" href="/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/">NOIP2018赛后总结</a>
+  <div class="post-header-meta">
+    <span>
+      <span class="iconfont icon-calendar"></span>
+      发布于:&nbsp;2018-11-23
+    </span>
+    <span>
+      <span class="iconfont icon-calendar-check"></span>
+      更新于:&nbsp;2023-11-04
+    </span>
+    <span>
+      <span class="iconfont icon-folder"></span>
+      分类于:&nbsp;<a class="category-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a> > <a class="category-link" href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/">竞赛</a>
+    </span>
+    
+      <span>
+        <span class="iconfont icon-eye"></span>
+        阅读次数:&nbsp;
+        <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+      </span>
+    
+  </div>
+</div>   
+    
+
+
+
+    
+    
+    <div class="mdui-card-menu">
+    
+      <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
+      <ul class="mdui-menu" id="share_menu">
+        <li class="mdui-menu-item">
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=NOIP2018赛后总结&url=https://fysbbczh.github.io/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/&pic=https://fysbbczh.github.io/icons/favicon.jpg&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://twitter.com/intent/tweet?text=NOIP2018赛后总结&url=https://fysbbczh.github.io/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/&via=Cheng Ziheng" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://fysbbczh.github.io/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://plus.google.com/share?url=https://fysbbczh.github.io/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://fysbbczh.github.io/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/&title=NOIP2018赛后总结" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=CZH&#39;s BLOG&title=NOIP2018赛后总结&summary=That&#39;s♂good!&pics=https://fysbbczh.github.io/icons/favicon.jpg&url=https://fysbbczh.github.io/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://telegram.me/share/url?url=https://fysbbczh.github.io/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/&text=NOIP2018赛后总结" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+        </li>
+      </ul>
+    
+  </div>
+  </header>
+  
+  
+  
+  
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/Pascal/ >Pascal</a>
+      </i>
+    
+  </div>
+
+  
+  <div class="mdui-card-content mdui-typo mdui-p-x-4">
+    <h2 id="1-题目难度（个人理解）"><a href="#1-题目难度（个人理解）" class="headerlink" title="1.题目难度（个人理解）"></a>1.题目难度（个人理解）</h2><p><img src="https://cdn.luogu.com.cn/upload/pic/44278.png"></p>
+<h2 id="2-考察算法"><a href="#2-考察算法" class="headerlink" title="2.考察算法"></a>2.考察算法</h2><p><strong>暴力枚举</strong></p>
+<p><strong>完全背包</strong></p>
+<p><strong>树上二分</strong></p>
+<p><strong>搜索DFS</strong></p>
+<p><strong>基环树？</strong></p>
+<p><strong>数学（找规律？）</strong></p>
+<p><strong>树上DP</strong></p>
+<p><strong>LCA倍增思想</strong></p>
+<p><strong>动态DP？</strong></p>
+<h2 id="3-题目分析"><a href="#3-题目分析" class="headerlink" title="3.题目分析"></a>3.题目分析</h2><h3 id="Day1T1-铺设道路（road）"><a href="#Day1T1-铺设道路（road）" class="headerlink" title="Day1T1.铺设道路（road）"></a>Day1T1.<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P5019">铺设道路（road）</a></h3><h4 id="考察算法："><a href="#考察算法：" class="headerlink" title="考察算法："></a>考察算法：</h4><p>暴力枚举，<del>刷原题</del></p>
+<h4 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h4><p>其实这道题还是很有价值的，如果不是原题的话……</p>
+<p>这题和NOIP2013Day2T1<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P1969">积木大赛</a>一模一样，只是改了题面而已。</p>
+<p>不过对于没做过原题的我，在考场上也是思考了一个多小时……</p>
+<p>其实做法很简单，对于读入的第 $i$ 块道路，只需比较它和第 $i-1$ 块道路的深度，设 $a[i]$ 表示第 $i$ 块道路的深度， $a[i-1]$ 表示第 $i-1$ 块道路的深度， $ans$ 为答案：</p>
+<p>若 $a[i-1] \ge a[i]$ ,则再填第 $i-1$ 块道路时，第 $i$ 块道路已经被填过了，所以不用进行任何操作。</p>
+<p>若 $a[i-1] &lt; a[i]$ ,则在填第 $i-1$ 块道路时，第 $i$ 块道路还有部分未被填完，此时需要将答案加上两块道路深度的差值，即 $ans=ans+a[i]-a[i-1]$</p>
+<p>像这样从头到尾枚举一遍，问题就解决了，最后输出 $ans$ ,时间复杂度接近 $O(n)$</p>
+<h4 id="程序："><a href="#程序：" class="headerlink" title="程序："></a>程序：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">program road;</span><br><span class="line">var</span><br><span class="line">   n,i,t,d:longint;</span><br><span class="line">   sum:int64;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">  read(n);</span><br><span class="line">  t:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to n <span class="keyword">do</span> begin</span><br><span class="line">    read(d);</span><br><span class="line">    <span class="keyword">if</span> d&gt;<span class="function">t then <span class="title">inc</span><span class="params">(sum,d-t)</span></span>;</span><br><span class="line">    t:=d;</span><br><span class="line">  end;</span><br><span class="line">  writeln(sum);</span><br><span class="line">end.</span><br></pre></td></tr></table></figure>
+<h3 id="Day1T2-货币系统（money）"><a href="#Day1T2-货币系统（money）" class="headerlink" title="Day1T2.货币系统（money）"></a>Day1T2.<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P5020">货币系统（money）</a></h3><h4 id="考察算法：-1"><a href="#考察算法：-1" class="headerlink" title="考察算法："></a>考察算法：</h4><p>装满型完全背包</p>
+<h4 id="解析：-1"><a href="#解析：-1" class="headerlink" title="解析："></a>解析：</h4><p><strong>这题据说也是原题</strong>，不过我是不知道原题是啥。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.org/blog/user24425/solution-p5020">具体解析和程序点这里</a></p>
+<h3 id="Day1T3-赛道修建（track）"><a href="#Day1T3-赛道修建（track）" class="headerlink" title="Day1T3.赛道修建（track）"></a>Day1T3.<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P5021">赛道修建（track）</a></h3><h4 id="考察算法：-2"><a href="#考察算法：-2" class="headerlink" title="考察算法："></a>考察算法：</h4><p>树上二分，树形DP</p>
+<h4 id="解析：-2"><a href="#解析：-2" class="headerlink" title="解析："></a>解析：</h4><p><strong>有大佬说这题还是原题！<del>Day1原题大战？</del></strong></p>
+<p>这题算是很标准的树上二分题目，其实题目说道<strong>“求最短路径的最大长度”</strong>就已经可以明确是二分了，然而我在考场上打 $check$ 函数打了将近两个小时，结果还炸了，看来以后也得加强编程能力啊！！！</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.org/blog/user24425/solution-p5021">具体解析和程序点这里</a></p>
+<h3 id="Day2T1-旅行（travel）"><a href="#Day2T1-旅行（travel）" class="headerlink" title="Day2T1.旅行（travel）"></a>Day2T1.<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P5022">旅行（travel）</a></h3><h4 id="考察算法：-3"><a href="#考察算法：-3" class="headerlink" title="考察算法："></a>考察算法：</h4><p>暴力枚举，搜索DFS，基环树？</p>
+<h4 id="解析：-3"><a href="#解析：-3" class="headerlink" title="解析："></a>解析：</h4><h5 id="首先对于前-15-组数据："><a href="#首先对于前-15-组数据：" class="headerlink" title="首先对于前 $15$ 组数据："></a>首先对于前 $15$ 组数据：</h5><p>这些数据的处理非常简单，只要从 $1$ 号节点开始，在扩展时优先选择编号小的节点，对树进行一次DFS即可。时间复杂度接近 $O(n)$ 。</p>
+<h5 id="对于所有数据："><a href="#对于所有数据：" class="headerlink" title="对于所有数据："></a>对于所有数据：</h5><p>这些数据中，图是一棵基环树，简单的进行一次搜索无法得到正确答案。其实处理方法也很简单，我们先把通过搜索，把图中的环给找到，然后暴力断开环上的每一条边，并在每次断边后的图上进行一次DFS，最后取所有结果中的最优值即可。时间复杂度接近 $O(n^{2})$ 。</p>
+<h4 id="程序：-1"><a href="#程序：-1" class="headerlink" title="程序："></a>程序：</h4><h5 id="期望60分："><a href="#期望60分：" class="headerlink" title="期望60分："></a>期望60分：</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">program travel;</span><br><span class="line">var</span><br><span class="line">   l,v:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.10005</span>]of longint;</span><br><span class="line">   r,path:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.5005</span>]of longint;</span><br><span class="line">   tf:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.5005</span>]of boolean;</span><br><span class="line">   n,m,i,x,y,t,k:longint;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">sc</span><span class="params">(f,fa:longint)</span></span>;</span><br><span class="line">var i,next:longint;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">while</span> <span class="literal">true</span> <span class="keyword">do</span> begin</span><br><span class="line">    next:=<span class="number">100000</span>;</span><br><span class="line">    i:=r[f];</span><br><span class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">      <span class="keyword">if</span> (tf[v[i]]=<span class="literal">false</span>) <span class="keyword">and</span> (v[i]&lt;next) <span class="keyword">and</span> (v[i]&lt;&gt;fa) then next:=v[i];</span><br><span class="line">      i:=l[i];</span><br><span class="line">    end;</span><br><span class="line">    <span class="keyword">if</span> next=<span class="number">100000</span> then <span class="built_in">exit</span>;</span><br><span class="line">    tf[next]:=<span class="literal">true</span>;</span><br><span class="line">    inc(k);</span><br><span class="line">    path[k]:=next;</span><br><span class="line">    sc(next,f);</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">  read(n,m);</span><br><span class="line">  fillchar(r,<span class="keyword">sizeof</span>(r),<span class="number">0</span>);</span><br><span class="line">  fillchar(tf,<span class="keyword">sizeof</span>(tf),<span class="number">0</span>);</span><br><span class="line">  fillchar(l,<span class="keyword">sizeof</span>(l),<span class="number">0</span>);</span><br><span class="line">  fillchar(v,<span class="keyword">sizeof</span>(v),<span class="number">0</span>);</span><br><span class="line">  fillchar(path,<span class="keyword">sizeof</span>(path),<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to m <span class="keyword">do</span> begin</span><br><span class="line">    read(x,y);</span><br><span class="line">    t:=<span class="number">2</span>*i;</span><br><span class="line">    l[t]:=r[x];</span><br><span class="line">    r[x]:=t;</span><br><span class="line">    v[t]:=y;</span><br><span class="line">    l[t<span class="number">-1</span>]:=r[y];</span><br><span class="line">    r[y]:=t<span class="number">-1</span>;</span><br><span class="line">    v[t<span class="number">-1</span>]:=x;</span><br><span class="line">  end;</span><br><span class="line">  k:=<span class="number">1</span>;</span><br><span class="line">  path[k]:=<span class="number">1</span>;</span><br><span class="line">  tf[<span class="number">0</span>]:=<span class="literal">true</span>;</span><br><span class="line">  sc(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to k <span class="keyword">do</span> write(path[i],<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">end.</span><br></pre></td></tr></table></figure>
+<h5 id="期望100分："><a href="#期望100分：" class="headerlink" title="期望100分："></a>期望100分：</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">program project1;</span><br><span class="line">var</span><br><span class="line">   r,path,father,son,ans:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.5005</span>]of longint;</span><br><span class="line">   tf:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.5005</span>]of boolean;</span><br><span class="line">   l,v:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.10005</span>]of longint;</span><br><span class="line">   n,m,i,x,y,t,k,p,fat:longint;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">sc</span><span class="params">(f,fa:longint)</span></span>;</span><br><span class="line">var i,next:longint;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">while</span> <span class="literal">true</span> <span class="keyword">do</span> begin</span><br><span class="line">    next:=<span class="number">100000</span>;</span><br><span class="line">    i:=r[f];</span><br><span class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">      <span class="keyword">if</span> (v[i]&lt;next) <span class="keyword">and</span> (v[i]&lt;&gt;fa) <span class="keyword">and</span> (tf[v[i]]=<span class="literal">false</span>) <span class="keyword">and</span> (v[i]&lt;&gt;<span class="number">0</span>) then next:=v[i];</span><br><span class="line">      i:=l[i];</span><br><span class="line">    end;</span><br><span class="line">    <span class="keyword">if</span> next=<span class="number">100000</span> then <span class="built_in">exit</span>;</span><br><span class="line">    tf[next]:=<span class="literal">true</span>;</span><br><span class="line">    inc(k);</span><br><span class="line">    path[k]:=next;</span><br><span class="line">    sc(next,f);</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">function min:boolean;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to n <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> ans[i]&gt;path[i] then <span class="built_in">exit</span>(<span class="literal">true</span>)</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> ans[i]&lt;path[i] then <span class="built_in">exit</span>(<span class="literal">false</span>);</span><br><span class="line">  <span class="built_in">exit</span>(<span class="literal">false</span>);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">del</span><span class="params">(f,fa:longint)</span>:boolean</span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  del:=<span class="literal">false</span>;</span><br><span class="line">  i:=r[f];</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> v[i]&lt;&gt;fa then begin</span><br><span class="line">      <span class="keyword">if</span> father[v[i]]=<span class="number">0</span> then father[v[i]]:=f</span><br><span class="line">        <span class="keyword">else</span> begin</span><br><span class="line">          p:=v[i];</span><br><span class="line">          fat:=father[v[i]];</span><br><span class="line">          father[v[i]]:=f;</span><br><span class="line">          son[f]:=v[i];</span><br><span class="line">          <span class="built_in">exit</span>(<span class="literal">true</span>);</span><br><span class="line">        end;</span><br><span class="line">      <span class="function"><span class="keyword">if</span> <span class="title">del</span><span class="params">(v[i],f)</span></span>=<span class="literal">true</span> then begin</span><br><span class="line">        son[f]:=v[i];</span><br><span class="line">        <span class="built_in">exit</span>(<span class="literal">true</span>)</span><br><span class="line">      end;</span><br><span class="line">    end;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">cut</span><span class="params">(x,y:longint)</span></span>;</span><br><span class="line">var i,j:longint;</span><br><span class="line">begin</span><br><span class="line">  i:=r[x];</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> v[i]=y then begin</span><br><span class="line">      v[i]:=<span class="number">0</span>;</span><br><span class="line">      <span class="keyword">if</span> i mod <span class="number">2</span>=<span class="number">0</span> then j:=i<span class="number">-1</span> <span class="keyword">else</span> j:=i+<span class="number">1</span>;</span><br><span class="line">      v[j]:=<span class="number">0</span>;</span><br><span class="line">      fillchar(tf,<span class="keyword">sizeof</span>(tf),<span class="number">0</span>);</span><br><span class="line">      fillchar(path,<span class="keyword">sizeof</span>(path),<span class="number">0</span>);</span><br><span class="line">      k:=<span class="number">1</span>;</span><br><span class="line">      path[k]:=<span class="number">1</span>;</span><br><span class="line">      sc(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">      <span class="keyword">if</span> min=<span class="literal">true</span> then ans:=path;</span><br><span class="line">      v[i]:=y;</span><br><span class="line">      v[j]:=x;</span><br><span class="line">      <span class="built_in">exit</span>;</span><br><span class="line">    end;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">point</span><span class="params">(p:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  i:=p;</span><br><span class="line">  cut(i,son[i]);</span><br><span class="line">  i:=son[i];</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;p <span class="keyword">do</span> begin</span><br><span class="line">    cut(i,son[i]);</span><br><span class="line">    i:=son[i];</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">  read(n,m);</span><br><span class="line">  fillchar(tf,<span class="keyword">sizeof</span>(tf),<span class="number">0</span>);</span><br><span class="line">  fillchar(path,<span class="keyword">sizeof</span>(path),<span class="number">0</span>);</span><br><span class="line">  fillchar(ans,<span class="keyword">sizeof</span>(ans),$<span class="number">5f</span>);</span><br><span class="line">  k:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to m <span class="keyword">do</span> begin</span><br><span class="line">    read(x,y);</span><br><span class="line">    t:=i*<span class="number">2</span>;</span><br><span class="line">    l[t]:=r[x];</span><br><span class="line">    r[x]:=t;</span><br><span class="line">    v[t]:=y;</span><br><span class="line">    l[t<span class="number">-1</span>]:=r[y];</span><br><span class="line">    r[y]:=t<span class="number">-1</span>;</span><br><span class="line">    v[t<span class="number">-1</span>]:=x;</span><br><span class="line">  end;</span><br><span class="line">  inc(k);</span><br><span class="line">  path[k]:=<span class="number">1</span>;</span><br><span class="line">  father[<span class="number">1</span>]:=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span> m=n then begin</span><br><span class="line">    del(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    point(p);</span><br><span class="line">  end</span><br><span class="line">  <span class="keyword">else</span> begin sc(<span class="number">1</span>,<span class="number">0</span>);ans:=path; end;</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to n <span class="keyword">do</span> write(ans[i],<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">end.</span><br></pre></td></tr></table></figure>
+<h4 id="此题还有更优的-O-n-log-n-算法：具体解析和程序点这里"><a href="#此题还有更优的-O-n-log-n-算法：具体解析和程序点这里" class="headerlink" title="此题还有更优的 $O(n \log n)$ 算法：具体解析和程序点这里"></a>此题还有更优的 $O(n \log n)$ 算法：<a target="_blank" rel="noopener" href="https://www.luogu.org/blog/user24425/solution-p5049">具体解析和程序点这里</a></h4><h3 id="Day2T2-填数游戏（game）"><a href="#Day2T2-填数游戏（game）" class="headerlink" title="Day2T2.填数游戏（game）"></a>Day2T2.<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P5023">填数游戏（game）</a></h3><h4 id="考察算法：-4"><a href="#考察算法：-4" class="headerlink" title="考察算法："></a>考察算法：</h4><p>数学推导，找规律？</p>
+<h4 id="解析：-4"><a href="#解析：-4" class="headerlink" title="解析："></a>解析：</h4><p>说实话，我在考场上真没想到这题能找规律，我一直以为这是一个状压DP。后来经过大佬指点，才发现其实是能通过找规律AC的。但这题究竟标算是什么，我到现在也不了解，毕竟NOIP不会出一道打表找规律的题吧?而且这题不管是手摸，还是打表，想发现规律都异常困难，如果真考找规律，这题也是十分毒瘤了！</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.org/blog/user24425/solution-p5023">具体解析和程序点这里</a></p>
+<h3 id="Day2T3-保卫王国（defense）"><a href="#Day2T3-保卫王国（defense）" class="headerlink" title="Day2T3.保卫王国（defense）"></a>Day2T3.<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P5024">保卫王国（defense）</a></h3><h4 id="考察算法：-5"><a href="#考察算法：-5" class="headerlink" title="考察算法："></a>考察算法：</h4><p>树上DP，LCA倍增思想，动态DP？</p>
+<h4 id="解析：-5"><a href="#解析：-5" class="headerlink" title="解析："></a>解析：</h4><p>在考场上，我只想出了44分的暴力算法</p>
+<p>考后听说是动态DP模板，可动态DP是NOI的考察内容啊！如果这题考动态DP，那超纲也太严重了吧。一定还有别的做法，在考后我经过反复思考，结合大佬的提示，终于发现了用<strong>LCA倍增思想</strong>解决问题的方法。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.org/blog/user24425/solution-p5024">具体解析和程序点这里</a></p>
+
+  </div>
+  <!--文末结束语-->
+  
+    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="iconfont icon-heartbeat" style="font-size:24px;"></i> The End --- </div>
+  
+  <!--页脚广告-->
+  
+  <div class="mdui-divider"></div>
+  
+  <nav>
+    
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>长沙集训Day1</span>
+      </a>
+    
+    
+  </nav>
+</article>
+
+
+
+
+  <div class="toc-button"  style="z-index: 100;">
+    <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item">
+        <a href="/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/" id="toc-header" class="mdui-ripple">文章目录</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%A2%98%E7%9B%AE%E9%9A%BE%E5%BA%A6%EF%BC%88%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">1.题目难度（个人理解）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">2.考察算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">3.题目分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Day1T1-%E9%93%BA%E8%AE%BE%E9%81%93%E8%B7%AF%EF%BC%88road%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">Day1T1.铺设道路（road）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="toc-number">3.1.1.</span> <span class="toc-text">考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%EF%BC%9A"><span class="toc-number">3.1.2.</span> <span class="toc-text">解析：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%EF%BC%9A"><span class="toc-number">3.1.3.</span> <span class="toc-text">程序：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Day1T2-%E8%B4%A7%E5%B8%81%E7%B3%BB%E7%BB%9F%EF%BC%88money%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">Day1T2.货币系统（money）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95%EF%BC%9A-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%EF%BC%9A-1"><span class="toc-number">3.2.2.</span> <span class="toc-text">解析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Day1T3-%E8%B5%9B%E9%81%93%E4%BF%AE%E5%BB%BA%EF%BC%88track%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">Day1T3.赛道修建（track）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95%EF%BC%9A-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%EF%BC%9A-2"><span class="toc-number">3.3.2.</span> <span class="toc-text">解析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Day2T1-%E6%97%85%E8%A1%8C%EF%BC%88travel%EF%BC%89"><span class="toc-number">3.4.</span> <span class="toc-text">Day2T1.旅行（travel）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95%EF%BC%9A-3"><span class="toc-number">3.4.1.</span> <span class="toc-text">考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%EF%BC%9A-3"><span class="toc-number">3.4.2.</span> <span class="toc-text">解析：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E5%AF%B9%E4%BA%8E%E5%89%8D-15-%E7%BB%84%E6%95%B0%E6%8D%AE%EF%BC%9A"><span class="toc-number">3.4.2.1.</span> <span class="toc-text">首先对于前 $15$ 组数据：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%EF%BC%9A"><span class="toc-number">3.4.2.2.</span> <span class="toc-text">对于所有数据：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%EF%BC%9A-1"><span class="toc-number">3.4.3.</span> <span class="toc-text">程序：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%9F%E6%9C%9B60%E5%88%86%EF%BC%9A"><span class="toc-number">3.4.3.1.</span> <span class="toc-text">期望60分：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%9F%E6%9C%9B100%E5%88%86%EF%BC%9A"><span class="toc-number">3.4.3.2.</span> <span class="toc-text">期望100分：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A4%E9%A2%98%E8%BF%98%E6%9C%89%E6%9B%B4%E4%BC%98%E7%9A%84-O-n-log-n-%E7%AE%97%E6%B3%95%EF%BC%9A%E5%85%B7%E4%BD%93%E8%A7%A3%E6%9E%90%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%82%B9%E8%BF%99%E9%87%8C"><span class="toc-number">3.4.4.</span> <span class="toc-text">此题还有更优的 $O(n \log n)$ 算法：具体解析和程序点这里</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Day2T2-%E5%A1%AB%E6%95%B0%E6%B8%B8%E6%88%8F%EF%BC%88game%EF%BC%89"><span class="toc-number">3.5.</span> <span class="toc-text">Day2T2.填数游戏（game）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95%EF%BC%9A-4"><span class="toc-number">3.5.1.</span> <span class="toc-text">考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%EF%BC%9A-4"><span class="toc-number">3.5.2.</span> <span class="toc-text">解析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Day2T3-%E4%BF%9D%E5%8D%AB%E7%8E%8B%E5%9B%BD%EF%BC%88defense%EF%BC%89"><span class="toc-number">3.6.</span> <span class="toc-text">Day2T3.保卫王国（defense）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95%EF%BC%9A-5"><span class="toc-number">3.6.1.</span> <span class="toc-text">考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%EF%BC%9A-5"><span class="toc-number">3.6.2.</span> <span class="toc-text">解析：</span></a></li></ol></li></ol></li></ol>
+      </li>
+    </ul>
+  </div>
+
+
+
+    <div id="comment" class="mdui-card mdui-p-a-2 mdui-m-b-5">
+      <div class="mdui-tab" mdui-tab>
+        
+          <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
+        
+          <a href="#comment-tab1" class="mdui-ripple">livere</a>
+        
+      </div>
+      
+        <div id="comment-tab0" class="mdui-p-a-2">
+          <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: [''],
+    id:  md5(location.pathname) ,
+    distractionFreeMode: 'true',
+  });
+  gitalk.render('gitalk-container');
+</script>
+        </div>
+      
+        <div id="comment-tab1" class="mdui-p-a-2">
+          <div id="lv-container" data-id="city" data-uid="">
+  <script type="text/javascript">
+    (function (d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+  <noscript>Please enable JavaScript to view the comments powered by LiveRe.</noscript>
+</div>
+        </div>
+      
+    </div>
+
+  </main>
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+  <div class="mdui-container">
+    <div class="mdui-row">
+      
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
+      
+      <span>
+        &copy; 2015 - 2023 
+        
+          <span style="color:#d9333f" class="iconfont icon-heart"></span>
+        
+        Cheng Ziheng
+      </span>
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span>Theme: <a href="https://github.com/kb1000fx/Meadow" rel="noopener" target="_blank">Meadow</a></span>
+        </div>
+      
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span id="busuanzi_container_site_uv" style="display: none;"> <span class="iconfont icon-user"></span>总访客量 <span id="busuanzi_value_site_uv"></span></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span id="busuanzi_container_site_pv" style="display: none;"> <span class="iconfont icon-eye"></span>总访问量 <span id="busuanzi_value_site_pv"></span></span>
+        </div>
+      
+    </div>
+ </div>
+</footer>
+  
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+  
+  
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+    
+<script src="/js/mdui.min.v1.0.0.js"></script>
+
+
+
+
+<script src="/js/meadow.js"></script>
+
+</body>
+</html >

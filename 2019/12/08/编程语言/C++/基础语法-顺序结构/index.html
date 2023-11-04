@@ -262,11 +262,11 @@
     </span>
     <span>
       <span class="iconfont icon-calendar-check"></span>
-      更新于:&nbsp;2021-01-25
+      更新于:&nbsp;2023-11-04
     </span>
     <span>
       <span class="iconfont icon-folder"></span>
-      分类于:&nbsp;<a class="category-link" href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84C-%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">从零开始的C++学习生活</a> > <a class="category-link" href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84C-%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E2%85%A0-%E6%84%89%E5%BF%AB%E7%9A%84%E7%BC%96%E5%86%99C-%E7%A8%8B%E5%BA%8F/">Ⅰ.愉快的编写C++程序</a>
+      分类于:&nbsp;<a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a> > <a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a>
     </span>
     
       <span>
@@ -329,18 +329,18 @@
     <h2 id="一、常量和变量"><a href="#一、常量和变量" class="headerlink" title="一、常量和变量"></a>一、常量和变量</h2><h3 id="Ⅰ-常量"><a href="#Ⅰ-常量" class="headerlink" title="Ⅰ. 常量"></a>Ⅰ. 常量</h3><h4 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const 常量类型 常量符号&#x3D;常量；</span><br><span class="line">const int a&#x3D;100;</span><br></pre></td></tr></table></figure>
 <h4 id="类型："><a href="#类型：" class="headerlink" title="类型："></a>类型：</h4><p>① 整形常量：</p>
 <p>十进制：$ 100_{(10)},-1_{(10)} $</p>
-<p>八进制：以 $ 0 $ 开头，后由 $ 0 \backsim 7 $ 的字符构成。如 $ 012 $ 表示 $ 12_{(8)} $ </p>
+<p>八进制：以 $ 0 $ 开头，后由 $ 0 \backsim 7 $ 的字符构成。如 $ 012 $ 表示 $ 12_{(8)} $</p>
 <p>十六进制：以 $ 0x $ 开头，后由 $ 0 \backsim F $ 的字符构成。如 $ 0xF1A $ 表示 $ F1A_{(16)} $ 。</p>
 <p>② 实型常量：</p>
 <p>实型有两种写法，其一是直接写出数值，如 $ 1.3,-0.18 $ ，第二种使用科学计数法表示，如：</p>
-<p>$$ M \ E \ X $$</p>
+<p>$$<br>M \ E \ X<br>$$</p>
 <p>其中 $ M $ 为一个实数， $ X $ 为一个整数。</p>
 <p>其意味着：</p>
-<p>$$ M \times 10^X $$</p>
-<p>$$ 1.52 \ E \ 2=1.52 \times 10^2 =152 $$</p>
-<p>$$ 152 \ E \ -2=152 \times 10^{-2}=1.52 $$</p>
+<p>$$<br>M \times 10^X<br>$$</p>
+<p>$$<br>1.52 \ E \ 2=1.52 \times 10^2 =152<br>$$</p>
+<p>$$<br>152 \ E \ -2=152 \times 10^{-2}=1.52<br>$$</p>
 <p>③ 字符型常量：</p>
-<p>如‘a’、‘1’、‘?’，注意<font color='red'>‘’</font>不能省去，且‘a’表示一个<font color='red'>字符</font>，“a”表示一个<font color='red'>字符串</font>。</p>
+<p>如‘a’、‘1’、‘?’，注意 <code>&lt;font color=&#39;red&#39;&gt;</code>‘’<code>&lt;/font&gt;</code>不能省去，且‘a’表示一个 <code>&lt;font color=&#39;red&#39;&gt;</code>字符 <code>&lt;/font&gt;</code>，“a”表示一个 <code>&lt;font color=&#39;red&#39;&gt;</code>字符串 <code>&lt;/font&gt;</code>。</p>
 <h3 id="Ⅱ-变量"><a href="#Ⅱ-变量" class="headerlink" title="Ⅱ. 变量"></a>Ⅱ. 变量</h3><h4 id="定义：-1"><a href="#定义：-1" class="headerlink" title="定义："></a>定义：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">变量类型 变量名，变量名，......；</span><br><span class="line">int a,b;</span><br><span class="line">char s,k;</span><br><span class="line">float n,m;</span><br></pre></td></tr></table></figure>
 <p>和 $ Pascal $ 中不同， $ C++ $ 可以在定义时给变量赋值，如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int a&#x3D;100;</span><br><span class="line">char s&#x3D;&#39;x&#39;;</span><br><span class="line">float n&#x3D;5E2;</span><br></pre></td></tr></table></figure>
@@ -446,20 +446,20 @@
 <h3 id="Ⅲ-字符型"><a href="#Ⅲ-字符型" class="headerlink" title="Ⅲ. 字符型"></a>Ⅲ. 字符型</h3><p>见 $ ASCLL $ 码表。</p>
 <p><img src="https://i.loli.net/2019/11/21/BeXINOMYndth7j8.png" alt="QQ截图20191121231556.png"></p>
 <h3 id="Ⅳ-强制类型转换"><a href="#Ⅳ-强制类型转换" class="headerlink" title="Ⅳ. 强制类型转换"></a>Ⅳ. 强制类型转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(类型名)(表达式)</span><br><span class="line">(int)(4.7)&#x3D;4;</span><br></pre></td></tr></table></figure>
-<h2 id="三、输入与输出"><a href="#三、输入与输出" class="headerlink" title="三、输入与输出"></a>三、输入与输出</h2><h3 id="Ⅰ-字符输入输出"><a href="#Ⅰ-字符输入输出" class="headerlink" title="Ⅰ. 字符输入输出"></a>Ⅰ. 字符输入输出</h3><p>函数：$ getchar(),putchar() $ </p>
-<p>使用此函数必须包含头文件<font color='red'>cstdio</font>。</p>
+<h2 id="三、输入与输出"><a href="#三、输入与输出" class="headerlink" title="三、输入与输出"></a>三、输入与输出</h2><h3 id="Ⅰ-字符输入输出"><a href="#Ⅰ-字符输入输出" class="headerlink" title="Ⅰ. 字符输入输出"></a>Ⅰ. 字符输入输出</h3><p>函数：$ getchar(),putchar() $</p>
+<p>使用此函数必须包含头文件 <code>&lt;font color=&#39;red&#39;&gt;</code>cstdio <code>&lt;/font&gt;</code>。</p>
 <p>使用方式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">字符型变量&#x3D;getchar();</span><br><span class="line">putchar(字符型变量&#x2F;ASCLL码);</span><br><span class="line"></span><br><span class="line">char s;</span><br><span class="line">s&#x3D;getchar();</span><br><span class="line">putchar(s);</span><br><span class="line">putchar(66);</span><br><span class="line"></span><br><span class="line">输入：Z</span><br><span class="line">输出：ZB</span><br></pre></td></tr></table></figure>
-<p>$ getchar() $ 输入的所有元素都按字符处理，且可以<font color='red'>读入回车</font>。</p>
+<p>$ getchar() $ 输入的所有元素都按字符处理，且可以 <code>&lt;font color=&#39;red&#39;&gt;</code>读入回车 <code>&lt;/font&gt;</code>。</p>
 <h3 id="Ⅱ-流输入输出"><a href="#Ⅱ-流输入输出" class="headerlink" title="Ⅱ. 流输入输出"></a>Ⅱ. 流输入输出</h3><p>函数：$ cin,cout,endl $</p>
-<p>使用此函数必须包含头文件<font color='red'>iostream</font>，且需使用<font color='red'>using namespace std;</font>。</p>
+<p>使用此函数必须包含头文件 <code>&lt;font color=&#39;red&#39;&gt;</code>iostream <code>&lt;/font&gt;</code>，且需使用 <code>&lt;font color=&#39;red&#39;&gt;</code>using namespace std;<code>&lt;/font&gt;</code>。</p>
 <p>使用方式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cin&gt;&gt;变量；</span><br><span class="line">cout&lt;&lt;变量&#x2F;字符串；</span><br><span class="line"></span><br><span class="line">cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">cout&lt;&lt;&quot;a&#x3D;&quot;&lt;&lt;a&lt;&lt;&quot;\nb&#x3D;&quot;&lt;&lt;b&lt;&lt;endl;</span><br><span class="line">cout&lt;&lt;&quot;A&quot;;</span><br><span class="line"></span><br><span class="line">输入：1 A</span><br><span class="line">输出：</span><br><span class="line">a&#x3D;1</span><br><span class="line">b&#x3D;A</span><br><span class="line">A</span><br></pre></td></tr></table></figure>
 <h3 id="Ⅲ-格式化输入输出"><a href="#Ⅲ-格式化输入输出" class="headerlink" title="Ⅲ. 格式化输入输出"></a>Ⅲ. 格式化输入输出</h3><p>函数：$ scanf,printf $</p>
-<p>使用此函数必须包含头文件<font color="red">cstdio</font>。</p>
+<p>使用此函数必须包含头文件 <code>&lt;font color=&quot;red&quot;&gt;</code>cstdio <code>&lt;/font&gt;</code>。</p>
 <p>使用方法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">scanf(&quot;格式符 格式符&quot;,&amp;变量,&amp;变量);</span><br><span class="line">printf(&quot;格式符 格式符&quot;,变量,变量);</span><br><span class="line"></span><br><span class="line">scanf(&quot;%d%c&quot;,&amp;a,&amp;b);</span><br><span class="line">printf(&quot;a&#x3D;%d\nb&#x3D;%c\nA&quot;,a,b);</span><br><span class="line"></span><br><span class="line">输入：1A</span><br><span class="line">输出：</span><br><span class="line">a&#x3D;1</span><br><span class="line">b&#x3D;A</span><br><span class="line">A</span><br></pre></td></tr></table></figure>
-<p>$ scanf $ 中的<font color="green">&amp;变量</font>是变量的内存地址，可以是变量地址，也可以是字符串首地址。</p>
+<p>$ scanf $ 中的 <code>&lt;font color=&quot;green&quot;&gt;</code>&amp;变量 <code>&lt;/font&gt;</code>是变量的内存地址，可以是变量地址，也可以是字符串首地址。</p>
 <h4 id="输入格式符："><a href="#输入格式符：" class="headerlink" title="输入格式符："></a>输入格式符：</h4><table>
 <thead>
 <tr>
@@ -569,11 +569,11 @@
 </thead>
 <tbody><tr>
 <td align="center">$ m $</td>
-<td align="center">指定宽度，实际宽度不足 $ m $ 时补空格，大于 $ m $ 时按实际宽度输出</td>
+<td align="center">指定宽度，实际宽度不足$ m $ 时补空格，大于 $ m $ 时按实际宽度输出</td>
 </tr>
 <tr>
 <td align="center">$ .n $</td>
-<td align="center">不对整形使用，对于实型表示保留 $ n $ 位小数，对于字符串表示最多含有 $ n $ 个字符</td>
+<td align="center">不对整形使用，对于实型表示保留$ n $ 位小数，对于字符串表示最多含有 $ n $ 个字符</td>
 </tr>
 <tr>
 <td align="center">$ - $</td>
@@ -585,7 +585,7 @@
 </tr>
 <tr>
 <td align="center">$ 0 $</td>
-<td align="center">跟 $ m $ 一起使用，表示宽度不足 $ m $ 时补 $ 0 $</td>
+<td align="center">跟$ m $ 一起使用，表示宽度不足 $ m $ 时补 $ 0 $</td>
 </tr>
 </tbody></table>
 <p>使用格式：$ %,-,0,m,.n,l $</p>
@@ -722,7 +722,7 @@
 <td align="center">$ abs(x) $</td>
 </tr>
 <tr>
-<td align="center">自然数指数 $ e^x $</td>
+<td align="center">自然数指数$ e^x $</td>
 <td align="center">$ exp(x) $</td>
 </tr>
 <tr>
@@ -734,15 +734,15 @@
 <td align="center">$ ceil(x) $</td>
 </tr>
 <tr>
-<td align="center">自然数对数 $ \ln{x} $</td>
+<td align="center">自然数对数$ \ln{x} $</td>
 <td align="center">$ log(x) $</td>
 </tr>
 <tr>
-<td align="center">指数函数 $ x^t $</td>
+<td align="center">指数函数$ x^t $</td>
 <td align="center">$ pow(x,t) $</td>
 </tr>
 <tr>
-<td align="center">随机函数（在 $ [0,x-1] $ 生成随机数）</td>
+<td align="center">随机函数（在$ [0,x-1] $ 生成随机数）</td>
 <td align="center">$ rand(x) $</td>
 </tr>
 <tr>
@@ -750,7 +750,7 @@
 <td align="center">$ sqrt(x) $</td>
 </tr>
 </tbody></table>
-<p>使用这类函数时，必须包含头文件<font color="red">cmath</font>。</p>
+<p>使用这类函数时，必须包含头文件 <code>&lt;font color=&quot;red&quot;&gt;</code>cmath <code>&lt;/font&gt;</code>。</p>
 
   </div>
   <!--文末结束语-->
