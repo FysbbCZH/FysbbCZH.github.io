@@ -410,7 +410,7 @@
   </div>
   <!--文末结束语-->
   
-    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="iconfont icon-heartbeat" style="font-size:24px;"></i> The End --- </div>
+    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 已经没有了哦 --- </div>
   
   <!--页脚广告-->
   
@@ -452,6 +452,8 @@
         
           <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
         
+          <a href="#comment-tab1" class="mdui-ripple">valine</a>
+        
       </div>
       
         <div id="comment-tab0" class="mdui-p-a-2">
@@ -470,6 +472,33 @@
     distractionFreeMode: 'true',
   });
   gitalk.render('gitalk-container');
+</script>
+        </div>
+      
+        <div id="comment-tab1" class="mdui-p-a-2">
+          <div id="vcomments"></div>
+<script src="//cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = ''.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+  var notify = 'true' === 'true';
+  var verify = '' === 'true';
+  new Valine({
+    el: '#vcomments',
+    notify: notify,
+    verify: verify,
+    appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+    appKey: '5tGe7WC9z2QaIOESWdymcByE',
+    placeholder: '有什么看法，欢迎讨论一下',
+    pageSize: '',
+    avatar: '',
+    lang: '',
+    guest_info: guest_info
+  });
 </script>
         </div>
       
