@@ -387,7 +387,7 @@
 <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
   var GUEST_INFO = ['nick', 'mail', 'link'];
-  var guest_info = ''.split(',').filter(function (item) {
+  var guest_info = 'nick,mail,link'.split(',').filter(function (item) {
     return GUEST_INFO.indexOf(item) > -1;
   });
   var notify = 'true' === 'true';
@@ -400,7 +400,7 @@
     appKey: '5tGe7WC9z2QaIOESWdymcByE',
     placeholder: '有什么看法，欢迎讨论一下',
     pageSize: '',
-    avatar: '',
+    avatar: 'identicon',
     lang: '',
     guest_info: guest_info
   });
