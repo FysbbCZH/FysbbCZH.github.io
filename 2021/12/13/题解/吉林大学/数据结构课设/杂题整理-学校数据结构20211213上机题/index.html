@@ -262,7 +262,7 @@
     </span>
     <span>
       <span class="iconfont icon-calendar-check"></span>
-      更新于:&nbsp;2023-11-04
+      更新于:&nbsp;2023-11-05
     </span>
     <span>
       <span class="iconfont icon-folder"></span>
@@ -340,7 +340,7 @@
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>此题目为 $KMP$ 数组的应用，但 $KMP$ 失败数组求的是最长的相等前后缀，所以要对其进行修改。<code>&lt;center&gt;</code><img src="https://s2.loli.net/2021/12/13/WJjfk8lswCEY9Ph.png"><code>&lt;/center&gt;</code></p>
 <p>如图，对于 $ababab$ 其失败数组标明了前后缀相等的子串为 $abab$ ，而子串 $abab$ 的失败数组标明了最长前后缀相等的是 $ab$ ，而因为在原串中前后缀相等的性质，可知原串中必有相等的前后缀 $ab$ 。</p>
 <p>因此，可通过不断访问子串的失败数组，来得到最小前缀。</p>
-<p>但需要注意，当 $S$ 中所有字符都相等时，该算法时间复杂度为 $O(n^2)$ 。因此需要将子串失败数组，按照类似并查集的方式进行路径压缩。<code>&lt;center&gt;</code><img src="https://s2.loli.net/2021/12/13/mRx542TDwFbs9tA.png" alt="图例2.png"><code>&lt;/center&gt;</code>比如在 $ababa$ 中，根据失败数组访问子串 $aba$ 时，发现 $aba$ 的失败数组为 $0$ ，则可将 $ababa$ 失败数组也改成 $0$ ，同理可将 $ababab$ 失败数组改成 $1$ 。</p>
+<p>但需要注意，当 $S$ 中所有字符都相等时，该算法时间复杂度为 $O(n^2)$ 。因此需要将子串失败数组，按照类似并查集的方式进行路径压缩。<code>&lt;center&gt;</code><img src="https://s2.loli.net/2021/12/13/mRx542TDwFbs9tA.png" alt="图例2.png"> <code>&lt;/center&gt;</code>比如在 $ababa$ 中，根据失败数组访问子串 $aba$ 时，发现 $aba$ 的失败数组为 $0$ ，则可将 $ababa$ 失败数组也改成 $0$ ，同理可将 $ababab$ 失败数组改成 $1$ 。</p>
 <h3 id="T2-二叉树路径和"><a href="#T2-二叉树路径和" class="headerlink" title="T2 二叉树路径和"></a>T2 二叉树路径和</h3><h4 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h4><p>给定一颗二叉树，树有点权，求问是否有一条路径，其点权和为 $K$ 。</p>
 <p>“路径”定义为二叉树中的结点序列 $v_i ,v_{i+1},…, v_j$ ，序列中前一个结点是后一个结点的父结点。</p>
 <p>如有多条路径，输出最短的一条，且最靠右，最靠叶节点。</p>
@@ -356,7 +356,7 @@
 <p>$$<br>deep_x&lt;=deep_y<br>$$</p>
 <p>$$<br>sum_y-sum_{x_{father}}=K，x_{father}为 x 父节点<br>$$</p>
 <p>则 $x,y$ 之间的路径就是一条合法的路径，而求解时可先枚举确定 $y$ ，然后求对应的 $x$ ，这个过程可暴力枚举，时间复杂度 $O(n^2)$ 。但该式子为一次函数，所以可以先将 $sum,deep$ 排序（需要快排、归并等效率较高的排序），然后通过二分查找确定 $x$ 以进行优化，优化后的时间复杂度为 $O(n \log n)$ ，再通过对程序细节处理上尽量提高效率，理论上可以稳定通过此题数据。</p>
-<p>对于题目中要求<code>&lt;font color=red&gt;</code>“若存在多条满足条件的路径，则输出最短（包含结点个数最少）者，若存在多条最短的路径，则输出最靠右下者。”<code>&lt;/font&gt;</code>可在 $DFS$ 顺序上进行修改，优先搜索右子树，同时在枚举 $y$ 时，顺序从叶节点到根节点即可。</p>
+<p>对于题目中要求 <code>&lt;font color=red&gt;</code>“若存在多条满足条件的路径，则输出最短（包含结点个数最少）者，若存在多条最短的路径，则输出最靠右下者。”<code>&lt;/font&gt;</code>可在 $DFS$ 顺序上进行修改，优先搜索右子树，同时在枚举 $y$ 时，顺序从叶节点到根节点即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">DO:</span><br><span class="line">    Sort(sum,deep);   &#x2F;&#x2F;对sum和deep双关键字排序 </span><br><span class="line">    For y&#x3D;n to 1 do     &#x2F;&#x2F;n为链上的节点个数，n是叶，1是根</span><br><span class="line">    &#123;</span><br><span class="line">        Find(x);        &#x2F;&#x2F;确定对应的x</span><br><span class="line">        Update(Ans);    &#x2F;&#x2F;更新答案</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">DFS:</span><br><span class="line">    if (该节点不是叶节点)</span><br><span class="line">    &#123;</span><br><span class="line">        DFS(右子树);</span><br><span class="line">        DFS(左子树);</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">        DO();</span><br></pre></td></tr></table></figure>
 <h3 id="T3-最小支撑树"><a href="#T3-最小支撑树" class="headerlink" title="T3 最小支撑树"></a>T3 最小支撑树</h3><h4 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h4><p>给一个无向图，求最小生成树，注意图可能不连通。</p>
 <p>多组数据，每组数据的点数和边数都不超过 $1.5 \times 10^3$ 。</p>
@@ -407,8 +407,6 @@
         
           <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
         
-          <a href="#comment-tab1" class="mdui-ripple">livere</a>
-        
       </div>
       
         <div id="comment-tab0" class="mdui-p-a-2">
@@ -418,32 +416,16 @@
 <script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
 <script>
   var gitalk = new Gitalk({
-    clientID: '',
-    clientSecret: '',
-    repo: '',
-    owner: '',
-    admin: [''],
+    clientID: '0d2355044758a6a789be',
+    clientSecret: '6673c7eda814c869dd9a3496a40e9ec31446497a',
+    repo: 'gitalkforhexo',
+    owner: 'FysbbCZH',
+    admin: ['FysbbCZH'],
     id:  md5(location.pathname) ,
     distractionFreeMode: 'true',
   });
   gitalk.render('gitalk-container');
 </script>
-        </div>
-      
-        <div id="comment-tab1" class="mdui-p-a-2">
-          <div id="lv-container" data-id="city" data-uid="">
-  <script type="text/javascript">
-    (function (d, s) {
-      var j, e = d.getElementsByTagName(s)[0];
-      if (typeof LivereTower === 'function') { return; }
-      j = d.createElement(s);
-      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-      j.async = true;
-      e.parentNode.insertBefore(j, e);
-    })(document, 'script');
-  </script>
-  <noscript>Please enable JavaScript to view the comments powered by LiveRe.</noscript>
-</div>
         </div>
       
     </div>
@@ -453,24 +435,15 @@
   <div class="mdui-container">
     <div class="mdui-row">
       
-        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
-      
       <span>
-        &copy; 2015 - 2023 
-        
-          <span style="color:#d9333f" class="iconfont icon-heart"></span>
+        &copy; 2020 - 2023 
         
         Cheng Ziheng
       </span>
     </div>
     <div class="mdui-row">
       
-        <div class="mdui-col-xs-6 mdui-text-right">
-          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
-        </div>
-        <div class="mdui-col-xs-6 mdui-text-left">
-          <span>Theme: <a href="https://github.com/kb1000fx/Meadow" rel="noopener" target="_blank">Meadow</a></span>
-        </div>
+        <span>Theme: <a href="https://github.com/kb1000fx/hexo-theme-meadow" rel="noopener" target="_blank">Meadow</a></span>
       
     </div>
     <div class="mdui-row">
