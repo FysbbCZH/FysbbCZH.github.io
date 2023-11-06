@@ -83,6 +83,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -122,15 +153,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -233,6 +267,165 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+<div class="card card-content">
+  <div 
+    class="categories-page-title" 
+    style="margin-bottom: 0.6rem;">
+    分类
+  </div>
+  <div>
+    共计&nbsp;30&nbsp;篇文章
+  </div>
+</div>
+<div class="card card-content categories-page-card">
+  
+    <a 
+      href="/categories/%E7%9F%A5%E8%AF%86/" 
+      class="categories-page-list-item" 
+      style="margin-top: 0;">
+      <span>知识</span>
+      <span
+        class="categories-page-list-item-total">
+        共计&nbsp;4&nbsp;篇文章
+      </span>
+    </a>
+  
+    <a 
+      href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" 
+      class="categories-page-list-item" 
+      style="margin-top: 0;">
+      <span>编程语言</span>
+      <span
+        class="categories-page-list-item-total">
+        共计&nbsp;9&nbsp;篇文章
+      </span>
+    </a>
+  
+    <a 
+      href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" 
+      class="categories-page-list-item" 
+      style="margin-top: 0;">
+      <span>知识/数据结构</span>
+      <span
+        class="categories-page-list-item-total">
+        共计&nbsp;1&nbsp;篇文章
+      </span>
+    </a>
+  
+    <a 
+      href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+      class="categories-page-list-item" 
+      style="margin-top: 0;">
+      <span>编程语言/C</span>
+      <span
+        class="categories-page-list-item-total">
+        共计&nbsp;9&nbsp;篇文章
+      </span>
+    </a>
+  
+    <a 
+      href="/categories/%E8%AE%B0%E5%BD%95/" 
+      class="categories-page-list-item" 
+      style="margin-top: 0;">
+      <span>记录</span>
+      <span
+        class="categories-page-list-item-total">
+        共计&nbsp;14&nbsp;篇文章
+      </span>
+    </a>
+  
+    <a 
+      href="/categories/%E7%9F%A5%E8%AF%86/BLOG/" 
+      class="categories-page-list-item" 
+      style="margin-top: 0;">
+      <span>知识/BLOG</span>
+      <span
+        class="categories-page-list-item-total">
+        共计&nbsp;3&nbsp;篇文章
+      </span>
+    </a>
+  
+    <a 
+      href="/categories/%E9%A2%98%E8%A7%A3/" 
+      class="categories-page-list-item" 
+      style="margin-top: 0;">
+      <span>题解</span>
+      <span
+        class="categories-page-list-item-total">
+        共计&nbsp;3&nbsp;篇文章
+      </span>
+    </a>
+  
+    <a 
+      href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/" 
+      class="categories-page-list-item" 
+      style="margin-top: 0;">
+      <span>记录/竞赛</span>
+      <span
+        class="categories-page-list-item-total">
+        共计&nbsp;1&nbsp;篇文章
+      </span>
+    </a>
+  
+    <a 
+      href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/" 
+      class="categories-page-list-item" 
+      style="margin-top: 0;">
+      <span>知识/BLOG/Kaze</span>
+      <span
+        class="categories-page-list-item-total">
+        共计&nbsp;3&nbsp;篇文章
+      </span>
+    </a>
+  
+    <a 
+      href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/" 
+      class="categories-page-list-item" 
+      style="margin-top: 0;">
+      <span>记录/训练</span>
+      <span
+        class="categories-page-list-item-total">
+        共计&nbsp;13&nbsp;篇文章
+      </span>
+    </a>
+  
+    <a 
+      href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/" 
+      class="categories-page-list-item" 
+      style="margin-top: 0;">
+      <span>题解/吉林大学</span>
+      <span
+        class="categories-page-list-item-total">
+        共计&nbsp;3&nbsp;篇文章
+      </span>
+    </a>
+  
+    <a 
+      href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
+      class="categories-page-list-item" 
+      style="margin-top: 0;">
+      <span>记录/训练/长沙集训</span>
+      <span
+        class="categories-page-list-item-total">
+        共计&nbsp;13&nbsp;篇文章
+      </span>
+    </a>
+  
+    <a 
+      href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/" 
+      class="categories-page-list-item" 
+      style="margin-top: 0;">
+      <span>题解/吉林大学/数据结构课设</span>
+      <span
+        class="categories-page-list-item-total">
+        共计&nbsp;3&nbsp;篇文章
+      </span>
+    </a>
+  
+</div>
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -692,165 +885,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-<div class="card card-content">
-  <div 
-    class="categories-page-title" 
-    style="margin-bottom: 0.6rem;">
-    分类
-  </div>
-  <div>
-    共计&nbsp;30&nbsp;篇文章
-  </div>
-</div>
-<div class="card card-content categories-page-card">
-  
-    <a 
-      href="/categories/%E7%9F%A5%E8%AF%86/" 
-      class="categories-page-list-item" 
-      style="margin-top: 0;">
-      <span>知识</span>
-      <span
-        class="categories-page-list-item-total">
-        共计&nbsp;4&nbsp;篇文章
-      </span>
-    </a>
-  
-    <a 
-      href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" 
-      class="categories-page-list-item" 
-      style="margin-top: 0;">
-      <span>编程语言</span>
-      <span
-        class="categories-page-list-item-total">
-        共计&nbsp;9&nbsp;篇文章
-      </span>
-    </a>
-  
-    <a 
-      href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" 
-      class="categories-page-list-item" 
-      style="margin-top: 0;">
-      <span>知识/数据结构</span>
-      <span
-        class="categories-page-list-item-total">
-        共计&nbsp;1&nbsp;篇文章
-      </span>
-    </a>
-  
-    <a 
-      href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
-      class="categories-page-list-item" 
-      style="margin-top: 0;">
-      <span>编程语言/C</span>
-      <span
-        class="categories-page-list-item-total">
-        共计&nbsp;9&nbsp;篇文章
-      </span>
-    </a>
-  
-    <a 
-      href="/categories/%E8%AE%B0%E5%BD%95/" 
-      class="categories-page-list-item" 
-      style="margin-top: 0;">
-      <span>记录</span>
-      <span
-        class="categories-page-list-item-total">
-        共计&nbsp;14&nbsp;篇文章
-      </span>
-    </a>
-  
-    <a 
-      href="/categories/%E7%9F%A5%E8%AF%86/BLOG/" 
-      class="categories-page-list-item" 
-      style="margin-top: 0;">
-      <span>知识/BLOG</span>
-      <span
-        class="categories-page-list-item-total">
-        共计&nbsp;3&nbsp;篇文章
-      </span>
-    </a>
-  
-    <a 
-      href="/categories/%E9%A2%98%E8%A7%A3/" 
-      class="categories-page-list-item" 
-      style="margin-top: 0;">
-      <span>题解</span>
-      <span
-        class="categories-page-list-item-total">
-        共计&nbsp;3&nbsp;篇文章
-      </span>
-    </a>
-  
-    <a 
-      href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/" 
-      class="categories-page-list-item" 
-      style="margin-top: 0;">
-      <span>记录/竞赛</span>
-      <span
-        class="categories-page-list-item-total">
-        共计&nbsp;1&nbsp;篇文章
-      </span>
-    </a>
-  
-    <a 
-      href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/" 
-      class="categories-page-list-item" 
-      style="margin-top: 0;">
-      <span>知识/BLOG/Kaze</span>
-      <span
-        class="categories-page-list-item-total">
-        共计&nbsp;3&nbsp;篇文章
-      </span>
-    </a>
-  
-    <a 
-      href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/" 
-      class="categories-page-list-item" 
-      style="margin-top: 0;">
-      <span>题解/吉林大学</span>
-      <span
-        class="categories-page-list-item-total">
-        共计&nbsp;3&nbsp;篇文章
-      </span>
-    </a>
-  
-    <a 
-      href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/" 
-      class="categories-page-list-item" 
-      style="margin-top: 0;">
-      <span>记录/训练</span>
-      <span
-        class="categories-page-list-item-total">
-        共计&nbsp;13&nbsp;篇文章
-      </span>
-    </a>
-  
-    <a 
-      href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/" 
-      class="categories-page-list-item" 
-      style="margin-top: 0;">
-      <span>题解/吉林大学/数据结构课设</span>
-      <span
-        class="categories-page-list-item-total">
-        共计&nbsp;3&nbsp;篇文章
-      </span>
-    </a>
-  
-    <a 
-      href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
-      class="categories-page-list-item" 
-      style="margin-top: 0;">
-      <span>记录/训练/长沙集训</span>
-      <span
-        class="categories-page-list-item-total">
-        共计&nbsp;13&nbsp;篇文章
-      </span>
-    </a>
-  
-</div>
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

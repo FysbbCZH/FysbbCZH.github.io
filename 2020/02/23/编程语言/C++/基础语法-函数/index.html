@@ -105,6 +105,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -144,15 +175,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -255,6 +289,219 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      基础语法-函数
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2020-02-22T16:00:00.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2020-02-23</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" 
+          class="post-meta-link">
+          编程语言
+        </a>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+          class="post-meta-link">
+          C++
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>360 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/C/" 
+            class="post-meta-link">
+            C++
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h2 id="一-函数"><a class="markdownIt-Anchor" href="#一-函数"></a> 一、函数</h2>
+<h3 id="i-定义"><a class="markdownIt-Anchor" href="#i-定义"></a> Ⅰ. 定义</h3>
+<p>定义方式：</p>
+<pre class="line-numbers language-none"><code class="language-none">数据类型 函数名(形参)
+&#123;
+    函数体；
+&#125;
+
+int add(int a,int b)
+&#123;
+    return a+b;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>函数的数据类型是函数的返回值类型，若类型为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mi>o</mi><mi>i</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">void</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">o</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span></span></span></span> 则无返回值。</li>
+<li>形参可以是空的，但圆括号必须存在。</li>
+</ol>
+<h3 id="ii-函数的声明"><a class="markdownIt-Anchor" href="#ii-函数的声明"></a> Ⅱ. 函数的声明</h3>
+<p>方式：</p>
+<pre class="line-numbers language-none"><code class="language-none">数据类型 函数名(形参);
+
+int add(int a,int b);   &#x2F;&#x2F;或者int add(int,int);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>若函数在调用之前定义，则无需声明。</p>
+<h3 id="iii-函数的调用"><a class="markdownIt-Anchor" href="#iii-函数的调用"></a> Ⅲ. 函数的调用</h3>
+<h4 id="1-传值调用"><a class="markdownIt-Anchor" href="#1-传值调用"></a> ① 传值调用</h4>
+<p>方式：</p>
+<pre class="line-numbers language-none"><code class="language-none">int x, y;
+
+void swap(int a, int b)
+&#123;
+    int t;
+    t &#x3D; a, a &#x3D; b, b &#x3D; t;
+    return;
+&#125;
+
+int main()
+&#123;
+    x &#x3D; 1, y &#x3D; 2;
+    swap(x, y);
+    printf(&quot;%d %d&quot;, x, y);
+    return 0;
+&#125;
+
+输出：1 2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>传值调用时，将全局变量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 的值赋予局部变量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span></span></span></span> ，虽函数内交换了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span></span></span></span> 的值但 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 的值并未被影响。</p>
+<h4 id="2-传址调用"><a class="markdownIt-Anchor" href="#2-传址调用"></a> ② 传址调用</h4>
+<p>方式：</p>
+<pre class="line-numbers language-none"><code class="language-none">int x, y;
+
+void swap(int &amp;a, int &amp;b)
+&#123;
+    int t;
+    t &#x3D; a, a &#x3D; b, b &#x3D; t;
+    return;
+&#125;
+
+int main()
+&#123;
+    x &#x3D; 1, y &#x3D; 2;
+    swap(x, y);
+    printf(&quot;%d %d&quot;, x, y);
+    return 0;
+&#125;
+
+输出：2 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>与①中相比，函数的形参变成了指针，此时传入局部变量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span></span></span></span> 的是全局变量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 的内存地址，进行交换时直接对内存地址里的内容造成影响，相当于交换 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 的值。</p>
+
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2020/03/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">文件操作 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">基础语法-字符串 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+        appKey: '5tGe7WC9z2QaIOESWdymcByE',
+        placeholder: '有什么看法？来说说看吧......',
+        path: window.location.pathname,
+        avatar: 'identicon',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        
+        
+        
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
+
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text"> 一、函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text"> Ⅰ. 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E5%87%BD%E6%95%B0%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="toc-number">1.2.</span> <span class="toc-text"> Ⅱ. 函数的声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iii-%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text"> Ⅲ. 函数的调用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BC%A0%E5%80%BC%E8%B0%83%E7%94%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text"> ① 传值调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BC%A0%E5%9D%80%E8%B0%83%E7%94%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text"> ② 传址调用</span></a></li></ol></li></ol></li></ol>
+</div>
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -544,175 +791,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-<article class="card card-content">
-  <header>
-    <h1 class="post-title">
-      基础语法-函数
-    </h1>
-  </header>
-  <div class="post-meta post-show-meta">
-    <time datetime="2020-02-22T16:00:00.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2020-02-23</span>
-    </time>
-    
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" 
-          class="post-meta-link">
-          编程语言
-        </a>
-      
-        <a 
-          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
-          class="post-meta-link">
-          C++
-        </a>
-      
-    
-    
-      <span class="dot"></span>
-      <span>360 字</span>
-    
-  </div>
-  
-    <div 
-      class="post-meta post-show-meta" 
-      style="margin-top: -10px;">
-      <div style="display: flex; align-items: center;">
-        <i 
-          class="iconfont icon-biaoqian" 
-          style="margin-right: 2px; font-size: 1.15rem;">
-        </i>
-        
-          
-          <a 
-            href="/tags/C/" 
-            class="post-meta-link">
-            C++
-          </a>
-        
-      </div>
-    </div>
-  
-  </header>
-  <div 
-    id="section" 
-    class="post-content">
-    <h2 id="一-函数"><a class="markdownIt-Anchor" href="#一-函数"></a> 一、函数</h2>
-<h3 id="i-定义"><a class="markdownIt-Anchor" href="#i-定义"></a> Ⅰ. 定义</h3>
-<p>定义方式：</p>
-<pre class="highlight"><span class="line">数据类型 函数名(形参)</span><br><span class="line">&#123;</span><br><span class="line">    函数体；</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int add(int a,int b)</span><br><span class="line">&#123;</span><br><span class="line">    return a+b;</span><br><span class="line">&#125;</span><br></pre>
-<ol>
-<li>函数的数据类型是函数的返回值类型，若类型为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mi>o</mi><mi>i</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">void</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">o</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span></span></span></span> 则无返回值。</li>
-<li>形参可以是空的，但圆括号必须存在。</li>
-</ol>
-<h3 id="ii-函数的声明"><a class="markdownIt-Anchor" href="#ii-函数的声明"></a> Ⅱ. 函数的声明</h3>
-<p>方式：</p>
-<pre class="highlight"><span class="line">数据类型 函数名(形参);</span><br><span class="line"></span><br><span class="line">int add(int a,int b);   &#x2F;&#x2F;或者int add(int,int);</span><br></pre>
-<p>若函数在调用之前定义，则无需声明。</p>
-<h3 id="iii-函数的调用"><a class="markdownIt-Anchor" href="#iii-函数的调用"></a> Ⅲ. 函数的调用</h3>
-<h4 id="1-传值调用"><a class="markdownIt-Anchor" href="#1-传值调用"></a> ① 传值调用</h4>
-<p>方式：</p>
-<pre class="highlight"><span class="line">int x, y;</span><br><span class="line"></span><br><span class="line">void swap(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    t &#x3D; a, a &#x3D; b, b &#x3D; t;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    x &#x3D; 1, y &#x3D; 2;</span><br><span class="line">    swap(x, y);</span><br><span class="line">    printf(&quot;%d %d&quot;, x, y);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：1 2</span><br></pre>
-<p>传值调用时，将全局变量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 的值赋予局部变量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span></span></span></span> ，虽函数内交换了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span></span></span></span> 的值但 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 的值并未被影响。</p>
-<h4 id="2-传址调用"><a class="markdownIt-Anchor" href="#2-传址调用"></a> ② 传址调用</h4>
-<p>方式：</p>
-<pre class="highlight"><span class="line">int x, y;</span><br><span class="line"></span><br><span class="line">void swap(int &amp;a, int &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    t &#x3D; a, a &#x3D; b, b &#x3D; t;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    x &#x3D; 1, y &#x3D; 2;</span><br><span class="line">    swap(x, y);</span><br><span class="line">    printf(&quot;%d %d&quot;, x, y);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：2 1</span><br></pre>
-<p>与①中相比，函数的形参变成了指针，此时传入局部变量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span></span></span></span> 的是全局变量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 的内存地址，进行交换时直接对内存地址里的内容造成影响，相当于交换 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 的值。</p>
-
-  </div>
-  <div>
-    
-  </div>
-</article>
-<div class="nav">
-  
-    <div class="nav-item-prev">
-      <a 
-        href="/2020/03/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">文件操作 </div>
-          
-        </div>
-      </a>
-    </div>
-  
-  
-    <div class="nav-item-next">
-      <a 
-        href="/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
-        class="nav-link">
-        <div>
-          <div class="nav-label">下一篇</div>
-          
-            <div class="nav-title">基础语法-字符串 </div>
-          
-        </div>
-        <i class="iconfont icon-right nav-next-icon"></i>
-      </a>
-    </div>
-  
-</div>
-
-  <div 
-    class="card card-content comment-card" 
-    style="margin-top: 16px;">
-    <div class="comment-card-title">评论</div>
-    
-  <div id="vcomments"></div>
-  
-  <script>
-    loadScript("//unpkg.com/valine/dist/Valine.min.js");
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-      new Valine({
-        el: '#vcomments',
-        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
-        appKey: '5tGe7WC9z2QaIOESWdymcByE',
-        placeholder: '有什么看法？来说说看吧......',
-        path: window.location.pathname,
-        avatar: 'identicon',
-        meta: ["nick","mail","link"],
-        pageSize: '10',
-        lang: '',
-        visitor: 'false',
-        highlight: true,
-        recordIP: false,
-        
-        
-        
-        enableQQ: 'false',
-        requiredFields: [],
-      });
-    };
-  </script>
-
-  </div>
-
-<div 
-  class="card card-content toc-card" 
-  id="mobiletoc">
-  <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text"> 一、函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text"> Ⅰ. 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E5%87%BD%E6%95%B0%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="toc-number">1.2.</span> <span class="toc-text"> Ⅱ. 函数的声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iii-%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text"> Ⅲ. 函数的调用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BC%A0%E5%80%BC%E8%B0%83%E7%94%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text"> ① 传值调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BC%A0%E5%9D%80%E8%B0%83%E7%94%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text"> ② 传址调用</span></a></li></ol></li></ol></li></ol>
-</div>
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

@@ -83,6 +83,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -122,15 +153,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -233,6 +267,68 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+<div class="card card-content category-page-card">
+  <div class="categories-page-title">分类&nbsp-&nbspKaze</div>
+</div>
+<div class="archive-timeline">
+  
+  
+    
+      <div class="archive-timeline-tag"><span>2020</span></div>
+      
+    
+    <div class="archive-timeline-item">
+      <div class="archive-timeline-post">
+        <div class="card card-content">
+          <div class="archive-timeline-post-date">2020-08-03</div>
+          <div class="archive-timeline-post-content">
+            <a 
+              href="/2020/08/03/%E7%9F%A5%E8%AF%86/BLOG/Kaze/Hexo_Kaze%E4%B8%BB%E9%A2%98%E6%96%87%E6%A1%A3/" 
+              class="archive-timeline-post-item">
+              Hexo_Kaze主题使用文档
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+    <div class="archive-timeline-item">
+      <div class="archive-timeline-post">
+        <div class="card card-content">
+          <div class="archive-timeline-post-date">2020-08-03</div>
+          <div class="archive-timeline-post-content">
+            <a 
+              href="/2020/08/03/%E7%9F%A5%E8%AF%86/BLOG/Kaze/Kaze_highlight/" 
+              class="archive-timeline-post-item">
+              代码高亮
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+    <div class="archive-timeline-item">
+      <div class="archive-timeline-post">
+        <div class="card card-content">
+          <div class="archive-timeline-post-date">2020-07-27</div>
+          <div class="archive-timeline-post-content">
+            <a 
+              href="/2020/07/27/%E7%9F%A5%E8%AF%86/BLOG/Kaze/Kaze_latex/" 
+              class="archive-timeline-post-item">
+              公式渲染
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -692,68 +788,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-<div class="card card-content category-page-card">
-  <div class="categories-page-title">分类&nbsp-&nbspKaze</div>
-</div>
-<div class="archive-timeline">
-  
-  
-    
-      <div class="archive-timeline-tag"><span>2020</span></div>
-      
-    
-    <div class="archive-timeline-item">
-      <div class="archive-timeline-post">
-        <div class="card card-content">
-          <div class="archive-timeline-post-date">2020-08-03</div>
-          <div class="archive-timeline-post-content">
-            <a 
-              href="/2020/08/03/%E7%9F%A5%E8%AF%86/BLOG/Kaze/Hexo_Kaze%E4%B8%BB%E9%A2%98%E6%96%87%E6%A1%A3/" 
-              class="archive-timeline-post-item">
-              Hexo_Kaze主题使用文档
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    
-    <div class="archive-timeline-item">
-      <div class="archive-timeline-post">
-        <div class="card card-content">
-          <div class="archive-timeline-post-date">2020-08-03</div>
-          <div class="archive-timeline-post-content">
-            <a 
-              href="/2020/08/03/%E7%9F%A5%E8%AF%86/BLOG/Kaze/Kaze_highlight/" 
-              class="archive-timeline-post-item">
-              代码高亮
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    
-    <div class="archive-timeline-item">
-      <div class="archive-timeline-post">
-        <div class="card card-content">
-          <div class="archive-timeline-post-date">2020-07-27</div>
-          <div class="archive-timeline-post-content">
-            <a 
-              href="/2020/07/27/%E7%9F%A5%E8%AF%86/BLOG/Kaze/Kaze_latex/" 
-              class="archive-timeline-post-item">
-              公式渲染
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-</div>
-
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

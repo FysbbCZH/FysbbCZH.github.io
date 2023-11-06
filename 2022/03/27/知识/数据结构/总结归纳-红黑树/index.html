@@ -49,7 +49,7 @@
         content="2022-03-27">
       <meta 
         property="og:article:modified_time" 
-        content="2023-11-05">
+        content="2023-11-06">
       <meta 
         property="og:article:author" 
         content="FysbbCZH">
@@ -117,6 +117,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -156,15 +187,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -267,6 +301,565 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      红黑树学习记录
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-03-26T16:00:00.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-03-27</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E7%9F%A5%E8%AF%86/" 
+          class="post-meta-link">
+          知识
+        </a>
+      
+        <a 
+          href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" 
+          class="post-meta-link">
+          数据结构
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>2.5k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" 
+            class="post-meta-link">
+            数据结构
+          </a>
+        
+          
+            <span class="dot"></span>
+          
+          <a 
+            href="/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/" 
+            class="post-meta-link">
+            平衡树
+          </a>
+        
+          
+            <span class="dot"></span>
+          
+          <a 
+            href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" 
+            class="post-meta-link">
+            红黑树
+          </a>
+        
+          
+            <span class="dot"></span>
+          
+          <a 
+            href="/tags/C/" 
+            class="post-meta-link">
+            C++
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h3 id="红黑树性质"><a class="markdownIt-Anchor" href="#红黑树性质"></a> 红黑树性质</h3>
+<p>红黑树和基本 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>V</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">AVL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal">L</span></span></span></span> 不同，不需要频繁进行高度平衡判断，而是使用黑节点的个数，对树型进行维护。</p>
+<p>具有以下性质：</p>
+<ol>
+<li>每个节点只能是黑、红两种颜色的一种</li>
+<li>根节点一定为黑色，外节点看作黑色</li>
+<li>不能有两个相连的节点同为红色<br />
+<font color="red"></li>
+<li>从根到任何一个外节点的路径上，黑色节点个数相同<br />
+</font></li>
+</ol>
+<p>其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span> 性质最为重要，对红黑树的插入、删除更新，都是为满足其性质进行的。</p>
+<h3 id="插入"><a class="markdownIt-Anchor" href="#插入"></a> 插入</h3>
+<p>首先需要明确，新插入一个节点时，应该是什么颜色。</p>
+<p>考虑如果是黑色，那新节点插入的路径上，黑色个数增加，显然需要向上进行调整，以确保 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span> 性质的成立，这就增加了额外的操作。</p>
+<p>所以新增加的节点，颜色应为红色。</p>
+<p>为解释方便，插入部分各节点关系如下：</p>
+<center>
+<p><img src="https://s2.loli.net/2022/03/27/sawtOlEiYTgd49P.png" alt="B-0.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/27/sawtOlEiYTgd49P.png" class="lozad post-image"></p>
+</center>
+<p>其中，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 表示左子树，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 表示右子树。</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 为插入的节点，插入时，按照普通二叉查找树的方式进行插入，待新节点插入到位后，再按照以下情况进行调整。</p>
+<p>处理过程中，要特别<strong>注意对根节点的处理</strong>。</p>
+<p>这里主要讲解插入节点为左子树的情况，右子树的处理就是其镜像变换，可以通过代码简单描述。</p>
+<h4 id="10-father为黑"><a class="markdownIt-Anchor" href="#10-father为黑"></a> 1.0 father为黑</h4>
+<p>显然，插入后的树满足所有的性质，无需进行更新。</p>
+<h4 id="11-father-uncle为红"><a class="markdownIt-Anchor" href="#11-father-uncle为红"></a> 1.1 father、uncle为红</h4>
+<p>此时，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo separator="true">,</mo><mi>u</mi><mi>n</mi><mi>c</mi><mi>l</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">fa,uncle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span></span></span></span> 变为黑色，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ffa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 变为红色。但这种处理可能导致 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ffa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 出现双红冲突，所以需要继续对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ffa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 进行处理（此时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ffa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 相当于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span>）。</p>
+<center>
+<p><img src="https://s2.loli.net/2022/03/27/ohJUi6VHz49tZnk.png" alt="B-1-1.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/27/ohJUi6VHz49tZnk.png" class="lozad post-image"></p>
+</center>
+<h4 id="12-father为红uncle为黑"><a class="markdownIt-Anchor" href="#12-father为红uncle为黑"></a> 1.2 father为红，uncle为黑</h4>
+<p>需注意，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mi>n</mi><mi>c</mi><mi>l</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">uncle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span></span></span></span> 为外节点的话，颜色也是黑色。</p>
+<h5 id="121-fa-no不在同一方向"><a class="markdownIt-Anchor" href="#121-fa-no不在同一方向"></a> 1.2.1 fa、No不在同一方向</h5>
+<p>将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 左旋，变为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.2.2</mn></mrow><annotation encoding="application/x-tex">1.2.2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">.</span><span class="mord">2</span><span class="mord">.</span><span class="mord">2</span></span></span></span> 所属情况，同时待处理的节点变为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 。</p>
+<center>
+<p><img src="https://s2.loli.net/2022/03/28/pwLS4qgbtuvGXWD.png" alt="B-1-2-1.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/pwLS4qgbtuvGXWD.png" class="lozad post-image"></p>
+</center>
+<h5 id="122-fa-no在同一方向"><a class="markdownIt-Anchor" href="#122-fa-no在同一方向"></a> 1.2.2 fa、No在同一方向</h5>
+<p>将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 右旋，同时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo separator="true">,</mo><mi>f</mi><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa,ffa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 颜色互换。</p>
+<center>
+<p><img src="https://s2.loli.net/2022/03/27/rvOJ1jiwt6hdYzN.png" alt="B-1-2-2.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/27/rvOJ1jiwt6hdYzN.png" class="lozad post-image"></p>
+</center>
+<h3 id="删除"><a class="markdownIt-Anchor" href="#删除"></a> 删除</h3>
+<p>红黑树的删除较为复杂，需针对多种情况进行处理。</p>
+<p>此部分的节点关系如下：</p>
+<center>
+<p><img src="https://s2.loli.net/2022/03/28/UHAopJG1WqaOwCk.png" alt="B-2.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/UHAopJG1WqaOwCk.png" class="lozad post-image"></p>
+</center>
+<p>其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 为待删除的节点。</p>
+<h4 id="20-no有两个子树"><a class="markdownIt-Anchor" href="#20-no有两个子树"></a> 2.0 No有两个子树</h4>
+<p>处理方式同二叉查找树，先将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 和后继 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span> 交换，然后再进行删除。之后情况便转换为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2.1</mn><mtext>、</mtext><mn>2.2</mn><mtext>、</mtext><mn>2.3</mn></mrow><annotation encoding="application/x-tex">2.1、2.2、2.3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">1</span><span class="mord cjk_fallback">、</span><span class="mord">2</span><span class="mord">.</span><span class="mord">2</span><span class="mord cjk_fallback">、</span><span class="mord">2</span><span class="mord">.</span><span class="mord">3</span></span></span></span> 其中之一。</p>
+<center>
+<p><img src="https://s2.loli.net/2022/03/28/VYU31ziHI76qol5.png" alt="B-2-0.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/VYU31ziHI76qol5.png" class="lozad post-image"></p>
+</center>
+<h4 id="21-no为红色叶节点"><a class="markdownIt-Anchor" href="#21-no为红色叶节点"></a> 2.1 No为红色叶节点</h4>
+<p>直接将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 删去即可，并不会影响树的性质，此处 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 为白色，表示其颜色无需考虑（之后同理）。</p>
+<center>
+<p><img src="https://s2.loli.net/2022/03/28/hG8g75pjRwkcqbE.png" alt="B-2-1.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/hG8g75pjRwkcqbE.png" class="lozad post-image"></p>
+</center>
+<h4 id="22-no为黑色且只有一个子树"><a class="markdownIt-Anchor" href="#22-no为黑色且只有一个子树"></a> 2.2 No为黑色，且只有一个子树</h4>
+<p>此时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 唯一的一个子节点一定是红色，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 删除后，用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 连接到其子节点，并将子节点颜色改为黑色。</p>
+<center>
+<p><img src="https://s2.loli.net/2022/03/28/jWRTAop6ZSkMbnD.png" alt="B-2-2.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/jWRTAop6ZSkMbnD.png" class="lozad post-image"></p>
+</center>
+<h4 id="23-no为黑色叶节点"><a class="markdownIt-Anchor" href="#23-no为黑色叶节点"></a> 2.3 No为黑色叶节点</h4>
+<h5 id="231-br为红色"><a class="markdownIt-Anchor" href="#231-br为红色"></a> 2.3.1 br为红色</h5>
+<p>将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">br</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 左旋，同时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>r</mi><mo separator="true">,</mo><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">br,fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 颜色互换。之后继续在调整后的树上，对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 进行调整。</p>
+<center>
+<p><img src="https://s2.loli.net/2022/03/28/ScyEAW6wmZfkNKG.png" alt="B-2-3-1.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/ScyEAW6wmZfkNKG.png" class="lozad post-image"></p>
+</center>
+<h5 id="232-br为黑远侄子为黑近侄子为红"><a class="markdownIt-Anchor" href="#232-br为黑远侄子为黑近侄子为红"></a> 2.3.2 br为黑，远侄子为黑，近侄子为红</h5>
+<p>此时远侄子一定是外节点，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>l</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">bls</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">s</span></span></span></span> 右旋，同时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>r</mi><mo separator="true">,</mo><mi>b</mi><mi>l</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">br,bls</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">s</span></span></span></span> 颜色互换，情况变为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2.3.3</mn></mrow><annotation encoding="application/x-tex">2.3.3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">3</span><span class="mord">.</span><span class="mord">3</span></span></span></span> ，之后继续在调整后的树上，对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 进行调整。</p>
+<center>
+<p><img src="https://s2.loli.net/2022/03/28/tsxzCXmMjrFO7Kq.png" alt="B-2-3-3.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/tsxzCXmMjrFO7Kq.png" class="lozad post-image"></p>
+</center>
+<h5 id="233-br为黑远侄子为红"><a class="markdownIt-Anchor" href="#233-br为黑远侄子为红"></a> 2.3.3 br为黑，远侄子为红</h5>
+<p>将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">br</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 左旋，同时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>r</mi><mo separator="true">,</mo><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">br,fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 颜色互换，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>r</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">brs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">s</span></span></span></span> 变为黑色，删除 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 后，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 左儿子为空。</p>
+<center>
+<p><img src="https://s2.loli.net/2022/03/28/w6n5hkdgY2aXfHS.png" alt="B-2-3-2.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/w6n5hkdgY2aXfHS.png" class="lozad post-image"></p>
+</center>
+<h5 id="234-fa为红br为黑叶子"><a class="markdownIt-Anchor" href="#234-fa为红br为黑叶子"></a> 2.3.4 fa为红，br为黑叶子</h5>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>l</mi><mi>s</mi><mo separator="true">,</mo><mi>n</mi><mi>r</mi><mi>s</mi><mo separator="true">,</mo><mi>b</mi><mi>l</mi><mi>s</mi><mo separator="true">,</mo><mi>b</mi><mi>r</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">nls,nrs,bls,brs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">s</span></span></span></span> 此时全为外节点，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 删除，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 左儿子为空，同时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">fa,br</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 颜色互换。</p>
+<center>
+<p><img src="https://s2.loli.net/2022/03/28/7wrZ93k5MYKOnV4.png" alt="B-2-4.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/7wrZ93k5MYKOnV4.png" class="lozad post-image"></p>
+</center>
+<h5 id="235-fa为黑br为黑叶子"><a class="markdownIt-Anchor" href="#235-fa为黑br为黑叶子"></a> 2.3.5 fa为黑，br为黑叶子</h5>
+<p>与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2.3.4</mn></mrow><annotation encoding="application/x-tex">2.3.4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">3</span><span class="mord">.</span><span class="mord">4</span></span></span></span> 处理方式相同，不过处理完 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 后，要将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 当成新的待处理节点，继续向上更新。</p>
+<h3 id="部分代码"><a class="markdownIt-Anchor" href="#部分代码"></a> 部分代码</h3>
+<h4 id="节点结构体"><a class="markdownIt-Anchor" href="#节点结构体"></a> 节点结构体</h4>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">struct</span> <span class="token class-name">Node</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">/* 存放数据 */</span>
+    <span class="token keyword">int</span> data<span class="token punctuation">;</span>
+    <span class="token comment">/* 颜色，0红，1黑 */</span>
+    <span class="token keyword">int</span> color<span class="token punctuation">;</span>
+    <span class="token comment">/* 0左，1右，之后涉及到方向都这么规定 */</span>
+    Node <span class="token operator">*</span>next<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">/* 父亲 */</span>
+    Node <span class="token operator">*</span>father<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里将左右子节点的指针放到一个数组中，而不是分别开两个变量，是为了简化后续操作做好准备</p>
+<h4 id="旋转"><a class="markdownIt-Anchor" href="#旋转"></a> 旋转</h4>
+<p>显然，旋转分为左旋和右旋，而不同的旋转，需要操作不同的指针。</p>
+<p>但观察旋转方式可以发现，旋转时各指针操作的相对位置是一样的，比如都是保留和自己同方向的子节点，而反方向的子节点接到父节点的同方向。</p>
+<center>
+<p><img src="https://s2.loli.net/2022/03/28/aZskHiIfWRKSmvu.png" alt="B-3-1.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/aZskHiIfWRKSmvu.png" class="lozad post-image"><br />
+注意观察，左右子节点的变化规律</p>
+</center>
+<p>因此，借助结构体的定义方式，我们可以通过一个函数，解决所有旋转操作。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/* 将No按照direction反方向旋转 */</span>
+<span class="token comment">/* 如No右旋时，No为左子树，direction=0 */</span>
+<span class="token keyword">void</span> <span class="token function">rotate</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>No<span class="token punctuation">,</span> <span class="token keyword">int</span> direction<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">/* 获取No的父亲和祖先 */</span>
+    Node <span class="token operator">*</span>fa <span class="token operator">=</span> No<span class="token operator">-></span>father<span class="token punctuation">,</span> <span class="token operator">*</span>ffa <span class="token operator">=</span> fa<span class="token operator">-></span>father<span class="token punctuation">;</span>
+    <span class="token comment">/* 对父亲进行更改 */</span>
+    No<span class="token operator">-></span>father <span class="token operator">=</span> fa<span class="token operator">-></span>father<span class="token punctuation">;</span>
+    fa<span class="token operator">-></span>father <span class="token operator">=</span> No<span class="token punctuation">;</span>
+    <span class="token comment">/* 父亲同方向连接No反方向叶节点 */</span>
+    fa<span class="token operator">-></span>next<span class="token punctuation">[</span>direction<span class="token punctuation">]</span> <span class="token operator">=</span> No<span class="token operator">-></span>next<span class="token punctuation">[</span>direction <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">/* 注意子树是否存在 */</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>No<span class="token operator">-></span>next<span class="token punctuation">[</span>direction <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        No<span class="token operator">-></span>next<span class="token punctuation">[</span>direction <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-></span>father <span class="token operator">=</span> fa<span class="token punctuation">;</span>
+    <span class="token comment">/* 父亲变为反方向叶节点 */</span>
+    No<span class="token operator">-></span>next<span class="token punctuation">[</span>direction <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> fa<span class="token punctuation">;</span>
+    <span class="token comment">/* 根节点特判 */</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>ffa<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        root <span class="token operator">=</span> No<span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">/* 处理祖先 */</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>ffa<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> fa<span class="token punctuation">)</span>
+        ffa<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> No<span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        ffa<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> No<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="查找"><a class="markdownIt-Anchor" href="#查找"></a> 查找</h4>
+<p>想要完成插入或者删除，则必须先有查找。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/* 查找值域为x的节点，找到返回节点，否则返回最后查找失败的叶节点 */</span>
+Node <span class="token operator">*</span><span class="token function">findNode</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">/* 树为空 */</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>root<span class="token punctuation">)</span>
+        <span class="token comment">/* 返回无效值 */</span>
+        <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token comment">/* 从根开始 */</span>
+    Node <span class="token operator">*</span>No <span class="token operator">=</span> root<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token comment">/* 去右子树 */</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">></span> No<span class="token operator">-></span>data<span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>No<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                No <span class="token operator">=</span> No<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                <span class="token keyword">return</span> No<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">/* 去左子树 */</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&lt;</span> No<span class="token operator">-></span>data<span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>No<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                No <span class="token operator">=</span> No<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                <span class="token keyword">return</span> No<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">/* 找到x */</span>
+        <span class="token keyword">else</span>
+            <span class="token keyword">return</span> No<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="插入-2"><a class="markdownIt-Anchor" href="#插入-2"></a> 插入</h4>
+<p>插入时，需要先进行查找，如果值存在，则无需插入，否则，在失败叶节点下插入新节点，并对新节点更新。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/* 对No进行更新 */</span>
+<span class="token keyword">void</span> <span class="token function">insertUpdate</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>No<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token comment">/* getDirection确定No的方向 */</span>
+        <span class="token keyword">int</span> direction <span class="token operator">=</span> <span class="token function">getDirection</span><span class="token punctuation">(</span>No<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">/* 处理到根节点 */</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>direction <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token comment">/* root_color is black */</span>
+            No<span class="token operator">-></span>color <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">/* 意义同之前的介绍 */</span>
+        Node <span class="token operator">*</span>fa<span class="token punctuation">,</span> <span class="token operator">*</span>ffa<span class="token punctuation">,</span> <span class="token operator">*</span>uncle<span class="token punctuation">;</span>
+        fa <span class="token operator">=</span> No<span class="token operator">-></span>father<span class="token punctuation">;</span>
+        <span class="token comment">/* fa黑色，无需处理 */</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>fa<span class="token operator">-></span>color<span class="token punctuation">)</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        ffa <span class="token operator">=</span> fa<span class="token operator">-></span>father<span class="token punctuation">;</span>
+        <span class="token comment">/* uncle为fa的反向节点 */</span>
+        uncle <span class="token operator">=</span> ffa<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token function">getDirection</span><span class="token punctuation">(</span>fa<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">/* 1.1情况 */</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>uncle <span class="token operator">&amp;&amp;</span> uncle<span class="token operator">-></span>color <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token comment">/* changeColor改变节点颜色 */</span>
+            fa<span class="token operator">-></span><span class="token function">changeColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            ffa<span class="token operator">-></span><span class="token function">changeColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            uncle<span class="token operator">-></span><span class="token function">changeColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            No <span class="token operator">=</span> ffa<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">/* 1.2情况 */</span>
+        <span class="token keyword">else</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token comment">/* 1.2.1情况 */</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>ffa<span class="token operator">-></span>next<span class="token punctuation">[</span>direction<span class="token punctuation">]</span> <span class="token operator">!=</span> fa<span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token comment">/* 旋转No */</span>
+                <span class="token function">rotate</span><span class="token punctuation">(</span>No<span class="token punctuation">,</span> direction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                No <span class="token operator">=</span> fa<span class="token punctuation">;</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token comment">/* 1.2.2情况 */</span>
+            <span class="token function">rotate</span><span class="token punctuation">(</span>fa<span class="token punctuation">,</span> direction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            fa<span class="token operator">-></span><span class="token function">changeColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            ffa<span class="token operator">-></span><span class="token function">changeColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/* 插入x */</span>
+<span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">/* 树为空，则直接创建根节点 */</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>root<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Node</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">/* 查找x */</span>
+    Node <span class="token operator">*</span>No <span class="token operator">=</span> <span class="token function">findNode</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/* 建立右子树 */</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">></span> No<span class="token operator">-></span>data<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        No<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Node</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> No<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">/* 对新节点进行更新 */</span>
+        <span class="token function">insertUpdate</span><span class="token punctuation">(</span>No<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">/* 建立左子树 */</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&lt;</span> No<span class="token operator">-></span>data<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        No<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Node</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> No<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">insertUpdate</span><span class="token punctuation">(</span>No<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="删除-2"><a class="markdownIt-Anchor" href="#删除-2"></a> 删除</h4>
+<p>删除操作较为复杂，尤其是删除黑色叶节点，需要注意顺序，一种一种情况去处理。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/* 针对2.0情况，寻找No的后继 */</span>
+Node <span class="token operator">*</span><span class="token function">removeChange</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>No<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">/* Ne是要寻找的后继，初始为No右子树 */</span>
+    Node <span class="token operator">*</span>Ne <span class="token operator">=</span> No<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">/* 不断向下，直到Ne没有左子树 */</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>Ne<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        Ne <span class="token operator">=</span> Ne<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">/* 交换No，Ne */</span>
+    No<span class="token operator">-></span>data <span class="token operator">=</span> Ne<span class="token operator">-></span>data<span class="token punctuation">;</span>
+    <span class="token comment">/* 将后继返回 */</span>
+    <span class="token keyword">return</span> Ne<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/* 针对2.3情况，黑叶子删除后的更新 */</span>
+<span class="token keyword">void</span> <span class="token function">removeblackNode</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>No<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token comment">/* 确定No方向 */</span>
+        <span class="token keyword">int</span> direction <span class="token operator">=</span> <span class="token function">getDirection</span><span class="token punctuation">(</span>No<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">/* 处理到根节点为止 */</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>direction <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            No<span class="token operator">-></span>color <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">/* fa，brother(br)意义同介绍 */</span>
+        Node <span class="token operator">*</span>fa <span class="token operator">=</span> No<span class="token operator">-></span>father<span class="token punctuation">;</span>
+        <span class="token comment">/* br是No反向节点 */</span>
+        Node <span class="token operator">*</span>brother <span class="token operator">=</span> fa<span class="token operator">-></span>next<span class="token punctuation">[</span>direction <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">/* 2.3.1情况 */</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>brother<span class="token operator">-></span>color <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token function">rotate</span><span class="token punctuation">(</span>brother<span class="token punctuation">,</span> direction <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">swap</span><span class="token punctuation">(</span>fa<span class="token operator">-></span>color<span class="token punctuation">,</span> brother<span class="token operator">-></span>color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">/* br为黑色 */</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>brother<span class="token operator">-></span>color <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token comment">/* 2.3.3情况 */</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>brother<span class="token operator">-></span>next<span class="token punctuation">[</span>direction <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> brother<span class="token operator">-></span>next<span class="token punctuation">[</span>direction <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-></span>color <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token function">rotate</span><span class="token punctuation">(</span>brother<span class="token punctuation">,</span> direction <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">swap</span><span class="token punctuation">(</span>fa<span class="token operator">-></span>color<span class="token punctuation">,</span> brother<span class="token operator">-></span>color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                brother<span class="token operator">-></span>next<span class="token punctuation">[</span>direction <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-></span>color <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token comment">/* 2.3.2情况 */</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>brother<span class="token operator">-></span>next<span class="token punctuation">[</span>direction<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> brother<span class="token operator">-></span>next<span class="token punctuation">[</span>direction<span class="token punctuation">]</span><span class="token operator">-></span>color <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token function">swap</span><span class="token punctuation">(</span>brother<span class="token operator">-></span>color<span class="token punctuation">,</span> brother<span class="token operator">-></span>next<span class="token punctuation">[</span>direction<span class="token punctuation">]</span><span class="token operator">-></span>color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">rotate</span><span class="token punctuation">(</span>brother<span class="token operator">-></span>next<span class="token punctuation">[</span>direction<span class="token punctuation">]</span><span class="token punctuation">,</span> direction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token comment">/* br是黑叶子 */</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token comment">/* 2.3.4情况 */</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>fa<span class="token operator">-></span>color <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token punctuation">&#123;</span>
+                    fa<span class="token operator">-></span><span class="token function">changeColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    fa<span class="token operator">-></span>next<span class="token punctuation">[</span>direction <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-></span><span class="token function">changeColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">return</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+                <span class="token comment">/* 2.3.5情况 */</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">&#123;</span>
+                    fa<span class="token operator">-></span>next<span class="token punctuation">[</span>direction <span class="token operator">^</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-></span><span class="token function">changeColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token comment">/* 继续处理fa */</span>
+                    No <span class="token operator">=</span> fa<span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/* No删除后的更新 */</span>
+<span class="token keyword">void</span> <span class="token function">removeUpdate</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>No<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token comment">/* 确定No方向 */</span>
+        <span class="token keyword">int</span> direction <span class="token operator">=</span> <span class="token function">getDirection</span><span class="token punctuation">(</span>No<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Node <span class="token operator">*</span>fa <span class="token operator">=</span> No<span class="token operator">-></span>father<span class="token punctuation">;</span>
+        <span class="token comment">/* No为叶节点 */</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>No<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">||</span> No<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token comment">/* 根节点特判 */</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>No <span class="token operator">==</span> root<span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
+                root <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+                <span class="token comment">/* 处理结束 */</span>
+                <span class="token keyword">goto</span> removeUpdateEnd<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token comment">/* 2.1情况 */</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>No<span class="token operator">-></span>color <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
+                fa<span class="token operator">-></span>next<span class="token punctuation">[</span>direction<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+                <span class="token keyword">goto</span> removeUpdateEnd<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token comment">/* 2.3情况 */</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token comment">/* 针对5种情况处理 */</span>
+                <span class="token function">removeblackNode</span><span class="token punctuation">(</span>No<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                No<span class="token operator">-></span>father<span class="token operator">-></span>next<span class="token punctuation">[</span>direction<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+                <span class="token keyword">goto</span> removeUpdateEnd<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">/* 2.0情况，No两个子树 */</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>No<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> No<span class="token operator">-></span>next<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            No <span class="token operator">=</span> <span class="token function">removeChange</span><span class="token punctuation">(</span>No<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">/* 2.2情况，No只有一个子树 */</span>
+        <span class="token keyword">else</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>No<span class="token operator">-></span>next<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token punctuation">&#123;</span>
+                    <span class="token comment">/* 注意根节点的特殊处理 */</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>fa<span class="token punctuation">)</span>
+                        fa<span class="token operator">-></span>next<span class="token punctuation">[</span>direction<span class="token punctuation">]</span> <span class="token operator">=</span> No<span class="token operator">-></span>next<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>No <span class="token operator">==</span> root<span class="token punctuation">)</span>
+                        root <span class="token operator">=</span> No<span class="token operator">-></span>next<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    No<span class="token operator">-></span>next<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-></span>father <span class="token operator">=</span> fa<span class="token punctuation">;</span>
+                    No<span class="token operator">-></span>next<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-></span>color <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                    <span class="token keyword">goto</span> removeUpdateEnd<span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+removeUpdateEnd<span class="token operator">:</span>
+    <span class="token comment">/* 更新完成后再删除No */</span>
+    <span class="token keyword">delete</span> No<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/* 删除值为x的节点 */</span>
+<span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">/* 查找x */</span>
+    Node <span class="token operator">*</span>No <span class="token operator">=</span> <span class="token function">findNode</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/* 树为空 || 值为x的节点不存在 , 无需处理 */</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>No <span class="token operator">||</span> No<span class="token operator">-></span>data <span class="token operator">!=</span> x<span class="token punctuation">)</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token comment">/* 进行删除和更新 */</span>
+    <span class="token function">removeUpdate</span><span class="token punctuation">(</span>No<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h4>
+<p>红黑树的代码算是平衡树中比较复杂的，不过虽然看起来代码冗长和复杂，其实就是对之前分析的几种情况的模拟，以上红黑树主要实现部分的代码，删去注释和多余的括号空行后，大概180多行，对于一个复杂的平衡树代码来说，已经算是很正常的了。大部分数据结构的原理都比较简单，代码实现才是难点。</p>
+
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/03/11/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220311%E4%B8%8A%E6%9C%BA%E9%A2%98/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">学校数据结构2022-03-11上机题 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+        appKey: '5tGe7WC9z2QaIOESWdymcByE',
+        placeholder: '有什么看法？来说说看吧......',
+        path: window.location.pathname,
+        avatar: 'identicon',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        
+        
+        
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
+
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91%E6%80%A7%E8%B4%A8"><span class="toc-number">1.</span> <span class="toc-text"> 红黑树性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5"><span class="toc-number">2.</span> <span class="toc-text"> 插入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#10-father%E4%B8%BA%E9%BB%91"><span class="toc-number">2.1.</span> <span class="toc-text"> 1.0 father为黑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-father-uncle%E4%B8%BA%E7%BA%A2"><span class="toc-number">2.2.</span> <span class="toc-text"> 1.1 father、uncle为红</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-father%E4%B8%BA%E7%BA%A2uncle%E4%B8%BA%E9%BB%91"><span class="toc-number">2.3.</span> <span class="toc-text"> 1.2 father为红，uncle为黑</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#121-fa-no%E4%B8%8D%E5%9C%A8%E5%90%8C%E4%B8%80%E6%96%B9%E5%90%91"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 1.2.1 fa、No不在同一方向</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#122-fa-no%E5%9C%A8%E5%90%8C%E4%B8%80%E6%96%B9%E5%90%91"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 1.2.2 fa、No在同一方向</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4"><span class="toc-number">3.</span> <span class="toc-text"> 删除</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#20-no%E6%9C%89%E4%B8%A4%E4%B8%AA%E5%AD%90%E6%A0%91"><span class="toc-number">3.1.</span> <span class="toc-text"> 2.0 No有两个子树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21-no%E4%B8%BA%E7%BA%A2%E8%89%B2%E5%8F%B6%E8%8A%82%E7%82%B9"><span class="toc-number">3.2.</span> <span class="toc-text"> 2.1 No为红色叶节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-no%E4%B8%BA%E9%BB%91%E8%89%B2%E4%B8%94%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AA%E5%AD%90%E6%A0%91"><span class="toc-number">3.3.</span> <span class="toc-text"> 2.2 No为黑色，且只有一个子树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-no%E4%B8%BA%E9%BB%91%E8%89%B2%E5%8F%B6%E8%8A%82%E7%82%B9"><span class="toc-number">3.4.</span> <span class="toc-text"> 2.3 No为黑色叶节点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#231-br%E4%B8%BA%E7%BA%A2%E8%89%B2"><span class="toc-number">3.4.1.</span> <span class="toc-text"> 2.3.1 br为红色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#232-br%E4%B8%BA%E9%BB%91%E8%BF%9C%E4%BE%84%E5%AD%90%E4%B8%BA%E9%BB%91%E8%BF%91%E4%BE%84%E5%AD%90%E4%B8%BA%E7%BA%A2"><span class="toc-number">3.4.2.</span> <span class="toc-text"> 2.3.2 br为黑，远侄子为黑，近侄子为红</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#233-br%E4%B8%BA%E9%BB%91%E8%BF%9C%E4%BE%84%E5%AD%90%E4%B8%BA%E7%BA%A2"><span class="toc-number">3.4.3.</span> <span class="toc-text"> 2.3.3 br为黑，远侄子为红</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#234-fa%E4%B8%BA%E7%BA%A2br%E4%B8%BA%E9%BB%91%E5%8F%B6%E5%AD%90"><span class="toc-number">3.4.4.</span> <span class="toc-text"> 2.3.4 fa为红，br为黑叶子</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#235-fa%E4%B8%BA%E9%BB%91br%E4%B8%BA%E9%BB%91%E5%8F%B6%E5%AD%90"><span class="toc-number">3.4.5.</span> <span class="toc-text"> 2.3.5 fa为黑，br为黑叶子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text"> 部分代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">4.1.</span> <span class="toc-text"> 节点结构体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%8B%E8%BD%AC"><span class="toc-number">4.2.</span> <span class="toc-text"> 旋转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-number">4.3.</span> <span class="toc-text"> 查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5-2"><span class="toc-number">4.4.</span> <span class="toc-text"> 插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4-2"><span class="toc-number">4.5.</span> <span class="toc-text"> 删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.6.</span> <span class="toc-text"> 总结</span></a></li></ol></li></ol>
+</div>
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -556,279 +1149,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-<article class="card card-content">
-  <header>
-    <h1 class="post-title">
-      红黑树学习记录
-    </h1>
-  </header>
-  <div class="post-meta post-show-meta">
-    <time datetime="2022-03-26T16:00:00.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2022-03-27</span>
-    </time>
-    
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E7%9F%A5%E8%AF%86/" 
-          class="post-meta-link">
-          知识
-        </a>
-      
-        <a 
-          href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" 
-          class="post-meta-link">
-          数据结构
-        </a>
-      
-    
-    
-      <span class="dot"></span>
-      <span>2.6k 字</span>
-    
-  </div>
-  
-    <div 
-      class="post-meta post-show-meta" 
-      style="margin-top: -10px;">
-      <div style="display: flex; align-items: center;">
-        <i 
-          class="iconfont icon-biaoqian" 
-          style="margin-right: 2px; font-size: 1.15rem;">
-        </i>
-        
-          
-          <a 
-            href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" 
-            class="post-meta-link">
-            数据结构
-          </a>
-        
-          
-            <span class="dot"></span>
-          
-          <a 
-            href="/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/" 
-            class="post-meta-link">
-            平衡树
-          </a>
-        
-          
-            <span class="dot"></span>
-          
-          <a 
-            href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" 
-            class="post-meta-link">
-            红黑树
-          </a>
-        
-          
-            <span class="dot"></span>
-          
-          <a 
-            href="/tags/C/" 
-            class="post-meta-link">
-            C++
-          </a>
-        
-      </div>
-    </div>
-  
-  </header>
-  <div 
-    id="section" 
-    class="post-content">
-    <h3 id="红黑树性质"><a class="markdownIt-Anchor" href="#红黑树性质"></a> 红黑树性质</h3>
-<p>红黑树和基本 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>V</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">AVL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal">L</span></span></span></span> 不同，不需要频繁进行高度平衡判断，而是使用黑节点的个数，对树型进行维护。</p>
-<p>具有以下性质：</p>
-<ol>
-<li>每个节点只能是黑、红两种颜色的一种</li>
-<li>根节点一定为黑色，外节点看作黑色</li>
-<li>不能有两个相连的节点同为红色<br />
-<font color="red"></li>
-<li>从根到任何一个外节点的路径上，黑色节点个数相同<br />
-</font></li>
-</ol>
-<p>其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span> 性质最为重要，对红黑树的插入、删除更新，都是为满足其性质进行的。</p>
-<h3 id="插入"><a class="markdownIt-Anchor" href="#插入"></a> 插入</h3>
-<p>首先需要明确，新插入一个节点时，应该是什么颜色。</p>
-<p>考虑如果是黑色，那新节点插入的路径上，黑色个数增加，显然需要向上进行调整，以确保 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span> 性质的成立，这就增加了额外的操作。</p>
-<p>所以新增加的节点，颜色应为红色。</p>
-<p>为解释方便，插入部分各节点关系如下：</p>
-<center>
-<p><img src="https://s2.loli.net/2022/03/27/sawtOlEiYTgd49P.png" alt="B-0.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/27/sawtOlEiYTgd49P.png" class="lozad post-image"></p>
-</center>
-<p>其中，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 表示左子树，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 表示右子树。</p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 为插入的节点，插入时，按照普通二叉查找树的方式进行插入，待新节点插入到位后，再按照以下情况进行调整。</p>
-<p>处理过程中，要特别<strong>注意对根节点的处理</strong>。</p>
-<p>这里主要讲解插入节点为左子树的情况，右子树的处理就是其镜像变换，可以通过代码简单描述。</p>
-<h4 id="10-father为黑"><a class="markdownIt-Anchor" href="#10-father为黑"></a> 1.0 father为黑</h4>
-<p>显然，插入后的树满足所有的性质，无需进行更新。</p>
-<h4 id="11-father-uncle为红"><a class="markdownIt-Anchor" href="#11-father-uncle为红"></a> 1.1 father、uncle为红</h4>
-<p>此时，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo separator="true">,</mo><mi>u</mi><mi>n</mi><mi>c</mi><mi>l</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">fa,uncle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span></span></span></span> 变为黑色，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ffa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 变为红色。但这种处理可能导致 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ffa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 出现双红冲突，所以需要继续对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ffa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 进行处理（此时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ffa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 相当于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span>）。</p>
-<center>
-<p><img src="https://s2.loli.net/2022/03/27/ohJUi6VHz49tZnk.png" alt="B-1-1.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/27/ohJUi6VHz49tZnk.png" class="lozad post-image"></p>
-</center>
-<h4 id="12-father为红uncle为黑"><a class="markdownIt-Anchor" href="#12-father为红uncle为黑"></a> 1.2 father为红，uncle为黑</h4>
-<p>需注意，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mi>n</mi><mi>c</mi><mi>l</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">uncle</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span></span></span></span> 为外节点的话，颜色也是黑色。</p>
-<h5 id="121-fa-no不在同一方向"><a class="markdownIt-Anchor" href="#121-fa-no不在同一方向"></a> 1.2.1 fa、No不在同一方向</h5>
-<p>将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 左旋，变为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.2.2</mn></mrow><annotation encoding="application/x-tex">1.2.2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">.</span><span class="mord">2</span><span class="mord">.</span><span class="mord">2</span></span></span></span> 所属情况，同时待处理的节点变为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 。</p>
-<center>
-<p><img src="https://s2.loli.net/2022/03/28/pwLS4qgbtuvGXWD.png" alt="B-1-2-1.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/pwLS4qgbtuvGXWD.png" class="lozad post-image"></p>
-</center>
-<h5 id="122-fa-no在同一方向"><a class="markdownIt-Anchor" href="#122-fa-no在同一方向"></a> 1.2.2 fa、No在同一方向</h5>
-<p>将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 右旋，同时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo separator="true">,</mo><mi>f</mi><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa,ffa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 颜色互换。</p>
-<center>
-<p><img src="https://s2.loli.net/2022/03/27/rvOJ1jiwt6hdYzN.png" alt="B-1-2-2.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/27/rvOJ1jiwt6hdYzN.png" class="lozad post-image"></p>
-</center>
-<h3 id="删除"><a class="markdownIt-Anchor" href="#删除"></a> 删除</h3>
-<p>红黑树的删除较为复杂，需针对多种情况进行处理。</p>
-<p>此部分的节点关系如下：</p>
-<center>
-<p><img src="https://s2.loli.net/2022/03/28/UHAopJG1WqaOwCk.png" alt="B-2.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/UHAopJG1WqaOwCk.png" class="lozad post-image"></p>
-</center>
-<p>其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 为待删除的节点。</p>
-<h4 id="20-no有两个子树"><a class="markdownIt-Anchor" href="#20-no有两个子树"></a> 2.0 No有两个子树</h4>
-<p>处理方式同二叉查找树，先将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 和后继 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span> 交换，然后再进行删除。之后情况便转换为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2.1</mn><mtext>、</mtext><mn>2.2</mn><mtext>、</mtext><mn>2.3</mn></mrow><annotation encoding="application/x-tex">2.1、2.2、2.3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">1</span><span class="mord cjk_fallback">、</span><span class="mord">2</span><span class="mord">.</span><span class="mord">2</span><span class="mord cjk_fallback">、</span><span class="mord">2</span><span class="mord">.</span><span class="mord">3</span></span></span></span> 其中之一。</p>
-<center>
-<p><img src="https://s2.loli.net/2022/03/28/VYU31ziHI76qol5.png" alt="B-2-0.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/VYU31ziHI76qol5.png" class="lozad post-image"></p>
-</center>
-<h4 id="21-no为红色叶节点"><a class="markdownIt-Anchor" href="#21-no为红色叶节点"></a> 2.1 No为红色叶节点</h4>
-<p>直接将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 删去即可，并不会影响树的性质，此处 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 为白色，表示其颜色无需考虑（之后同理）。</p>
-<center>
-<p><img src="https://s2.loli.net/2022/03/28/hG8g75pjRwkcqbE.png" alt="B-2-1.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/hG8g75pjRwkcqbE.png" class="lozad post-image"></p>
-</center>
-<h4 id="22-no为黑色且只有一个子树"><a class="markdownIt-Anchor" href="#22-no为黑色且只有一个子树"></a> 2.2 No为黑色，且只有一个子树</h4>
-<p>此时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 唯一的一个子节点一定是红色，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 删除后，用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 连接到其子节点，并将子节点颜色改为黑色。</p>
-<center>
-<p><img src="https://s2.loli.net/2022/03/28/jWRTAop6ZSkMbnD.png" alt="B-2-2.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/jWRTAop6ZSkMbnD.png" class="lozad post-image"></p>
-</center>
-<h4 id="23-no为黑色叶节点"><a class="markdownIt-Anchor" href="#23-no为黑色叶节点"></a> 2.3 No为黑色叶节点</h4>
-<h5 id="231-br为红色"><a class="markdownIt-Anchor" href="#231-br为红色"></a> 2.3.1 br为红色</h5>
-<p>将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">br</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 左旋，同时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>r</mi><mo separator="true">,</mo><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">br,fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 颜色互换。之后继续在调整后的树上，对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 进行调整。</p>
-<center>
-<p><img src="https://s2.loli.net/2022/03/28/ScyEAW6wmZfkNKG.png" alt="B-2-3-1.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/ScyEAW6wmZfkNKG.png" class="lozad post-image"></p>
-</center>
-<h5 id="232-br为黑远侄子为黑近侄子为红"><a class="markdownIt-Anchor" href="#232-br为黑远侄子为黑近侄子为红"></a> 2.3.2 br为黑，远侄子为黑，近侄子为红</h5>
-<p>此时远侄子一定是外节点，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>l</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">bls</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">s</span></span></span></span> 右旋，同时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>r</mi><mo separator="true">,</mo><mi>b</mi><mi>l</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">br,bls</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">s</span></span></span></span> 颜色互换，情况变为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2.3.3</mn></mrow><annotation encoding="application/x-tex">2.3.3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">3</span><span class="mord">.</span><span class="mord">3</span></span></span></span> ，之后继续在调整后的树上，对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 进行调整。</p>
-<center>
-<p><img src="https://s2.loli.net/2022/03/28/tsxzCXmMjrFO7Kq.png" alt="B-2-3-3.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/tsxzCXmMjrFO7Kq.png" class="lozad post-image"></p>
-</center>
-<h5 id="233-br为黑远侄子为红"><a class="markdownIt-Anchor" href="#233-br为黑远侄子为红"></a> 2.3.3 br为黑，远侄子为红</h5>
-<p>将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">br</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 左旋，同时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>r</mi><mo separator="true">,</mo><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">br,fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 颜色互换，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>r</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">brs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">s</span></span></span></span> 变为黑色，删除 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 后，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 左儿子为空。</p>
-<center>
-<p><img src="https://s2.loli.net/2022/03/28/w6n5hkdgY2aXfHS.png" alt="B-2-3-2.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/w6n5hkdgY2aXfHS.png" class="lozad post-image"></p>
-</center>
-<h5 id="234-fa为红br为黑叶子"><a class="markdownIt-Anchor" href="#234-fa为红br为黑叶子"></a> 2.3.4 fa为红，br为黑叶子</h5>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>l</mi><mi>s</mi><mo separator="true">,</mo><mi>n</mi><mi>r</mi><mi>s</mi><mo separator="true">,</mo><mi>b</mi><mi>l</mi><mi>s</mi><mo separator="true">,</mo><mi>b</mi><mi>r</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">nls,nrs,bls,brs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">s</span></span></span></span> 此时全为外节点，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 删除，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 左儿子为空，同时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">fa,br</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 颜色互换。</p>
-<center>
-<p><img src="https://s2.loli.net/2022/03/28/7wrZ93k5MYKOnV4.png" alt="B-2-4.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/7wrZ93k5MYKOnV4.png" class="lozad post-image"></p>
-</center>
-<h5 id="235-fa为黑br为黑叶子"><a class="markdownIt-Anchor" href="#235-fa为黑br为黑叶子"></a> 2.3.5 fa为黑，br为黑叶子</h5>
-<p>与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2.3.4</mn></mrow><annotation encoding="application/x-tex">2.3.4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">3</span><span class="mord">.</span><span class="mord">4</span></span></span></span> 处理方式相同，不过处理完 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">No</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">o</span></span></span></span> 后，要将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span></span></span></span> 当成新的待处理节点，继续向上更新。</p>
-<h3 id="部分代码"><a class="markdownIt-Anchor" href="#部分代码"></a> 部分代码</h3>
-<h4 id="节点结构体"><a class="markdownIt-Anchor" href="#节点结构体"></a> 节点结构体</h4>
-<pre class="highlight"><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">/* 存放数据 */</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="comment">/* 颜色，0红，1黑 */</span></span><br><span class="line">    <span class="keyword">int</span> color;</span><br><span class="line">    <span class="comment">/* 0左，1右，之后涉及到方向都这么规定 */</span></span><br><span class="line">    Node *next[<span class="number">2</span>];</span><br><span class="line">    <span class="comment">/* 父亲 */</span></span><br><span class="line">    Node *father;</span><br><span class="line">&#125;;</span><br></pre>
-<p>这里将左右子节点的指针放到一个数组中，而不是分别开两个变量，是为了简化后续操作做好准备</p>
-<h4 id="旋转"><a class="markdownIt-Anchor" href="#旋转"></a> 旋转</h4>
-<p>显然，旋转分为左旋和右旋，而不同的旋转，需要操作不同的指针。</p>
-<p>但观察旋转方式可以发现，旋转时各指针操作的相对位置是一样的，比如都是保留和自己同方向的子节点，而反方向的子节点接到父节点的同方向。</p>
-<center>
-<p><img src="https://s2.loli.net/2022/03/28/aZskHiIfWRKSmvu.png" alt="B-3-1.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/28/aZskHiIfWRKSmvu.png" class="lozad post-image"><br />
-注意观察，左右子节点的变化规律</p>
-</center>
-<p>因此，借助结构体的定义方式，我们可以通过一个函数，解决所有旋转操作。</p>
-<pre class="highlight"><span class="line"><span class="comment">/* 将No按照direction反方向旋转 */</span></span><br><span class="line"><span class="comment">/* 如No右旋时，No为左子树，direction=0 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(Node *No, <span class="keyword">int</span> direction)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* 获取No的父亲和祖先 */</span></span><br><span class="line">    Node *fa = No-&gt;father, *ffa = fa-&gt;father;</span><br><span class="line">    <span class="comment">/* 对父亲进行更改 */</span></span><br><span class="line">    No-&gt;father = fa-&gt;father;</span><br><span class="line">    fa-&gt;father = No;</span><br><span class="line">    <span class="comment">/* 父亲同方向连接No反方向叶节点 */</span></span><br><span class="line">    fa-&gt;next[direction] = No-&gt;next[direction ^ <span class="number">1</span>];</span><br><span class="line">    <span class="comment">/* 注意子树是否存在 */</span></span><br><span class="line">    <span class="keyword">if</span> (No-&gt;next[direction ^ <span class="number">1</span>])</span><br><span class="line">        No-&gt;next[direction ^ <span class="number">1</span>]-&gt;father = fa;</span><br><span class="line">    <span class="comment">/* 父亲变为反方向叶节点 */</span></span><br><span class="line">    No-&gt;next[direction ^ <span class="number">1</span>] = fa;</span><br><span class="line">    <span class="comment">/* 根节点特判 */</span></span><br><span class="line">    <span class="keyword">if</span> (!ffa)</span><br><span class="line">    &#123;</span><br><span class="line">        root = No;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 处理祖先 */</span></span><br><span class="line">    <span class="keyword">if</span> (ffa-&gt;next[<span class="number">0</span>] == fa)</span><br><span class="line">        ffa-&gt;next[<span class="number">0</span>] = No;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        ffa-&gt;next[<span class="number">1</span>] = No;</span><br><span class="line">&#125;</span><br></pre>
-<h4 id="查找"><a class="markdownIt-Anchor" href="#查找"></a> 查找</h4>
-<p>想要完成插入或者删除，则必须先有查找。</p>
-<pre class="highlight"><span class="line"><span class="comment">/* 查找值域为x的节点，找到返回节点，否则返回最后查找失败的叶节点 */</span></span><br><span class="line"><span class="function">Node *<span class="title">findNode</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* 树为空 */</span></span><br><span class="line">    <span class="keyword">if</span> (!root)</span><br><span class="line">        <span class="comment">/* 返回无效值 */</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">/* 从根开始 */</span></span><br><span class="line">    Node *No = root;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* 去右子树 */</span></span><br><span class="line">        <span class="keyword">if</span> (x &gt; No-&gt;data)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (No-&gt;next[<span class="number">1</span>])</span><br><span class="line">                No = No-&gt;next[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> No;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* 去左子树 */</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; No-&gt;data)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (No-&gt;next[<span class="number">0</span>])</span><br><span class="line">                No = No-&gt;next[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> No;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* 找到x */</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> No;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre>
-<h4 id="插入-2"><a class="markdownIt-Anchor" href="#插入-2"></a> 插入</h4>
-<p>插入时，需要先进行查找，如果值存在，则无需插入，否则，在失败叶节点下插入新节点，并对新节点更新。</p>
-<pre class="highlight"><span class="line"><span class="comment">/* 对No进行更新 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertUpdate</span><span class="params">(Node *No)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* getDirection确定No的方向 */</span></span><br><span class="line">        <span class="keyword">int</span> direction = getDirection(No);</span><br><span class="line">        <span class="comment">/* 处理到根节点 */</span></span><br><span class="line">        <span class="keyword">if</span> (direction == <span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* root_color is black */</span></span><br><span class="line">            No-&gt;color = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* 意义同之前的介绍 */</span></span><br><span class="line">        Node *fa, *ffa, *uncle;</span><br><span class="line">        fa = No-&gt;father;</span><br><span class="line">        <span class="comment">/* fa黑色，无需处理 */</span></span><br><span class="line">        <span class="keyword">if</span> (fa-&gt;color)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        ffa = fa-&gt;father;</span><br><span class="line">        <span class="comment">/* uncle为fa的反向节点 */</span></span><br><span class="line">        uncle = ffa-&gt;next[getDirection(fa) ^ <span class="number">1</span>];</span><br><span class="line">        <span class="comment">/* 1.1情况 */</span></span><br><span class="line">        <span class="keyword">if</span> (uncle &amp;&amp; uncle-&gt;color == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* changeColor改变节点颜色 */</span></span><br><span class="line">            fa-&gt;changeColor();</span><br><span class="line">            ffa-&gt;changeColor();</span><br><span class="line">            uncle-&gt;changeColor();</span><br><span class="line">            No = ffa;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* 1.2情况 */</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* 1.2.1情况 */</span></span><br><span class="line">            <span class="keyword">if</span> (ffa-&gt;next[direction] != fa)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">/* 旋转No */</span></span><br><span class="line">                rotate(No, direction);</span><br><span class="line">                No = fa;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/* 1.2.2情况 */</span></span><br><span class="line">            rotate(fa, direction);</span><br><span class="line">            fa-&gt;changeColor();</span><br><span class="line">            ffa-&gt;changeColor();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 插入x */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* 树为空，则直接创建根节点 */</span></span><br><span class="line">    <span class="keyword">if</span> (!root)</span><br><span class="line">    &#123;</span><br><span class="line">        root = <span class="keyword">new</span> Node(x, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 查找x */</span></span><br><span class="line">    Node *No = findNode(x);</span><br><span class="line">    <span class="comment">/* 建立右子树 */</span></span><br><span class="line">    <span class="keyword">if</span> (x &gt; No-&gt;data)</span><br><span class="line">    &#123;</span><br><span class="line">        No-&gt;next[<span class="number">1</span>] = <span class="keyword">new</span> Node(x, <span class="number">0</span>, No);</span><br><span class="line">        <span class="comment">/* 对新节点进行更新 */</span></span><br><span class="line">        insertUpdate(No-&gt;next[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 建立左子树 */</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; No-&gt;data)</span><br><span class="line">    &#123;</span><br><span class="line">        No-&gt;next[<span class="number">0</span>] = <span class="keyword">new</span> Node(x, <span class="number">0</span>, No);</span><br><span class="line">        insertUpdate(No-&gt;next[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre>
-<h4 id="删除-2"><a class="markdownIt-Anchor" href="#删除-2"></a> 删除</h4>
-<p>删除操作较为复杂，尤其是删除黑色叶节点，需要注意顺序，一种一种情况去处理。</p>
-<pre class="highlight"><span class="line"><span class="comment">/* 针对2.0情况，寻找No的后继 */</span></span><br><span class="line"><span class="function">Node *<span class="title">removeChange</span><span class="params">(Node *No)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* Ne是要寻找的后继，初始为No右子树 */</span></span><br><span class="line">    Node *Ne = No-&gt;next[<span class="number">1</span>];</span><br><span class="line">    <span class="comment">/* 不断向下，直到Ne没有左子树 */</span></span><br><span class="line">    <span class="keyword">while</span> (Ne-&gt;next[<span class="number">0</span>])</span><br><span class="line">        Ne = Ne-&gt;next[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">/* 交换No，Ne */</span></span><br><span class="line">    No-&gt;data = Ne-&gt;data;</span><br><span class="line">    <span class="comment">/* 将后继返回 */</span></span><br><span class="line">    <span class="keyword">return</span> Ne;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 针对2.3情况，黑叶子删除后的更新 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">removeblackNode</span><span class="params">(Node *No)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* 确定No方向 */</span></span><br><span class="line">        <span class="keyword">int</span> direction = getDirection(No);</span><br><span class="line">        <span class="comment">/* 处理到根节点为止 */</span></span><br><span class="line">        <span class="keyword">if</span> (direction == <span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            No-&gt;color = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* fa，brother(br)意义同介绍 */</span></span><br><span class="line">        Node *fa = No-&gt;father;</span><br><span class="line">        <span class="comment">/* br是No反向节点 */</span></span><br><span class="line">        Node *brother = fa-&gt;next[direction ^ <span class="number">1</span>];</span><br><span class="line">        <span class="comment">/* 2.3.1情况 */</span></span><br><span class="line">        <span class="keyword">if</span> (brother-&gt;color == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            rotate(brother, direction ^ <span class="number">1</span>);</span><br><span class="line">            swap(fa-&gt;color, brother-&gt;color);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* br为黑色 */</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (brother-&gt;color == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* 2.3.3情况 */</span></span><br><span class="line">            <span class="keyword">if</span> (brother-&gt;next[direction ^ <span class="number">1</span>] &amp;&amp; brother-&gt;next[direction ^ <span class="number">1</span>]-&gt;color == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                rotate(brother, direction ^ <span class="number">1</span>);</span><br><span class="line">                swap(fa-&gt;color, brother-&gt;color);</span><br><span class="line">                brother-&gt;next[direction ^ <span class="number">1</span>]-&gt;color = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/* 2.3.2情况 */</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (brother-&gt;next[direction] &amp;&amp; brother-&gt;next[direction]-&gt;color == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                swap(brother-&gt;color, brother-&gt;next[direction]-&gt;color);</span><br><span class="line">                rotate(brother-&gt;next[direction], direction);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/* br是黑叶子 */</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">/* 2.3.4情况 */</span></span><br><span class="line">                <span class="keyword">if</span> (fa-&gt;color == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    fa-&gt;changeColor();</span><br><span class="line">                    fa-&gt;next[direction ^ <span class="number">1</span>]-&gt;changeColor();</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">/* 2.3.5情况 */</span></span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    fa-&gt;next[direction ^ <span class="number">1</span>]-&gt;changeColor();</span><br><span class="line">                    <span class="comment">/* 继续处理fa */</span></span><br><span class="line">                    No = fa;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* No删除后的更新 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">removeUpdate</span><span class="params">(Node *No)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* 确定No方向 */</span></span><br><span class="line">        <span class="keyword">int</span> direction = getDirection(No);</span><br><span class="line">        Node *fa = No-&gt;father;</span><br><span class="line">        <span class="comment">/* No为叶节点 */</span></span><br><span class="line">        <span class="keyword">if</span> (!(No-&gt;next[<span class="number">0</span>] || No-&gt;next[<span class="number">1</span>]))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* 根节点特判 */</span></span><br><span class="line">            <span class="keyword">if</span> (No == root)</span><br><span class="line">            &#123;</span><br><span class="line">                root = <span class="literal">NULL</span>;</span><br><span class="line">                <span class="comment">/* 处理结束 */</span></span><br><span class="line">                <span class="keyword">goto</span> removeUpdateEnd;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/* 2.1情况 */</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (No-&gt;color == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                fa-&gt;next[direction] = <span class="literal">NULL</span>;</span><br><span class="line">                <span class="keyword">goto</span> removeUpdateEnd;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/* 2.3情况 */</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">/* 针对5种情况处理 */</span></span><br><span class="line">                removeblackNode(No);</span><br><span class="line">                No-&gt;father-&gt;next[direction] = <span class="literal">NULL</span>;</span><br><span class="line">                <span class="keyword">goto</span> removeUpdateEnd;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* 2.0情况，No两个子树 */</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (No-&gt;next[<span class="number">0</span>] &amp;&amp; No-&gt;next[<span class="number">1</span>])</span><br><span class="line">            No = removeChange(No);</span><br><span class="line">        <span class="comment">/* 2.2情况，No只有一个子树 */</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">1</span>; ++i)</span><br><span class="line">                <span class="keyword">if</span> (No-&gt;next[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">/* 注意根节点的特殊处理 */</span></span><br><span class="line">                    <span class="keyword">if</span> (fa)</span><br><span class="line">                        fa-&gt;next[direction] = No-&gt;next[i];</span><br><span class="line">                    <span class="keyword">if</span> (No == root)</span><br><span class="line">                        root = No-&gt;next[i];</span><br><span class="line">                    No-&gt;next[i]-&gt;father = fa;</span><br><span class="line">                    No-&gt;next[i]-&gt;color = <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">goto</span> removeUpdateEnd;</span><br><span class="line">                &#125;</span><br><span class="line">    &#125;</span><br><span class="line">removeUpdateEnd:</span><br><span class="line">    <span class="comment">/* 更新完成后再删除No */</span></span><br><span class="line">    <span class="keyword">delete</span> No;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 删除值为x的节点 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* 查找x */</span></span><br><span class="line">    Node *No = findNode(x);</span><br><span class="line">    <span class="comment">/* 树为空 || 值为x的节点不存在 , 无需处理 */</span></span><br><span class="line">    <span class="keyword">if</span> (!No || No-&gt;data != x)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">/* 进行删除和更新 */</span></span><br><span class="line">    removeUpdate(No);</span><br><span class="line">&#125;</span><br></pre>
-<h4 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h4>
-<p>红黑树的代码算是平衡树中比较复杂的，不过虽然看起来代码冗长和复杂，其实就是对之前分析的几种情况的模拟，以上红黑树主要实现部分的代码，删去注释和多余的括号空行后，大概180多行，对于一个复杂的平衡树代码来说，已经算是很正常的了。大部分数据结构的原理都比较简单，代码实现才是难点。</p>
-
-  </div>
-  <div>
-    
-  </div>
-</article>
-<div class="nav">
-  
-  
-    <div class="nav-item-next">
-      <a 
-        href="/2022/03/11/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220311%E4%B8%8A%E6%9C%BA%E9%A2%98/" 
-        class="nav-link">
-        <div>
-          <div class="nav-label">下一篇</div>
-          
-            <div class="nav-title">学校数据结构2022-03-11上机题 </div>
-          
-        </div>
-        <i class="iconfont icon-right nav-next-icon"></i>
-      </a>
-    </div>
-  
-</div>
-
-  <div 
-    class="card card-content comment-card" 
-    style="margin-top: 16px;">
-    <div class="comment-card-title">评论</div>
-    
-  <div id="vcomments"></div>
-  
-  <script>
-    loadScript("//unpkg.com/valine/dist/Valine.min.js");
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-      new Valine({
-        el: '#vcomments',
-        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
-        appKey: '5tGe7WC9z2QaIOESWdymcByE',
-        placeholder: '有什么看法？来说说看吧......',
-        path: window.location.pathname,
-        avatar: 'identicon',
-        meta: ["nick","mail","link"],
-        pageSize: '10',
-        lang: '',
-        visitor: 'false',
-        highlight: true,
-        recordIP: false,
-        
-        
-        
-        enableQQ: 'false',
-        requiredFields: [],
-      });
-    };
-  </script>
-
-  </div>
-
-<div 
-  class="card card-content toc-card" 
-  id="mobiletoc">
-  <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91%E6%80%A7%E8%B4%A8"><span class="toc-number">1.</span> <span class="toc-text"> 红黑树性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5"><span class="toc-number">2.</span> <span class="toc-text"> 插入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#10-father%E4%B8%BA%E9%BB%91"><span class="toc-number">2.1.</span> <span class="toc-text"> 1.0 father为黑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-father-uncle%E4%B8%BA%E7%BA%A2"><span class="toc-number">2.2.</span> <span class="toc-text"> 1.1 father、uncle为红</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-father%E4%B8%BA%E7%BA%A2uncle%E4%B8%BA%E9%BB%91"><span class="toc-number">2.3.</span> <span class="toc-text"> 1.2 father为红，uncle为黑</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#121-fa-no%E4%B8%8D%E5%9C%A8%E5%90%8C%E4%B8%80%E6%96%B9%E5%90%91"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 1.2.1 fa、No不在同一方向</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#122-fa-no%E5%9C%A8%E5%90%8C%E4%B8%80%E6%96%B9%E5%90%91"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 1.2.2 fa、No在同一方向</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4"><span class="toc-number">3.</span> <span class="toc-text"> 删除</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#20-no%E6%9C%89%E4%B8%A4%E4%B8%AA%E5%AD%90%E6%A0%91"><span class="toc-number">3.1.</span> <span class="toc-text"> 2.0 No有两个子树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21-no%E4%B8%BA%E7%BA%A2%E8%89%B2%E5%8F%B6%E8%8A%82%E7%82%B9"><span class="toc-number">3.2.</span> <span class="toc-text"> 2.1 No为红色叶节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-no%E4%B8%BA%E9%BB%91%E8%89%B2%E4%B8%94%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AA%E5%AD%90%E6%A0%91"><span class="toc-number">3.3.</span> <span class="toc-text"> 2.2 No为黑色，且只有一个子树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-no%E4%B8%BA%E9%BB%91%E8%89%B2%E5%8F%B6%E8%8A%82%E7%82%B9"><span class="toc-number">3.4.</span> <span class="toc-text"> 2.3 No为黑色叶节点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#231-br%E4%B8%BA%E7%BA%A2%E8%89%B2"><span class="toc-number">3.4.1.</span> <span class="toc-text"> 2.3.1 br为红色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#232-br%E4%B8%BA%E9%BB%91%E8%BF%9C%E4%BE%84%E5%AD%90%E4%B8%BA%E9%BB%91%E8%BF%91%E4%BE%84%E5%AD%90%E4%B8%BA%E7%BA%A2"><span class="toc-number">3.4.2.</span> <span class="toc-text"> 2.3.2 br为黑，远侄子为黑，近侄子为红</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#233-br%E4%B8%BA%E9%BB%91%E8%BF%9C%E4%BE%84%E5%AD%90%E4%B8%BA%E7%BA%A2"><span class="toc-number">3.4.3.</span> <span class="toc-text"> 2.3.3 br为黑，远侄子为红</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#234-fa%E4%B8%BA%E7%BA%A2br%E4%B8%BA%E9%BB%91%E5%8F%B6%E5%AD%90"><span class="toc-number">3.4.4.</span> <span class="toc-text"> 2.3.4 fa为红，br为黑叶子</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#235-fa%E4%B8%BA%E9%BB%91br%E4%B8%BA%E9%BB%91%E5%8F%B6%E5%AD%90"><span class="toc-number">3.4.5.</span> <span class="toc-text"> 2.3.5 fa为黑，br为黑叶子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text"> 部分代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">4.1.</span> <span class="toc-text"> 节点结构体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%8B%E8%BD%AC"><span class="toc-number">4.2.</span> <span class="toc-text"> 旋转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-number">4.3.</span> <span class="toc-text"> 查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5-2"><span class="toc-number">4.4.</span> <span class="toc-text"> 插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4-2"><span class="toc-number">4.5.</span> <span class="toc-text"> 删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.6.</span> <span class="toc-text"> 总结</span></a></li></ol></li></ol>
-</div>
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

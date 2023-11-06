@@ -105,6 +105,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -144,15 +175,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -255,6 +289,285 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      长沙集训Day9
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2019-02-22T16:00:00.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2019-02-23</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E8%AE%B0%E5%BD%95/" 
+          class="post-meta-link">
+          记录
+        </a>
+      
+        <a 
+          href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/" 
+          class="post-meta-link">
+          训练
+        </a>
+      
+        <a 
+          href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
+          class="post-meta-link">
+          长沙集训
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>1k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/Pascal/" 
+            class="post-meta-link">
+            Pascal
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h5 id="2019219"><a class="markdownIt-Anchor" href="#2019219"></a> 2019.2.19</h5>
+<h1 id="长沙集训-day-9"><a class="markdownIt-Anchor" href="#长沙集训-day-9"></a> 长沙集训 $ Day 9 $</h1>
+<p>今天并没有什么新内容，所以我自学了图论中的重要算法——网络最大流</p>
+<hr />
+<h2 id="网络最大流"><a class="markdownIt-Anchor" href="#网络最大流"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3376">网络最大流：</a></h2>
+<p>给定一个网络图，求网络中的最大流量。</p>
+<h3 id="反向网络"><a class="markdownIt-Anchor" href="#反向网络"></a> 反向网络</h3>
+<p>求解网络流最为暴力的算法就是通过一遍遍 $ BFS $ 来寻找是否有一条流量不为零的链连接源点（$ S <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>）和汇点（</mtext></mrow><annotation encoding="application/x-tex">）和汇点（</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cjk_fallback">）</span><span class="mord cjk_fallback">和</span><span class="mord cjk_fallback">汇</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">（</span></span></span></span> T $），如果有就进行更新并计算答案。这条链就是所谓的增广路。</p>
+<p>但这种方式有可能会走入错误的道路，如下图（网络图是有向图， $ 1 $ 为源点， $ 4 $ 为汇点）。</p>
+<p><img src="https://i.loli.net/2019/02/23/5c71362a9b531.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c71362a9b531.png" class="lozad post-image"></p>
+<p>如果程序选择这条链为增广路，那计算出的最大流只有 $ 1 $ ，但实际最大流显然是 $ 2 $ 。该如何解决这个问题呢？其实很简单，那就是建立反向网络。（建立反向网络实际上是在原图中连反向边，这里为了表述清楚所以分开画图）</p>
+<p><img src="https://i.loli.net/2019/02/23/5c7136d86defe.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c7136d86defe.png" class="lozad post-image"></p>
+<p>初始时反向网络的所有边流量上限都为 $ 0 $ ，当找到一条增广路进行更新时，将原网络中的边减少流量上限，给反向网络中的边增加流量上限。</p>
+<p><img src="https://i.loli.net/2019/02/23/5c7138594834a.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c7138594834a.png" class="lozad post-image"></p>
+<p>这样，即使第一遍走了 $ 1 \to 2 \to 3 \to 4 $ 这条路径，第二遍 $ BFS $ 时依然可以找到 $ 1 \to 3 \to 2 \to 4 $ 这条增广路，完美解决了之前的问题。事实上，建立反向网络是网络流算法普遍使用的处理方式。</p>
+<p>为什么这样做是对的呢？思考一下，走过刚刚的两条路径，实际上 $ 2 \to 3 $ 的路径上，流量上限仍未 $ 1 $ ,而 $ 3 \to 2 $ 路径的流量上限仍为 $ 0 $ 。相当于走了 $ 1 \to 2 \to 4 $ 和 $ 1 \to 3 \to 4 $ 这两条链。</p>
+<p><img src="https://i.loli.net/2019/02/23/5c713b2e62573.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c713b2e62573.png" class="lozad post-image"></p>
+<h3 id="e-k-算法"><a class="markdownIt-Anchor" href="#e-k-算法"></a> $ E-K $ 算法</h3>
+<p>$ E-K $ 算法实际上就是上文说到的暴力 $ BFS $ ，每找到一条增广路就进行更新，复杂度极高，且容易被卡。</p>
+<h3 id="dinic-算法"><a class="markdownIt-Anchor" href="#dinic-算法"></a> $ Dinic $ 算法</h3>
+<p>$ Dinic $ 算法应该是使用最多的网络流增广路算法，实际上是对 $ E-K $ 算法的优化，具体做法是增加了分层图的处理。先用一次 $ BFS $ 给网络图分层，之后用 $ DFS $ 搜索增广路，相比之前的 $ BFS $ 暴力，效率已有很大的提高。</p>
+<p>$ Dinic $ 算法的最差时间复杂度为 $ O(n^{2} \cdot m) $ ，但其实算法大部分情况下的复杂度都远低于上限，且大部分网络流题目的图都比较小， $ n $ 基本上是 $ [10^{2} , 10^{3}] $ 之间，熟练使用 $ Dinic $ 算法便可应对大部分题目。</p>
+<h3 id="dinic-算法程序"><a class="markdownIt-Anchor" href="#dinic-算法程序"></a> $ Dinic $ 算法程序</h3>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program project1<span class="token punctuation">;</span>
+<span class="token keyword">const</span> max_n<span class="token operator">=</span><span class="token number">10005</span><span class="token punctuation">;</span>
+      max_m<span class="token operator">=</span><span class="token number">100005</span><span class="token punctuation">;</span>
+
+var
+   r<span class="token punctuation">,</span>deep<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token punctuation">.</span>max_n<span class="token punctuation">]</span>of int64<span class="token punctuation">;</span>
+   l<span class="token punctuation">,</span>v<span class="token punctuation">,</span>w<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.4</span><span class="token operator">*</span>max_m<span class="token punctuation">]</span>of int64<span class="token punctuation">;</span>
+   n<span class="token punctuation">,</span>m<span class="token punctuation">,</span>s<span class="token punctuation">,</span>t<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+
+function <span class="token function">min</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token operator">:</span>int64<span class="token punctuation">)</span><span class="token operator">:</span>int64<span class="token punctuation">;</span>
+begin
+  <span class="token keyword">if</span> a<span class="token operator">&lt;</span>b then <span class="token function">exit</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token function">exit</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+function <span class="token function">search</span><span class="token punctuation">(</span>q<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  <span class="token keyword">if</span> q mod <span class="token number">2</span><span class="token operator">=</span><span class="token number">0</span> then <span class="token function">exit</span><span class="token punctuation">(</span>q<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span> <span class="token function">exit</span><span class="token punctuation">(</span>q<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure re<span class="token punctuation">;</span>
+var i<span class="token punctuation">,</span>t<span class="token punctuation">,</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  t<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to m <span class="token keyword">do</span> begin
+    <span class="token function">read</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">inc</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    l<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    r<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>t<span class="token punctuation">;</span>
+    v<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>y<span class="token punctuation">;</span>
+    w<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>z<span class="token punctuation">;</span>
+    <span class="token function">inc</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    l<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    r<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>t<span class="token punctuation">;</span>
+    v<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>x<span class="token punctuation">;</span>
+    w<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+function bfs<span class="token operator">:</span>boolean<span class="token punctuation">;</span>
+var i<span class="token punctuation">,</span>f<span class="token punctuation">,</span>head<span class="token punctuation">,</span>tail<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+    p<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.6</span><span class="token operator">*</span>max_m<span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
+begin
+  <span class="token function">fillchar</span><span class="token punctuation">(</span>deep<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>deep<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  head<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  tail<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+  deep<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+  p<span class="token punctuation">[</span>tail<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>s<span class="token punctuation">;</span>
+  <span class="token keyword">while</span> head<span class="token operator">&lt;</span>tail <span class="token keyword">do</span> begin
+    <span class="token function">inc</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    f<span class="token operator">:</span><span class="token operator">=</span>p<span class="token punctuation">[</span>head<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>deep<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> then begin
+        deep<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>deep<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token function">inc</span><span class="token punctuation">(</span>tail<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        p<span class="token punctuation">[</span>tail<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      end<span class="token punctuation">;</span>
+      i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> deep<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span> then <span class="token function">exit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span> <span class="token function">exit</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+function <span class="token function">dfs</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span>dis<span class="token operator">:</span>int64<span class="token punctuation">)</span><span class="token operator">:</span>int64<span class="token punctuation">;</span>
+var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  dfs<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> f<span class="token operator">=</span>t then <span class="token function">exit</span><span class="token punctuation">(</span>dis<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>deep<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span>deep<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span> then dfs<span class="token operator">:</span><span class="token operator">=</span><span class="token function">dfs</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token function">min</span><span class="token punctuation">(</span>dis<span class="token punctuation">,</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> dfs<span class="token operator">></span><span class="token number">0</span> then begin
+      <span class="token function">dec</span><span class="token punctuation">(</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>dfs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">inc</span><span class="token punctuation">(</span>w<span class="token punctuation">[</span><span class="token function">search</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>dfs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">exit</span><span class="token punctuation">(</span>dfs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+  <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure main<span class="token punctuation">;</span>
+var ans<span class="token punctuation">,</span>df<span class="token operator">:</span>int64<span class="token punctuation">;</span>
+begin
+  ans<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> bfs<span class="token operator">=</span><span class="token boolean">true</span> <span class="token keyword">do</span> begin
+    df<span class="token operator">:</span><span class="token operator">=</span><span class="token function">dfs</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span>maxint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> df<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+      <span class="token function">inc</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span>df<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      df<span class="token operator">:</span><span class="token operator">=</span><span class="token function">dfs</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span>maxint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+  <span class="token function">writeln</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+begin
+  <span class="token function">read</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>m<span class="token punctuation">,</span>s<span class="token punctuation">,</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  re<span class="token punctuation">;</span>
+  main<span class="token punctuation">;</span>
+end<span class="token punctuation">.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2019/02/24/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay10/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">长沙集训Day10 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2019/02/22/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay8/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">长沙集训Day8 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+        appKey: '5tGe7WC9z2QaIOESWdymcByE',
+        placeholder: '有什么看法？来说说看吧......',
+        path: window.location.pathname,
+        avatar: 'identicon',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        
+        
+        
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
+
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019219"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.19</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-9"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 9 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81"><span class="toc-number"></span> <span class="toc-text"> 网络最大流：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E7%BD%91%E7%BB%9C"><span class="toc-number"></span> <span class="toc-text"> 反向网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e-k-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ E-K $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dinic-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ Dinic $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dinic-%E7%AE%97%E6%B3%95%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> $ Dinic $ 算法程序</span></a>
+</div>
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -544,183 +857,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-<article class="card card-content">
-  <header>
-    <h1 class="post-title">
-      长沙集训Day9
-    </h1>
-  </header>
-  <div class="post-meta post-show-meta">
-    <time datetime="2019-02-22T16:00:00.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2019-02-23</span>
-    </time>
-    
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E8%AE%B0%E5%BD%95/" 
-          class="post-meta-link">
-          记录
-        </a>
-      
-        <a 
-          href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/" 
-          class="post-meta-link">
-          训练
-        </a>
-      
-        <a 
-          href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
-          class="post-meta-link">
-          长沙集训
-        </a>
-      
-    
-    
-      <span class="dot"></span>
-      <span>1k 字</span>
-    
-  </div>
-  
-    <div 
-      class="post-meta post-show-meta" 
-      style="margin-top: -10px;">
-      <div style="display: flex; align-items: center;">
-        <i 
-          class="iconfont icon-biaoqian" 
-          style="margin-right: 2px; font-size: 1.15rem;">
-        </i>
-        
-          
-          <a 
-            href="/tags/Pascal/" 
-            class="post-meta-link">
-            Pascal
-          </a>
-        
-      </div>
-    </div>
-  
-  </header>
-  <div 
-    id="section" 
-    class="post-content">
-    <h5 id="2019219"><a class="markdownIt-Anchor" href="#2019219"></a> 2019.2.19</h5>
-<h1 id="长沙集训-day-9"><a class="markdownIt-Anchor" href="#长沙集训-day-9"></a> 长沙集训 $ Day 9 $</h1>
-<p>今天并没有什么新内容，所以我自学了图论中的重要算法——网络最大流</p>
-<hr />
-<h2 id="网络最大流"><a class="markdownIt-Anchor" href="#网络最大流"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3376">网络最大流：</a></h2>
-<p>给定一个网络图，求网络中的最大流量。</p>
-<h3 id="反向网络"><a class="markdownIt-Anchor" href="#反向网络"></a> 反向网络</h3>
-<p>求解网络流最为暴力的算法就是通过一遍遍 $ BFS $ 来寻找是否有一条流量不为零的链连接源点（$ S <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>）和汇点（</mtext></mrow><annotation encoding="application/x-tex">）和汇点（</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cjk_fallback">）</span><span class="mord cjk_fallback">和</span><span class="mord cjk_fallback">汇</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">（</span></span></span></span> T $），如果有就进行更新并计算答案。这条链就是所谓的增广路。</p>
-<p>但这种方式有可能会走入错误的道路，如下图（网络图是有向图， $ 1 $ 为源点， $ 4 $ 为汇点）。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c71362a9b531.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c71362a9b531.png" class="lozad post-image"></p>
-<p>如果程序选择这条链为增广路，那计算出的最大流只有 $ 1 $ ，但实际最大流显然是 $ 2 $ 。该如何解决这个问题呢？其实很简单，那就是建立反向网络。（建立反向网络实际上是在原图中连反向边，这里为了表述清楚所以分开画图）</p>
-<p><img src="https://i.loli.net/2019/02/23/5c7136d86defe.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c7136d86defe.png" class="lozad post-image"></p>
-<p>初始时反向网络的所有边流量上限都为 $ 0 $ ，当找到一条增广路进行更新时，将原网络中的边减少流量上限，给反向网络中的边增加流量上限。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c7138594834a.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c7138594834a.png" class="lozad post-image"></p>
-<p>这样，即使第一遍走了 $ 1 \to 2 \to 3 \to 4 $ 这条路径，第二遍 $ BFS $ 时依然可以找到 $ 1 \to 3 \to 2 \to 4 $ 这条增广路，完美解决了之前的问题。事实上，建立反向网络是网络流算法普遍使用的处理方式。</p>
-<p>为什么这样做是对的呢？思考一下，走过刚刚的两条路径，实际上 $ 2 \to 3 $ 的路径上，流量上限仍未 $ 1 $ ,而 $ 3 \to 2 $ 路径的流量上限仍为 $ 0 $ 。相当于走了 $ 1 \to 2 \to 4 $ 和 $ 1 \to 3 \to 4 $ 这两条链。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c713b2e62573.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c713b2e62573.png" class="lozad post-image"></p>
-<h3 id="e-k-算法"><a class="markdownIt-Anchor" href="#e-k-算法"></a> $ E-K $ 算法</h3>
-<p>$ E-K $ 算法实际上就是上文说到的暴力 $ BFS $ ，每找到一条增广路就进行更新，复杂度极高，且容易被卡。</p>
-<h3 id="dinic-算法"><a class="markdownIt-Anchor" href="#dinic-算法"></a> $ Dinic $ 算法</h3>
-<p>$ Dinic $ 算法应该是使用最多的网络流增广路算法，实际上是对 $ E-K $ 算法的优化，具体做法是增加了分层图的处理。先用一次 $ BFS $ 给网络图分层，之后用 $ DFS $ 搜索增广路，相比之前的 $ BFS $ 暴力，效率已有很大的提高。</p>
-<p>$ Dinic $ 算法的最差时间复杂度为 $ O(n^{2} \cdot m) $ ，但其实算法大部分情况下的复杂度都远低于上限，且大部分网络流题目的图都比较小， $ n $ 基本上是 $ [10^{2} , 10^{3}] $ 之间，熟练使用 $ Dinic $ 算法便可应对大部分题目。</p>
-<h3 id="dinic-算法程序"><a class="markdownIt-Anchor" href="#dinic-算法程序"></a> $ Dinic $ 算法程序</h3>
-<pre class="highlight"><span class="line">program project1;</span><br><span class="line"><span class="keyword">const</span> max_n=<span class="number">10005</span>;</span><br><span class="line">      max_m=<span class="number">100005</span>;</span><br><span class="line"></span><br><span class="line">var</span><br><span class="line">   r,deep:<span class="built_in">array</span>[<span class="number">0.</span>.max_n]of int64;</span><br><span class="line">   l,v,w:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.4</span>*max_m]of int64;</span><br><span class="line">   n,m,s,t:longint;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">min</span><span class="params">(a,b:int64)</span>:int64</span>;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">if</span> a&lt;<span class="function">b then <span class="title">exit</span><span class="params">(a)</span> <span class="keyword">else</span> <span class="title">exit</span><span class="params">(b)</span></span>;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">search</span><span class="params">(q:longint)</span>:longint</span>;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">if</span> q mod <span class="number">2</span>=<span class="number">0</span> then <span class="built_in">exit</span>(q<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">exit</span>(q+<span class="number">1</span>);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure re;</span><br><span class="line">var i,t,x,y,z:longint;</span><br><span class="line">begin</span><br><span class="line">  t:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to m <span class="keyword">do</span> begin</span><br><span class="line">    read(x,y,z);</span><br><span class="line">    inc(t);</span><br><span class="line">    l[t]:=r[x];</span><br><span class="line">    r[x]:=t;</span><br><span class="line">    v[t]:=y;</span><br><span class="line">    w[t]:=z;</span><br><span class="line">    inc(t);</span><br><span class="line">    l[t]:=r[y];</span><br><span class="line">    r[y]:=t;</span><br><span class="line">    v[t]:=x;</span><br><span class="line">    w[t]:=<span class="number">0</span>;</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">function bfs:boolean;</span><br><span class="line">var i,f,head,tail:longint;</span><br><span class="line">    p:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.6</span>*max_m]of longint;</span><br><span class="line">begin</span><br><span class="line">  fillchar(deep,<span class="keyword">sizeof</span>(deep),<span class="number">0</span>);</span><br><span class="line">  head:=<span class="number">0</span>;</span><br><span class="line">  tail:=<span class="number">1</span>;</span><br><span class="line">  deep[s]:=<span class="number">1</span>;</span><br><span class="line">  p[tail]:=s;</span><br><span class="line">  <span class="keyword">while</span> head&lt;tail <span class="keyword">do</span> begin</span><br><span class="line">    inc(head);</span><br><span class="line">    f:=p[head];</span><br><span class="line">    i:=r[f];</span><br><span class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">      <span class="keyword">if</span> (w[i]&gt;<span class="number">0</span>) <span class="keyword">and</span> (deep[v[i]]=<span class="number">0</span>) then begin</span><br><span class="line">        deep[v[i]]:=deep[f]+<span class="number">1</span>;</span><br><span class="line">        inc(tail);</span><br><span class="line">        p[tail]:=v[i];</span><br><span class="line">      end;</span><br><span class="line">      i:=l[i];</span><br><span class="line">    end;</span><br><span class="line">  end;</span><br><span class="line">  <span class="keyword">if</span> deep[t]=<span class="number">0</span> then <span class="built_in">exit</span>(<span class="literal">false</span>)</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">exit</span>(<span class="literal">true</span>);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">dfs</span><span class="params">(f,dis:int64)</span>:int64</span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  dfs:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> f=t then <span class="built_in">exit</span>(dis);</span><br><span class="line">  i:=r[f];</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> (w[i]&gt;<span class="number">0</span>) <span class="keyword">and</span> (deep[v[i]]=deep[f]+<span class="number">1</span>) then dfs:=dfs(v[i],min(dis,w[i]));</span><br><span class="line">    <span class="keyword">if</span> dfs&gt;<span class="number">0</span> then begin</span><br><span class="line">      dec(w[i],dfs);</span><br><span class="line">      inc(w[search(i)],dfs);</span><br><span class="line">      <span class="built_in">exit</span>(dfs);</span><br><span class="line">    end;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">  <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure main;</span><br><span class="line">var ans,df:int64;</span><br><span class="line">begin</span><br><span class="line">  ans:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> bfs=<span class="literal">true</span> <span class="keyword">do</span> begin</span><br><span class="line">    df:=dfs(s,maxint);</span><br><span class="line">    <span class="keyword">while</span> df&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">      inc(ans,df);</span><br><span class="line">      df:=dfs(s,maxint);</span><br><span class="line">    end;</span><br><span class="line">  end;</span><br><span class="line">  writeln(ans);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">  read(n,m,s,t);</span><br><span class="line">  re;</span><br><span class="line">  main;</span><br><span class="line">end.</span><br><span class="line"></span><br></pre>
-  </div>
-  <div>
-    
-  </div>
-</article>
-<div class="nav">
-  
-    <div class="nav-item-prev">
-      <a 
-        href="/2019/02/24/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay10/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">长沙集训Day10 </div>
-          
-        </div>
-      </a>
-    </div>
-  
-  
-    <div class="nav-item-next">
-      <a 
-        href="/2019/02/22/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay8/" 
-        class="nav-link">
-        <div>
-          <div class="nav-label">下一篇</div>
-          
-            <div class="nav-title">长沙集训Day8 </div>
-          
-        </div>
-        <i class="iconfont icon-right nav-next-icon"></i>
-      </a>
-    </div>
-  
-</div>
-
-  <div 
-    class="card card-content comment-card" 
-    style="margin-top: 16px;">
-    <div class="comment-card-title">评论</div>
-    
-  <div id="vcomments"></div>
-  
-  <script>
-    loadScript("//unpkg.com/valine/dist/Valine.min.js");
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-      new Valine({
-        el: '#vcomments',
-        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
-        appKey: '5tGe7WC9z2QaIOESWdymcByE',
-        placeholder: '有什么看法？来说说看吧......',
-        path: window.location.pathname,
-        avatar: 'identicon',
-        meta: ["nick","mail","link"],
-        pageSize: '10',
-        lang: '',
-        visitor: 'false',
-        highlight: true,
-        recordIP: false,
-        
-        
-        
-        enableQQ: 'false',
-        requiredFields: [],
-      });
-    };
-  </script>
-
-  </div>
-
-<div 
-  class="card card-content toc-card" 
-  id="mobiletoc">
-  <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019219"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.19</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-9"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 9 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81"><span class="toc-number"></span> <span class="toc-text"> 网络最大流：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E7%BD%91%E7%BB%9C"><span class="toc-number"></span> <span class="toc-text"> 反向网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e-k-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ E-K $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dinic-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ Dinic $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dinic-%E7%AE%97%E6%B3%95%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> $ Dinic $ 算法程序</span></a>
-</div>
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

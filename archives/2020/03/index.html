@@ -83,6 +83,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -122,15 +153,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -233,6 +267,36 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+<div class="card card-content">
+  <h1 class="widget-title">归档</h1>
+</div>
+<div class="archive-timeline">
+  
+  
+    
+      <div class="archive-timeline-tag"><span>2020</span></div>
+      
+    
+    <div class="archive-timeline-item">
+      <div class="archive-timeline-post">
+        <div class="card card-content">
+          <div class="archive-timeline-post-date">2020-03-27</div>
+          <div class="archive-timeline-post-content">
+            <a 
+              href="/2020/03/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"
+              class="archive-timeline-post-item">
+              文件操作
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -692,36 +756,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-<div class="card card-content">
-  <h1 class="widget-title">归档</h1>
-</div>
-<div class="archive-timeline">
-  
-  
-    
-      <div class="archive-timeline-tag"><span>2020</span></div>
-      
-    
-    <div class="archive-timeline-item">
-      <div class="archive-timeline-post">
-        <div class="card card-content">
-          <div class="archive-timeline-post-date">2020-03-27</div>
-          <div class="archive-timeline-post-content">
-            <a 
-              href="/2020/03/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"
-              class="archive-timeline-post-item">
-              文件操作
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-</div>
-
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

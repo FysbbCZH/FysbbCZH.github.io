@@ -109,6 +109,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -148,15 +179,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -259,6 +293,324 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      代码高亮
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2020-08-03T06:47:49.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2020-08-03</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E7%9F%A5%E8%AF%86/" 
+          class="post-meta-link">
+          知识
+        </a>
+      
+        <a 
+          href="/categories/%E7%9F%A5%E8%AF%86/BLOG/" 
+          class="post-meta-link">
+          BLOG
+        </a>
+      
+        <a 
+          href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/" 
+          class="post-meta-link">
+          Kaze
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>751 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/Kaze/" 
+            class="post-meta-link">
+            Kaze
+          </a>
+        
+          
+            <span class="dot"></span>
+          
+          <a 
+            href="/tags/BLOG/" 
+            class="post-meta-link">
+            BLOG
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h2>
+<link rel="preload" href="/js/lib/prism/prism.min.css" as="style">
+<link rel="preload" href="/js/lib/prism/prism-coy.min.css" as="style">
+<link rel="preload" href="/js/lib/prism/prism-dark.min.css" as="style">
+<link rel="preload" href="/js/lib/prism/prism-funky.min.css" as="style">
+<link rel="preload" href="/js/lib/prism/prism-okaidia.min.css" as="style">
+<link rel="preload" href="/js/lib/prism/prism-solarizedlight.min.css" as="style">
+<link rel="preload" href="/js/lib/prism/prism-tomorrow.min.css" as="style">
+<link rel="preload" href="/js/lib/prism/prism-twilight.min.css" as="style">
+<h3 id="高亮方案"><a class="markdownIt-Anchor" href="#高亮方案"></a> 高亮方案</h3>
+<p>本主题没有使用自定义高亮方式，高亮方案在Hexo本身支持的 <code>highlightjs</code> 和 <code>prismjs</code> 基础上修改得到</p>
+<h3 id="使用highlightjs"><a class="markdownIt-Anchor" href="#使用highlightjs"></a> 使用highlightjs</h3>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">highlight</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">line_number</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">auto_detect</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">tab_replace</span><span class="token punctuation">:</span> <span class="token string">''</span>
+  <span class="token key atrule">wrap</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">hljs</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+<span class="token key atrule">prismjs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token punctuation">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="post-note note-warning"><p><code>highlight</code> 和 <code>prismjs</code> 的 <code>enable: true</code> 只能保留一个</p></div>
+<p>在站点配置文件将 <code>highlight</code> 设置 <code>enable: true</code> 即可开启，<code>line_number</code> 选项本主题暂不支持显示</p>
+<p>若需要支持代码高亮可设置 <code>hljs: true</code>，该配色方案参考了 <code>tomorrow night</code> 等配色主题</p>
+<p>其他具体参数设置可参考 <a target="_blank" rel="noopener" href="https://hexo.io/docs/syntax-highlight">Hexo相关文档 </a></p>
+<h2 id="使用prismjs"><a class="markdownIt-Anchor" href="#使用prismjs"></a> 使用prismjs</h2>
+<p>在 <code>prismjs</code> 中设置 <code>enable: true</code> 和 <code>preprocess: true</code> 即可开启 默认支持 <code>Line Numbers</code> 和 <code>Show Languages</code> 两个插件 如果需要其他插件支持可以设置 <code>preprocess: false</code></p>
+<div class="post-note note-warning"><p>当前主题版本不支持 <code>preprocess: false</code> 自动引入相关文件 如有相关需求请自行引入相关 css 与 js 文件</p></div>
+<p>设置 <code>line_number: true</code> 即可显示行号</p>
+<h2 id="演示"><a class="markdownIt-Anchor" href="#演示"></a> 演示</h2>
+<p>以下演示采用 <code>prism</code>，<code>highlight</code> 在主题效果可参见（TODO）</p>
+<p>有八种高亮主题可选择</p>
+<p><button class="postbutton" style="color: #fff;">default</button> <button class="postbutton" style="color: #fff;">coy</button> <button class="postbutton" style="color: #fff;">dark</button> <button class="postbutton" style="color: #fff;">funky</button> <button class="postbutton" style="color: #fff;">okaidia</button> <button class="postbutton" style="color: #fff;">solarizedlight</button> <button class="postbutton" style="color: #fff;">tomorrow</button> <button class="postbutton" style="color: #fff;">twilight</button></p>
+<h3 id="javascript"><a class="markdownIt-Anchor" href="#javascript"></a> Javascript</h3>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">smoothScrollToTop</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">let</span> yTopValve <span class="token operator">=</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>pageYOffset <span class="token operator">||</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>scrollTop <span class="token operator">||</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>scrollTop<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>yTopValve <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>smoothScrollToTop<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scrollTo</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>yTopValve <span class="token operator">*</span> <span class="token number">0.85</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">scrollTo</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'scrollbutton'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>onclick <span class="token operator">=</span> smoothScrollToTop<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h3>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;cstdio></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;algorithm></span></span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> maxn<span class="token operator">=</span><span class="token number">1050</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> maxm<span class="token operator">=</span><span class="token number">20000010</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> h<span class="token punctuation">,</span>n<span class="token punctuation">,</span>v<span class="token punctuation">[</span>maxn<span class="token punctuation">]</span><span class="token punctuation">,</span>w<span class="token punctuation">[</span>maxn<span class="token punctuation">]</span><span class="token punctuation">,</span>f<span class="token punctuation">[</span>maxm<span class="token punctuation">]</span><span class="token punctuation">,</span>maxx<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	cin<span class="token operator">>></span>h<span class="token operator">>></span>n<span class="token punctuation">;</span>
+	<span class="token function">memset</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span><span class="token number">0x3f</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	f<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> cin<span class="token operator">>></span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">>></span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>maxx<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>maxx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>h<span class="token operator">+</span>maxx<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
+			f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span>f<span class="token punctuation">[</span>j<span class="token operator">-</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">+</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">int</span> ans<span class="token operator">=</span>inf<span class="token punctuation">;</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>h<span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>h<span class="token operator">+</span>maxx<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> ans<span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	cout<span class="token operator">&lt;&lt;</span>ans<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="php"><a class="markdownIt-Anchor" href="#php"></a> PHP</h3>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'num'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">show_source</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$str</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'num'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token variable">$blacklist</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">' '</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'\t'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'\r'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'\n'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'\''</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'"'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'`'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'\['</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'\]'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'\$'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'\\'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'\^'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$blacklist</span> <span class="token keyword">as</span> <span class="token variable">$blackitem</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/'</span> <span class="token operator">.</span> <span class="token variable">$blackitem</span> <span class="token operator">.</span> <span class="token string single-quoted-string">'/m'</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"what are you want to do?"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'echo '</span><span class="token operator">.</span><span class="token variable">$str</span><span class="token operator">.</span><span class="token string single-quoted-string">';'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="json"><a class="markdownIt-Anchor" href="#json"></a> JSON</h3>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"hexo-theme-kaze"</span><span class="token punctuation">,</span>
+  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"hexo-theme-kaze"</span><span class="token punctuation">,</span>
+  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"theme-kaze"</span><span class="token punctuation">,</span>
+  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"MIT"</span><span class="token punctuation">,</span>
+  <span class="token property">"bugs"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"https://github.com/theme-kaze/hexo-theme-Kaze/issues"</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token property">"homepage"</span><span class="token operator">:</span> <span class="token string">"https://github.com/theme-kaze/hexo-theme-Kaze#readme"</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="python"><a class="markdownIt-Anchor" href="#python"></a> Python</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> re
+<span class="token keyword">import</span> sys
+<span class="token keyword">import</span> os
+url <span class="token operator">=</span> <span class="token string">'https://twoshot.hgame.n3ko.co/'</span>
+headers <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token string">'Content-Type'</span><span class="token punctuation">:</span> <span class="token string">'application/x-www-form-urlencoded'</span><span class="token punctuation">,</span>
+    <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span>
+p <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">'random.php?times=228'</span><span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+randnum <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">r'\d*'</span><span class="token punctuation">,</span> p<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>
+firstnum <span class="token operator">=</span> randnum<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+lastnum <span class="token operator">=</span> randnum<span class="token punctuation">[</span><span class="token number">227</span><span class="token punctuation">]</span>
+content <span class="token operator">=</span> os<span class="token punctuation">.</span>popen<span class="token punctuation">(</span><span class="token string">"python3 ./reverse_mt_rand.py "</span> <span class="token operator">+</span>
+                   firstnum<span class="token operator">+</span><span class="token string">' '</span><span class="token operator">+</span>lastnum<span class="token operator">+</span><span class="token string">' 0 0'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+q <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">'/verify.php'</span><span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'ans'</span><span class="token punctuation">:</span> content<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>q<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="go"><a class="markdownIt-Anchor" href="#go"></a> Go</h3>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// backup my secret key into DB</span>
+<span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">=</span> db<span class="token punctuation">.</span><span class="token function">Exec</span><span class="token punctuation">(</span>fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">`INSERT INTO secret(secret) VALUES('%s');`</span><span class="token punctuation">,</span> secretKey<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">if</span> u<span class="token punctuation">.</span>TotalBalance <span class="token operator">></span> <span class="token number">999999</span> <span class="token operator">||</span> win <span class="token punctuation">&#123;</span>
+    flag <span class="token operator">=</span> os<span class="token punctuation">.</span><span class="token function">Getenv</span><span class="token punctuation">(</span><span class="token string">"flag"</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    flag <span class="token operator">=</span> <span class="token string">"nothing to show, to be a winner"</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<script>
+  function changePrismTheme(e) {
+    let text = e.target.innerHTML;
+    let linkList = document.head.getElementsByTagName('link');
+    for(let item of linkList) {
+      if(item.dataset.prism) {
+        document.head.removeChild(item);
+      }
+    }
+    let link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.dataset.prism = text;
+    if(text === 'default') {
+      text = 'prism';
+    } else {
+      text = 'prism-' + text;
+    }
+    link.href='/js/lib/prism/' + text +'.min.css';
+    document.head.appendChild(link);
+  }
+  setTimeout(() => {
+    let buttonList = document.getElementsByClassName('postbutton');
+    Array.prototype.forEach.call(buttonList, item => {
+      item.onclick = changePrismTheme;
+    });
+  }, 0);
+</script>
+
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2020/08/03/%E7%9F%A5%E8%AF%86/BLOG/Kaze/Hexo_Kaze%E4%B8%BB%E9%A2%98%E6%96%87%E6%A1%A3/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">Hexo_Kaze主题使用文档 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2020/07/27/%E7%9F%A5%E8%AF%86/BLOG/Kaze/Kaze_latex/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">公式渲染 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+        appKey: '5tGe7WC9z2QaIOESWdymcByE',
+        placeholder: '有什么看法？来说说看吧......',
+        path: window.location.pathname,
+        avatar: 'identicon',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        
+        
+        
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
+
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text"> 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E4%BA%AE%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text"> 高亮方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8highlightjs"><span class="toc-number">1.2.</span> <span class="toc-text"> 使用highlightjs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8prismjs"><span class="toc-number">2.</span> <span class="toc-text"> 使用prismjs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">3.</span> <span class="toc-text"> 演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript"><span class="toc-number">3.1.</span> <span class="toc-text"> Javascript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c"><span class="toc-number">3.2.</span> <span class="toc-text"> C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php"><span class="toc-number">3.3.</span> <span class="toc-text"> PHP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#json"><span class="toc-number">3.4.</span> <span class="toc-text"> JSON</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python"><span class="toc-number">3.5.</span> <span class="toc-text"> Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#go"><span class="toc-number">3.6.</span> <span class="toc-text"> Go</span></a></li></ol></li></ol>
+</div>
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -548,233 +900,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-<article class="card card-content">
-  <header>
-    <h1 class="post-title">
-      代码高亮
-    </h1>
-  </header>
-  <div class="post-meta post-show-meta">
-    <time datetime="2020-08-03T06:47:49.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2020-08-03</span>
-    </time>
-    
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E7%9F%A5%E8%AF%86/" 
-          class="post-meta-link">
-          知识
-        </a>
-      
-        <a 
-          href="/categories/%E7%9F%A5%E8%AF%86/BLOG/" 
-          class="post-meta-link">
-          BLOG
-        </a>
-      
-        <a 
-          href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/" 
-          class="post-meta-link">
-          Kaze
-        </a>
-      
-    
-    
-      <span class="dot"></span>
-      <span>860 字</span>
-    
-  </div>
-  
-    <div 
-      class="post-meta post-show-meta" 
-      style="margin-top: -10px;">
-      <div style="display: flex; align-items: center;">
-        <i 
-          class="iconfont icon-biaoqian" 
-          style="margin-right: 2px; font-size: 1.15rem;">
-        </i>
-        
-          
-          <a 
-            href="/tags/Kaze/" 
-            class="post-meta-link">
-            Kaze
-          </a>
-        
-          
-            <span class="dot"></span>
-          
-          <a 
-            href="/tags/BLOG/" 
-            class="post-meta-link">
-            BLOG
-          </a>
-        
-      </div>
-    </div>
-  
-  </header>
-  <div 
-    id="section" 
-    class="post-content">
-    <h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h2>
-<link rel="preload" href="/js/lib/prism/prism.min.css" as="style">
-<link rel="preload" href="/js/lib/prism/prism-coy.min.css" as="style">
-<link rel="preload" href="/js/lib/prism/prism-dark.min.css" as="style">
-<link rel="preload" href="/js/lib/prism/prism-funky.min.css" as="style">
-<link rel="preload" href="/js/lib/prism/prism-okaidia.min.css" as="style">
-<link rel="preload" href="/js/lib/prism/prism-solarizedlight.min.css" as="style">
-<link rel="preload" href="/js/lib/prism/prism-tomorrow.min.css" as="style">
-<link rel="preload" href="/js/lib/prism/prism-twilight.min.css" as="style">
-<h3 id="高亮方案"><a class="markdownIt-Anchor" href="#高亮方案"></a> 高亮方案</h3>
-<p>本主题没有使用自定义高亮方式，高亮方案在Hexo本身支持的 <code>highlightjs</code> 和 <code>prismjs</code> 基础上修改得到</p>
-<h3 id="使用highlightjs"><a class="markdownIt-Anchor" href="#使用highlightjs"></a> 使用highlightjs</h3>
-<pre class="highlight"><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">hljs:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">prismjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="string">...</span></span><br></pre>
-<div class="post-note note-warning"><p><code>highlight</code> 和 <code>prismjs</code> 的 <code>enable: true</code> 只能保留一个</p></div>
-<p>在站点配置文件将 <code>highlight</code> 设置 <code>enable: true</code> 即可开启，<code>line_number</code> 选项本主题暂不支持显示</p>
-<p>若需要支持代码高亮可设置 <code>hljs: true</code>，该配色方案参考了 <code>tomorrow night</code> 等配色主题</p>
-<p>其他具体参数设置可参考 <a target="_blank" rel="noopener" href="https://hexo.io/docs/syntax-highlight">Hexo相关文档 </a></p>
-<h2 id="使用prismjs"><a class="markdownIt-Anchor" href="#使用prismjs"></a> 使用prismjs</h2>
-<p>在 <code>prismjs</code> 中设置 <code>enable: true</code> 和 <code>preprocess: true</code> 即可开启 默认支持 <code>Line Numbers</code> 和 <code>Show Languages</code> 两个插件 如果需要其他插件支持可以设置 <code>preprocess: false</code></p>
-<div class="post-note note-warning"><p>当前主题版本不支持 <code>preprocess: false</code> 自动引入相关文件 如有相关需求请自行引入相关 css 与 js 文件</p></div>
-<p>设置 <code>line_number: true</code> 即可显示行号</p>
-<h2 id="演示"><a class="markdownIt-Anchor" href="#演示"></a> 演示</h2>
-<p>以下演示采用 <code>prism</code>，<code>highlight</code> 在主题效果可参见（TODO）</p>
-<p>有八种高亮主题可选择</p>
-<p><button class="postbutton" style="color: #fff;">default</button> <button class="postbutton" style="color: #fff;">coy</button> <button class="postbutton" style="color: #fff;">dark</button> <button class="postbutton" style="color: #fff;">funky</button> <button class="postbutton" style="color: #fff;">okaidia</button> <button class="postbutton" style="color: #fff;">solarizedlight</button> <button class="postbutton" style="color: #fff;">tomorrow</button> <button class="postbutton" style="color: #fff;">twilight</button></p>
-<h3 id="javascript"><a class="markdownIt-Anchor" href="#javascript"></a> Javascript</h3>
-<pre class="highlight"><span class="line"><span class="keyword">const</span> smoothScrollToTop = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> yTopValve = (<span class="built_in">window</span>.pageYOffset || <span class="built_in">document</span>.body.scrollTop || <span class="built_in">document</span>.documentElement.scrollTop);</span><br><span class="line">  <span class="keyword">if</span> (yTopValve &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="built_in">window</span>.requestAnimationFrame(smoothScrollToTop);</span><br><span class="line">    scrollTo(<span class="number">0</span>, <span class="built_in">Math</span>.floor(yTopValve * <span class="number">0.85</span>));</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    scrollTo(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;scrollbutton&#x27;</span>).onclick = smoothScrollToTop;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br></pre>
-<h3 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h3>
-<pre class="highlight"><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1050</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxm=<span class="number">20000010</span>;</span><br><span class="line"><span class="keyword">int</span> h,n,v[maxn],w[maxn],f[maxm],maxx;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;h&gt;&gt;n;</span><br><span class="line">	<span class="built_in">memset</span>(f,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(f));</span><br><span class="line">	f[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;v[i]&gt;&gt;w[i],maxx=max(v[i],maxx);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=v[i];j&lt;=h+maxx;j++)</span><br><span class="line">			f[j]=min(f[j],f[j-v[i]]+w[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ans=inf;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=h;i&lt;=h+maxx;i++) ans=min(ans,f[i]);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre>
-<h3 id="php"><a class="markdownIt-Anchor" href="#php"></a> PHP</h3>
-<pre class="highlight"><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>]))&#123;</span><br><span class="line">    show_source(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="variable">$str</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line">        <span class="variable">$blacklist</span> = [<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;\t&#x27;</span>, <span class="string">&#x27;\r&#x27;</span>, <span class="string">&#x27;\n&#x27;</span>,<span class="string">&#x27;\&#x27;&#x27;</span>, <span class="string">&#x27;&quot;&#x27;</span>, <span class="string">&#x27;`&#x27;</span>, <span class="string">&#x27;\[&#x27;</span>, <span class="string">&#x27;\]&#x27;</span>,<span class="string">&#x27;\$&#x27;</span>,<span class="string">&#x27;\\&#x27;</span>,<span class="string">&#x27;\^&#x27;</span>];</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable">$blacklist</span> <span class="keyword">as</span> <span class="variable">$blackitem</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (preg_match(<span class="string">&#x27;/&#x27;</span> . <span class="variable">$blackitem</span> . <span class="string">&#x27;/m&#x27;</span>, <span class="variable">$str</span>)) &#123;</span><br><span class="line">                        <span class="keyword">die</span>(<span class="string">&quot;what are you want to do?&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="string">&#x27;echo &#x27;</span>.<span class="variable">$str</span>.<span class="string">&#x27;;&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre>
-<h3 id="json"><a class="markdownIt-Anchor" href="#json"></a> JSON</h3>
-<pre class="highlight"><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;hexo-theme-kaze&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;hexo-theme-kaze&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;theme-kaze&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;MIT&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;bugs&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;url&quot;</span>: <span class="string">&quot;https://github.com/theme-kaze/hexo-theme-Kaze/issues&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;homepage&quot;</span>: <span class="string">&quot;https://github.com/theme-kaze/hexo-theme-Kaze#readme&quot;</span></span><br><span class="line">&#125;</span><br></pre>
-<h3 id="python"><a class="markdownIt-Anchor" href="#python"></a> Python</h3>
-<pre class="highlight"><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">url = <span class="string">&#x27;https://twoshot.hgame.n3ko.co/&#x27;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line">p = requests.get(url+<span class="string">&#x27;random.php?times=228&#x27;</span>, headers=headers)</span><br><span class="line">randnum = re.findall(<span class="string">r&#x27;\d*&#x27;</span>, p.text)[<span class="number">1</span>:-<span class="number">2</span>:<span class="number">2</span>]</span><br><span class="line">firstnum = randnum[<span class="number">0</span>]</span><br><span class="line">lastnum = randnum[<span class="number">227</span>]</span><br><span class="line">content = os.popen(<span class="string">&quot;python3 ./reverse_mt_rand.py &quot;</span> +</span><br><span class="line">                   firstnum+<span class="string">&#x27; &#x27;</span>+lastnum+<span class="string">&#x27; 0 0&#x27;</span>).read()</span><br><span class="line">q = requests.post(url+<span class="string">&#x27;/verify.php&#x27;</span>, headers=headers, data=&#123;<span class="string">&#x27;ans&#x27;</span>: content&#125;)</span><br><span class="line">print(q.text)</span><br></pre>
-<h3 id="go"><a class="markdownIt-Anchor" href="#go"></a> Go</h3>
-<pre class="highlight"><span class="line"><span class="comment">// backup my secret key into DB</span></span><br><span class="line">_, err = db.Exec(fmt.Sprintf(<span class="string">`INSERT INTO secret(secret) VALUES(&#x27;%s&#x27;);`</span>, secretKey))</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> u.TotalBalance &gt; <span class="number">999999</span> || win &#123;</span><br><span class="line">    flag = os.Getenv(<span class="string">&quot;flag&quot;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    flag = <span class="string">&quot;nothing to show, to be a winner&quot;</span></span><br><span class="line">&#125;</span><br></pre>
-<script>
-  function changePrismTheme(e) {
-    let text = e.target.innerHTML;
-    let linkList = document.head.getElementsByTagName('link');
-    for(let item of linkList) {
-      if(item.dataset.prism) {
-        document.head.removeChild(item);
-      }
-    }
-    let link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.dataset.prism = text;
-    if(text === 'default') {
-      text = 'prism';
-    } else {
-      text = 'prism-' + text;
-    }
-    link.href='/js/lib/prism/' + text +'.min.css';
-    document.head.appendChild(link);
-  }
-  setTimeout(() => {
-    let buttonList = document.getElementsByClassName('postbutton');
-    Array.prototype.forEach.call(buttonList, item => {
-      item.onclick = changePrismTheme;
-    });
-  }, 0);
-</script>
-
-  </div>
-  <div>
-    
-  </div>
-</article>
-<div class="nav">
-  
-    <div class="nav-item-prev">
-      <a 
-        href="/2020/08/03/%E7%9F%A5%E8%AF%86/BLOG/Kaze/Hexo_Kaze%E4%B8%BB%E9%A2%98%E6%96%87%E6%A1%A3/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">Hexo_Kaze主题使用文档 </div>
-          
-        </div>
-      </a>
-    </div>
-  
-  
-    <div class="nav-item-next">
-      <a 
-        href="/2020/07/27/%E7%9F%A5%E8%AF%86/BLOG/Kaze/Kaze_latex/" 
-        class="nav-link">
-        <div>
-          <div class="nav-label">下一篇</div>
-          
-            <div class="nav-title">公式渲染 </div>
-          
-        </div>
-        <i class="iconfont icon-right nav-next-icon"></i>
-      </a>
-    </div>
-  
-</div>
-
-  <div 
-    class="card card-content comment-card" 
-    style="margin-top: 16px;">
-    <div class="comment-card-title">评论</div>
-    
-  <div id="vcomments"></div>
-  
-  <script>
-    loadScript("//unpkg.com/valine/dist/Valine.min.js");
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-      new Valine({
-        el: '#vcomments',
-        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
-        appKey: '5tGe7WC9z2QaIOESWdymcByE',
-        placeholder: '有什么看法？来说说看吧......',
-        path: window.location.pathname,
-        avatar: 'identicon',
-        meta: ["nick","mail","link"],
-        pageSize: '10',
-        lang: '',
-        visitor: 'false',
-        highlight: true,
-        recordIP: false,
-        
-        
-        
-        enableQQ: 'false',
-        requiredFields: [],
-      });
-    };
-  </script>
-
-  </div>
-
-<div 
-  class="card card-content toc-card" 
-  id="mobiletoc">
-  <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text"> 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E4%BA%AE%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text"> 高亮方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8highlightjs"><span class="toc-number">1.2.</span> <span class="toc-text"> 使用highlightjs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8prismjs"><span class="toc-number">2.</span> <span class="toc-text"> 使用prismjs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">3.</span> <span class="toc-text"> 演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript"><span class="toc-number">3.1.</span> <span class="toc-text"> Javascript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c"><span class="toc-number">3.2.</span> <span class="toc-text"> C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php"><span class="toc-number">3.3.</span> <span class="toc-text"> PHP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#json"><span class="toc-number">3.4.</span> <span class="toc-text"> JSON</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python"><span class="toc-number">3.5.</span> <span class="toc-text"> Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#go"><span class="toc-number">3.6.</span> <span class="toc-text"> Go</span></a></li></ol></li></ol>
-</div>
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

@@ -83,6 +83,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -122,15 +153,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -233,6 +267,357 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2019/02/19/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay5/">
+        <h1 class="post-title">
+          长沙集训Day5
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+           2019.2.15
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2019-02-18T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2019-02-19</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+                
+              
+              <a 
+                href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
+                class="post-meta-link">
+                记录/训练/长沙集训
+              </a>
+            
+          
+        </div>
+        <a href="/2019/02/19/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay5/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2019/02/18/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay4/">
+        <h1 class="post-title">
+          长沙集训Day4
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+           2019.2.14
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2019-02-17T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2019-02-18</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+                
+              
+              <a 
+                href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
+                class="post-meta-link">
+                记录/训练/长沙集训
+              </a>
+            
+          
+        </div>
+        <a href="/2019/02/18/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay4/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2019/02/17/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay3/">
+        <h1 class="post-title">
+          长沙集训Day3
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+           2019.2.13
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2019-02-16T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2019-02-17</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+                
+              
+              <a 
+                href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
+                class="post-meta-link">
+                记录/训练/长沙集训
+              </a>
+            
+          
+        </div>
+        <a href="/2019/02/17/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay3/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2019/02/16/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay2/">
+        <h1 class="post-title">
+          长沙集训Day2
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+           2019.2.12
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2019-02-15T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2019-02-16</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+                
+              
+              <a 
+                href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
+                class="post-meta-link">
+                记录/训练/长沙集训
+              </a>
+            
+          
+        </div>
+        <a href="/2019/02/16/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay2/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/">
+        <h1 class="post-title">
+          长沙集训Day1
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+           2019.2.11
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2019-02-14T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2019-02-15</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+                
+              
+              <a 
+                href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
+                class="post-meta-link">
+                记录/训练/长沙集训
+              </a>
+            
+          
+        </div>
+        <a href="/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/">
+        <h1 class="post-title">
+          NOIP2018赛后总结
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+           1.题目难度（个人理解）
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2018-11-22T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2018-11-23</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+              <a 
+                href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/" 
+                class="post-meta-link">
+                记录/竞赛
+              </a>
+            
+          
+        </div>
+        <a href="/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+
+  <div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/page/3/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一页</div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+</div>
+
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -692,357 +1077,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2019/02/19/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay5/">
-        <h1 class="post-title">
-          长沙集训Day5
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-           2019.2.15
-
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2019-02-18T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2019-02-19</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-                
-              
-              <a 
-                href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
-                class="post-meta-link">
-                记录/训练/长沙集训
-              </a>
-            
-          
-        </div>
-        <a href="/2019/02/19/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay5/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2019/02/18/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay4/">
-        <h1 class="post-title">
-          长沙集训Day4
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-           2019.2.14
-
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2019-02-17T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2019-02-18</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-                
-              
-              <a 
-                href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
-                class="post-meta-link">
-                记录/训练/长沙集训
-              </a>
-            
-          
-        </div>
-        <a href="/2019/02/18/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay4/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2019/02/17/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay3/">
-        <h1 class="post-title">
-          长沙集训Day3
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-           2019.2.13
-
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2019-02-16T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2019-02-17</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-                
-              
-              <a 
-                href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
-                class="post-meta-link">
-                记录/训练/长沙集训
-              </a>
-            
-          
-        </div>
-        <a href="/2019/02/17/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay3/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2019/02/16/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay2/">
-        <h1 class="post-title">
-          长沙集训Day2
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-           2019.2.12
-
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2019-02-15T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2019-02-16</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-                
-              
-              <a 
-                href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
-                class="post-meta-link">
-                记录/训练/长沙集训
-              </a>
-            
-          
-        </div>
-        <a href="/2019/02/16/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay2/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/">
-        <h1 class="post-title">
-          长沙集训Day1
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-           2019.2.11
-
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2019-02-14T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2019-02-15</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-                
-              
-              <a 
-                href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
-                class="post-meta-link">
-                记录/训练/长沙集训
-              </a>
-            
-          
-        </div>
-        <a href="/2019/02/15/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay1/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/">
-        <h1 class="post-title">
-          NOIP2018赛后总结
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-           1.题目难度（个人理解）
-
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2018-11-22T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2018-11-23</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-              <a 
-                href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/" 
-                class="post-meta-link">
-                记录/竞赛
-              </a>
-            
-          
-        </div>
-        <a href="/2018/11/23/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-NOIP2018%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-
-  <div class="nav">
-  
-    <div class="nav-item-prev">
-      <a 
-        href="/page/3/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一页</div>
-          
-        </div>
-      </a>
-    </div>
-  
-  
-</div>
-
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

@@ -83,6 +83,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -122,15 +153,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -233,465 +267,6 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
-            <aside class="left-column">
-              
-              <div class="card card-author">
-                
-  <img 
-    src="/img/myavatar.jpg" 
-    class="author-img"
-    width="88"
-    height="88"
-    alt="author avatar">
-
-<p class="author-name">FysbbCZH</p>
-<p class="author-description">That's♂good!</p>
-<div class="author-message">
-  <a 
-    class="author-posts-count" 
-    href="/archives">
-    <span>30</span>
-    <span>文章</span>
-  </a>
-  <a 
-    class="author-categories-count" 
-    href="/categories">
-    <span>13</span>
-    <span>分类</span>
-  </a>
-  <a 
-    class="author-tags-count" 
-    href="/tags">
-    <span>16</span>
-    <span>标签</span>
-  </a>
-</div>
-
-  <div class="author-card-society">
-    
-      <div class="author-card-society-icon">
-        <a href="mailto:2568858327@qq.com">
-          <i class="iconfont icon-mail society-icon"></i>
-        </a>
-      </div>
-    
-      <div class="author-card-society-icon">
-        <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198318522568">
-          <i class="iconfont icon-steam society-icon"></i>
-        </a>
-      </div>
-    
-  </div>
-
-              </div>
-               <div class="sticky-tablet">
-  
-  
-  
-  <article class="card card-content categories-widget">
-    
-
-<div class="categories-card">
-  <div class="categories-header">
-    <i 
-      class="iconfont icon-fenlei" 
-      style="padding-right: 2px;">
-    </i>分类
-  </div>
-  <div class="categories-list">
-    <!-- 
-      <a href="/categories/%E7%9F%A5%E8%AF%86/">
-        <div class="categories-list-item">
-          知识
-          <span class="categories-list-item-badge">4</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/">
-        <div class="categories-list-item">
-          &gt;BLOG
-          <span class="categories-list-item-badge">3</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/">
-        <div class="categories-list-item">
-          &gt;&gt;Kaze
-          <span class="categories-list-item-badge">3</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-        <div class="categories-list-item">
-          &gt;数据结构
-          <span class="categories-list-item-badge">1</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
-        <div class="categories-list-item">
-          编程语言
-          <span class="categories-list-item-badge">9</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">
-        <div class="categories-list-item">
-          &gt;C
-          <span class="categories-list-item-badge">9</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E8%AE%B0%E5%BD%95/">
-        <div class="categories-list-item">
-          记录
-          <span class="categories-list-item-badge">14</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/">
-        <div class="categories-list-item">
-          &gt;竞赛
-          <span class="categories-list-item-badge">1</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/">
-        <div class="categories-list-item">
-          &gt;训练
-          <span class="categories-list-item-badge">13</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/">
-        <div class="categories-list-item">
-          &gt;&gt;长沙集训
-          <span class="categories-list-item-badge">13</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E9%A2%98%E8%A7%A3/">
-        <div class="categories-list-item">
-          题解
-          <span class="categories-list-item-badge">3</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/">
-        <div class="categories-list-item">
-          &gt;吉林大学
-          <span class="categories-list-item-badge">3</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/">
-        <div class="categories-list-item">
-          &gt;&gt;数据结构课设
-          <span class="categories-list-item-badge">3</span>
-        </div>
-      </a>
-     -->
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/BLOG/">BLOG</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/">Kaze</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/">竞赛</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/">训练</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/">长沙集训</a><span class="category-list-count">13</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/">吉林大学</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/">数据结构课设</a><span class="category-list-count">3</span></li></ul></li></ul></li></ul> 
-  </div>
-</div>
-
-  </article>
-  
-  <article class="card card-content tags-widget">
-    <div class="tags-card">
-  <div class="tags-header">
-    <i 
-      class="iconfont icon-biaoqian" 
-      style="padding-right: 2px;">
-    </i>热门标签
-  </div>
-  <div class="tags-list">
-    
-      <a 
-        href="/tags/Pascal/" 
-        title="Pascal">
-        <div class="tags-list-item">Pascal</div>
-      </a>
-    
-      <a 
-        href="/tags/C/" 
-        title="C++">
-        <div class="tags-list-item">C++</div>
-      </a>
-    
-      <a 
-        href="/tags/BLOG/" 
-        title="BLOG">
-        <div class="tags-list-item">BLOG</div>
-      </a>
-    
-      <a 
-        href="/tags/Kaze/" 
-        title="Kaze">
-        <div class="tags-list-item">Kaze</div>
-      </a>
-    
-      <a 
-        href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" 
-        title="动态规划">
-        <div class="tags-list-item">动态规划</div>
-      </a>
-    
-      <a 
-        href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
-        title="字符串">
-        <div class="tags-list-item">字符串</div>
-      </a>
-    
-      <a 
-        href="/tags/BFS/" 
-        title="BFS">
-        <div class="tags-list-item">BFS</div>
-      </a>
-    
-      <a 
-        href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" 
-        title="快速排序">
-        <div class="tags-list-item">快速排序</div>
-      </a>
-    
-      <a 
-        href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91Trie/" 
-        title="字典树Trie">
-        <div class="tags-list-item">字典树Trie</div>
-      </a>
-    
-      <a 
-        href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
-        title="最小生成树">
-        <div class="tags-list-item">最小生成树</div>
-      </a>
-    
-      <a 
-        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
-        title="二叉树">
-        <div class="tags-list-item">二叉树</div>
-      </a>
-    
-      <a 
-        href="/tags/KMP/" 
-        title="KMP">
-        <div class="tags-list-item">KMP</div>
-      </a>
-    
-      <a 
-        href="/tags/Hexo/" 
-        title="Hexo">
-        <div class="tags-list-item">Hexo</div>
-      </a>
-    
-      <a 
-        href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" 
-        title="红黑树">
-        <div class="tags-list-item">红黑树</div>
-      </a>
-    
-      <a 
-        href="/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/" 
-        title="平衡树">
-        <div class="tags-list-item">平衡树</div>
-      </a>
-    
-      <a 
-        href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" 
-        title="数据结构">
-        <div class="tags-list-item">数据结构</div>
-      </a>
-    
-  </div>
-</div>
-  </article>
-  
-  
-    <article class="card card-content widescreen-archive archive-widget">
-      <div class="archive-card">
-  <div class="archive-card-header">
-    <i 
-      class="iconfont icon-wodebaobiao" 
-      style="padding-right: 2px;">
-    </i>归档
-  </div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-          <a 
-            href="/archives/2022" 
-            class="archive-card-list-item">
-            2022
-            <span class="archive-card-list-item-badge">3</span>
-          </a>
-        
-        
-        
-      
-    
-      
-        
-          <a 
-            href="/archives/2021" 
-            class="archive-card-list-item">
-            2021
-            <span class="archive-card-list-item-badge">1</span>
-          </a>
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-          <a 
-            href="/archives/2020" 
-            class="archive-card-list-item">
-            2020
-            <span class="archive-card-list-item-badge">9</span>
-          </a>
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-          <a 
-            href="/archives/2019" 
-            class="archive-card-list-item">
-            2019
-            <span class="archive-card-list-item-badge">16</span>
-          </a>
-        
-        
-        
-      
-    
-    
-      <a 
-        href="/archives/2018" 
-        class="archive-card-list-item">
-        2018
-        <span class="archive-card-list-item-badge">1</span>
-      </a>
-    
-  </div>
-</div>
-    </article>
-  
-</div>
-            </aside>
             <main class="main-column">
               
   <div class="card">
@@ -1158,6 +733,465 @@
 </div>
 
             </main>
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/img/myavatar.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">FysbbCZH</p>
+<p class="author-description">That's♂good!</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>30</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>13</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>16</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a href="mailto:2568858327@qq.com">
+          <i class="iconfont icon-mail society-icon"></i>
+        </a>
+      </div>
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198318522568">
+          <i class="iconfont icon-steam society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+  
+  <article class="card card-content categories-widget">
+    
+
+<div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    <!-- 
+      <a href="/categories/%E7%9F%A5%E8%AF%86/">
+        <div class="categories-list-item">
+          知识
+          <span class="categories-list-item-badge">4</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/">
+        <div class="categories-list-item">
+          &gt;BLOG
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/">
+        <div class="categories-list-item">
+          &gt;&gt;Kaze
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+        <div class="categories-list-item">
+          &gt;数据结构
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+        <div class="categories-list-item">
+          编程语言
+          <span class="categories-list-item-badge">9</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">
+        <div class="categories-list-item">
+          &gt;C
+          <span class="categories-list-item-badge">9</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/">
+        <div class="categories-list-item">
+          记录
+          <span class="categories-list-item-badge">14</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/">
+        <div class="categories-list-item">
+          &gt;竞赛
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/">
+        <div class="categories-list-item">
+          &gt;训练
+          <span class="categories-list-item-badge">13</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/">
+        <div class="categories-list-item">
+          &gt;&gt;长沙集训
+          <span class="categories-list-item-badge">13</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/">
+        <div class="categories-list-item">
+          题解
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/">
+        <div class="categories-list-item">
+          &gt;吉林大学
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/">
+        <div class="categories-list-item">
+          &gt;&gt;数据结构课设
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+     -->
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/BLOG/">BLOG</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/">Kaze</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/">竞赛</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/">训练</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/">长沙集训</a><span class="category-list-count">13</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/">吉林大学</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/">数据结构课设</a><span class="category-list-count">3</span></li></ul></li></ul></li></ul> 
+  </div>
+</div>
+
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/Pascal/" 
+        title="Pascal">
+        <div class="tags-list-item">Pascal</div>
+      </a>
+    
+      <a 
+        href="/tags/C/" 
+        title="C++">
+        <div class="tags-list-item">C++</div>
+      </a>
+    
+      <a 
+        href="/tags/BLOG/" 
+        title="BLOG">
+        <div class="tags-list-item">BLOG</div>
+      </a>
+    
+      <a 
+        href="/tags/Kaze/" 
+        title="Kaze">
+        <div class="tags-list-item">Kaze</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" 
+        title="动态规划">
+        <div class="tags-list-item">动态规划</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
+        title="字符串">
+        <div class="tags-list-item">字符串</div>
+      </a>
+    
+      <a 
+        href="/tags/BFS/" 
+        title="BFS">
+        <div class="tags-list-item">BFS</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" 
+        title="快速排序">
+        <div class="tags-list-item">快速排序</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91Trie/" 
+        title="字典树Trie">
+        <div class="tags-list-item">字典树Trie</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
+        title="最小生成树">
+        <div class="tags-list-item">最小生成树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
+      </a>
+    
+      <a 
+        href="/tags/Hexo/" 
+        title="Hexo">
+        <div class="tags-list-item">Hexo</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" 
+        title="红黑树">
+        <div class="tags-list-item">红黑树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/" 
+        title="平衡树">
+        <div class="tags-list-item">平衡树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" 
+        title="数据结构">
+        <div class="tags-list-item">数据结构</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+    <article class="card card-content widescreen-archive archive-widget">
+      <div class="archive-card">
+  <div class="archive-card-header">
+    <i 
+      class="iconfont icon-wodebaobiao" 
+      style="padding-right: 2px;">
+    </i>归档
+  </div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a 
+            href="/archives/2022" 
+            class="archive-card-list-item">
+            2022
+            <span class="archive-card-list-item-badge">3</span>
+          </a>
+        
+        
+        
+      
+    
+      
+        
+          <a 
+            href="/archives/2021" 
+            class="archive-card-list-item">
+            2021
+            <span class="archive-card-list-item-badge">1</span>
+          </a>
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a 
+            href="/archives/2020" 
+            class="archive-card-list-item">
+            2020
+            <span class="archive-card-list-item-badge">9</span>
+          </a>
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a 
+            href="/archives/2019" 
+            class="archive-card-list-item">
+            2019
+            <span class="archive-card-list-item-badge">16</span>
+          </a>
+        
+        
+        
+      
+    
+    
+      <a 
+        href="/archives/2018" 
+        class="archive-card-list-item">
+        2018
+        <span class="archive-card-list-item-badge">1</span>
+      </a>
+    
+  </div>
+</div>
+    </article>
+  
+</div>
+            </aside>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

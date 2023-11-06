@@ -105,6 +105,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -144,15 +175,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -255,6 +289,366 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      长沙集训Day8
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2019-02-21T16:00:00.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2019-02-22</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E8%AE%B0%E5%BD%95/" 
+          class="post-meta-link">
+          记录
+        </a>
+      
+        <a 
+          href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/" 
+          class="post-meta-link">
+          训练
+        </a>
+      
+        <a 
+          href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
+          class="post-meta-link">
+          长沙集训
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>1.4k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/Pascal/" 
+            class="post-meta-link">
+            Pascal
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h5 id="2019218"><a class="markdownIt-Anchor" href="#2019218"></a> 2019.2.18</h5>
+<h1 id="长沙集训-day-8"><a class="markdownIt-Anchor" href="#长沙集训-day-8"></a> 长沙集训 $ Day 8 $</h1>
+<p>$ Day 6 $ 讲解了 $ CDQ $ 分治，今天有学到了一种树上分治方法——点分治。</p>
+<hr />
+<h2 id="点分治"><a class="markdownIt-Anchor" href="#点分治"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3806">点分治:</a></h2>
+<p>给出一棵树，询问树上有无距离为 $ k $ 的点对存在。</p>
+<p>对于此类问题，最基础的方法是 $ DFS $ 树上的每一条链，寻找有无链长为 $ k $ ,但是这样的做法时间复杂度为 $ O(n^{2}) $ ,肯定会 $ TLE $ 。这时，我们便可使用<strong>点分治</strong>来解决问题。</p>
+<p>实际上，如果选一个节点为根，树上的链可以分成两种，即<strong>经过树根</strong>和<strong>在子树中</strong>。</p>
+<p><img src="https://i.loli.net/2019/02/23/5c71233a768a9.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c71233a768a9.png" class="lozad post-image"></p>
+<p>而这便是点分治的基础，我们选择一个根，进行一次 $ DFS $ ，处理完所有经过根的路径，之后我们将根删除。原有的树被分为多棵子树，在所有子树中进行同样的操作，直到所有节点都被删除。</p>
+<p>但根节点的选择也是有技巧的，如上图中选择 $ R $ 为根和选择 $ K $ 为根，分治的次数是不同的，如何选取一个节点，使分治次数最少？事实上，这个点就是树的<strong>重心</strong>。</p>
+<h3 id="树的重心"><a class="markdownIt-Anchor" href="#树的重心"></a> 树的重心</h3>
+<p>性质：以删去重心后，形成所有子树中，<strong>最大的子树最小</strong>。</p>
+<p>如上图中，树的重心为 $ R $ 。因为以 $ R $ 为根时，最大子树为 $ 4 $ ，其余各点为根时，没有任何一个点能使最大子树小于 $ 4 $ 。</p>
+<p>我们可以利用性质来寻找树的重心，只需通过一次树形 $ DP $ ，找出每个点的最大子树即可。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">procedure <span class="token function">find</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span>fa<span class="token punctuation">,</span>sum_root<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//sum_root为整棵树的大小，f为当前节点，fa为f的父节点</span>
+var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  sum<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>          <span class="token comment">//sum[f]记录以f为根的子树的大小，max_next[f]记录删去f后形成的最大子树大小</span>
+  max_next<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span>fa<span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>tf<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">)</span> then begin
+      <span class="token function">find</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>f<span class="token punctuation">,</span>sum_root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">inc</span><span class="token punctuation">(</span>sum<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">,</span>sum<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      max_next<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>max_next<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">,</span>sum<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+  <span class="token function">inc</span><span class="token punctuation">(</span>sum<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  max_next<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>max_next<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">,</span>sum_root<span class="token operator">-</span>sum<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>max_next<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">&lt;</span>max_next<span class="token punctuation">[</span>find_root<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token function">or</span> <span class="token punctuation">(</span>find_root<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> then find_root<span class="token operator">:</span><span class="token operator">=</span>f<span class="token punctuation">;</span>    <span class="token comment">//  find_root记录重心</span>
+end<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="分治处理"><a class="markdownIt-Anchor" href="#分治处理"></a> 分治处理</h3>
+<p>找到重心后，我们便可以通过DFS查找答案，但此时要注意这种特殊情况。</p>
+<p><img src="https://i.loli.net/2019/02/23/5c712aadc3dae.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c712aadc3dae.png" class="lozad post-image"></p>
+<p>像这样的两条链是不能将他们的长度加在一起的，但显然这种情况在记录答案时是不好处理的，所以我们可以跑两遍 $ DFS $ ，第一遍记录答案（不论正误），第二遍将错误的答案减掉。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">procedure <span class="token function">dfs</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span>fa<span class="token punctuation">,</span>len<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token function">inc</span><span class="token punctuation">(</span>tot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  dis<span class="token punctuation">[</span>tot<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>len<span class="token punctuation">;</span>
+  <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span>fa<span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>tf<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">)</span> then <span class="token function">dfs</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>f<span class="token punctuation">,</span>len<span class="token operator">+</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+function <span class="token function">solve</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span>k<span class="token operator">:</span>longint<span class="token punctuation">;</span>len<span class="token operator">:</span>int64<span class="token punctuation">)</span><span class="token operator">:</span>int64<span class="token punctuation">;</span>
+var i<span class="token punctuation">,</span>j<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  tot<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>  
+  <span class="token function">dfs</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> k<span class="token operator">=</span><span class="token number">1</span> then begin
+    <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to tot <span class="token keyword">do</span>
+      <span class="token keyword">for</span> j<span class="token operator">:</span><span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span> to tot <span class="token keyword">do</span>
+        <span class="token function">inc</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>dis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>dis<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  end
+    <span class="token keyword">else</span> begin
+      <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to tot <span class="token keyword">do</span>
+        <span class="token keyword">for</span> j<span class="token operator">:</span><span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span> to tot <span class="token keyword">do</span>
+          <span class="token function">dec</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>dis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>dis<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure <span class="token function">next</span><span class="token punctuation">(</span>q<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  tf<span class="token punctuation">[</span>q<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token function">solve</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">//注意这两次solve时参数的不同</span>
+  i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>q<span class="token punctuation">]</span><span class="token punctuation">;</span>  
+  <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    <span class="token keyword">if</span> tf<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span> then begin
+      <span class="token function">solve</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+      find_root<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+      <span class="token function">find</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>q<span class="token punctuation">,</span>sum<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+      <span class="token function">next</span><span class="token punctuation">(</span>find_root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="复杂度"><a class="markdownIt-Anchor" href="#复杂度"></a> 复杂度</h3>
+<p>根据树的重心的性质，我们可以确定分治次数不超过 $ \log n $ 次，由此可得出算法的时间复杂度：</p>
+<ol>
+<li>分治 $ O(\log n) $</li>
+<li>查找答案 $ O(n) $</li>
+</ol>
+<p>总时间复杂度接近 $ O(n \log n) $</p>
+<p>其实点分治的难点并不在分治，而是在计算答案的过程，某些题目中不能单纯使用暴力计算答案，还要和其他算法、数据结构相结合（如二分、树状数组），又或者计算答案的过程十分繁琐（如<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P2664">树上游戏</a>），所以还是需要熟练运用多种算法才能顺利解决点分治问题。</p>
+<h3 id="程序"><a class="markdownIt-Anchor" href="#程序"></a> 程序</h3>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program project1<span class="token punctuation">;</span>
+var
+   r<span class="token punctuation">,</span>sum<span class="token punctuation">,</span>max_next<span class="token punctuation">,</span>dis<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.10005</span><span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
+   tf<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.10005</span><span class="token punctuation">]</span>of boolean<span class="token punctuation">;</span>
+   ans<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.10000005</span><span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
+   l<span class="token punctuation">,</span>v<span class="token punctuation">,</span>w<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.20005</span><span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
+   n<span class="token punctuation">,</span>m<span class="token punctuation">,</span>find_root<span class="token punctuation">,</span>tot<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+
+function <span class="token function">max</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token operator">:</span>int64<span class="token punctuation">)</span><span class="token operator">:</span>int64<span class="token punctuation">;</span>
+begin
+  <span class="token keyword">if</span> a<span class="token operator">></span>b then <span class="token function">exit</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token function">exit</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure re<span class="token punctuation">;</span>
+var i<span class="token punctuation">,</span>t<span class="token punctuation">,</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  t<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to n<span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">do</span> begin
+    <span class="token function">read</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">inc</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    l<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    r<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>t<span class="token punctuation">;</span>
+    v<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>y<span class="token punctuation">;</span>
+    w<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>z<span class="token punctuation">;</span>
+    <span class="token function">inc</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    l<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    r<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>t<span class="token punctuation">;</span>
+    v<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>x<span class="token punctuation">;</span>
+    w<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>z<span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure <span class="token function">find</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span>fa<span class="token punctuation">,</span>sum_root<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  sum<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  max_next<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span>fa<span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>tf<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">)</span> then begin
+      <span class="token function">find</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>f<span class="token punctuation">,</span>sum_root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">inc</span><span class="token punctuation">(</span>sum<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">,</span>sum<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      max_next<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>max_next<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">,</span>sum<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+  <span class="token function">inc</span><span class="token punctuation">(</span>sum<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  max_next<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>max_next<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">,</span>sum_root<span class="token operator">-</span>sum<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>max_next<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">&lt;</span>max_next<span class="token punctuation">[</span>find_root<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token function">or</span> <span class="token punctuation">(</span>find_root<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> then find_root<span class="token operator">:</span><span class="token operator">=</span>f<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure <span class="token function">dfs</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span>fa<span class="token punctuation">,</span>len<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token function">inc</span><span class="token punctuation">(</span>tot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  dis<span class="token punctuation">[</span>tot<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>len<span class="token punctuation">;</span>
+  <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span>fa<span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>tf<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">)</span> then <span class="token function">dfs</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>f<span class="token punctuation">,</span>len<span class="token operator">+</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+function <span class="token function">solve</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span>k<span class="token operator">:</span>longint<span class="token punctuation">;</span>len<span class="token operator">:</span>int64<span class="token punctuation">)</span><span class="token operator">:</span>int64<span class="token punctuation">;</span>
+var i<span class="token punctuation">,</span>j<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  tot<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>   
+  <span class="token function">dfs</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> k<span class="token operator">=</span><span class="token number">1</span> then begin
+    <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to tot <span class="token keyword">do</span>
+      <span class="token keyword">for</span> j<span class="token operator">:</span><span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span> to tot <span class="token keyword">do</span>
+        <span class="token function">inc</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>dis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>dis<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  end
+    <span class="token keyword">else</span> begin
+      <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to tot <span class="token keyword">do</span>
+        <span class="token keyword">for</span> j<span class="token operator">:</span><span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span> to tot <span class="token keyword">do</span>
+          <span class="token function">dec</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>dis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>dis<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure <span class="token function">next</span><span class="token punctuation">(</span>q<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  tf<span class="token punctuation">[</span>q<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token function">solve</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>q<span class="token punctuation">]</span><span class="token punctuation">;</span>  
+  <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    <span class="token keyword">if</span> tf<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span> then begin
+      <span class="token function">solve</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      find_root<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+      <span class="token function">find</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>q<span class="token punctuation">,</span>sum<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+      <span class="token function">next</span><span class="token punctuation">(</span>find_root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure main<span class="token punctuation">;</span>
+var i<span class="token punctuation">,</span>x<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to m <span class="token keyword">do</span> begin
+    <span class="token function">read</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> ans<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> then <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token string">'AYE'</span><span class="token punctuation">)</span>
+      <span class="token keyword">else</span> <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token string">'NAY'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+begin
+  <span class="token function">read</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  re<span class="token punctuation">;</span>
+  find_root<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token function">find</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+  <span class="token function">next</span><span class="token punctuation">(</span>find_root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  main<span class="token punctuation">;</span>
+end<span class="token punctuation">.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2019/02/23/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay9/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">长沙集训Day9 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2019/02/21/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay7/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">长沙集训Day7 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+        appKey: '5tGe7WC9z2QaIOESWdymcByE',
+        placeholder: '有什么看法？来说说看吧......',
+        path: window.location.pathname,
+        avatar: 'identicon',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        
+        
+        
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
+
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019218"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.18</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-8"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 8 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9%E5%88%86%E6%B2%BB"><span class="toc-number"></span> <span class="toc-text"> 点分治:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E9%87%8D%E5%BF%83"><span class="toc-number"></span> <span class="toc-text"> 树的重心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%B2%BB%E5%A4%84%E7%90%86"><span class="toc-number"></span> <span class="toc-text"> 分治处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number"></span> <span class="toc-text"> 复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a>
+</div>
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -544,190 +938,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-<article class="card card-content">
-  <header>
-    <h1 class="post-title">
-      长沙集训Day8
-    </h1>
-  </header>
-  <div class="post-meta post-show-meta">
-    <time datetime="2019-02-21T16:00:00.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2019-02-22</span>
-    </time>
-    
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E8%AE%B0%E5%BD%95/" 
-          class="post-meta-link">
-          记录
-        </a>
-      
-        <a 
-          href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/" 
-          class="post-meta-link">
-          训练
-        </a>
-      
-        <a 
-          href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
-          class="post-meta-link">
-          长沙集训
-        </a>
-      
-    
-    
-      <span class="dot"></span>
-      <span>1.4k 字</span>
-    
-  </div>
-  
-    <div 
-      class="post-meta post-show-meta" 
-      style="margin-top: -10px;">
-      <div style="display: flex; align-items: center;">
-        <i 
-          class="iconfont icon-biaoqian" 
-          style="margin-right: 2px; font-size: 1.15rem;">
-        </i>
-        
-          
-          <a 
-            href="/tags/Pascal/" 
-            class="post-meta-link">
-            Pascal
-          </a>
-        
-      </div>
-    </div>
-  
-  </header>
-  <div 
-    id="section" 
-    class="post-content">
-    <h5 id="2019218"><a class="markdownIt-Anchor" href="#2019218"></a> 2019.2.18</h5>
-<h1 id="长沙集训-day-8"><a class="markdownIt-Anchor" href="#长沙集训-day-8"></a> 长沙集训 $ Day 8 $</h1>
-<p>$ Day 6 $ 讲解了 $ CDQ $ 分治，今天有学到了一种树上分治方法——点分治。</p>
-<hr />
-<h2 id="点分治"><a class="markdownIt-Anchor" href="#点分治"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3806">点分治:</a></h2>
-<p>给出一棵树，询问树上有无距离为 $ k $ 的点对存在。</p>
-<p>对于此类问题，最基础的方法是 $ DFS $ 树上的每一条链，寻找有无链长为 $ k $ ,但是这样的做法时间复杂度为 $ O(n^{2}) $ ,肯定会 $ TLE $ 。这时，我们便可使用<strong>点分治</strong>来解决问题。</p>
-<p>实际上，如果选一个节点为根，树上的链可以分成两种，即<strong>经过树根</strong>和<strong>在子树中</strong>。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c71233a768a9.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c71233a768a9.png" class="lozad post-image"></p>
-<p>而这便是点分治的基础，我们选择一个根，进行一次 $ DFS $ ，处理完所有经过根的路径，之后我们将根删除。原有的树被分为多棵子树，在所有子树中进行同样的操作，直到所有节点都被删除。</p>
-<p>但根节点的选择也是有技巧的，如上图中选择 $ R $ 为根和选择 $ K $ 为根，分治的次数是不同的，如何选取一个节点，使分治次数最少？事实上，这个点就是树的<strong>重心</strong>。</p>
-<h3 id="树的重心"><a class="markdownIt-Anchor" href="#树的重心"></a> 树的重心</h3>
-<p>性质：以删去重心后，形成所有子树中，<strong>最大的子树最小</strong>。</p>
-<p>如上图中，树的重心为 $ R $ 。因为以 $ R $ 为根时，最大子树为 $ 4 $ ，其余各点为根时，没有任何一个点能使最大子树小于 $ 4 $ 。</p>
-<p>我们可以利用性质来寻找树的重心，只需通过一次树形 $ DP $ ，找出每个点的最大子树即可。</p>
-<pre class="highlight"><span class="line"><span class="function">procedure <span class="title">find</span><span class="params">(f,fa,sum_root:longint)</span></span>;  <span class="comment">//sum_root为整棵树的大小，f为当前节点，fa为f的父节点</span></span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  i:=r[f];</span><br><span class="line">  sum[f]:=<span class="number">0</span>;          <span class="comment">//sum[f]记录以f为根的子树的大小，max_next[f]记录删去f后形成的最大子树大小</span></span><br><span class="line">  max_next[f]:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> (v[i]&lt;&gt;fa) <span class="keyword">and</span> (tf[v[i]]=<span class="literal">false</span>) then begin</span><br><span class="line">      find(v[i],f,sum_root);</span><br><span class="line">      inc(sum[f],sum[v[i]]);</span><br><span class="line">      max_next[f]:=max(max_next[f],sum[v[i]]);</span><br><span class="line">    end;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">  inc(sum[f]);</span><br><span class="line">  max_next[f]:=max(max_next[f],sum_root-sum[f]);</span><br><span class="line">  <span class="keyword">if</span> (max_next[f]&lt;max_next[find_root]) <span class="keyword">or</span> (find_root=<span class="number">0</span>) then find_root:=f;    <span class="comment">//  find_root记录重心</span></span><br><span class="line">end;</span><br></pre>
-<h3 id="分治处理"><a class="markdownIt-Anchor" href="#分治处理"></a> 分治处理</h3>
-<p>找到重心后，我们便可以通过DFS查找答案，但此时要注意这种特殊情况。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c712aadc3dae.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c712aadc3dae.png" class="lozad post-image"></p>
-<p>像这样的两条链是不能将他们的长度加在一起的，但显然这种情况在记录答案时是不好处理的，所以我们可以跑两遍 $ DFS $ ，第一遍记录答案（不论正误），第二遍将错误的答案减掉。</p>
-<pre class="highlight"><span class="line"><span class="function">procedure <span class="title">dfs</span><span class="params">(f,fa,len:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  i:=r[f];</span><br><span class="line">  inc(tot);</span><br><span class="line">  dis[tot]:=len;</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> (v[i]&lt;&gt;fa) <span class="keyword">and</span> (tf[v[i]]=<span class="literal">false</span>) <span class="function">then <span class="title">dfs</span><span class="params">(v[i],f,len+w[i])</span></span>;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">solve</span><span class="params">(q,k:longint;len:int64)</span>:int64</span>;</span><br><span class="line">var i,j:longint;</span><br><span class="line">begin</span><br><span class="line">  tot:=<span class="number">0</span>;  </span><br><span class="line">  dfs(q,<span class="number">0</span>,len);</span><br><span class="line">  <span class="keyword">if</span> k=<span class="number">1</span> then begin</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">      <span class="keyword">for</span> j:=i+<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">        inc(ans[dis[i]+dis[j]]);</span><br><span class="line">  end</span><br><span class="line">    <span class="keyword">else</span> begin</span><br><span class="line">      <span class="keyword">for</span> i:=<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">for</span> j:=i+<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">          dec(ans[dis[i]+dis[j]]);</span><br><span class="line">    end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">next</span><span class="params">(q:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  tf[q]:=<span class="literal">true</span>;</span><br><span class="line">  solve(q,<span class="number">1</span>,<span class="number">0</span>);             <span class="comment">//注意这两次solve时参数的不同</span></span><br><span class="line">  i:=r[q];  </span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> tf[v[i]]=<span class="literal">false</span> then begin</span><br><span class="line">      solve(v[i],<span class="number">0</span>,w[i]);  </span><br><span class="line">      find_root:=<span class="number">0</span>;</span><br><span class="line">      find(v[i],q,sum[v[i]]); </span><br><span class="line">      next(find_root);</span><br><span class="line">    end;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">end;</span><br></pre>
-<h3 id="复杂度"><a class="markdownIt-Anchor" href="#复杂度"></a> 复杂度</h3>
-<p>根据树的重心的性质，我们可以确定分治次数不超过 $ \log n $ 次，由此可得出算法的时间复杂度：</p>
-<ol>
-<li>分治 $ O(\log n) $</li>
-<li>查找答案 $ O(n) $</li>
-</ol>
-<p>总时间复杂度接近 $ O(n \log n) $</p>
-<p>其实点分治的难点并不在分治，而是在计算答案的过程，某些题目中不能单纯使用暴力计算答案，还要和其他算法、数据结构相结合（如二分、树状数组），又或者计算答案的过程十分繁琐（如<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P2664">树上游戏</a>），所以还是需要熟练运用多种算法才能顺利解决点分治问题。</p>
-<h3 id="程序"><a class="markdownIt-Anchor" href="#程序"></a> 程序</h3>
-<pre class="highlight"><span class="line">program project1;</span><br><span class="line">var</span><br><span class="line">   r,sum,max_next,dis:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.10005</span>]of longint;</span><br><span class="line">   tf:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.10005</span>]of boolean;</span><br><span class="line">   ans:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.10000005</span>]of longint;</span><br><span class="line">   l,v,w:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.20005</span>]of longint;</span><br><span class="line">   n,m,find_root,tot:longint;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">max</span><span class="params">(a,b:int64)</span>:int64</span>;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">if</span> a&gt;<span class="function">b then <span class="title">exit</span><span class="params">(a)</span> <span class="keyword">else</span> <span class="title">exit</span><span class="params">(b)</span></span>;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure re;</span><br><span class="line">var i,t,x,y,z:longint;</span><br><span class="line">begin</span><br><span class="line">  t:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to n<span class="number">-1</span> <span class="keyword">do</span> begin</span><br><span class="line">    read(x,y,z);</span><br><span class="line">    inc(t);</span><br><span class="line">    l[t]:=r[x];</span><br><span class="line">    r[x]:=t;</span><br><span class="line">    v[t]:=y;</span><br><span class="line">    w[t]:=z;</span><br><span class="line">    inc(t);</span><br><span class="line">    l[t]:=r[y];</span><br><span class="line">    r[y]:=t;</span><br><span class="line">    v[t]:=x;</span><br><span class="line">    w[t]:=z;</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">find</span><span class="params">(f,fa,sum_root:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  i:=r[f];</span><br><span class="line">  sum[f]:=<span class="number">0</span>;</span><br><span class="line">  max_next[f]:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> (v[i]&lt;&gt;fa) <span class="keyword">and</span> (tf[v[i]]=<span class="literal">false</span>) then begin</span><br><span class="line">      find(v[i],f,sum_root);</span><br><span class="line">      inc(sum[f],sum[v[i]]);</span><br><span class="line">      max_next[f]:=max(max_next[f],sum[v[i]]);</span><br><span class="line">    end;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">  inc(sum[f]);</span><br><span class="line">  max_next[f]:=max(max_next[f],sum_root-sum[f]);</span><br><span class="line">  <span class="keyword">if</span> (max_next[f]&lt;max_next[find_root]) <span class="keyword">or</span> (find_root=<span class="number">0</span>) then find_root:=f;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">dfs</span><span class="params">(f,fa,len:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  i:=r[f];</span><br><span class="line">  inc(tot);</span><br><span class="line">  dis[tot]:=len;</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> (v[i]&lt;&gt;fa) <span class="keyword">and</span> (tf[v[i]]=<span class="literal">false</span>) <span class="function">then <span class="title">dfs</span><span class="params">(v[i],f,len+w[i])</span></span>;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">solve</span><span class="params">(q,k:longint;len:int64)</span>:int64</span>;</span><br><span class="line">var i,j:longint;</span><br><span class="line">begin</span><br><span class="line">  tot:=<span class="number">0</span>;   </span><br><span class="line">  dfs(q,<span class="number">0</span>,len);</span><br><span class="line">  <span class="keyword">if</span> k=<span class="number">1</span> then begin</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">      <span class="keyword">for</span> j:=i+<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">        inc(ans[dis[i]+dis[j]]);</span><br><span class="line">  end</span><br><span class="line">    <span class="keyword">else</span> begin</span><br><span class="line">      <span class="keyword">for</span> i:=<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">for</span> j:=i+<span class="number">1</span> to tot <span class="keyword">do</span></span><br><span class="line">          dec(ans[dis[i]+dis[j]]);</span><br><span class="line">    end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">next</span><span class="params">(q:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  tf[q]:=<span class="literal">true</span>;</span><br><span class="line">  solve(q,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">  i:=r[q];  </span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> tf[v[i]]=<span class="literal">false</span> then begin</span><br><span class="line">      solve(v[i],<span class="number">0</span>,w[i]);</span><br><span class="line">      find_root:=<span class="number">0</span>;</span><br><span class="line">      find(v[i],q,sum[v[i]]); </span><br><span class="line">      next(find_root);</span><br><span class="line">    end;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure main;</span><br><span class="line">var i,x:longint;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to m <span class="keyword">do</span> begin</span><br><span class="line">    read(x);</span><br><span class="line">    if ans[x]&lt;&gt;0 then writeln(&#x27;AYE&#x27;)</span><br><span class="line">      else writeln(&#x27;NAY&#x27;);</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">  read(n,m);</span><br><span class="line">  re;</span><br><span class="line">  find_root:=<span class="number">0</span>;</span><br><span class="line">  find(<span class="number">1</span>,<span class="number">0</span>,n); </span><br><span class="line">  next(find_root);</span><br><span class="line">  main;</span><br><span class="line">end.</span><br><span class="line"></span><br></pre>
-  </div>
-  <div>
-    
-  </div>
-</article>
-<div class="nav">
-  
-    <div class="nav-item-prev">
-      <a 
-        href="/2019/02/23/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay9/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">长沙集训Day9 </div>
-          
-        </div>
-      </a>
-    </div>
-  
-  
-    <div class="nav-item-next">
-      <a 
-        href="/2019/02/21/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay7/" 
-        class="nav-link">
-        <div>
-          <div class="nav-label">下一篇</div>
-          
-            <div class="nav-title">长沙集训Day7 </div>
-          
-        </div>
-        <i class="iconfont icon-right nav-next-icon"></i>
-      </a>
-    </div>
-  
-</div>
-
-  <div 
-    class="card card-content comment-card" 
-    style="margin-top: 16px;">
-    <div class="comment-card-title">评论</div>
-    
-  <div id="vcomments"></div>
-  
-  <script>
-    loadScript("//unpkg.com/valine/dist/Valine.min.js");
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-      new Valine({
-        el: '#vcomments',
-        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
-        appKey: '5tGe7WC9z2QaIOESWdymcByE',
-        placeholder: '有什么看法？来说说看吧......',
-        path: window.location.pathname,
-        avatar: 'identicon',
-        meta: ["nick","mail","link"],
-        pageSize: '10',
-        lang: '',
-        visitor: 'false',
-        highlight: true,
-        recordIP: false,
-        
-        
-        
-        enableQQ: 'false',
-        requiredFields: [],
-      });
-    };
-  </script>
-
-  </div>
-
-<div 
-  class="card card-content toc-card" 
-  id="mobiletoc">
-  <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019218"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.18</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-8"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 8 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9%E5%88%86%E6%B2%BB"><span class="toc-number"></span> <span class="toc-text"> 点分治:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E9%87%8D%E5%BF%83"><span class="toc-number"></span> <span class="toc-text"> 树的重心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%B2%BB%E5%A4%84%E7%90%86"><span class="toc-number"></span> <span class="toc-text"> 分治处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number"></span> <span class="toc-text"> 复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a>
-</div>
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

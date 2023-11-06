@@ -105,6 +105,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -144,15 +175,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -255,6 +289,219 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      文件操作
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2020-03-26T16:00:00.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2020-03-27</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" 
+          class="post-meta-link">
+          编程语言
+        </a>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+          class="post-meta-link">
+          C++
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>532 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/C/" 
+            class="post-meta-link">
+            C++
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h2 id="一-重定向型"><a class="markdownIt-Anchor" href="#一-重定向型"></a> 一、重定向型</h2>
+<p>格式：</p>
+<pre class="line-numbers language-none"><code class="language-none">FILE *freopen(const char *filename, const char *mode, FILE *stream );
+
+freopen(&quot;pro.in&quot;,&quot;r&quot;,stdin);
+freopen(&quot;pro.out&quot;,&quot;w&quot;,stdout);
+fclose(stdin);
+fclose(stdout);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>$ filename $ 要打开的文件名</p>
+<p>$ mode $ 文件打开的模式，和 $ fopen $ 中的模式（ $ r/w $ ）相同</p>
+<p>$ stream $ 文件指针，通常使用标准流文件（ $ stdin/stdout/stderr $ ）</p>
+<p>其中 $ stdin $ 是标准输入流，默认为键盘；$ stdout $ 是标准输出流，默认为屏幕；$ stderr $ 是标准错误流，一般把屏幕设为默认。通过调用 $ freopen $ ，就可以修改标准流文件的默认值，实现重定向。</p>
+<p>使用 $ freopen() $ 函数的优点：</p>
+<p>我们不再需要修改 $ scanf $ ，$ printf $ ，$ cin $ 和 $ cout $ 。而是维持代码的原样就可以了。因为 $ freopen() $ 函数重定向了标准流，使其指向前面指定的文件，省时省力。最后只要使用 $ fclose $ 关闭输入文件和输出文件即可。</p>
+<p>需调用头文件 $ \color{red} {cstdio} $ 。</p>
+<h2 id="二-fopen-型"><a class="markdownIt-Anchor" href="#二-fopen-型"></a> 二、$ fopen $ 型</h2>
+<p>格式：</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int a, b, c;
+char s[20];
+FILE *fin, *fout;
+
+int main()
+&#123;
+    fin &#x3D; fopen(&quot;pro.in&quot;, &quot;rb&quot;);
+    fout &#x3D; fopen(&quot;pro.out&quot;, &quot;wb&quot;);
+    fscanf(fin, &quot;%d %d&quot;, &amp;a, &amp;b);
+    scanf(&quot;%d&quot;, &amp;c);
+    fprintf(fout, &quot;%d&quot;, a + b + c);
+    printf(&quot;%d&quot;, a * b * c);
+    return 0;
+&#125;
+
+pro.in输入：  1 2
+终端输入：    4
+pro.out输出： 7
+终端输出：    8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>$ fopen $ 对 $ scanf,printf $ 适用。</p>
+<p>先声明变量 $ fin $ 和 $ fout $ ，把 $ scanf $ 改成 $ fscanf $ ，第一个参数为 $ fin $ ；把 $ printf $ 改成 $ fprintf $ ，第一个参数为 $ fout $ ，最后执行 $ fclose $ ，关闭两个文件。</p>
+<h2 id="三-文件输入输出流"><a class="markdownIt-Anchor" href="#三-文件输入输出流"></a> 三、文件输入输出流</h2>
+<p>格式：</p>
+<pre class="line-numbers language-none"><code class="language-none">#include &lt;fstream&gt;
+
+using namespace std;
+
+int a, b, c;
+char s[20];
+
+int main()
+&#123;
+    ifstream fin(&quot;pro.in&quot;);
+    ofstream fout(&quot;pro.out&quot;);
+    fin &gt;&gt; a &gt;&gt; b;
+    fout &lt;&lt; a + b;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>若想用fin作为输入对象，fout作为输出对象，则可以使用如下定义：</p>
+<pre class="line-numbers language-none"><code class="language-none">ifstream  fin(&quot;输入文件名.扩展名&quot;);
+ofstream  fout(&quot;输出文件名.扩展名&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>如果想再次使用cin和cout，只需要把fin和fout的声明语句去掉，并加上这样两行即可：</p>
+<pre class="line-numbers language-none"><code class="language-none">#define fin cin
+#define fout cout<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2020/05/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/STL-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">STL-快速排序 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2020/02/23/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%87%BD%E6%95%B0/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">基础语法-函数 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+        appKey: '5tGe7WC9z2QaIOESWdymcByE',
+        placeholder: '有什么看法？来说说看吧......',
+        path: window.location.pathname,
+        avatar: 'identicon',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        
+        
+        
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
+
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%87%8D%E5%AE%9A%E5%90%91%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、重定向型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-fopen-%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text"> 二、$ fopen $ 型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="toc-number">3.</span> <span class="toc-text"> 三、文件输入输出流</span></a></li></ol>
+</div>
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -544,175 +791,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-<article class="card card-content">
-  <header>
-    <h1 class="post-title">
-      文件操作
-    </h1>
-  </header>
-  <div class="post-meta post-show-meta">
-    <time datetime="2020-03-26T16:00:00.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2020-03-27</span>
-    </time>
-    
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" 
-          class="post-meta-link">
-          编程语言
-        </a>
-      
-        <a 
-          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
-          class="post-meta-link">
-          C++
-        </a>
-      
-    
-    
-      <span class="dot"></span>
-      <span>531 字</span>
-    
-  </div>
-  
-    <div 
-      class="post-meta post-show-meta" 
-      style="margin-top: -10px;">
-      <div style="display: flex; align-items: center;">
-        <i 
-          class="iconfont icon-biaoqian" 
-          style="margin-right: 2px; font-size: 1.15rem;">
-        </i>
-        
-          
-          <a 
-            href="/tags/C/" 
-            class="post-meta-link">
-            C++
-          </a>
-        
-      </div>
-    </div>
-  
-  </header>
-  <div 
-    id="section" 
-    class="post-content">
-    <h2 id="一-重定向型"><a class="markdownIt-Anchor" href="#一-重定向型"></a> 一、重定向型</h2>
-<p>格式：</p>
-<pre class="highlight"><span class="line">FILE *freopen(const char *filename, const char *mode, FILE *stream );</span><br><span class="line"></span><br><span class="line">freopen(&quot;pro.in&quot;,&quot;r&quot;,stdin);</span><br><span class="line">freopen(&quot;pro.out&quot;,&quot;w&quot;,stdout);</span><br><span class="line">fclose(stdin);</span><br><span class="line">fclose(stdout);</span><br></pre>
-<p>$ filename $ 要打开的文件名</p>
-<p>$ mode $ 文件打开的模式，和 $ fopen $ 中的模式（ $ r/w $ ）相同</p>
-<p>$ stream $ 文件指针，通常使用标准流文件（ $ stdin/stdout/stderr $ ）</p>
-<p>其中 $ stdin $ 是标准输入流，默认为键盘；$ stdout $ 是标准输出流，默认为屏幕；$ stderr $ 是标准错误流，一般把屏幕设为默认。通过调用 $ freopen $ ，就可以修改标准流文件的默认值，实现重定向。</p>
-<p>使用 $ freopen() $ 函数的优点：</p>
-<p>我们不再需要修改 $ scanf $ ，$ printf $ ，$ cin $ 和 $ cout $ 。而是维持代码的原样就可以了。因为 $ freopen() $ 函数重定向了标准流，使其指向前面指定的文件，省时省力。最后只要使用 $ fclose $ 关闭输入文件和输出文件即可。</p>
-<p>需调用头文件 $ \color{red} {cstdio} $ 。</p>
-<h2 id="二-fopen-型"><a class="markdownIt-Anchor" href="#二-fopen-型"></a> 二、$ fopen $ 型</h2>
-<p>格式：</p>
-<pre class="highlight"><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int a, b, c;</span><br><span class="line">char s[20];</span><br><span class="line">FILE *fin, *fout;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    fin &#x3D; fopen(&quot;pro.in&quot;, &quot;rb&quot;);</span><br><span class="line">    fout &#x3D; fopen(&quot;pro.out&quot;, &quot;wb&quot;);</span><br><span class="line">    fscanf(fin, &quot;%d %d&quot;, &amp;a, &amp;b);</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;c);</span><br><span class="line">    fprintf(fout, &quot;%d&quot;, a + b + c);</span><br><span class="line">    printf(&quot;%d&quot;, a * b * c);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pro.in输入：  1 2</span><br><span class="line">终端输入：    4</span><br><span class="line">pro.out输出： 7</span><br><span class="line">终端输出：    8</span><br></pre>
-<p>$ fopen $ 对 $ scanf,printf $ 适用。</p>
-<p>先声明变量 $ fin $ 和 $ fout $ ，把 $ scanf $ 改成 $ fscanf $ ，第一个参数为 $ fin $ ；把 $ printf $ 改成 $ fprintf $ ，第一个参数为 $ fout $ ，最后执行 $ fclose $ ，关闭两个文件。</p>
-<h2 id="三-文件输入输出流"><a class="markdownIt-Anchor" href="#三-文件输入输出流"></a> 三、文件输入输出流</h2>
-<p>格式：</p>
-<pre class="highlight"><span class="line">#include &lt;fstream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int a, b, c;</span><br><span class="line">char s[20];</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    ifstream fin(&quot;pro.in&quot;);</span><br><span class="line">    ofstream fout(&quot;pro.out&quot;);</span><br><span class="line">    fin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    fout &lt;&lt; a + b;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre>
-<p>若想用fin作为输入对象，fout作为输出对象，则可以使用如下定义：</p>
-<pre class="highlight"><span class="line">ifstream  fin(&quot;输入文件名.扩展名&quot;);</span><br><span class="line">ofstream  fout(&quot;输出文件名.扩展名&quot;);</span><br></pre>
-<p>如果想再次使用cin和cout，只需要把fin和fout的声明语句去掉，并加上这样两行即可：</p>
-<pre class="highlight"><span class="line">#define fin cin</span><br><span class="line">#define fout cout</span><br></pre>
-  </div>
-  <div>
-    
-  </div>
-</article>
-<div class="nav">
-  
-    <div class="nav-item-prev">
-      <a 
-        href="/2020/05/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/STL-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">STL-快速排序 </div>
-          
-        </div>
-      </a>
-    </div>
-  
-  
-    <div class="nav-item-next">
-      <a 
-        href="/2020/02/23/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%87%BD%E6%95%B0/" 
-        class="nav-link">
-        <div>
-          <div class="nav-label">下一篇</div>
-          
-            <div class="nav-title">基础语法-函数 </div>
-          
-        </div>
-        <i class="iconfont icon-right nav-next-icon"></i>
-      </a>
-    </div>
-  
-</div>
-
-  <div 
-    class="card card-content comment-card" 
-    style="margin-top: 16px;">
-    <div class="comment-card-title">评论</div>
-    
-  <div id="vcomments"></div>
-  
-  <script>
-    loadScript("//unpkg.com/valine/dist/Valine.min.js");
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-      new Valine({
-        el: '#vcomments',
-        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
-        appKey: '5tGe7WC9z2QaIOESWdymcByE',
-        placeholder: '有什么看法？来说说看吧......',
-        path: window.location.pathname,
-        avatar: 'identicon',
-        meta: ["nick","mail","link"],
-        pageSize: '10',
-        lang: '',
-        visitor: 'false',
-        highlight: true,
-        recordIP: false,
-        
-        
-        
-        enableQQ: 'false',
-        requiredFields: [],
-      });
-    };
-  </script>
-
-  </div>
-
-<div 
-  class="card card-content toc-card" 
-  id="mobiletoc">
-  <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%87%8D%E5%AE%9A%E5%90%91%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、重定向型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-fopen-%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text"> 二、$ fopen $ 型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="toc-number">3.</span> <span class="toc-text"> 三、文件输入输出流</span></a></li></ol>
-</div>
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

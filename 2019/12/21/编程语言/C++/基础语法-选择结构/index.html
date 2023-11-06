@@ -105,6 +105,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -144,15 +175,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -255,6 +289,217 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      基础语法-选择结构
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2019-12-20T16:00:00.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2019-12-21</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" 
+          class="post-meta-link">
+          编程语言
+        </a>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+          class="post-meta-link">
+          C++
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>522 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/C/" 
+            class="post-meta-link">
+            C++
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h2 id="一-if-选择结构"><a class="markdownIt-Anchor" href="#一-if-选择结构"></a> 一、$ if $ 选择结构</h2>
+<h3 id="i-if-语句"><a class="markdownIt-Anchor" href="#i-if-语句"></a> Ⅰ. $ if $ 语句</h3>
+<p>使用方式：</p>
+<pre class="line-numbers language-none"><code class="language-none">if (条件表达式) &#123;执行内容&#125;
+if (a&lt;&#x3D;10) &#123;a++;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>当 $ \color{red}{条件表达式} $ 成立时，$ \color{red}{执行内容} $ 才会被执行，否则会被跳过。</p>
+<h3 id="ii-else-语句"><a class="markdownIt-Anchor" href="#ii-else-语句"></a> Ⅱ. $ else $ 语句</h3>
+<p>使用方式：</p>
+<pre class="line-numbers language-none"><code class="language-none">if (条件表达式) &#123;执行内容1&#125;
+else &#123;执行内容2&#125;
+
+if (a&lt;&#x3D;10) &#123;a++;&#125;
+else &#123;a--;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当 $ \color{red}{条件表达式} $ 成立时，$ \color{red}{执行内容1} $ 会被执行，否则 $ \color{red}{执行内容2} $ 会被执行。</p>
+<p>和 $ Pascal $ 相同，$ C++ $ 中 $ if $ 也可以嵌套。</p>
+<h3 id="iii-三目运算符"><a class="markdownIt-Anchor" href="#iii-三目运算符"></a> Ⅲ. 三目运算符 $ ?: $</h3>
+<p>使用方式：</p>
+<pre class="line-numbers language-none"><code class="language-none">变量&#x3D;条件表达式?值1:值2;
+
+a&#x3D;3&#x3D;&#x3D;9?1:2;
+结果：a&#x3D;2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当 $ \color{red}{条件表达式} $ 成立时，变量为 $ \color{red}{值1} $ ，否则变量为 $ \color{red}{值2} $ 。</p>
+<h2 id="二-switch-选择结构"><a class="markdownIt-Anchor" href="#二-switch-选择结构"></a> 二、$ switch $ 选择结构</h2>
+<p>使用方式：</p>
+<pre class="line-numbers language-none"><code class="language-none">switch (表达式)
+&#123;
+case 常量表达式1:
+     执行内容1;
+     break;
+case 常量表达式2:
+     执行内容2;
+     break;
+case 常量表达式3:
+     执行内容3;
+     break;
+......
+default:
+     执行内容n;
+&#125;
+
+a&#x3D;1;
+switch (a)
+    &#123;
+    case 2:
+        printf(&quot;b&quot;);
+    case 1:
+        printf(&quot;a&quot;);
+    &#125;
+输出：a
+
+a&#x3D;1;
+switch (a)
+    &#123;
+    case 1:
+        printf(&quot;a&quot;);
+    case 2:
+        printf(&quot;b&quot;);
+    &#125;
+输出：ab<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>$ switch $ 语句执行过程分为以下 $ 3 $ 步：</p>
+<p>①计算出 $ switch $ 后面圆括号内表达式的值，假定为 $ M $ ，若它不是整型，系统将自动舍去其小数部分，只取其整数部分作为结果值。</p>
+<p>②依次计算出每个 $ case $ 后常量表达式的值，假定它们为 $ M_1,M_2,\cdots $ ，同样若它们的值不是整型，则自动转换为整型。</p>
+<p>③让 $ M $ 依次同 $ M_1,M_2,\cdots $ 进行比较，一旦遇到 $ M $ 与某个值相等，则就从对应标号的语句开始执行；在碰不到相等的情况下，若存在 $ default $ 语句，则就执行其冒号后面的语句序列，否则不执行任何操作；当执行到复合语句最后的右花括号时就结束整个 $ switch $ 语句的执行。</p>
+
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2020/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">基础语法-循环结构 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2019/12/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">基础语法-顺序结构 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+        appKey: '5tGe7WC9z2QaIOESWdymcByE',
+        placeholder: '有什么看法？来说说看吧......',
+        path: window.location.pathname,
+        avatar: 'identicon',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        
+        
+        
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
+
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-if-%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text"> 一、$ if $ 选择结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-if-%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.1.</span> <span class="toc-text"> Ⅰ. $ if $ 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-else-%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.2.</span> <span class="toc-text"> Ⅱ. $ else $ 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iii-%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.3.</span> <span class="toc-text"> Ⅲ. 三目运算符 $ ?: $</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-switch-%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text"> 二、$ switch $ 选择结构</span></a></li></ol>
+</div>
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -544,175 +789,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-<article class="card card-content">
-  <header>
-    <h1 class="post-title">
-      基础语法-选择结构
-    </h1>
-  </header>
-  <div class="post-meta post-show-meta">
-    <time datetime="2019-12-20T16:00:00.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2019-12-21</span>
-    </time>
-    
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" 
-          class="post-meta-link">
-          编程语言
-        </a>
-      
-        <a 
-          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
-          class="post-meta-link">
-          C++
-        </a>
-      
-    
-    
-      <span class="dot"></span>
-      <span>521 字</span>
-    
-  </div>
-  
-    <div 
-      class="post-meta post-show-meta" 
-      style="margin-top: -10px;">
-      <div style="display: flex; align-items: center;">
-        <i 
-          class="iconfont icon-biaoqian" 
-          style="margin-right: 2px; font-size: 1.15rem;">
-        </i>
-        
-          
-          <a 
-            href="/tags/C/" 
-            class="post-meta-link">
-            C++
-          </a>
-        
-      </div>
-    </div>
-  
-  </header>
-  <div 
-    id="section" 
-    class="post-content">
-    <h2 id="一-if-选择结构"><a class="markdownIt-Anchor" href="#一-if-选择结构"></a> 一、$ if $ 选择结构</h2>
-<h3 id="i-if-语句"><a class="markdownIt-Anchor" href="#i-if-语句"></a> Ⅰ. $ if $ 语句</h3>
-<p>使用方式：</p>
-<pre class="highlight"><span class="line">if (条件表达式) &#123;执行内容&#125;</span><br><span class="line">if (a&lt;&#x3D;10) &#123;a++;&#125;</span><br></pre>
-<p>当 $ \color{red}{条件表达式} $ 成立时，$ \color{red}{执行内容} $ 才会被执行，否则会被跳过。</p>
-<h3 id="ii-else-语句"><a class="markdownIt-Anchor" href="#ii-else-语句"></a> Ⅱ. $ else $ 语句</h3>
-<p>使用方式：</p>
-<pre class="highlight"><span class="line">if (条件表达式) &#123;执行内容1&#125;</span><br><span class="line">else &#123;执行内容2&#125;</span><br><span class="line"></span><br><span class="line">if (a&lt;&#x3D;10) &#123;a++;&#125;</span><br><span class="line">else &#123;a--;&#125;</span><br></pre>
-<p>当 $ \color{red}{条件表达式} $ 成立时，$ \color{red}{执行内容1} $ 会被执行，否则 $ \color{red}{执行内容2} $ 会被执行。</p>
-<p>和 $ Pascal $ 相同，$ C++ $ 中 $ if $ 也可以嵌套。</p>
-<h3 id="iii-三目运算符"><a class="markdownIt-Anchor" href="#iii-三目运算符"></a> Ⅲ. 三目运算符 $ ?: $</h3>
-<p>使用方式：</p>
-<pre class="highlight"><span class="line">变量&#x3D;条件表达式?值1:值2;</span><br><span class="line"></span><br><span class="line">a&#x3D;3&#x3D;&#x3D;9?1:2;</span><br><span class="line">结果：a&#x3D;2</span><br></pre>
-<p>当 $ \color{red}{条件表达式} $ 成立时，变量为 $ \color{red}{值1} $ ，否则变量为 $ \color{red}{值2} $ 。</p>
-<h2 id="二-switch-选择结构"><a class="markdownIt-Anchor" href="#二-switch-选择结构"></a> 二、$ switch $ 选择结构</h2>
-<p>使用方式：</p>
-<pre class="highlight"><span class="line">switch (表达式)</span><br><span class="line">&#123;</span><br><span class="line">case 常量表达式1:</span><br><span class="line">     执行内容1;</span><br><span class="line">     break;</span><br><span class="line">case 常量表达式2:</span><br><span class="line">     执行内容2;</span><br><span class="line">     break;</span><br><span class="line">case 常量表达式3:</span><br><span class="line">     执行内容3;</span><br><span class="line">     break;</span><br><span class="line">......</span><br><span class="line">default:</span><br><span class="line">     执行内容n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a&#x3D;1;</span><br><span class="line">switch (a)</span><br><span class="line">    &#123;</span><br><span class="line">    case 2:</span><br><span class="line">        printf(&quot;b&quot;);</span><br><span class="line">    case 1:</span><br><span class="line">        printf(&quot;a&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">输出：a</span><br><span class="line"></span><br><span class="line">a&#x3D;1;</span><br><span class="line">switch (a)</span><br><span class="line">    &#123;</span><br><span class="line">    case 1:</span><br><span class="line">        printf(&quot;a&quot;);</span><br><span class="line">    case 2:</span><br><span class="line">        printf(&quot;b&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">输出：ab</span><br></pre>
-<p>$ switch $ 语句执行过程分为以下 $ 3 $ 步：</p>
-<p>①计算出 $ switch $ 后面圆括号内表达式的值，假定为 $ M $ ，若它不是整型，系统将自动舍去其小数部分，只取其整数部分作为结果值。</p>
-<p>②依次计算出每个 $ case $ 后常量表达式的值，假定它们为 $ M_1,M_2,\cdots $ ，同样若它们的值不是整型，则自动转换为整型。</p>
-<p>③让 $ M $ 依次同 $ M_1,M_2,\cdots $ 进行比较，一旦遇到 $ M $ 与某个值相等，则就从对应标号的语句开始执行；在碰不到相等的情况下，若存在 $ default $ 语句，则就执行其冒号后面的语句序列，否则不执行任何操作；当执行到复合语句最后的右花括号时就结束整个 $ switch $ 语句的执行。</p>
-
-  </div>
-  <div>
-    
-  </div>
-</article>
-<div class="nav">
-  
-    <div class="nav-item-prev">
-      <a 
-        href="/2020/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">基础语法-循环结构 </div>
-          
-        </div>
-      </a>
-    </div>
-  
-  
-    <div class="nav-item-next">
-      <a 
-        href="/2019/12/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84/" 
-        class="nav-link">
-        <div>
-          <div class="nav-label">下一篇</div>
-          
-            <div class="nav-title">基础语法-顺序结构 </div>
-          
-        </div>
-        <i class="iconfont icon-right nav-next-icon"></i>
-      </a>
-    </div>
-  
-</div>
-
-  <div 
-    class="card card-content comment-card" 
-    style="margin-top: 16px;">
-    <div class="comment-card-title">评论</div>
-    
-  <div id="vcomments"></div>
-  
-  <script>
-    loadScript("//unpkg.com/valine/dist/Valine.min.js");
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-      new Valine({
-        el: '#vcomments',
-        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
-        appKey: '5tGe7WC9z2QaIOESWdymcByE',
-        placeholder: '有什么看法？来说说看吧......',
-        path: window.location.pathname,
-        avatar: 'identicon',
-        meta: ["nick","mail","link"],
-        pageSize: '10',
-        lang: '',
-        visitor: 'false',
-        highlight: true,
-        recordIP: false,
-        
-        
-        
-        enableQQ: 'false',
-        requiredFields: [],
-      });
-    };
-  </script>
-
-  </div>
-
-<div 
-  class="card card-content toc-card" 
-  id="mobiletoc">
-  <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-if-%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text"> 一、$ if $ 选择结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-if-%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.1.</span> <span class="toc-text"> Ⅰ. $ if $ 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-else-%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.2.</span> <span class="toc-text"> Ⅱ. $ else $ 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iii-%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.3.</span> <span class="toc-text"> Ⅲ. 三目运算符 $ ?: $</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-switch-%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text"> 二、$ switch $ 选择结构</span></a></li></ol>
-</div>
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

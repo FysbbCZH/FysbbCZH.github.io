@@ -105,6 +105,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -144,15 +175,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -255,6 +289,165 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      STL-快速排序
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2020-05-14T16:00:00.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2020-05-15</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" 
+          class="post-meta-link">
+          编程语言
+        </a>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+          class="post-meta-link">
+          C++
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>110 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/C/" 
+            class="post-meta-link">
+            C++
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h2 id="一-快速排序"><a class="markdownIt-Anchor" href="#一-快速排序"></a> 一、快速排序</h2>
+<h3 id="i-格式"><a class="markdownIt-Anchor" href="#i-格式"></a> Ⅰ. 格式</h3>
+<pre class="line-numbers language-none"><code class="language-none">sort(arr+m,arr+n,cmp);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>将数组 $ arr $ 中下标为 $ m $ 的元素到下标为 $ n-1 $ 的元素，按照定义的函数 $ cmp $ 中的规则排序。</p>
+<h3 id="ii-排序规则"><a class="markdownIt-Anchor" href="#ii-排序规则"></a> Ⅱ. 排序规则</h3>
+<pre class="line-numbers language-none"><code class="language-none">int cmp(const int &amp;a,const int &amp;b)
+&#123;
+    return a&gt;b;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如上的排序规则为从大到小排序，当 $ a=b $ 时应返回 $ 0 $ 。可以对结构体排序。</p>
+<p>必须包含头文件 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mrow><mi>a</mi><mi>l</mi><mi>g</mi><mi>o</mi><mi>r</mi><mi>i</mi><mi>t</mi><mi>h</mi><mi>m</mi></mrow></mstyle></mrow><annotation encoding="application/x-tex">\color{red} {algorithm}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord" style="color:red;"><span class="mord mathnormal" style="color:red;">a</span><span class="mord mathnormal" style="margin-right:0.01968em;color:red;">l</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">g</span><span class="mord mathnormal" style="color:red;">o</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">r</span><span class="mord mathnormal" style="color:red;">i</span><span class="mord mathnormal" style="color:red;">t</span><span class="mord mathnormal" style="color:red;">h</span><span class="mord mathnormal" style="color:red;">m</span></span></span></span></span> 。</p>
+
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2020/07/27/%E7%9F%A5%E8%AF%86/BLOG/Kaze/Kaze_latex/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">公式渲染 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2020/03/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">文件操作 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+        appKey: '5tGe7WC9z2QaIOESWdymcByE',
+        placeholder: '有什么看法？来说说看吧......',
+        path: window.location.pathname,
+        avatar: 'identicon',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        
+        
+        
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
+
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-number">1.</span> <span class="toc-text"> 一、快速排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> Ⅰ. 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99"><span class="toc-number">1.2.</span> <span class="toc-text"> Ⅱ. 排序规则</span></a></li></ol></li></ol>
+</div>
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -544,162 +737,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-<article class="card card-content">
-  <header>
-    <h1 class="post-title">
-      STL-快速排序
-    </h1>
-  </header>
-  <div class="post-meta post-show-meta">
-    <time datetime="2020-05-14T16:00:00.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2020-05-15</span>
-    </time>
-    
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" 
-          class="post-meta-link">
-          编程语言
-        </a>
-      
-        <a 
-          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
-          class="post-meta-link">
-          C++
-        </a>
-      
-    
-    
-      <span class="dot"></span>
-      <span>110 字</span>
-    
-  </div>
-  
-    <div 
-      class="post-meta post-show-meta" 
-      style="margin-top: -10px;">
-      <div style="display: flex; align-items: center;">
-        <i 
-          class="iconfont icon-biaoqian" 
-          style="margin-right: 2px; font-size: 1.15rem;">
-        </i>
-        
-          
-          <a 
-            href="/tags/C/" 
-            class="post-meta-link">
-            C++
-          </a>
-        
-      </div>
-    </div>
-  
-  </header>
-  <div 
-    id="section" 
-    class="post-content">
-    <h2 id="一-快速排序"><a class="markdownIt-Anchor" href="#一-快速排序"></a> 一、快速排序</h2>
-<h3 id="i-格式"><a class="markdownIt-Anchor" href="#i-格式"></a> Ⅰ. 格式</h3>
-<pre class="highlight"><span class="line">sort(arr+m,arr+n,cmp);</span><br></pre>
-<p>将数组 $ arr $ 中下标为 $ m $ 的元素到下标为 $ n-1 $ 的元素，按照定义的函数 $ cmp $ 中的规则排序。</p>
-<h3 id="ii-排序规则"><a class="markdownIt-Anchor" href="#ii-排序规则"></a> Ⅱ. 排序规则</h3>
-<pre class="highlight"><span class="line">int cmp(const int &amp;a,const int &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">    return a&gt;b;</span><br><span class="line">&#125;</span><br></pre>
-<p>如上的排序规则为从大到小排序，当 $ a=b $ 时应返回 $ 0 $ 。可以对结构体排序。</p>
-<p>必须包含头文件 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mrow><mi>a</mi><mi>l</mi><mi>g</mi><mi>o</mi><mi>r</mi><mi>i</mi><mi>t</mi><mi>h</mi><mi>m</mi></mrow></mstyle></mrow><annotation encoding="application/x-tex">\color{red} {algorithm}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord" style="color:red;"><span class="mord mathnormal" style="color:red;">a</span><span class="mord mathnormal" style="margin-right:0.01968em;color:red;">l</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">g</span><span class="mord mathnormal" style="color:red;">o</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">r</span><span class="mord mathnormal" style="color:red;">i</span><span class="mord mathnormal" style="color:red;">t</span><span class="mord mathnormal" style="color:red;">h</span><span class="mord mathnormal" style="color:red;">m</span></span></span></span></span> 。</p>
-
-  </div>
-  <div>
-    
-  </div>
-</article>
-<div class="nav">
-  
-    <div class="nav-item-prev">
-      <a 
-        href="/2020/07/27/%E7%9F%A5%E8%AF%86/BLOG/Kaze/Kaze_latex/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">公式渲染 </div>
-          
-        </div>
-      </a>
-    </div>
-  
-  
-    <div class="nav-item-next">
-      <a 
-        href="/2020/03/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" 
-        class="nav-link">
-        <div>
-          <div class="nav-label">下一篇</div>
-          
-            <div class="nav-title">文件操作 </div>
-          
-        </div>
-        <i class="iconfont icon-right nav-next-icon"></i>
-      </a>
-    </div>
-  
-</div>
-
-  <div 
-    class="card card-content comment-card" 
-    style="margin-top: 16px;">
-    <div class="comment-card-title">评论</div>
-    
-  <div id="vcomments"></div>
-  
-  <script>
-    loadScript("//unpkg.com/valine/dist/Valine.min.js");
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-      new Valine({
-        el: '#vcomments',
-        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
-        appKey: '5tGe7WC9z2QaIOESWdymcByE',
-        placeholder: '有什么看法？来说说看吧......',
-        path: window.location.pathname,
-        avatar: 'identicon',
-        meta: ["nick","mail","link"],
-        pageSize: '10',
-        lang: '',
-        visitor: 'false',
-        highlight: true,
-        recordIP: false,
-        
-        
-        
-        enableQQ: 'false',
-        requiredFields: [],
-      });
-    };
-  </script>
-
-  </div>
-
-<div 
-  class="card card-content toc-card" 
-  id="mobiletoc">
-  <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-number">1.</span> <span class="toc-text"> 一、快速排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> Ⅰ. 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99"><span class="toc-number">1.2.</span> <span class="toc-text"> Ⅱ. 排序规则</span></a></li></ol></li></ol>
-</div>
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

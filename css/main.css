@@ -123,7 +123,7 @@ div {
 html,
 body {
   height: 100vh;
-  font-size: 15px;
+  font-size: 16px;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
   color: var(--text-color);
   background-color: var(--body-background-color);
@@ -704,7 +704,7 @@ pre[class*='highlight'] {
 .category-list a {
   color: var(--text-color);
   display: inline-block;
-  width: 95%;
+  width: 98%;
   padding: 0.3rem 0.65rem;
   border-radius: .5rem;
 }
@@ -734,7 +734,14 @@ pre[class*='highlight'] {
 }
 .category-list-count {
   position: absolute;
-  right: 0;
+  right: 15px;
+  margin-top: 0.3rem;
+  margin-right: 10px;
+  font-size: 0.8rem;
+  background-color: var(--badge-background-color);
+  padding: 2px 7px;
+  text-align: center;
+  border-radius: .2rem;
 }
 .image-wrapper {
   overflow: hidden;
@@ -801,8 +808,7 @@ pre[class*='highlight'] {
 .main-column {
   content-visibility: auto;
 }
-.right-column,
-.left-column {
+.right-column {
   display: none;
 }
 @media screen and (min-width: 862px) {
@@ -813,7 +819,11 @@ pre[class*='highlight'] {
   .right-column {
     width: 33.33333333333333%;
   }
+  .left-column {
+    order: 1;
+  }
   .main-column {
+    order: 2;
     width: 66.66666666666666%;
   }
 }
@@ -829,8 +839,8 @@ pre[class*='highlight'] {
   .right-column {
     width: 24%;
   }
-  .right-column,
-  .left-column {
+  .right-column {
+    order: 3;
     display: block;
   }
 }

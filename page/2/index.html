@@ -83,6 +83,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -122,15 +153,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -233,6 +267,443 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2020/03/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
+        <h1 class="post-title">
+          文件操作
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+           一、重定向型
+格式：
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2020-03-26T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2020-03-27</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+              <a 
+                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+                class="post-meta-link">
+                编程语言/C
+              </a>
+            
+          
+        </div>
+        <a href="/2020/03/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2020/02/23/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%87%BD%E6%95%B0/">
+        <h1 class="post-title">
+          基础语法-函数
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+           一、函数
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2020-02-22T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2020-02-23</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+              <a 
+                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+                class="post-meta-link">
+                编程语言/C
+              </a>
+            
+          
+        </div>
+        <a href="/2020/02/23/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%87%BD%E6%95%B0/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+        <h1 class="post-title">
+          基础语法-字符串
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+           一、字符数组
+字符数组定义格式同一般数组，但数组类型使字符型。
+字符数组的...
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2020-02-19T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2020-02-20</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+              <a 
+                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+                class="post-meta-link">
+                编程语言/C
+              </a>
+            
+          
+        </div>
+        <a href="/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2020/02/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%95%B0%E7%BB%84/">
+        <h1 class="post-title">
+          基础语法-数组
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+           一、一维数组
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2020-02-15T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2020-02-16</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+              <a 
+                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+                class="post-meta-link">
+                编程语言/C
+              </a>
+            
+          
+        </div>
+        <a href="/2020/02/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%95%B0%E7%BB%84/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2020/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/">
+        <h1 class="post-title">
+          基础语法-循环结构
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+           一、$ for $ 语句
+使用方式：
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2020-01-14T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2020-01-15</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+              <a 
+                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+                class="post-meta-link">
+                编程语言/C
+              </a>
+            
+          
+        </div>
+        <a href="/2020/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2019/12/21/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/">
+        <h1 class="post-title">
+          基础语法-选择结构
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+           一、$ if $ 选择结构
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2019-12-20T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2019-12-21</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+              <a 
+                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+                class="post-meta-link">
+                编程语言/C
+              </a>
+            
+          
+        </div>
+        <a href="/2019/12/21/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2019/12/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84/">
+        <h1 class="post-title">
+          基础语法-顺序结构
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+           一、常量和变量
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2019-12-07T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2019-12-08</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+              <a 
+                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+                class="post-meta-link">
+                编程语言/C
+              </a>
+            
+          
+        </div>
+        <a href="/2019/12/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2019/11/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/">
+        <h1 class="post-title">
+          写出第一个C++程序
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+          $ Pascal $ 作为我参加信息学竞赛使用的语言，伴随我走过了多年的时光，但随着计算机语言的发展，它已经逐渐被淘汰。我也必须跟上步伐，学习现在普遍使用的高级语言 $ C++ $ 。
+
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2019-11-17T16:00:00.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2019-11-18</span>
+          </time>
+          
+            
+            
+              
+            
+              
+                
+              
+            
+            <span class="dot"></span>
+            
+              
+                
+              
+              <a 
+                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+                class="post-meta-link">
+                编程语言/C
+              </a>
+            
+          
+        </div>
+        <a href="/2019/11/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+
+  <div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一页</div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/page/3/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一页</div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -692,443 +1163,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2020/03/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
-        <h1 class="post-title">
-          文件操作
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-           一、重定向型
-格式：
-
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2020-03-26T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2020-03-27</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-              <a 
-                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
-                class="post-meta-link">
-                编程语言/C
-              </a>
-            
-          
-        </div>
-        <a href="/2020/03/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2020/02/23/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%87%BD%E6%95%B0/">
-        <h1 class="post-title">
-          基础语法-函数
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-           一、函数
-
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2020-02-22T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2020-02-23</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-              <a 
-                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
-                class="post-meta-link">
-                编程语言/C
-              </a>
-            
-          
-        </div>
-        <a href="/2020/02/23/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%87%BD%E6%95%B0/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-        <h1 class="post-title">
-          基础语法-字符串
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-           一、字符数组
-字符数组定义格式同一般数组，但数组类型使字符型。
-字符数组的...
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2020-02-19T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2020-02-20</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-              <a 
-                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
-                class="post-meta-link">
-                编程语言/C
-              </a>
-            
-          
-        </div>
-        <a href="/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2020/02/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%95%B0%E7%BB%84/">
-        <h1 class="post-title">
-          基础语法-数组
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-           一、一维数组
-
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2020-02-15T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2020-02-16</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-              <a 
-                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
-                class="post-meta-link">
-                编程语言/C
-              </a>
-            
-          
-        </div>
-        <a href="/2020/02/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%95%B0%E7%BB%84/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2020/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/">
-        <h1 class="post-title">
-          基础语法-循环结构
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-           一、$ for $ 语句
-使用方式：
-
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2020-01-14T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2020-01-15</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-              <a 
-                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
-                class="post-meta-link">
-                编程语言/C
-              </a>
-            
-          
-        </div>
-        <a href="/2020/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2019/12/21/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/">
-        <h1 class="post-title">
-          基础语法-选择结构
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-           一、$ if $ 选择结构
-
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2019-12-20T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2019-12-21</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-              <a 
-                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
-                class="post-meta-link">
-                编程语言/C
-              </a>
-            
-          
-        </div>
-        <a href="/2019/12/21/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2019/12/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84/">
-        <h1 class="post-title">
-          基础语法-顺序结构
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-           一、常量和变量
-
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2019-12-07T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2019-12-08</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-              <a 
-                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
-                class="post-meta-link">
-                编程语言/C
-              </a>
-            
-          
-        </div>
-        <a href="/2019/12/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-  <div class="card">
-    
-    <article class="card card-content">
-      <a href="/2019/11/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/">
-        <h1 class="post-title">
-          写出第一个C++程序
-        </h1>
-      </a>
-      <div class="card-excerpt">
-        
-          $ Pascal $ 作为我参加信息学竞赛使用的语言，伴随我走过了多年的时光，但随着计算机语言的发展，它已经逐渐被淘汰。我也必须跟上步伐，学习现在普遍使用的高级语言 $ C++ $ 。
-
-
-        
-      </div>
-      <div class="card-post-footer">
-        <div class="post-meta">
-          <time datetime="2019-11-17T16:00:00.000Z">
-            <i 
-              class="iconfont icon-calendar" 
-              style="margin-right: 2px;">
-            </i>
-            <span>2019-11-18</span>
-          </time>
-          
-            
-            
-              
-            
-              
-                
-              
-            
-            <span class="dot"></span>
-            
-              
-                
-              
-              <a 
-                href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
-                class="post-meta-link">
-                编程语言/C
-              </a>
-            
-          
-        </div>
-        <a href="/2019/11/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%86%99%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AAC++%E7%A8%8B%E5%BA%8F/">继续阅读 </a>
-      </div>
-    </article>
-  </div>
-
-
-  <div class="nav">
-  
-    <div class="nav-item-prev">
-      <a 
-        href="/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一页</div>
-          
-        </div>
-      </a>
-    </div>
-  
-  
-    <div class="nav-item-next">
-      <a 
-        href="/page/3/" 
-        class="nav-link">
-        <div>
-          <div class="nav-label">下一页</div>
-          
-        </div>
-        <i class="iconfont icon-right nav-next-icon"></i>
-      </a>
-    </div>
-  
-</div>
-
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   

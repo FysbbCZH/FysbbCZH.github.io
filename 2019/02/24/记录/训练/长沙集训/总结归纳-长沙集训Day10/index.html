@@ -105,6 +105,37 @@
   </script>
   
     
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
   
   <script>
     // control reverse button
@@ -144,15 +175,18 @@
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else if(reverseDarkList[setting]) {
         document.documentElement.setAttribute('data-user-color-scheme', setting);
         document.getElementById('theme-color').content = themeColor[setting];
         document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
       } else {
         document.documentElement.removeAttribute('data-user-color-scheme');
         localStorage.removeItem('user-color-scheme');
         document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
         document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
       }
     };
     setDarkmode();
@@ -255,6 +289,372 @@
       <div class="section-wrap">
         <div class="container">
           <div class="columns">
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      长沙集训Day10
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2019-02-23T16:00:00.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2019-02-24</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E8%AE%B0%E5%BD%95/" 
+          class="post-meta-link">
+          记录
+        </a>
+      
+        <a 
+          href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/" 
+          class="post-meta-link">
+          训练
+        </a>
+      
+        <a 
+          href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
+          class="post-meta-link">
+          长沙集训
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>1.5k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/Pascal/" 
+            class="post-meta-link">
+            Pascal
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h5 id="2019220"><a class="markdownIt-Anchor" href="#2019220"></a> 2019.2.20</h5>
+<h1 id="长沙集训-day-10"><a class="markdownIt-Anchor" href="#长沙集训-day-10"></a> 长沙集训 $ Day 10 $</h1>
+<p>昨天已经对网络流最大流有所了解，并且已经能够使用几种基本算法解题。虽然 $ Dinic $ 算法可以解决大部分问题，但如果遇到 $ n,m $ 较大的情况，还是需要更为优秀的算法。</p>
+<hr />
+<h2 id="网络最大流加强版"><a class="markdownIt-Anchor" href="#网络最大流加强版"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P4722">网络最大流（加强版）：</a></h2>
+<p>相较于普通版的最大流，本题的 $ n $ 有所减小，但 $ m $ 却增加了 $ 20000 $ ，并且出题人显然制作了针对普通 $ Dinic $ 的数据，所以我们需要更为快速的算法。</p>
+<h3 id="isap-算法"><a class="markdownIt-Anchor" href="#isap-算法"></a> $ ISAP $ 算法</h3>
+<p>$ ISAP $ 算法是对普通 $ Dinic $ 的进一步优化，该算法先进行一次 $ BFS $ ，找出各节点到 $ T $ 的深度，之后在进行 $ DFS $ 搜索增广路径更新流量，同时更新深度，如果出现断层就结束算法。</p>
+<p>更新节点深度：如果后续节点传回该节点的消耗总流量比当前节点可用流量上限小，即 $ flow_n&lt;dis $ ,则该节点在此高度已无法做出贡献，就将该节点的高度提高 $ 1 $ 。</p>
+<p>断层：如果某一深度（该深度小于 $ n $ ）没有节点，则视为出现断层，此时残量网络中已不存在增广路，结束算法。</p>
+<p>$ ISAP $ 算法的优点是只需运行一边 $ BFS $ ,无需为网络图重新分层，所以能极大加快处理速度。</p>
+<h3 id="hlpp-算法"><a class="markdownIt-Anchor" href="#hlpp-算法"></a> $ HLPP $ 算法</h3>
+<p>实际上 $ ISAP $ 仍无法通过这道毒瘤题，我们看到了题目中所写的“预流推进”。我们之前所说的算法都是基于增广路进行扩展，而预流推进则类似手动模拟网络流的方式，先将所有的流量尽可能推给后续节点，如果流量超额，再通过反向网络推回。但直接这样进行推进可能会出现两个节点将流量互相-i推给对方，直到 $ TLE $ 为止。所以我们需要给每个节点标号，标号为 $ h_i $ 的节点只能将流量推给标号 $ h_i-1 $ 的节点，当一个节点存在超额流无法推出，就将其标号设为与其相连结点的最小标号+ $ 1 $ ,并将其压入队列，队列为空时结束算法。</p>
+<p>为了加快速度，我们一般先从 $ T $ 开始进行一遍 $ BFS $ ,对节点进行预标号。同时如果处理过程中发现 $ h_i $ 的标号没有节点，那么此时标号比 $ h_i $ 高的节点就全部无法做出贡献，将它们的标号设为 $ n+1 $ 。</p>
+<p>以上是普通预流推进算法，而 $ HLPP $ 中最高标号的意思就是：每次从队列中取出标号最高的节点进行处理，这样做的时间复杂度接近 $ O(n^{2} \cdot \sqrt m) $ ，在 $ n $ 较小而 $ m $ 很大时有很高的效率。</p>
+<h3 id="各种算法的时间复杂度"><a class="markdownIt-Anchor" href="#各种算法的时间复杂度"></a> 各种算法的时间复杂度</h3>
+<p>虽然 $ HLPP $ 的理论时间复杂度比 $ Dinic $ 低，但因为 $ Dinic $ 处理随机图时的复杂度远低于上限，而 $ HLPP $ 的复杂度基本都在最高复杂度附近，所以在数据较小时 $ HLPP $ 与 $ Dinic $ 的速度并无太大差别。</p>
+<p><img src="https://i.loli.net/2019/02/24/5c727582c8a7a.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/24/5c727582c8a7a.png" class="lozad post-image"></p>
+<h3 id="hlpp-程序"><a class="markdownIt-Anchor" href="#hlpp-程序"></a> $ HLPP $ 程序</h3>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program project1<span class="token punctuation">;</span>
+type tp<span class="token operator">=</span>record
+  h<span class="token punctuation">,</span>pos<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> max_n<span class="token operator">=</span><span class="token number">1205</span><span class="token punctuation">;</span>
+      max_m<span class="token operator">=</span><span class="token number">120005</span><span class="token punctuation">;</span>
+      max_int<span class="token operator">=</span><span class="token number">1061109567</span><span class="token punctuation">;</span>
+
+var
+   flow<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.2</span><span class="token operator">*</span>max_n<span class="token punctuation">]</span>of int64<span class="token punctuation">;</span>
+   r<span class="token punctuation">,</span>h<span class="token punctuation">,</span>num<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.2</span><span class="token operator">*</span>max_n<span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
+   tf<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token punctuation">.</span>max_n<span class="token punctuation">]</span>of boolean<span class="token punctuation">;</span>
+   l<span class="token punctuation">,</span>v<span class="token punctuation">,</span>w<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.2</span><span class="token operator">*</span>max_m<span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
+   heap<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.2</span><span class="token operator">*</span>max_n<span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
+   n<span class="token punctuation">,</span>m<span class="token punctuation">,</span>s<span class="token punctuation">,</span>t<span class="token punctuation">,</span>tot<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+
+function <span class="token function">min</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  <span class="token keyword">if</span> a<span class="token operator">&lt;</span>b then <span class="token function">exit</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token function">exit</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+function <span class="token function">search</span><span class="token punctuation">(</span>q<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  <span class="token keyword">if</span> q mod <span class="token number">2</span><span class="token operator">=</span><span class="token number">0</span> then <span class="token function">exit</span><span class="token punctuation">(</span>q<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span> <span class="token function">exit</span><span class="token punctuation">(</span>q<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure re<span class="token punctuation">;</span>
+var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+    t<span class="token punctuation">,</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z<span class="token operator">:</span>int64<span class="token punctuation">;</span>
+begin
+  t<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to m <span class="token keyword">do</span> begin
+    <span class="token function">read</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">inc</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    l<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    r<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>t<span class="token punctuation">;</span>
+    v<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>y<span class="token punctuation">;</span>
+    w<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>z<span class="token punctuation">;</span>
+    <span class="token function">inc</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    l<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    r<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>t<span class="token punctuation">;</span>
+    v<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>x<span class="token punctuation">;</span>
+    w<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure <span class="token function">insert</span><span class="token punctuation">(</span>pos<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+var i<span class="token punctuation">,</span>j<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+    t<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  <span class="token function">inc</span><span class="token punctuation">(</span>tot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  heap<span class="token punctuation">[</span>tot<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>pos<span class="token punctuation">;</span>
+  i<span class="token operator">:</span><span class="token operator">=</span>tot<span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>i shr <span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    j<span class="token operator">:</span><span class="token operator">=</span>i shr <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> h<span class="token punctuation">[</span>heap<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">></span>h<span class="token punctuation">[</span>heap<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span> then begin
+      t<span class="token operator">:</span><span class="token operator">=</span>heap<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      heap<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>heap<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      heap<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>t<span class="token punctuation">;</span>
+    end
+      <span class="token keyword">else</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>j<span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure del<span class="token punctuation">;</span>
+var i<span class="token punctuation">,</span>j<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+    t<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  heap<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>heap<span class="token punctuation">[</span>tot<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token function">dec</span><span class="token punctuation">(</span>tot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>i shl <span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&lt;=</span>tot <span class="token keyword">do</span> begin
+    j<span class="token operator">:</span><span class="token operator">=</span>i shl <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token operator">&lt;=</span>tot<span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>h<span class="token punctuation">[</span>heap<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">></span>h<span class="token punctuation">[</span>heap<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> then <span class="token function">inc</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> h<span class="token punctuation">[</span>heap<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">&lt;</span>h<span class="token punctuation">[</span>heap<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span> then begin
+      t<span class="token operator">:</span><span class="token operator">=</span>heap<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      heap<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>heap<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      heap<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>t<span class="token punctuation">;</span>
+    end
+      <span class="token keyword">else</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>j<span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure bfs<span class="token punctuation">;</span>
+var i<span class="token punctuation">,</span>f<span class="token punctuation">,</span>head<span class="token punctuation">,</span>tail<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+    p<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.2</span><span class="token operator">*</span>max_n<span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
+begin
+  <span class="token function">fillchar</span><span class="token punctuation">(</span>h<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>h<span class="token punctuation">)</span><span class="token punctuation">,</span>$<span class="token number">3f</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+  head<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  tail<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+  p<span class="token punctuation">[</span>tail<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>t<span class="token punctuation">;</span>
+  h<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> head<span class="token operator">&lt;</span>tail <span class="token keyword">do</span> begin
+    <span class="token function">inc</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    f<span class="token operator">:</span><span class="token operator">=</span>p<span class="token punctuation">[</span>head<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>w<span class="token punctuation">[</span><span class="token function">search</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>h<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">></span>h<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span> then begin
+        h<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>h<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token function">inc</span><span class="token punctuation">(</span>tail<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        p<span class="token punctuation">[</span>tail<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      end<span class="token punctuation">;</span>
+      i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>  
+end<span class="token punctuation">;</span>
+
+procedure <span class="token function">reup</span><span class="token punctuation">(</span>f<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  h<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>max_int<span class="token punctuation">;</span>  
+  i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>h<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token operator">&lt;</span>h<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">)</span> then h<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>h<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>  
+    i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure <span class="token function">push</span><span class="token punctuation">(</span>f<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+    tt<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>   
+  <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>h<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">=</span>h<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span> then begin
+      tt<span class="token operator">:</span><span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>flow<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">,</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">dec</span><span class="token punctuation">(</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>tt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">inc</span><span class="token punctuation">(</span>w<span class="token punctuation">[</span><span class="token function">search</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>tt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">dec</span><span class="token punctuation">(</span>flow<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">,</span>tt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">inc</span><span class="token punctuation">(</span>flow<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>tt<span class="token punctuation">)</span><span class="token punctuation">;</span>   
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>tf<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span>s<span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span>t<span class="token punctuation">)</span> then begin
+        tf<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token function">insert</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      end<span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> flow<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span> then <span class="token keyword">break</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure hlpp<span class="token punctuation">;</span>
+var i<span class="token punctuation">,</span>f<span class="token punctuation">,</span>j<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+    tt<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  h<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>n<span class="token punctuation">;</span>
+  flow<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>max_int<span class="token punctuation">;</span>
+  <span class="token function">fillchar</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to n <span class="token keyword">do</span>
+    <span class="token keyword">if</span> h<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span>max_int then <span class="token function">inc</span><span class="token punctuation">(</span>num<span class="token punctuation">[</span>h<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    <span class="token keyword">if</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> then begin
+      tt<span class="token operator">:</span><span class="token operator">=</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> 
+      <span class="token function">dec</span><span class="token punctuation">(</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>tt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">inc</span><span class="token punctuation">(</span>w<span class="token punctuation">[</span><span class="token function">search</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>tt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">dec</span><span class="token punctuation">(</span>flow<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">,</span>tt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">inc</span><span class="token punctuation">(</span>flow<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>tt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span>s<span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span>t<span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>tf<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">)</span> then begin
+        tf<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>  
+        <span class="token function">insert</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      end<span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+  <span class="token keyword">while</span> tot<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    f<span class="token operator">:</span><span class="token operator">=</span>heap<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    del<span class="token punctuation">;</span>
+    tf<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token function">push</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>   
+    <span class="token keyword">if</span> flow<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> then begin
+      <span class="token function">dec</span><span class="token punctuation">(</span>num<span class="token punctuation">[</span>h<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> num<span class="token punctuation">[</span>h<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span> then
+        <span class="token keyword">for</span> j<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to n <span class="token keyword">do</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>j<span class="token operator">&lt;</span><span class="token operator">></span>s<span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>j<span class="token operator">&lt;</span><span class="token operator">></span>t<span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>h<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">></span>h<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>h<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&lt;=</span>n<span class="token punctuation">)</span> then h<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+      <span class="token function">reup</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">inc</span><span class="token punctuation">(</span>num<span class="token punctuation">[</span>h<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">insert</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      tf<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+  <span class="token function">writeln</span><span class="token punctuation">(</span>flow<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+begin
+  <span class="token function">read</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>m<span class="token punctuation">,</span>s<span class="token punctuation">,</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  re<span class="token punctuation">;</span>
+  bfs<span class="token punctuation">;</span>
+  hlpp<span class="token punctuation">;</span>
+end<span class="token punctuation">.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2019/08/19/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-2019-08-19/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">长沙集训-2019-08-19 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2019/02/23/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay9/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">长沙集训Day9 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+        appKey: '5tGe7WC9z2QaIOESWdymcByE',
+        placeholder: '有什么看法？来说说看吧......',
+        path: window.location.pathname,
+        avatar: 'identicon',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        
+        
+        
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
+
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019220"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.20</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-10"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 10 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81%E5%8A%A0%E5%BC%BA%E7%89%88"><span class="toc-number"></span> <span class="toc-text"> 网络最大流（加强版）：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#isap-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ ISAP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hlpp-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ HLPP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number"></span> <span class="toc-text"> 各种算法的时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hlpp-%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> $ HLPP $ 程序</span></a>
+</div>
+            </main>
             <aside class="left-column">
               
               <div class="card card-author">
@@ -544,179 +944,6 @@
   
 </div>
             </aside>
-            <main class="main-column">
-              
-<article class="card card-content">
-  <header>
-    <h1 class="post-title">
-      长沙集训Day10
-    </h1>
-  </header>
-  <div class="post-meta post-show-meta">
-    <time datetime="2019-02-23T16:00:00.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2019-02-24</span>
-    </time>
-    
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E8%AE%B0%E5%BD%95/" 
-          class="post-meta-link">
-          记录
-        </a>
-      
-        <a 
-          href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/" 
-          class="post-meta-link">
-          训练
-        </a>
-      
-        <a 
-          href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/" 
-          class="post-meta-link">
-          长沙集训
-        </a>
-      
-    
-    
-      <span class="dot"></span>
-      <span>1.5k 字</span>
-    
-  </div>
-  
-    <div 
-      class="post-meta post-show-meta" 
-      style="margin-top: -10px;">
-      <div style="display: flex; align-items: center;">
-        <i 
-          class="iconfont icon-biaoqian" 
-          style="margin-right: 2px; font-size: 1.15rem;">
-        </i>
-        
-          
-          <a 
-            href="/tags/Pascal/" 
-            class="post-meta-link">
-            Pascal
-          </a>
-        
-      </div>
-    </div>
-  
-  </header>
-  <div 
-    id="section" 
-    class="post-content">
-    <h5 id="2019220"><a class="markdownIt-Anchor" href="#2019220"></a> 2019.2.20</h5>
-<h1 id="长沙集训-day-10"><a class="markdownIt-Anchor" href="#长沙集训-day-10"></a> 长沙集训 $ Day 10 $</h1>
-<p>昨天已经对网络流最大流有所了解，并且已经能够使用几种基本算法解题。虽然 $ Dinic $ 算法可以解决大部分问题，但如果遇到 $ n,m $ 较大的情况，还是需要更为优秀的算法。</p>
-<hr />
-<h2 id="网络最大流加强版"><a class="markdownIt-Anchor" href="#网络最大流加强版"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P4722">网络最大流（加强版）：</a></h2>
-<p>相较于普通版的最大流，本题的 $ n $ 有所减小，但 $ m $ 却增加了 $ 20000 $ ，并且出题人显然制作了针对普通 $ Dinic $ 的数据，所以我们需要更为快速的算法。</p>
-<h3 id="isap-算法"><a class="markdownIt-Anchor" href="#isap-算法"></a> $ ISAP $ 算法</h3>
-<p>$ ISAP $ 算法是对普通 $ Dinic $ 的进一步优化，该算法先进行一次 $ BFS $ ，找出各节点到 $ T $ 的深度，之后在进行 $ DFS $ 搜索增广路径更新流量，同时更新深度，如果出现断层就结束算法。</p>
-<p>更新节点深度：如果后续节点传回该节点的消耗总流量比当前节点可用流量上限小，即 $ flow_n&lt;dis $ ,则该节点在此高度已无法做出贡献，就将该节点的高度提高 $ 1 $ 。</p>
-<p>断层：如果某一深度（该深度小于 $ n $ ）没有节点，则视为出现断层，此时残量网络中已不存在增广路，结束算法。</p>
-<p>$ ISAP $ 算法的优点是只需运行一边 $ BFS $ ,无需为网络图重新分层，所以能极大加快处理速度。</p>
-<h3 id="hlpp-算法"><a class="markdownIt-Anchor" href="#hlpp-算法"></a> $ HLPP $ 算法</h3>
-<p>实际上 $ ISAP $ 仍无法通过这道毒瘤题，我们看到了题目中所写的“预流推进”。我们之前所说的算法都是基于增广路进行扩展，而预流推进则类似手动模拟网络流的方式，先将所有的流量尽可能推给后续节点，如果流量超额，再通过反向网络推回。但直接这样进行推进可能会出现两个节点将流量互相-i推给对方，直到 $ TLE $ 为止。所以我们需要给每个节点标号，标号为 $ h_i $ 的节点只能将流量推给标号 $ h_i-1 $ 的节点，当一个节点存在超额流无法推出，就将其标号设为与其相连结点的最小标号+ $ 1 $ ,并将其压入队列，队列为空时结束算法。</p>
-<p>为了加快速度，我们一般先从 $ T $ 开始进行一遍 $ BFS $ ,对节点进行预标号。同时如果处理过程中发现 $ h_i $ 的标号没有节点，那么此时标号比 $ h_i $ 高的节点就全部无法做出贡献，将它们的标号设为 $ n+1 $ 。</p>
-<p>以上是普通预流推进算法，而 $ HLPP $ 中最高标号的意思就是：每次从队列中取出标号最高的节点进行处理，这样做的时间复杂度接近 $ O(n^{2} \cdot \sqrt m) $ ，在 $ n $ 较小而 $ m $ 很大时有很高的效率。</p>
-<h3 id="各种算法的时间复杂度"><a class="markdownIt-Anchor" href="#各种算法的时间复杂度"></a> 各种算法的时间复杂度</h3>
-<p>虽然 $ HLPP $ 的理论时间复杂度比 $ Dinic $ 低，但因为 $ Dinic $ 处理随机图时的复杂度远低于上限，而 $ HLPP $ 的复杂度基本都在最高复杂度附近，所以在数据较小时 $ HLPP $ 与 $ Dinic $ 的速度并无太大差别。</p>
-<p><img src="https://i.loli.net/2019/02/24/5c727582c8a7a.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/24/5c727582c8a7a.png" class="lozad post-image"></p>
-<h3 id="hlpp-程序"><a class="markdownIt-Anchor" href="#hlpp-程序"></a> $ HLPP $ 程序</h3>
-<pre class="highlight"><span class="line">program project1;</span><br><span class="line">type tp=record</span><br><span class="line">  h,pos:longint;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> max_n=<span class="number">1205</span>;</span><br><span class="line">      max_m=<span class="number">120005</span>;</span><br><span class="line">      max_int=<span class="number">1061109567</span>;</span><br><span class="line"></span><br><span class="line">var</span><br><span class="line">   flow:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.2</span>*max_n]of int64;</span><br><span class="line">   r,h,num:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.2</span>*max_n]of longint;</span><br><span class="line">   tf:<span class="built_in">array</span>[<span class="number">0.</span>.max_n]of boolean;</span><br><span class="line">   l,v,w:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.2</span>*max_m]of longint;</span><br><span class="line">   heap:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.2</span>*max_n]of longint;</span><br><span class="line">   n,m,s,t,tot:longint;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">min</span><span class="params">(a,b:longint)</span>:longint</span>;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">if</span> a&lt;<span class="function">b then <span class="title">exit</span><span class="params">(a)</span> <span class="keyword">else</span> <span class="title">exit</span><span class="params">(b)</span></span>;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">search</span><span class="params">(q:longint)</span>:longint</span>;</span><br><span class="line">begin</span><br><span class="line">  <span class="keyword">if</span> q mod <span class="number">2</span>=<span class="number">0</span> then <span class="built_in">exit</span>(q<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">exit</span>(q+<span class="number">1</span>);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure re;</span><br><span class="line">var i:longint;</span><br><span class="line">    t,x,y,z:int64;</span><br><span class="line">begin</span><br><span class="line">  t:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to m <span class="keyword">do</span> begin</span><br><span class="line">    read(x,y,z);</span><br><span class="line">    inc(t);</span><br><span class="line">    l[t]:=r[x];</span><br><span class="line">    r[x]:=t;</span><br><span class="line">    v[t]:=y;</span><br><span class="line">    w[t]:=z;</span><br><span class="line">    inc(t);</span><br><span class="line">    l[t]:=r[y];</span><br><span class="line">    r[y]:=t;</span><br><span class="line">    v[t]:=x;</span><br><span class="line">    w[t]:=<span class="number">0</span>;</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">insert</span><span class="params">(pos:longint)</span></span>;</span><br><span class="line">var i,j:longint;</span><br><span class="line">    t:longint;</span><br><span class="line">begin</span><br><span class="line">  inc(tot);</span><br><span class="line">  heap[tot]:=pos;</span><br><span class="line">  i:=tot;</span><br><span class="line">  <span class="keyword">while</span> (i shr <span class="number">1</span>)&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    j:=i shr <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> h[heap[i]]&gt;h[heap[j]] then begin</span><br><span class="line">      t:=heap[i];</span><br><span class="line">      heap[i]:=heap[j];</span><br><span class="line">      heap[j]:=t;</span><br><span class="line">    end</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">    i:=j;</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure del;</span><br><span class="line">var i,j:longint;</span><br><span class="line">    t:longint;</span><br><span class="line">begin</span><br><span class="line">  heap[<span class="number">1</span>]:=heap[tot];</span><br><span class="line">  dec(tot);</span><br><span class="line">  i:=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (i shl <span class="number">1</span>)&lt;=tot <span class="keyword">do</span> begin</span><br><span class="line">    j:=i shl <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (j+<span class="number">1</span>&lt;=tot) <span class="keyword">and</span> (h[heap[j+<span class="number">1</span>]]&gt;h[heap[j]]) <span class="function">then <span class="title">inc</span><span class="params">(j)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> h[heap[i]]&lt;h[heap[j]] then begin</span><br><span class="line">      t:=heap[i];</span><br><span class="line">      heap[i]:=heap[j];</span><br><span class="line">      heap[j]:=t;</span><br><span class="line">    end</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">    i:=j;</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure bfs;</span><br><span class="line">var i,f,head,tail:longint;</span><br><span class="line">    p:<span class="built_in">array</span>[<span class="number">0.</span><span class="number">.2</span>*max_n]of longint;</span><br><span class="line">begin</span><br><span class="line">  fillchar(h,<span class="keyword">sizeof</span>(h),$<span class="number">3f</span>); </span><br><span class="line">  head:=<span class="number">0</span>;</span><br><span class="line">  tail:=<span class="number">1</span>;</span><br><span class="line">  p[tail]:=t;</span><br><span class="line">  h[t]:=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> head&lt;tail <span class="keyword">do</span> begin</span><br><span class="line">    inc(head);</span><br><span class="line">    f:=p[head];</span><br><span class="line">    i:=r[f];</span><br><span class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">      <span class="keyword">if</span> (w[search(i)]&lt;&gt;<span class="number">0</span>) <span class="keyword">and</span> (h[v[i]]&gt;h[f]+<span class="number">1</span>) then begin</span><br><span class="line">        h[v[i]]:=h[f]+<span class="number">1</span>;</span><br><span class="line">        inc(tail);</span><br><span class="line">        p[tail]:=v[i];</span><br><span class="line">      end;</span><br><span class="line">      i:=l[i];</span><br><span class="line">    end;</span><br><span class="line">  end;  </span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">reup</span><span class="params">(f:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">begin</span><br><span class="line">  h[f]:=max_int;  </span><br><span class="line">  i:=r[f];</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> (w[i]&lt;&gt;<span class="number">0</span>) <span class="keyword">and</span> (h[v[i]]+<span class="number">1</span>&lt;h[f]) then h[f]:=h[v[i]]+<span class="number">1</span>;  </span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"><span class="function">procedure <span class="title">push</span><span class="params">(f:longint)</span></span>;</span><br><span class="line">var i:longint;</span><br><span class="line">    tt:longint;</span><br><span class="line">begin</span><br><span class="line">  i:=r[f];   </span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> (w[i]&lt;&gt;<span class="number">0</span>) <span class="keyword">and</span> (h[f]=h[v[i]]+<span class="number">1</span>) then begin</span><br><span class="line">      tt:=min(flow[f],w[i]);</span><br><span class="line">      dec(w[i],tt);</span><br><span class="line">      inc(w[search(i)],tt);</span><br><span class="line">      dec(flow[f],tt);</span><br><span class="line">      inc(flow[v[i]],tt);   </span><br><span class="line">      <span class="keyword">if</span> (tf[v[i]]=<span class="literal">false</span>) <span class="keyword">and</span> (v[i]&lt;&gt;s) <span class="keyword">and</span> (v[i]&lt;&gt;t) then begin</span><br><span class="line">        tf[v[i]]:=<span class="literal">true</span>;</span><br><span class="line">        insert(v[i]);</span><br><span class="line">      end;</span><br><span class="line">    end;</span><br><span class="line">    i:=l[i];</span><br><span class="line">    <span class="keyword">if</span> flow[f]=<span class="number">0</span> then <span class="keyword">break</span>;</span><br><span class="line">  end;</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">procedure hlpp;</span><br><span class="line">var i,f,j:longint;</span><br><span class="line">    tt:longint;</span><br><span class="line">begin</span><br><span class="line">  h[s]:=n;</span><br><span class="line">  flow[s]:=max_int;</span><br><span class="line">  fillchar(num,<span class="keyword">sizeof</span>(num),<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">for</span> i:=<span class="number">1</span> to n <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> h[i]&lt;&gt;max_int then inc(num[h[i]]);</span><br><span class="line">  i:=r[s];</span><br><span class="line">  <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    <span class="keyword">if</span> w[i]&lt;&gt;<span class="number">0</span> then begin</span><br><span class="line">      tt:=w[i]; </span><br><span class="line">      dec(w[i],tt);</span><br><span class="line">      inc(w[search(i)],tt);</span><br><span class="line">      dec(flow[s],tt);</span><br><span class="line">      inc(flow[v[i]],tt);</span><br><span class="line">      <span class="keyword">if</span> (v[i]&lt;&gt;s) <span class="keyword">and</span> (v[i]&lt;&gt;t) <span class="keyword">and</span> (tf[v[i]]=<span class="literal">false</span>) then begin</span><br><span class="line">        tf[v[i]]:=<span class="literal">true</span>;  </span><br><span class="line">        insert(v[i]);</span><br><span class="line">      end;</span><br><span class="line">    end;</span><br><span class="line">    i:=l[i];</span><br><span class="line">  end;</span><br><span class="line">  <span class="keyword">while</span> tot&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> begin</span><br><span class="line">    f:=heap[<span class="number">1</span>];</span><br><span class="line">    del;</span><br><span class="line">    tf[f]:=<span class="literal">false</span>;</span><br><span class="line">    push(f);   </span><br><span class="line">    <span class="keyword">if</span> flow[f]&lt;&gt;<span class="number">0</span> then begin</span><br><span class="line">      dec(num[h[f]]);</span><br><span class="line">      <span class="keyword">if</span> num[h[f]]=<span class="number">0</span> then</span><br><span class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> to n <span class="keyword">do</span></span><br><span class="line">          <span class="keyword">if</span> (j&lt;&gt;s) <span class="keyword">and</span> (j&lt;&gt;t) <span class="keyword">and</span> (h[j]&gt;h[f]) <span class="keyword">and</span> (h[j]&lt;=n) then h[j]:=n+<span class="number">1</span>;</span><br><span class="line">      reup(f);</span><br><span class="line">      inc(num[h[f]]);</span><br><span class="line">      insert(f);</span><br><span class="line">      tf[f]:=<span class="literal">true</span>;</span><br><span class="line">    end;</span><br><span class="line">  end;</span><br><span class="line">  writeln(flow[t]);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">  read(n,m,s,t);</span><br><span class="line">  re;</span><br><span class="line">  bfs;</span><br><span class="line">  hlpp;</span><br><span class="line">end.</span><br><span class="line"></span><br></pre>
-  </div>
-  <div>
-    
-  </div>
-</article>
-<div class="nav">
-  
-    <div class="nav-item-prev">
-      <a 
-        href="/2019/08/19/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-2019-08-19/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">长沙集训-2019-08-19 </div>
-          
-        </div>
-      </a>
-    </div>
-  
-  
-    <div class="nav-item-next">
-      <a 
-        href="/2019/02/23/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%ADDay9/" 
-        class="nav-link">
-        <div>
-          <div class="nav-label">下一篇</div>
-          
-            <div class="nav-title">长沙集训Day9 </div>
-          
-        </div>
-        <i class="iconfont icon-right nav-next-icon"></i>
-      </a>
-    </div>
-  
-</div>
-
-  <div 
-    class="card card-content comment-card" 
-    style="margin-top: 16px;">
-    <div class="comment-card-title">评论</div>
-    
-  <div id="vcomments"></div>
-  
-  <script>
-    loadScript("//unpkg.com/valine/dist/Valine.min.js");
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-      new Valine({
-        el: '#vcomments',
-        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
-        appKey: '5tGe7WC9z2QaIOESWdymcByE',
-        placeholder: '有什么看法？来说说看吧......',
-        path: window.location.pathname,
-        avatar: 'identicon',
-        meta: ["nick","mail","link"],
-        pageSize: '10',
-        lang: '',
-        visitor: 'false',
-        highlight: true,
-        recordIP: false,
-        
-        
-        
-        enableQQ: 'false',
-        requiredFields: [],
-      });
-    };
-  </script>
-
-  </div>
-
-<div 
-  class="card card-content toc-card" 
-  id="mobiletoc">
-  <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019220"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.20</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-10"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 10 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81%E5%8A%A0%E5%BC%BA%E7%89%88"><span class="toc-number"></span> <span class="toc-text"> 网络最大流（加强版）：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#isap-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ ISAP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hlpp-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ HLPP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number"></span> <span class="toc-text"> 各种算法的时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hlpp-%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> $ HLPP $ 程序</span></a>
-</div>
-            </main>
             <aside class="right-column">
               <div class="sticky-widescreen">
   
