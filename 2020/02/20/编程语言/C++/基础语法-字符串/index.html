@@ -1,558 +1,1019 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="That&#39;s♂good!">
+  <link 
+    rel="icon" 
+    href="/">
+  <title>基础语法-字符串</title>
+  
     
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    
-    <meta name="renderer" content="webkit"/>
-    <meta name="force-rendering" content="webkit"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+      <meta 
+        property="og:title" 
+        content="基础语法-字符串">
     
     
-        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
-        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
+      <meta 
+        property="og:url" 
+        content="https://fysbbczh.github.io/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
     
     
+      <meta 
+        property="og:img" 
+        content="/img/myavatar.jpg">
     
-        <link rel="shortcut icon" href="/icons/favicon.jpg">
     
-
+      <meta 
+        property="og:img" 
+        content="That&#39;s♂good!">
     
     
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2020-02-20">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-11-05">
+      <meta 
+        property="og:article:author" 
+        content="FysbbCZH">
+      
         
-<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
-
-    
-    
-<link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" href="/css/iconfont.css">
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-    
-        <script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
+          <meta 
+            property="og:article:tag" 
+            content="C++">
         
-            load: ['[tex]/mhchem'],
-        
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        
-            packages: {'[+]': ['mhchem']},
-        
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
       }
     };
-    (function () {
-      var script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-          
-
-
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
     
+    <link rel="prefetch" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" as="script">
+  
+  
     
-    <title>
-        
-            基础语法-字符串 | CZH&#39;s BLOG
-        
-    </title>
-    
-    
+    <link rel="prefetch" href="//unpkg.com/valine/dist/Valine.min.js" as="script">
+  
+  
 <meta name="generator" content="Hexo 5.3.0"></head>
-<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
-  
-  <header class="mdui-appbar mdui-appbar-fixed">
-  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
-    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
-    <a href="/" class="mdui-typo-headline">CZH&#39;s BLOG</a>
-    <a href="/" class="header-subtitle mdui-typo-headline"></a>
-    <div class="mdui-toolbar-spacer"></div>
-    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
-  </div>
-</header>
 
-<div class="mdui-dialog" id="search">
-  
-    <div class="search-form">
-      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
-    </div>
-    <div class="search-result" data-resource="/search.xml"></div>
-  
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+      <span class="navbar-logo-dsc">FysbbCZH'S BLOG</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          首页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          归档
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/img/myavatar.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">FysbbCZH</p>
+<p class="author-description">That's♂good!</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>30</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>13</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>16</span>
+    <span>标签</span>
+  </a>
 </div>
 
-  <aside id="sidebar" class="mdui-drawer">
-    <div class="mdui-tab" mdui-tab>
-        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
-        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
-    </div>
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a href="mailto:2568858327@qq.com">
+          <i class="iconfont icon-mail society-icon"></i>
+        </a>
+      </div>
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198318522568">
+          <i class="iconfont icon-steam society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
 
-    
-    <div id="sidebar-tab1" class="mdui-p-a-1">
-        <div class="mdui-list">
-            
-                
-                <a href="/" class="mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-icon">
-                        <i class="iconfont icon-home"></i>
-                    </div>
-                    <div class="mdui-list-item-content">主页</div>
-                </a>
-            
-                
-                <a href="/tags/" class="mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-icon">
-                        <i class="iconfont icon-bookmark"></i>
-                    </div>
-                    <div class="mdui-list-item-content">标签</div>
-                </a>
-            
-                
-                <a href="/categories/" class="mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-icon">
-                        <i class="iconfont icon-folder"></i>
-                    </div>
-                    <div class="mdui-list-item-content">分类</div>
-                </a>
-            
-                
-                <a href="/archives/" class="mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-icon">
-                        <i class="iconfont icon-archive"></i>
-                    </div>
-                    <div class="mdui-list-item-content">归档</div>
-                </a>
-            
-                
-                <a href="/about/" class="mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-icon">
-                        <i class="iconfont icon-user"></i>
-                    </div>
-                    <div class="mdui-list-item-content">关于</div>
-                </a>
-            
-            <div class="mdui-list-item mdui-ripple">
-                <div class="mdui-list-item-icon">
-                    <i class="iconfont icon-moon"></i>
-                </div>
-                <div class="mdui-list-item-content">夜间模式</div>
-                <label class="mdui-switch" id="darkmode">
-                  <input type="checkbox" id="nightmode_switch"/>
-                  <i class="mdui-switch-icon"></i>
-                </label>
-            </div>           
-        </div>
-    </div>
-
-    
-    <div id="sidebar-tab2" class="mdui-p-a-1">
-        <div class="sidebar-overview">
-            <div class="sidebar-avatar">
-                
-                    <img src="/icons/avatar.jpg"/>
-                
-            </div>
-            <div class="sidebar-author-name">Cheng Ziheng</div>
-            <div class="sidebar-description">That&#39;s♂good!</div>
-        </div>
-        <div class="sidebar-links">
-            
-                
-                <div class="mdui-chip">
-                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
-                    <a href="mailto:2568858327@qq.com" class="mdui-chip-title">E-Mail</a>
-                </div>
-            
-                
-                <div class="mdui-chip">
-                    <span class="mdui-chip-icon"><i class="iconfont icon-steam"></i></span>
-                    <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198318522568" class="mdui-chip-title">Steam</a>
-                </div>
-            
-        </div>
-        <ul class="mdui-list" mdui-collapse="{accordion: true}">
-            <li class="mdui-collapse-item">
-                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-icon">
-                        <i class="iconfont icon-link"></i>
-                    </div>
-                    <div class="mdui-list-item-content">友情链接</div>
-                    <div class="mdui-collapse-item-arrow">
-                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
-                    </div>
-                </div>
-                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
-                    
-                </ul>
-            </li>
-        </ul>
-    </div>
-
-    <div class="mdui-divider"></div>
-    
-    
-</aside>
+              </div>
+               <div class="sticky-tablet">
   
-  <main id="main-contain" class="mdui-container mdui-m-t-5">
-    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
-  <header class="mdui-card-media">
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text"> 一、字符数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AD%97%E7%AC%A6%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text"> 二、字符与字符串的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text"> 三、字符串输入与输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E8%BE%93%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text"> Ⅰ. 输入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-scanf-%E8%AF%BB%E5%85%A5"><span class="toc-number">3.1.1.</span> <span class="toc-text"> ① 使用 $ scanf $ 读入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-gets-%E8%AF%BB%E5%85%A5"><span class="toc-number">3.1.2.</span> <span class="toc-text"> ② 使用 $ gets $ 读入：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.</span> <span class="toc-text"> Ⅱ. 输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-printf-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.1.</span> <span class="toc-text"> ① 使用 $ printf $ 输出：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-puts-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.2.</span> <span class="toc-text"> ② 使用 $ puts $ 输出：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text"> 四、字符串处理函数</span></a></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
     
+
+<div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    <!-- 
+      <a href="/categories/%E7%9F%A5%E8%AF%86/">
+        <div class="categories-list-item">
+          知识
+          <span class="categories-list-item-badge">4</span>
+        </div>
+      </a>
     
-      <div class="post-header"> 
-  <a class="post-header-title" href="/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/">基础语法-字符串</a>
-  <div class="post-header-meta">
-    <span>
-      <span class="iconfont icon-calendar"></span>
-      发布于:&nbsp;2020-02-20
-    </span>
-    <span>
-      <span class="iconfont icon-calendar-check"></span>
-      更新于:&nbsp;2023-11-05
-    </span>
-    <span>
-      <span class="iconfont icon-folder"></span>
-      分类于:&nbsp;<a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a> > <a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a>
-    </span>
+      <a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/">
+        <div class="categories-list-item">
+          &gt;BLOG
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
     
-      <span>
-        <span class="iconfont icon-eye"></span>
-        阅读次数:&nbsp;
-        <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
-      </span>
+      <a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/">
+        <div class="categories-list-item">
+          &gt;&gt;Kaze
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+        <div class="categories-list-item">
+          &gt;数据结构
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+        <div class="categories-list-item">
+          编程语言
+          <span class="categories-list-item-badge">9</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">
+        <div class="categories-list-item">
+          &gt;C
+          <span class="categories-list-item-badge">9</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/">
+        <div class="categories-list-item">
+          记录
+          <span class="categories-list-item-badge">14</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/">
+        <div class="categories-list-item">
+          &gt;竞赛
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/">
+        <div class="categories-list-item">
+          &gt;训练
+          <span class="categories-list-item-badge">13</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/">
+        <div class="categories-list-item">
+          &gt;&gt;长沙集训
+          <span class="categories-list-item-badge">13</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/">
+        <div class="categories-list-item">
+          题解
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/">
+        <div class="categories-list-item">
+          &gt;吉林大学
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/">
+        <div class="categories-list-item">
+          &gt;&gt;数据结构课设
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+     -->
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/BLOG/">BLOG</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/">Kaze</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/">竞赛</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/">训练</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/">长沙集训</a><span class="category-list-count">13</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/">吉林大学</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/">数据结构课设</a><span class="category-list-count">3</span></li></ul></li></ul></li></ul> 
+  </div>
+</div>
+
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/Pascal/" 
+        title="Pascal">
+        <div class="tags-list-item">Pascal</div>
+      </a>
+    
+      <a 
+        href="/tags/C/" 
+        title="C++">
+        <div class="tags-list-item">C++</div>
+      </a>
+    
+      <a 
+        href="/tags/BLOG/" 
+        title="BLOG">
+        <div class="tags-list-item">BLOG</div>
+      </a>
+    
+      <a 
+        href="/tags/Kaze/" 
+        title="Kaze">
+        <div class="tags-list-item">Kaze</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" 
+        title="动态规划">
+        <div class="tags-list-item">动态规划</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
+        title="字符串">
+        <div class="tags-list-item">字符串</div>
+      </a>
+    
+      <a 
+        href="/tags/BFS/" 
+        title="BFS">
+        <div class="tags-list-item">BFS</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" 
+        title="快速排序">
+        <div class="tags-list-item">快速排序</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91Trie/" 
+        title="字典树Trie">
+        <div class="tags-list-item">字典树Trie</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
+        title="最小生成树">
+        <div class="tags-list-item">最小生成树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
+      </a>
+    
+      <a 
+        href="/tags/Hexo/" 
+        title="Hexo">
+        <div class="tags-list-item">Hexo</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" 
+        title="红黑树">
+        <div class="tags-list-item">红黑树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/" 
+        title="平衡树">
+        <div class="tags-list-item">平衡树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" 
+        title="数据结构">
+        <div class="tags-list-item">数据结构</div>
+      </a>
     
   </div>
-</div>   
-    
-
-
-
-    
-    
-    <div class="mdui-card-menu">
-    
-      <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
-      <ul class="mdui-menu" id="share_menu">
-        <li class="mdui-menu-item">
-          <a href="http://service.weibo.com/share/share.php?appkey=&title=基础语法-字符串&url=https://fysbbczh.github.io/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/&pic=https://fysbbczh.github.io/icons/favicon.jpg&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
-        </li>
-        <li class="mdui-menu-item">
-          <a href="https://twitter.com/intent/tweet?text=基础语法-字符串&url=https://fysbbczh.github.io/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/&via=Cheng Ziheng" target="_blank" class="mdui-ripple">分享到 Twitter</a>
-        </li>
-        <li class="mdui-menu-item">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://fysbbczh.github.io/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
-        </li>
-        <li class="mdui-menu-item">
-          <a href="https://plus.google.com/share?url=https://fysbbczh.github.io/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_blank" class="mdui-ripple">分享到 Google+</a>
-        </li>
-        <li class="mdui-menu-item">
-          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://fysbbczh.github.io/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/&title=基础语法-字符串" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
-        </li>
-        <li class="mdui-menu-item">
-          <a href="http://connect.qq.com/widget/shareqq/index.html?site=CZH&#39;s BLOG&title=基础语法-字符串&summary=That&#39;s♂good!&pics=https://fysbbczh.github.io/icons/favicon.jpg&url=https://fysbbczh.github.io/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_blank" class="mdui-ripple">分享到 QQ</a>
-        </li>
-        <li class="mdui-menu-item">
-          <a href="https://telegram.me/share/url?url=https://fysbbczh.github.io/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/&text=基础语法-字符串" target="_blank" class="mdui-ripple">分享到 Telegram</a>
-        </li>
-      </ul>
-    
-  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      基础语法-字符串
+    </h1>
   </header>
-  
-  
-  
-  
-  <div class="post-tags">
-    
-      <i class="iconfont icon-tag">
-        <a rel="tag" href = /tags/C/ >C++</a>
+  <div class="post-meta post-show-meta">
+    <time datetime="2020-02-19T16:00:00.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
       </i>
+      <span>2020-02-20</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" 
+          class="post-meta-link">
+          编程语言
+        </a>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+          class="post-meta-link">
+          C++
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>1k 字</span>
     
   </div>
-
   
-  <div class="mdui-card-content mdui-typo mdui-p-x-4">
-    <h2 id="一、字符数组"><a href="#一、字符数组" class="headerlink" title="一、字符数组"></a>一、字符数组</h2><p>字符数组定义格式同一般数组，但数组类型使字符型。</p>
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/C/" 
+            class="post-meta-link">
+            C++
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h2 id="一-字符数组"><a class="markdownIt-Anchor" href="#一-字符数组"></a> 一、字符数组</h2>
+<p>字符数组定义格式同一般数组，但数组类型使字符型。</p>
 <p>字符数组的初始化：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char s1[5]&#x3D;&#123;&#39;a&#39;,&#39;b,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;&#125;;    &#x2F;&#x2F;存单个字符</span><br><span class="line">char s2[6]&#x3D;&#123;&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;,&#39;\0&#39;&#125;;  &#x2F;&#x2F;存字符串，注意虽然只有五个字符，但数组要开到6，因为第六位要存结束符\0</span><br><span class="line">char s[3][4]&#x3D;&#123;&quot;abc&quot;,&quot;def&quot;,&quot;ghi&quot;&#125;;   &#x2F;&#x2F;用字符串给二维字符数组初始化，相当于存了三个字符串分别于s[0],s[1],s[2]中</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">char s1[5]&#x3D;&#123;&#39;a&#39;,&#39;b,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;&#125;;    &#x2F;&#x2F;存单个字符</span><br><span class="line">char s2[6]&#x3D;&#123;&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;,&#39;\0&#39;&#125;;  &#x2F;&#x2F;存字符串，注意虽然只有五个字符，但数组要开到6，因为第六位要存结束符\0</span><br><span class="line">char s[3][4]&#x3D;&#123;&quot;abc&quot;,&quot;def&quot;,&quot;ghi&quot;&#125;;   &#x2F;&#x2F;用字符串给二维字符数组初始化，相当于存了三个字符串分别于s[0],s[1],s[2]中</span><br></pre>
 <p>当初始化的元素个数少于数组总个数时，其余位数为空字符。</p>
 <p>字符数组中也可以存放若干个字符，也可以来存放字符串。两者的区别是字符串有一结束符( \0 )。反过来说，在一维字符数组中存放着带有结束符的若干个字符称为字符串。字符串是一维数组，但是一维字符数组不等于字符串。</p>
-<h2 id="二、字符与字符串的区别"><a href="#二、字符与字符串的区别" class="headerlink" title="二、字符与字符串的区别"></a>二、字符与字符串的区别</h2><ol>
+<h2 id="二-字符与字符串的区别"><a class="markdownIt-Anchor" href="#二-字符与字符串的区别"></a> 二、字符与字符串的区别</h2>
+<ol>
 <li>两者的定界符不同，字符常量由单引号括起来，字符串常量由双引号括起来。</li>
 <li>字符常量只能是单个字符，字符串常量则可以是多个字符。</li>
 <li>可以把一个字符常量赋给一个字符变量，但不能把一个字符串常量赋给一个字符变量。</li>
 <li>字符常量占一个字节，而字符串常量占用字节数等于字符串的字节数加 $ 1 $ 。增加的一个字节中存放字符串结束标志 ‘\0’ 。例如：字符常量 ‘a’ 占一个字节，字符串常量 “a” 占二个字节。</li>
 </ol>
-<h2 id="三、字符串输入与输出"><a href="#三、字符串输入与输出" class="headerlink" title="三、字符串输入与输出"></a>三、字符串输入与输出</h2><h3 id="Ⅰ-输入"><a href="#Ⅰ-输入" class="headerlink" title="Ⅰ. 输入"></a>Ⅰ. 输入</h3><h4 id="①-使用-scanf-读入："><a href="#①-使用-scanf-读入：" class="headerlink" title="① 使用 $ scanf $ 读入："></a>① 使用 $ scanf $ 读入：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">scanf(&quot;%s&quot;,s1);</span><br><span class="line"></span><br><span class="line">scanf(&quot;%s%s%s&quot;,s1,s2,s3);</span><br><span class="line">输入：a b c</span><br><span class="line">结果：s1&#x3D;&#39;a&#39;    s2&#x3D;&#39;b&#39;     s3&#x3D;&#39;c&#39;</span><br><span class="line"></span><br><span class="line">scanf(&quot;%s&quot;,s1);</span><br><span class="line">输入：a b c</span><br><span class="line">结果：s1&#x3D;&#39;a&#39;    s2&#x3D;&#39;&#39;      s3&#x3D;&#39;&#39;</span><br></pre></td></tr></table></figure>
+<h2 id="三-字符串输入与输出"><a class="markdownIt-Anchor" href="#三-字符串输入与输出"></a> 三、字符串输入与输出</h2>
+<h3 id="i-输入"><a class="markdownIt-Anchor" href="#i-输入"></a> Ⅰ. 输入</h3>
+<h4 id="1-使用-scanf-读入"><a class="markdownIt-Anchor" href="#1-使用-scanf-读入"></a> ① 使用 $ scanf $ 读入：</h4>
+<pre class="highlight"><span class="line">scanf(&quot;%s&quot;,s1);</span><br><span class="line"></span><br><span class="line">scanf(&quot;%s%s%s&quot;,s1,s2,s3);</span><br><span class="line">输入：a b c</span><br><span class="line">结果：s1&#x3D;&#39;a&#39;    s2&#x3D;&#39;b&#39;     s3&#x3D;&#39;c&#39;</span><br><span class="line"></span><br><span class="line">scanf(&quot;%s&quot;,s1);</span><br><span class="line">输入：a b c</span><br><span class="line">结果：s1&#x3D;&#39;a&#39;    s2&#x3D;&#39;&#39;      s3&#x3D;&#39;&#39;</span><br></pre>
 <ol>
 <li>这里的字符串名称之前不加 ‘&amp;’ 这个取地址符。</li>
 <li>系统会自动在输入的字符串常量后添加 ‘\0’ 标志，因此输入时，仅输入字符串的内容即可。</li>
 <li>输入多个字符串时，以空格分隔。如果仅有一个输入字符串名称的情况下，字符串变量仅获取空格前的内容。</li>
 </ol>
-<h4 id="②-使用-gets-读入："><a href="#②-使用-gets-读入：" class="headerlink" title="② 使用 $ gets $ 读入："></a>② 使用 $ gets $ 读入：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gets(s1);   &#x2F;&#x2F;不能gets(s1,s2);</span><br></pre></td></tr></table></figure>
+<h4 id="2-使用-gets-读入"><a class="markdownIt-Anchor" href="#2-使用-gets-读入"></a> ② 使用 $ gets $ 读入：</h4>
+<pre class="highlight"><span class="line">gets(s1);   &#x2F;&#x2F;不能gets(s1,s2);</span><br></pre>
 <ol>
-<li>使用 $ gets $ 只能输入一个字符串。
-　</li>
+<li>使用 $ gets $ 只能输入一个字符串。</li>
 <li>使用 $ gets $ ，是从光标开始的地方读到换行符也就是说读入的是一整行，而使用 $ scanf $ 是从光标开始的地方到空格，如果这一行没有空格，才读到行尾。</li>
 </ol>
-<h3 id="Ⅱ-输出"><a href="#Ⅱ-输出" class="headerlink" title="Ⅱ. 输出"></a>Ⅱ. 输出</h3><h4 id="①-使用-printf-输出："><a href="#①-使用-printf-输出：" class="headerlink" title="① 使用 $ printf $ 输出："></a>① 使用 $ printf $ 输出：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printf(&quot;$s&quot;,s1);</span><br></pre></td></tr></table></figure>
+<h3 id="ii-输出"><a class="markdownIt-Anchor" href="#ii-输出"></a> Ⅱ. 输出</h3>
+<h4 id="1-使用-printf-输出"><a class="markdownIt-Anchor" href="#1-使用-printf-输出"></a> ① 使用 $ printf $ 输出：</h4>
+<pre class="highlight"><span class="line">printf(&quot;$s&quot;,s1);</span><br></pre>
 <ol>
-<li>用 ‘%s’ 格式输出时，$ printf $ 的输出项只能是字符串(字符数组)名称，而不能是数组元素。
-　　　</li>
+<li>用 ‘%s’ 格式输出时，$ printf $ 的输出项只能是字符串(字符数组)名称，而不能是数组元素。</li>
 <li>输出字符串不包括字符串结束标志符 ‘\0’ 。</li>
 </ol>
-<h4 id="②-使用-puts-输出："><a href="#②-使用-puts-输出：" class="headerlink" title="② 使用 $ puts $ 输出："></a>② 使用 $ puts $ 输出：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">puts(s1);   &#x2F;&#x2F;和scanf(&quot;%s\n&quot;,s1);等价</span><br></pre></td></tr></table></figure>
-<h2 id="四、字符串处理函数"><a href="#四、字符串处理函数" class="headerlink" title="四、字符串处理函数"></a>四、字符串处理函数</h2><table>
+<h4 id="2-使用-puts-输出"><a class="markdownIt-Anchor" href="#2-使用-puts-输出"></a> ② 使用 $ puts $ 输出：</h4>
+<pre class="highlight"><span class="line">puts(s1);   &#x2F;&#x2F;和scanf(&quot;%s\n&quot;,s1);等价</span><br></pre>
+<h2 id="四-字符串处理函数"><a class="markdownIt-Anchor" href="#四-字符串处理函数"></a> 四、字符串处理函数</h2>
+<table>
 <thead>
 <tr>
-<th align="center">函数类型</th>
-<th align="center">作用</th>
+<th style="text-align:center">函数类型</th>
+<th style="text-align:center">作用</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">$ strcat(str1,str2) $</td>
-<td align="center">将$ str2 $ 接到 $ str1 $ 之后，结果返回 $ str1 $</td>
+<tbody>
+<tr>
+<td style="text-align:center">$ strcat(str1,str2) $</td>
+<td style="text-align:center">将$ str2 $ 接到 $ str1 $ 之后，结果返回 $ str1 $</td>
 </tr>
 <tr>
-<td align="center">$ strncat(str1,str2,n) $</td>
-<td align="center">将$ str2 $ 的前 $ n $ 个字符接到 $ str1 $ 之后，结果返回 $ str1 $</td>
+<td style="text-align:center">$ strncat(str1,str2,n) $</td>
+<td style="text-align:center">将$ str2 $ 的前 $ n $ 个字符接到 $ str1 $ 之后，结果返回 $ str1 $</td>
 </tr>
 <tr>
-<td align="center">$ strcpy(str1,str2) $</td>
-<td align="center">将$ str2 $ 赋值给 $ str1 $ ，结果返回 $ str1 $</td>
+<td style="text-align:center">$ strcpy(str1,str2) $</td>
+<td style="text-align:center">将$ str2 $ 赋值给 $ str1 $ ，结果返回 $ str1 $</td>
 </tr>
 <tr>
-<td align="center">$ strncpy(str1,str2,n) $</td>
-<td align="center">将$ str2 $ 的前 $ n $ 个字符赋值给 $ str1 $ ，结果返回 $ str1 $</td>
+<td style="text-align:center">$ strncpy(str1,str2,n) $</td>
+<td style="text-align:center">将$ str2 $ 的前 $ n $ 个字符赋值给 $ str1 $ ，结果返回 $ str1 $</td>
 </tr>
 <tr>
-<td align="center">$ strcmp(str1,str2) $</td>
-<td align="center">比较$ str1 $ 和 $ str2 $ 的大小，结果（ $ -1,0,1 $ ）返回函数本身</td>
+<td style="text-align:center">$ strcmp(str1,str2) $</td>
+<td style="text-align:center">比较$ str1 $ 和 $ str2 $ 的大小，结果（ $ -1,0,1 $ ）返回函数本身</td>
 </tr>
 <tr>
-<td align="center">$ strncmp(str1,str2,n) $</td>
-<td align="center">比较$ str1 $ 和 $ str2 $ 前 $ n $ 个字符的大小，结果（ $ -1,0,1 $ ）返回函数本身</td>
+<td style="text-align:center">$ strncmp(str1,str2,n) $</td>
+<td style="text-align:center">比较$ str1 $ 和 $ str2 $ 前 $ n $ 个字符的大小，结果（ $ -1,0,1 $ ）返回函数本身</td>
 </tr>
 <tr>
-<td align="center">$ strlen(str) $</td>
-<td align="center">计算$ str $ 的长度，终止符 $ \text{\0} $ 不算在长度之内，结果返回函数本身</td>
+<td style="text-align:center">$ strlen(str) $</td>
+<td style="text-align:center">计算$ str $ 的长度，终止符 $ \text{\0} $ 不算在长度之内，结果返回函数本身</td>
 </tr>
 <tr>
-<td align="center">$ strlwr(str) $</td>
-<td align="center">将$ str $ 中的字母全部换为小写</td>
+<td style="text-align:center">$ strlwr(str) $</td>
+<td style="text-align:center">将$ str $ 中的字母全部换为小写</td>
 </tr>
 <tr>
-<td align="center">$ strupr(str) $</td>
-<td align="center">将$ str $ 中的字母全部换为大写</td>
+<td style="text-align:center">$ strupr(str) $</td>
+<td style="text-align:center">将$ str $ 中的字母全部换为大写</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>使用以上函数，必须包含头文件 $ \color{red} {cstring} $ 。</p>
 
   </div>
-  <!--文末结束语-->
-  
-    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 已经没有了哦 --- </div>
-  
-  <!--页脚广告-->
-  
-  <div class="mdui-divider"></div>
-  
-  <nav>
+  <div>
     
-      <a rel="prev" class="post-nav-item mdui-float-left" href="/2020/02/23/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%87%BD%E6%95%B0/">
-        <i class="iconfont icon-angle-left"></i>
-        <span>基础语法-函数</span>
-      </a>
-    
-    
-      <a rel="next" class="post-nav-item mdui-float-right" href="/2020/02/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%95%B0%E7%BB%84/">
-        <span>基础语法-数组</span>
-        <i class="iconfont icon-angle-right"></i>
-      </a>
-    
-  </nav>
+  </div>
 </article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/2020/02/23/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%87%BD%E6%95%B0/" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">基础语法-函数 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2020/02/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%95%B0%E7%BB%84/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">基础语法-数组 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
 
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+        appKey: '5tGe7WC9z2QaIOESWdymcByE',
+        placeholder: '有什么看法？来说说看吧......',
+        path: window.location.pathname,
+        avatar: 'identicon',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        
+        
+        
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
 
-
-
-  <div class="toc-button"  style="z-index: 100;">
-    <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
-    <ul class="mdui-menu" id="toc">
-      <li class="mdui-menu-item">
-        <a href="/2020/02/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2/" id="toc-header" class="mdui-ripple">文章目录</a>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">一、字符数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">二、字符与字符串的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text">三、字符串输入与输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%85%A0-%E8%BE%93%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text">Ⅰ. 输入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0-%E4%BD%BF%E7%94%A8-scanf-%E8%AF%BB%E5%85%A5%EF%BC%9A"><span class="toc-number">3.1.1.</span> <span class="toc-text">① 使用 $ scanf $ 读入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-%E4%BD%BF%E7%94%A8-gets-%E8%AF%BB%E5%85%A5%EF%BC%9A"><span class="toc-number">3.1.2.</span> <span class="toc-text">② 使用 $ gets $ 读入：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%85%A1-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.</span> <span class="toc-text">Ⅱ. 输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0-%E4%BD%BF%E7%94%A8-printf-%E8%BE%93%E5%87%BA%EF%BC%9A"><span class="toc-number">3.2.1.</span> <span class="toc-text">① 使用 $ printf $ 输出：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-%E4%BD%BF%E7%94%A8-puts-%E8%BE%93%E5%87%BA%EF%BC%9A"><span class="toc-number">3.2.2.</span> <span class="toc-text">② 使用 $ puts $ 输出：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">四、字符串处理函数</span></a></li></ol>
-      </li>
-    </ul>
   </div>
 
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text"> 一、字符数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AD%97%E7%AC%A6%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text"> 二、字符与字符串的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text"> 三、字符串输入与输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E8%BE%93%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text"> Ⅰ. 输入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-scanf-%E8%AF%BB%E5%85%A5"><span class="toc-number">3.1.1.</span> <span class="toc-text"> ① 使用 $ scanf $ 读入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-gets-%E8%AF%BB%E5%85%A5"><span class="toc-number">3.1.2.</span> <span class="toc-text"> ② 使用 $ gets $ 读入：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.</span> <span class="toc-text"> Ⅱ. 输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-printf-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.1.</span> <span class="toc-text"> ① 使用 $ printf $ 输出：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-puts-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.2.</span> <span class="toc-text"> ② 使用 $ puts $ 输出：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text"> 四、字符串处理函数</span></a></li></ol>
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text"> 一、字符数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AD%97%E7%AC%A6%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text"> 二、字符与字符串的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text"> 三、字符串输入与输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E8%BE%93%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text"> Ⅰ. 输入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-scanf-%E8%AF%BB%E5%85%A5"><span class="toc-number">3.1.1.</span> <span class="toc-text"> ① 使用 $ scanf $ 读入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-gets-%E8%AF%BB%E5%85%A5"><span class="toc-number">3.1.2.</span> <span class="toc-text"> ② 使用 $ gets $ 读入：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.</span> <span class="toc-text"> Ⅱ. 输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-printf-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.1.</span> <span class="toc-text"> ① 使用 $ printf $ 输出：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-puts-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.2.</span> <span class="toc-text"> ② 使用 $ puts $ 输出：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text"> 四、字符串处理函数</span></a></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-03-27</div>
+        <a href="/2022/03/27/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3-%E7%BA%A2%E9%BB%91%E6%A0%91/"><div class="recent-posts-item-content">红黑树学习记录</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-03-11</div>
+        <a href="/2022/03/11/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220311%E4%B8%8A%E6%9C%BA%E9%A2%98/"><div class="recent-posts-item-content">学校数据结构2022-03-11上机题</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-03-04</div>
+        <a href="/2022/03/04/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420220304%E4%B8%8A%E6%9C%BA%E9%A2%98/"><div class="recent-posts-item-content">学校数据结构2022-03-04上机题</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2021-12-13</div>
+        <a href="/2021/12/13/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86-%E5%AD%A6%E6%A0%A1%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420211213%E4%B8%8A%E6%9C%BA%E9%A2%98/"><div class="recent-posts-item-content">学校数据结构2021-12-13上机题</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2020
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          FysbbCZH'S BLOG
+        </a>
+      </div>
+    </div>
 
-
-    <div id="comment" class="mdui-card mdui-p-a-2 mdui-m-b-5">
-      <div class="mdui-tab" mdui-tab>
+    
+      <div class="footer-dsc">
         
-          <a href="#comment-tab0" class="mdui-ripple">valine</a>
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
         
-          <a href="#comment-tab1" class="mdui-ripple">gitalk</a>
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/theme-kaze" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;Kaze
+          </a>
+        
+      </div>
+    
+    
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
         
       </div>
       
-        <div id="comment-tab0" class="mdui-p-a-2">
-          <div id="vcomments"></div>
-<script src="//cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var guest_info = 'nick,mail,link'.split(',').filter(function (item) {
-    return GUEST_INFO.indexOf(item) > -1;
-  });
-  var notify = 'true' === 'true';
-  var verify = '' === 'true';
-  new Valine({
-    el: '#vcomments',
-    notify: notify,
-    verify: verify,
-    appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
-    appKey: '5tGe7WC9z2QaIOESWdymcByE',
-    placeholder: '有什么看法，欢迎讨论一下',
-    pageSize: '',
-    avatar: 'identicon',
-    lang: '',
-    guest_info: guest_info
-  });
-</script>
-        </div>
-      
-        <div id="comment-tab1" class="mdui-p-a-2">
-          <div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
-<script>
-  var gitalk = new Gitalk({
-    clientID: '0d2355044758a6a789be',
-    clientSecret: '6673c7eda814c869dd9a3496a40e9ec31446497a',
-    repo: 'gitalkforhexo',
-    owner: 'FysbbCZH',
-    admin: ['FysbbCZH'],
-    id:  md5(location.pathname) ,
-    distractionFreeMode: 'true',
-  });
-  gitalk.render('gitalk-container');
-</script>
-        </div>
-      
-    </div>
-
-  </main>
-  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
-  <div class="mdui-container">
-    <div class="mdui-row">
-      
-      <span>
-        &copy; 2020 - 2023 
-        
-        Cheng Ziheng
-      </span>
-    </div>
-    <div class="mdui-row">
-      
-        <span>Theme: <a href="https://github.com/kb1000fx/hexo-theme-meadow" rel="noopener" target="_blank">Meadow</a></span>
-      
-    </div>
-    <div class="mdui-row">
-      
-        <div class="mdui-col-xs-6 mdui-text-right">
-          <span id="busuanzi_container_site_uv" style="display: none;"> <span class="iconfont icon-user"></span>总访客量 <span id="busuanzi_value_site_uv"></span></span>
-        </div>
-        <div class="mdui-col-xs-6 mdui-text-left">
-          <span id="busuanzi_container_site_pv" style="display: none;"> <span class="iconfont icon-eye"></span>总访问量 <span id="busuanzi_value_site_pv"></span></span>
-        </div>
-      
-    </div>
- </div>
-</footer>
-  
-  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
-  
-  
-
-    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({
-        startOnLoad: true,
-        theme: "default"
-    });</script>
-
-
-
-
     
-<script src="/js/mdui.min.v1.0.0.js"></script>
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
 
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+      
 
+  
+  
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
 
-
-<script src="/js/meadow.js"></script>
-
-</body>
-</html >
+  
+ 
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>
