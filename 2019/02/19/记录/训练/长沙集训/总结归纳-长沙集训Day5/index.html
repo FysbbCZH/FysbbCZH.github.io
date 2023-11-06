@@ -401,25 +401,25 @@ begin
     <span class="token function">read</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
     gd<span class="token operator">:</span><span class="token operator">=</span><span class="token function">gcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span> c mod gd<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> then begin
-      <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token string">'No'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token char">'No'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token keyword">continue</span><span class="token punctuation">;</span>
     end<span class="token punctuation">;</span>
     a<span class="token operator">:</span><span class="token operator">=</span>a div gd<span class="token punctuation">;</span>
     b<span class="token operator">:</span><span class="token operator">=</span>b div gd<span class="token punctuation">;</span>
     c<span class="token operator">:</span><span class="token operator">=</span>c div gd<span class="token punctuation">;</span>  
-    <span class="token keyword">if</span> c mod b<span class="token operator">=</span><span class="token number">0</span> then <span class="token function">write</span><span class="token punctuation">(</span><span class="token string">'0'</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span>c div b<span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> c mod b<span class="token operator">=</span><span class="token number">0</span> then <span class="token function">write</span><span class="token punctuation">(</span><span class="token char">'0'</span><span class="token punctuation">,</span><span class="token char">' '</span><span class="token punctuation">,</span>c div b<span class="token punctuation">,</span><span class="token char">' '</span><span class="token punctuation">)</span>
       <span class="token keyword">else</span> begin
         <span class="token function">exgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>  
         ans_x<span class="token operator">:</span><span class="token operator">=</span><span class="token punctuation">(</span>x<span class="token operator">+</span><span class="token function">abs</span><span class="token punctuation">(</span>b<span class="token operator">*</span><span class="token number">1000000000</span><span class="token punctuation">)</span><span class="token punctuation">)</span> mod b<span class="token punctuation">;</span>
         ans_y<span class="token operator">:</span><span class="token operator">=</span><span class="token punctuation">(</span>c<span class="token operator">-</span>a<span class="token operator">*</span>ans_x<span class="token punctuation">)</span> div b<span class="token punctuation">;</span>
-        <span class="token function">write</span><span class="token punctuation">(</span>ans_x<span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span>ans_y<span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">write</span><span class="token punctuation">(</span>ans_x<span class="token punctuation">,</span><span class="token char">' '</span><span class="token punctuation">,</span>ans_y<span class="token punctuation">,</span><span class="token char">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       end<span class="token punctuation">;</span>
-    <span class="token keyword">if</span> c mod a<span class="token operator">=</span><span class="token number">0</span> then <span class="token function">writeln</span><span class="token punctuation">(</span>c div a<span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">'0'</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> c mod a<span class="token operator">=</span><span class="token number">0</span> then <span class="token function">writeln</span><span class="token punctuation">(</span>c div a<span class="token punctuation">,</span><span class="token char">' '</span><span class="token punctuation">,</span><span class="token char">'0'</span><span class="token punctuation">)</span>
       <span class="token keyword">else</span> begin
         <span class="token function">exgcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span>a<span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>  
         ans_y<span class="token operator">:</span><span class="token operator">=</span><span class="token punctuation">(</span>x<span class="token operator">+</span><span class="token function">abs</span><span class="token punctuation">(</span>a<span class="token operator">*</span><span class="token number">1000000000</span><span class="token punctuation">)</span><span class="token punctuation">)</span> mod a<span class="token punctuation">;</span>
         ans_x<span class="token operator">:</span><span class="token operator">=</span><span class="token punctuation">(</span>c<span class="token operator">-</span>b<span class="token operator">*</span>ans_y<span class="token punctuation">)</span> div a<span class="token punctuation">;</span>
-        <span class="token function">writeln</span><span class="token punctuation">(</span>ans_x<span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span>ans_y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">writeln</span><span class="token punctuation">(</span>ans_x<span class="token punctuation">,</span><span class="token char">' '</span><span class="token punctuation">,</span>ans_y<span class="token punctuation">)</span><span class="token punctuation">;</span>
     end<span class="token punctuation">;</span>
   end<span class="token punctuation">;</span>
 end<span class="token punctuation">;</span>
@@ -654,13 +654,13 @@ var i<span class="token operator">:</span>longint<span class="token punctuation"
 begin
   <span class="token function">readln</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
   len<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-  s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token string">'#'</span><span class="token punctuation">;</span>
-  s<span class="token punctuation">[</span>len<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token string">'#'</span><span class="token punctuation">;</span>
+  s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token char">'#'</span><span class="token punctuation">;</span>
+  s<span class="token punctuation">[</span>len<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token char">'#'</span><span class="token punctuation">;</span>
   <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to n <span class="token keyword">do</span> begin
     <span class="token function">inc</span><span class="token punctuation">(</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
     s<span class="token punctuation">[</span>len<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token function">inc</span><span class="token punctuation">(</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    s<span class="token punctuation">[</span>len<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token string">'#'</span><span class="token punctuation">;</span>
+    s<span class="token punctuation">[</span>len<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token char">'#'</span><span class="token punctuation">;</span>
   end<span class="token punctuation">;</span>
 end<span class="token punctuation">;</span>
 
@@ -679,7 +679,7 @@ begin
     end<span class="token punctuation">;</span>
   end<span class="token punctuation">;</span>
   <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to len <span class="token keyword">do</span>
-    <span class="token keyword">if</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token string">'#'</span> then <span class="token function">inc</span><span class="token punctuation">(</span>sum<span class="token punctuation">[</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token char">'#'</span> then <span class="token function">inc</span><span class="token punctuation">(</span>sum<span class="token punctuation">[</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 end<span class="token punctuation">;</span>
 
 function <span class="token function">mul</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span>k<span class="token operator">:</span>int64<span class="token punctuation">)</span><span class="token operator">:</span>int64<span class="token punctuation">;</span>
@@ -712,7 +712,7 @@ begin
         end<span class="token punctuation">;</span>
     end<span class="token punctuation">;</span>
   end<span class="token punctuation">;</span>
-  <span class="token keyword">if</span> t<span class="token operator">&lt;</span>k then <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token string">'-1'</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> t<span class="token operator">&lt;</span>k then <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token char">'-1'</span><span class="token punctuation">)</span>
     <span class="token keyword">else</span> <span class="token function">writeln</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">;</span>
 end<span class="token punctuation">;</span>
 

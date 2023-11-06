@@ -368,7 +368,7 @@
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program str<span class="token punctuation">;</span>
 var
    s<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.2000005</span><span class="token punctuation">]</span>of <span class="token keyword">char</span><span class="token punctuation">;</span>
-   sum<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">.</span><span class="token number">.'</span>Z<span class="token number">'</span><span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
+   sum<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token char">'A'</span><span class="token punctuation">.</span><span class="token number">.'</span>Z<span class="token number">'</span><span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
    len<span class="token punctuation">,</span>ans<span class="token operator">:</span>longint<span class="token punctuation">;</span>
 
 procedure re<span class="token punctuation">;</span>
@@ -383,7 +383,7 @@ end<span class="token punctuation">;</span>
 function sc<span class="token operator">:</span>boolean<span class="token punctuation">;</span>
 var i<span class="token operator">:</span><span class="token keyword">char</span><span class="token punctuation">;</span>
 begin
-  <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token string">'A'</span> to <span class="token string">'Z'</span> <span class="token keyword">do</span>
+  <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token char">'A'</span> to <span class="token char">'Z'</span> <span class="token keyword">do</span>
     <span class="token keyword">if</span> sum<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span> then <span class="token function">exit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token function">exit</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 end<span class="token punctuation">;</span>
@@ -403,7 +403,7 @@ begin
     end<span class="token punctuation">;</span>
     <span class="token function">inc</span><span class="token punctuation">(</span>tail<span class="token punctuation">)</span><span class="token punctuation">;</span>
   end<span class="token punctuation">;</span>
-  <span class="token keyword">if</span> ans<span class="token operator">=</span><span class="token number">100000000</span> then <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token string">'QwQ'</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> ans<span class="token operator">=</span><span class="token number">100000000</span> then <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token char">'QwQ'</span><span class="token punctuation">)</span>
     <span class="token keyword">else</span> <span class="token function">writeln</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">;</span>
 end<span class="token punctuation">;</span>
 
@@ -451,9 +451,9 @@ begin
   <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to t <span class="token keyword">do</span> begin
     <span class="token function">read</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
     z<span class="token operator">:</span><span class="token operator">=</span><span class="token function">sc</span><span class="token punctuation">(</span>x<span class="token operator">*</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>   
-    <span class="token keyword">if</span> z<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span> then <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token string">'No'</span><span class="token punctuation">)</span>
-      <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>x mod z<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>y mod z<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> then <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token string">'Yes'</span><span class="token punctuation">)</span>
-        <span class="token keyword">else</span> <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token string">'No'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> z<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span> then <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token char">'No'</span><span class="token punctuation">)</span>
+      <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>x mod z<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>y mod z<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> then <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token char">'Yes'</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span> <span class="token function">writeln</span><span class="token punctuation">(</span><span class="token char">'No'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   end<span class="token punctuation">;</span>
 end<span class="token punctuation">;</span>
 
@@ -515,7 +515,7 @@ var i<span class="token punctuation">,</span>j<span class="token operator">:</sp
     s<span class="token operator">:</span>string<span class="token punctuation">;</span>
 begin
   <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span> to <span class="token number">55</span> <span class="token keyword">do</span>
-    <span class="token keyword">for</span> j<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span> to <span class="token number">55</span> <span class="token keyword">do</span> f<span class="token punctuation">[</span>i<span class="token punctuation">,</span>j<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token string">'.'</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> j<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span> to <span class="token number">55</span> <span class="token keyword">do</span> f<span class="token punctuation">[</span>i<span class="token punctuation">,</span>j<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token char">'.'</span><span class="token punctuation">;</span>
   <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to n <span class="token keyword">do</span> begin
     <span class="token function">readln</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> j<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to m <span class="token keyword">do</span> f<span class="token punctuation">[</span>i<span class="token punctuation">,</span>j<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -526,16 +526,16 @@ procedure <span class="token function">cover1</span><span class="token punctuati
 var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
 begin
   <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span>q to m <span class="token keyword">do</span>
-    <span class="token keyword">if</span> f<span class="token punctuation">[</span>p<span class="token punctuation">,</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'*'</span> then x<span class="token punctuation">[</span>p<span class="token punctuation">,</span>i<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>totx
-      <span class="token keyword">else</span> <span class="token keyword">if</span> f<span class="token punctuation">[</span>p<span class="token punctuation">,</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'.'</span> then <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> f<span class="token punctuation">[</span>p<span class="token punctuation">,</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token char">'*'</span> then x<span class="token punctuation">[</span>p<span class="token punctuation">,</span>i<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>totx
+      <span class="token keyword">else</span> <span class="token keyword">if</span> f<span class="token punctuation">[</span>p<span class="token punctuation">,</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token char">'.'</span> then <span class="token keyword">break</span><span class="token punctuation">;</span>
 end<span class="token punctuation">;</span>
 
 procedure <span class="token function">cover2</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span>q<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
 var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
 begin
   <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span>q to n <span class="token keyword">do</span>
-    <span class="token keyword">if</span> f<span class="token punctuation">[</span>i<span class="token punctuation">,</span>p<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'*'</span> then y<span class="token punctuation">[</span>i<span class="token punctuation">,</span>p<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>toty
-      <span class="token keyword">else</span> <span class="token keyword">if</span> f<span class="token punctuation">[</span>i<span class="token punctuation">,</span>p<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'.'</span> then <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> f<span class="token punctuation">[</span>i<span class="token punctuation">,</span>p<span class="token punctuation">]</span><span class="token operator">=</span><span class="token char">'*'</span> then y<span class="token punctuation">[</span>i<span class="token punctuation">,</span>p<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>toty
+      <span class="token keyword">else</span> <span class="token keyword">if</span> f<span class="token punctuation">[</span>i<span class="token punctuation">,</span>p<span class="token punctuation">]</span><span class="token operator">=</span><span class="token char">'.'</span> then <span class="token keyword">break</span><span class="token punctuation">;</span>
 end<span class="token punctuation">;</span>
 
 procedure dfs_first<span class="token punctuation">;</span>
@@ -543,12 +543,12 @@ var i<span class="token punctuation">,</span>j<span class="token operator">:</sp
 begin
   <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to n <span class="token keyword">do</span>
     <span class="token keyword">for</span> j<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to m <span class="token keyword">do</span>
-      <span class="token keyword">if</span> f<span class="token punctuation">[</span>i<span class="token punctuation">,</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'*'</span> then begin
-        <span class="token keyword">if</span> f<span class="token punctuation">[</span>i<span class="token punctuation">,</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'.'</span> then begin
+      <span class="token keyword">if</span> f<span class="token punctuation">[</span>i<span class="token punctuation">,</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token char">'*'</span> then begin
+        <span class="token keyword">if</span> f<span class="token punctuation">[</span>i<span class="token punctuation">,</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token char">'.'</span> then begin
           <span class="token function">inc</span><span class="token punctuation">(</span>totx<span class="token punctuation">)</span><span class="token punctuation">;</span>
           <span class="token function">cover1</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
         end<span class="token punctuation">;</span>
-        <span class="token keyword">if</span> f<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'.'</span> then begin
+        <span class="token keyword">if</span> f<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token char">'.'</span> then begin
           <span class="token function">inc</span><span class="token punctuation">(</span>toty<span class="token punctuation">)</span><span class="token punctuation">;</span>
           <span class="token function">cover2</span><span class="token punctuation">(</span>j<span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
         end<span class="token punctuation">;</span>
