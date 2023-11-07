@@ -356,13 +356,18 @@
   <div 
     id="section" 
     class="post-content">
-    <h1 id="lt-center-gt-长沙集训-Day-3-2019-08-21-lt-center-gt"><a href="#lt-center-gt-长沙集训-Day-3-2019-08-21-lt-center-gt" class="headerlink" title="&lt;center&gt;长沙集训 $ Day 3 $ 2019-08-21 &lt;/center&gt;"></a><code>&lt;center&gt;</code>长沙集训 $ Day 3 $ 2019-08-21 <code>&lt;/center&gt;</code></h1><h4 id="得分：-193-300"><a href="#得分：-193-300" class="headerlink" title="得分：$ 193/300 $"></a>得分：$ 193/300 $</h4><hr>
-<h2 id="T1-Matrix"><a href="#T1-Matrix" class="headerlink" title="T1 $ Matrix $"></a>T1 $ Matrix $</h2><p><img src="https://i.loli.net/2019/08/21/ERI3gOzW2SjCPGx.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/ERI3gOzW2SjCPGx.png" class="lozad post-image"></p>
-<h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h3><p>此题可以用枚举解决，分别枚举每一列作为矩形中间点统计答案，最后取最大值。每次统计答案时，分别算出每一列相邻的 $ 1 $ 的个数 $ sum $：</p>
-<p><img src="https://i.loli.net/2019/08/21/VeirquZhHXjpPd4.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/VeirquZhHXjpPd4.png" class="lozad post-image"></p>
+    <h1 id="center长沙集训-day-3-2019-08-21-center"><a class="markdownIt-Anchor" href="#center长沙集训-day-3-2019-08-21-center"></a> <code>&lt;center&gt;</code>长沙集训 $ Day 3 $ 2019-08-21 <code>&lt;/center&gt;</code></h1>
+<h4 id="得分-193300"><a class="markdownIt-Anchor" href="#得分-193300"></a> 得分：$ 193/300 $</h4>
+<hr />
+<h2 id="t1-matrix"><a class="markdownIt-Anchor" href="#t1-matrix"></a> T1 $ Matrix $</h2>
+<p><img src="https://i.loli.net/2019/08/21/ERI3gOzW2SjCPGx.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/ERI3gOzW2SjCPGx.png" class="lozad post-image"></p>
+<h3 id="基本思路"><a class="markdownIt-Anchor" href="#基本思路"></a> 基本思路</h3>
+<p>此题可以用枚举解决，分别枚举每一列作为矩形中间点统计答案，最后取最大值。每次统计答案时，分别算出每一列相邻的 $ 1 $ 的个数 $ sum $：</p>
+<p><img src="https://i.loli.net/2019/08/21/VeirquZhHXjpPd4.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/VeirquZhHXjpPd4.png" class="lozad post-image"></p>
 <p>之后从该列向两边查找（其实只向一边也可以），如果当前枚举的列为 $ k $ ，查找到的列为 $ i $ ，则答案为 $ |i-j| \cdot sum[i] $ 。</p>
 <p>直接暴力查找的时间复杂度时 $ O(n \cdot m^2) $ ，为了加快速度，可以预处理出以 $ i $ 为中心的每行连续 $ 1 $ 的左右端点，之后计算 $ sum $ 时用前缀和处理。使时间复杂度降低为 $ O(n \cdot m) $ 。</p>
-<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><pre class="line-numbers language-none"><code class="language-none">program matrix;
+<h3 id="程序"><a class="markdownIt-Anchor" href="#程序"></a> 程序</h3>
+<pre class="line-numbers language-none"><code class="language-none">program matrix;
 
 type tp&#x3D;record
   l,r:longint;
@@ -466,13 +471,16 @@ begin
 end.
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="T2-Present"><a href="#T2-Present" class="headerlink" title="T2 $ Present $"></a>T2 $ Present $</h2><p><img src="https://i.loli.net/2019/08/21/ZjITie9PNhWsE7a.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/ZjITie9PNhWsE7a.png" class="lozad post-image"></p>
-<h3 id="基本思路-1"><a href="#基本思路-1" class="headerlink" title="基本思路"></a>基本思路</h3><p>刚看到题面，第一反应：“这不是背包板子吗！”。看到数据范围：“。。。”。</p>
+<h2 id="t2-present"><a class="markdownIt-Anchor" href="#t2-present"></a> T2 $ Present $</h2>
+<p><img src="https://i.loli.net/2019/08/21/ZjITie9PNhWsE7a.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/ZjITie9PNhWsE7a.png" class="lozad post-image"></p>
+<h3 id="基本思路-2"><a class="markdownIt-Anchor" href="#基本思路-2"></a> 基本思路</h3>
+<p>刚看到题面，第一反应：“这不是背包板子吗！”。看到数据范围：“。。。”。</p>
 <p>这三天的 $ T2 $ 都异常巧妙，昨天考了最小生成树，今天的 $ T2 $ 则是一个最短路径。从原题上完全看不出和图论的联系，但是却能根据题目的特点进行转化：</p>
-<p>假设所有的物品中，价值最小为 $ p<em>{min} $ 。如果一个值 $ W = \sum</em>{i=1}^n p<em>i \cdot k_i $ 可以被组成，那么 $ W = \sum</em>{i=1}^n p<em>i \cdot (k_i + p</em>{min} \cdot s_i) $ 也一定能被组成。</p>
-<p>可以借此降低背包的上界，将最大容量从 $ 4 \times 10^7 $ 降为 $ p<em>{min} \cdot \sum</em>{i=1}^n p<em>i $ ，时间复杂度为 $ O(n \cdot p</em>{min} \cdot \sum_{i=1}^n p_i ) $ 。可以通过 $ 60 $% 的数据。</p>
-<p>接下来，解决方法就非常巧妙了。由上可知，对于每一个询问 $ Q = C + p<em>{min} \cdot k $ ，只要判断 $ Q \mod p</em>{min} $ 能否被组成即可。所以我们只要知道能够被组成的数 $ K(K \mod p<em>{min} = C) $ ，的最小值是否小于 $ Q $ 即可。而解决这个问题，可以将 $ [0,p</em>{min}-1] $ 的每个数当成一个点，对于点 $ f $ ，将其向 $ (f + p<em>i) \mod p</em>{min} $ 的点连一条权值为 $ p<em>i $ 的无向边，最后算出从 $ 0 $ 到 $ i $ 的最短路便是 $ K(K \mod p</em>{min} = i) $ 的最小值。</p>
-<h3 id="程序-1"><a href="#程序-1" class="headerlink" title="程序"></a>程序</h3><pre class="line-numbers language-none"><code class="language-none">program present;
+<p>假设所有的物品中，价值最小为 $ p_{min} $ 。如果一个值 $ W = \sum_{i=1}^n p_i \cdot k_i $ 可以被组成，那么 $ W = \sum_{i=1}^n p_i \cdot (k_i + p_{min} \cdot s_i) $ 也一定能被组成。</p>
+<p>可以借此降低背包的上界，将最大容量从 $ 4 \times 10^7 $ 降为 $ p_{min} \cdot \sum_{i=1}^n p_i $ ，时间复杂度为 $ O(n \cdot p_{min} \cdot \sum_{i=1}^n p_i ) $ 。可以通过 $ 60 $% 的数据。</p>
+<p>接下来，解决方法就非常巧妙了。由上可知，对于每一个询问 $ Q = C + p_{min} \cdot k $ ，只要判断 $ Q \mod p_{min} $ 能否被组成即可。所以我们只要知道能够被组成的数 $ K(K \mod p_{min} = C) $ ，的最小值是否小于 $ Q $ 即可。而解决这个问题，可以将 $ [0,p_{min}-1] $ 的每个数当成一个点，对于点 $ f $ ，将其向 $ (f + p_i) \mod p_{min} $ 的点连一条权值为 $ p_i $ 的无向边，最后算出从 $ 0 $ 到 $ i $ 的最短路便是 $ K(K \mod p_{min} = i) $ 的最小值。</p>
+<h3 id="程序-2"><a class="markdownIt-Anchor" href="#程序-2"></a> 程序</h3>
+<pre class="line-numbers language-none"><code class="language-none">program present;
 var
    dis:array[0..10005]of longint;
    a:array[0..505]of longint;
@@ -545,11 +553,14 @@ begin
 end.
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="T3-Mahjong"><a href="#T3-Mahjong" class="headerlink" title="T3 $ Mahjong $"></a>T3 $ Mahjong $</h2><p><img src="https://i.loli.net/2019/08/21/FI547kP6BDe9cXf.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/FI547kP6BDe9cXf.png" class="lozad post-image"></p>
-<p><img src="https://i.loli.net/2019/08/21/Y1b7rSeflECn5gH.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/Y1b7rSeflECn5gH.png" class="lozad post-image"></p>
-<h3 id="基本思路-2"><a href="#基本思路-2" class="headerlink" title="基本思路"></a>基本思路</h3><p>这是三天中最水的 $ T3 $ ，没有任何算法，就是按照题意模拟和枚举。主意好细节就可以，注意要先确定雀头，再查找顺子和刻子。对特殊牌型先行处理。</p>
+<h2 id="t3-mahjong"><a class="markdownIt-Anchor" href="#t3-mahjong"></a> T3 $ Mahjong $</h2>
+<p><img src="https://i.loli.net/2019/08/21/FI547kP6BDe9cXf.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/FI547kP6BDe9cXf.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/08/21/Y1b7rSeflECn5gH.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/Y1b7rSeflECn5gH.png" class="lozad post-image"></p>
+<h3 id="基本思路-3"><a class="markdownIt-Anchor" href="#基本思路-3"></a> 基本思路</h3>
+<p>这是三天中最水的 $ T3 $ ，没有任何算法，就是按照题意模拟和枚举。主意好细节就可以，注意要先确定雀头，再查找顺子和刻子。对特殊牌型先行处理。</p>
 <p>这题说明了看题是多重要，我没看到“字牌不能成顺子”，结果 $ 100 \to 63 $ 。</p>
-<h3 id="程序-2"><a href="#程序-2" class="headerlink" title="程序"></a>程序</h3><pre class="line-numbers language-none"><code class="language-none">program mahjong;
+<h3 id="程序-3"><a class="markdownIt-Anchor" href="#程序-3"></a> 程序</h3>
+<pre class="line-numbers language-none"><code class="language-none">program mahjong;
 
 type arr&#x3D;array[1..15]of longint;
 
@@ -869,7 +880,7 @@ end.
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lt-center-gt-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-3-2019-08-21-lt-center-gt"><span class="toc-number">1.</span> <span class="toc-text">&lt;center&gt;长沙集训 $ Day 3 $ 2019-08-21 &lt;&#x2F;center&gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%97%E5%88%86%EF%BC%9A-193-300"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">得分：$ 193&#x2F;300 $</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-Matrix"><span class="toc-number">1.1.</span> <span class="toc-text">T1 $ Matrix $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.1.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-Present"><span class="toc-number">1.2.</span> <span class="toc-text">T2 $ Present $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-Mahjong"><span class="toc-number">1.3.</span> <span class="toc-text">T3 $ Mahjong $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">程序</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#center%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-3-2019-08-21-center"><span class="toc-number">1.</span> <span class="toc-text"> &lt;center&gt;长沙集训 $ Day 3 $ 2019-08-21 &lt;&#x2F;center&gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%97%E5%88%86-193300"><span class="toc-number">1.0.0.1.</span> <span class="toc-text"> 得分：$ 193&#x2F;300 $</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t1-matrix"><span class="toc-number">1.1.</span> <span class="toc-text"> T1 $ Matrix $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2-present"><span class="toc-number">1.2.</span> <span class="toc-text"> T2 $ Present $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-2"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3-mahjong"><span class="toc-number">1.3.</span> <span class="toc-text"> T3 $ Mahjong $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-3"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 程序</span></a></li></ol></li></ol></li></ol>
 </div>
             </main>
             <aside class="left-column">
@@ -934,7 +945,7 @@ end.
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lt-center-gt-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-3-2019-08-21-lt-center-gt"><span class="toc-number">1.</span> <span class="toc-text">&lt;center&gt;长沙集训 $ Day 3 $ 2019-08-21 &lt;&#x2F;center&gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%97%E5%88%86%EF%BC%9A-193-300"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">得分：$ 193&#x2F;300 $</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-Matrix"><span class="toc-number">1.1.</span> <span class="toc-text">T1 $ Matrix $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.1.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-Present"><span class="toc-number">1.2.</span> <span class="toc-text">T2 $ Present $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-Mahjong"><span class="toc-number">1.3.</span> <span class="toc-text">T3 $ Mahjong $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">程序</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#center%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-3-2019-08-21-center"><span class="toc-number">1.</span> <span class="toc-text"> &lt;center&gt;长沙集训 $ Day 3 $ 2019-08-21 &lt;&#x2F;center&gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%97%E5%88%86-193300"><span class="toc-number">1.0.0.1.</span> <span class="toc-text"> 得分：$ 193&#x2F;300 $</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t1-matrix"><span class="toc-number">1.1.</span> <span class="toc-text"> T1 $ Matrix $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2-present"><span class="toc-number">1.2.</span> <span class="toc-text"> T2 $ Present $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-2"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3-mahjong"><span class="toc-number">1.3.</span> <span class="toc-text"> T3 $ Mahjong $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-3"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 程序</span></a></li></ol></li></ol></li></ol>
       </div>
     </article>
   
@@ -1096,18 +1107,6 @@ end.
       </a>
     
       <a 
-        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
-        title="二叉树">
-        <div class="tags-list-item">二叉树</div>
-      </a>
-    
-      <a 
-        href="/tags/KMP/" 
-        title="KMP">
-        <div class="tags-list-item">KMP</div>
-      </a>
-    
-      <a 
         href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
         title="字符串">
         <div class="tags-list-item">字符串</div>
@@ -1135,6 +1134,18 @@ end.
         href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
         title="最小生成树">
         <div class="tags-list-item">最小生成树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
       </a>
     
       <a 
@@ -1179,7 +1190,7 @@ end.
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lt-center-gt-%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-3-2019-08-21-lt-center-gt"><span class="toc-number">1.</span> <span class="toc-text">&lt;center&gt;长沙集训 $ Day 3 $ 2019-08-21 &lt;&#x2F;center&gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%97%E5%88%86%EF%BC%9A-193-300"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">得分：$ 193&#x2F;300 $</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-Matrix"><span class="toc-number">1.1.</span> <span class="toc-text">T1 $ Matrix $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.1.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-Present"><span class="toc-number">1.2.</span> <span class="toc-text">T2 $ Present $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-Mahjong"><span class="toc-number">1.3.</span> <span class="toc-text">T3 $ Mahjong $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">程序</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#center%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-3-2019-08-21-center"><span class="toc-number">1.</span> <span class="toc-text"> &lt;center&gt;长沙集训 $ Day 3 $ 2019-08-21 &lt;&#x2F;center&gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%97%E5%88%86-193300"><span class="toc-number">1.0.0.1.</span> <span class="toc-text"> 得分：$ 193&#x2F;300 $</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t1-matrix"><span class="toc-number">1.1.</span> <span class="toc-text"> T1 $ Matrix $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2-present"><span class="toc-number">1.2.</span> <span class="toc-text"> T2 $ Present $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-2"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3-mahjong"><span class="toc-number">1.3.</span> <span class="toc-text"> T3 $ Mahjong $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF-3"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 程序</span></a></li></ol></li></ol></li></ol>
     </article>
   
   

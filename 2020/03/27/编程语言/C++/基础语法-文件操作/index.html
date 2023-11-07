@@ -350,7 +350,8 @@
   <div 
     id="section" 
     class="post-content">
-    <h2 id="一、重定向型"><a href="#一、重定向型" class="headerlink" title="一、重定向型"></a>一、重定向型</h2><p>格式：</p>
+    <h2 id="一-重定向型"><a class="markdownIt-Anchor" href="#一-重定向型"></a> 一、重定向型</h2>
+<p>格式：</p>
 <pre class="line-numbers language-none"><code class="language-none">FILE *freopen(const char *filename, const char *mode, FILE *stream );
 
 freopen(&quot;pro.in&quot;,&quot;r&quot;,stdin);
@@ -364,7 +365,8 @@ fclose(stdout);<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <p>使用 $ freopen() $ 函数的优点：</p>
 <p>我们不再需要修改 $ scanf $ ，$ printf $ ，$ cin $ 和 $ cout $ 。而是维持代码的原样就可以了。因为 $ freopen() $ 函数重定向了标准流，使其指向前面指定的文件，省时省力。最后只要使用 $ fclose $ 关闭输入文件和输出文件即可。</p>
 <p>需调用头文件 $ \color{red} {cstdio} $ 。</p>
-<h2 id="二、-fopen-型"><a href="#二、-fopen-型" class="headerlink" title="二、$ fopen $ 型"></a>二、$ fopen $ 型</h2><p>格式：</p>
+<h2 id="二-fopen-型"><a class="markdownIt-Anchor" href="#二-fopen-型"></a> 二、$ fopen $ 型</h2>
+<p>格式：</p>
 <pre class="line-numbers language-none"><code class="language-none">#include &lt;cstdio&gt;
 #include &lt;iostream&gt;
 
@@ -391,7 +393,8 @@ pro.out输出： 7
 终端输出：    8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>$ fopen $ 对 $ scanf,printf $ 适用。</p>
 <p>先声明变量 $ fin $ 和 $ fout $ ，把 $ scanf $ 改成 $ fscanf $ ，第一个参数为 $ fin $ ；把 $ printf $ 改成 $ fprintf $ ，第一个参数为 $ fout $ ，最后执行 $ fclose $ ，关闭两个文件。</p>
-<h2 id="三、文件输入输出流"><a href="#三、文件输入输出流" class="headerlink" title="三、文件输入输出流"></a>三、文件输入输出流</h2><p>格式：</p>
+<h2 id="三-文件输入输出流"><a class="markdownIt-Anchor" href="#三-文件输入输出流"></a> 三、文件输入输出流</h2>
+<p>格式：</p>
 <pre class="line-numbers language-none"><code class="language-none">#include &lt;fstream&gt;
 
 using namespace std;
@@ -496,7 +499,7 @@ ofstream  fout(&quot;输出文件名.扩展名&quot;);<span aria-hidden="true" c
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%87%8D%E5%AE%9A%E5%90%91%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">一、重定向型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-fopen-%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">二、$ fopen $ 型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="toc-number">3.</span> <span class="toc-text">三、文件输入输出流</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%87%8D%E5%AE%9A%E5%90%91%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、重定向型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-fopen-%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text"> 二、$ fopen $ 型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="toc-number">3.</span> <span class="toc-text"> 三、文件输入输出流</span></a></li></ol>
 </div>
             </main>
             <aside class="left-column">
@@ -561,7 +564,7 @@ ofstream  fout(&quot;输出文件名.扩展名&quot;);<span aria-hidden="true" c
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%87%8D%E5%AE%9A%E5%90%91%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">一、重定向型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-fopen-%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">二、$ fopen $ 型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="toc-number">3.</span> <span class="toc-text">三、文件输入输出流</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%87%8D%E5%AE%9A%E5%90%91%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、重定向型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-fopen-%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text"> 二、$ fopen $ 型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="toc-number">3.</span> <span class="toc-text"> 三、文件输入输出流</span></a></li></ol>
       </div>
     </article>
   
@@ -723,18 +726,6 @@ ofstream  fout(&quot;输出文件名.扩展名&quot;);<span aria-hidden="true" c
       </a>
     
       <a 
-        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
-        title="二叉树">
-        <div class="tags-list-item">二叉树</div>
-      </a>
-    
-      <a 
-        href="/tags/KMP/" 
-        title="KMP">
-        <div class="tags-list-item">KMP</div>
-      </a>
-    
-      <a 
         href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
         title="字符串">
         <div class="tags-list-item">字符串</div>
@@ -762,6 +753,18 @@ ofstream  fout(&quot;输出文件名.扩展名&quot;);<span aria-hidden="true" c
         href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
         title="最小生成树">
         <div class="tags-list-item">最小生成树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
       </a>
     
       <a 
@@ -806,7 +809,7 @@ ofstream  fout(&quot;输出文件名.扩展名&quot;);<span aria-hidden="true" c
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%87%8D%E5%AE%9A%E5%90%91%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">一、重定向型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-fopen-%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">二、$ fopen $ 型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="toc-number">3.</span> <span class="toc-text">三、文件输入输出流</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%87%8D%E5%AE%9A%E5%90%91%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text"> 一、重定向型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-fopen-%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text"> 二、$ fopen $ 型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="toc-number">3.</span> <span class="toc-text"> 三、文件输入输出流</span></a></li></ol>
     </article>
   
   

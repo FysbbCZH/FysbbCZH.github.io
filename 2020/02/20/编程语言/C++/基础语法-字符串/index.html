@@ -350,20 +350,25 @@
   <div 
     id="section" 
     class="post-content">
-    <h2 id="一、字符数组"><a href="#一、字符数组" class="headerlink" title="一、字符数组"></a>一、字符数组</h2><p>字符数组定义格式同一般数组，但数组类型使字符型。</p>
+    <h2 id="一-字符数组"><a class="markdownIt-Anchor" href="#一-字符数组"></a> 一、字符数组</h2>
+<p>字符数组定义格式同一般数组，但数组类型使字符型。</p>
 <p>字符数组的初始化：</p>
 <pre class="line-numbers language-none"><code class="language-none">char s1[5]&#x3D;&#123;&#39;a&#39;,&#39;b,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;&#125;;    &#x2F;&#x2F;存单个字符
 char s2[6]&#x3D;&#123;&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;,&#39;\0&#39;&#125;;  &#x2F;&#x2F;存字符串，注意虽然只有五个字符，但数组要开到6，因为第六位要存结束符\0
 char s[3][4]&#x3D;&#123;&quot;abc&quot;,&quot;def&quot;,&quot;ghi&quot;&#125;;   &#x2F;&#x2F;用字符串给二维字符数组初始化，相当于存了三个字符串分别于s[0],s[1],s[2]中<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>当初始化的元素个数少于数组总个数时，其余位数为空字符。</p>
 <p>字符数组中也可以存放若干个字符，也可以来存放字符串。两者的区别是字符串有一结束符( \0 )。反过来说，在一维字符数组中存放着带有结束符的若干个字符称为字符串。字符串是一维数组，但是一维字符数组不等于字符串。</p>
-<h2 id="二、字符与字符串的区别"><a href="#二、字符与字符串的区别" class="headerlink" title="二、字符与字符串的区别"></a>二、字符与字符串的区别</h2><ol>
+<h2 id="二-字符与字符串的区别"><a class="markdownIt-Anchor" href="#二-字符与字符串的区别"></a> 二、字符与字符串的区别</h2>
+<ol>
 <li>两者的定界符不同，字符常量由单引号括起来，字符串常量由双引号括起来。</li>
 <li>字符常量只能是单个字符，字符串常量则可以是多个字符。</li>
 <li>可以把一个字符常量赋给一个字符变量，但不能把一个字符串常量赋给一个字符变量。</li>
 <li>字符常量占一个字节，而字符串常量占用字节数等于字符串的字节数加 $ 1 $ 。增加的一个字节中存放字符串结束标志 ‘\0’ 。例如：字符常量 ‘a’ 占一个字节，字符串常量 “a” 占二个字节。</li>
 </ol>
-<h2 id="三、字符串输入与输出"><a href="#三、字符串输入与输出" class="headerlink" title="三、字符串输入与输出"></a>三、字符串输入与输出</h2><h3 id="Ⅰ-输入"><a href="#Ⅰ-输入" class="headerlink" title="Ⅰ. 输入"></a>Ⅰ. 输入</h3><h4 id="①-使用-scanf-读入："><a href="#①-使用-scanf-读入：" class="headerlink" title="① 使用 $ scanf $ 读入："></a>① 使用 $ scanf $ 读入：</h4><pre class="line-numbers language-none"><code class="language-none">scanf(&quot;%s&quot;,s1);
+<h2 id="三-字符串输入与输出"><a class="markdownIt-Anchor" href="#三-字符串输入与输出"></a> 三、字符串输入与输出</h2>
+<h3 id="i-输入"><a class="markdownIt-Anchor" href="#i-输入"></a> Ⅰ. 输入</h3>
+<h4 id="1-使用-scanf-读入"><a class="markdownIt-Anchor" href="#1-使用-scanf-读入"></a> ① 使用 $ scanf $ 读入：</h4>
+<pre class="line-numbers language-none"><code class="language-none">scanf(&quot;%s&quot;,s1);
 
 scanf(&quot;%s%s%s&quot;,s1,s2,s3);
 输入：a b c
@@ -377,20 +382,22 @@ scanf(&quot;%s&quot;,s1);
 <li>系统会自动在输入的字符串常量后添加 ‘\0’ 标志，因此输入时，仅输入字符串的内容即可。</li>
 <li>输入多个字符串时，以空格分隔。如果仅有一个输入字符串名称的情况下，字符串变量仅获取空格前的内容。</li>
 </ol>
-<h4 id="②-使用-gets-读入："><a href="#②-使用-gets-读入：" class="headerlink" title="② 使用 $ gets $ 读入："></a>② 使用 $ gets $ 读入：</h4><pre class="line-numbers language-none"><code class="language-none">gets(s1);   &#x2F;&#x2F;不能gets(s1,s2);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="2-使用-gets-读入"><a class="markdownIt-Anchor" href="#2-使用-gets-读入"></a> ② 使用 $ gets $ 读入：</h4>
+<pre class="line-numbers language-none"><code class="language-none">gets(s1);   &#x2F;&#x2F;不能gets(s1,s2);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol>
-<li>使用 $ gets $ 只能输入一个字符串。
-　</li>
+<li>使用 $ gets $ 只能输入一个字符串。</li>
 <li>使用 $ gets $ ，是从光标开始的地方读到换行符也就是说读入的是一整行，而使用 $ scanf $ 是从光标开始的地方到空格，如果这一行没有空格，才读到行尾。</li>
 </ol>
-<h3 id="Ⅱ-输出"><a href="#Ⅱ-输出" class="headerlink" title="Ⅱ. 输出"></a>Ⅱ. 输出</h3><h4 id="①-使用-printf-输出："><a href="#①-使用-printf-输出：" class="headerlink" title="① 使用 $ printf $ 输出："></a>① 使用 $ printf $ 输出：</h4><pre class="line-numbers language-none"><code class="language-none">printf(&quot;$s&quot;,s1);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="ii-输出"><a class="markdownIt-Anchor" href="#ii-输出"></a> Ⅱ. 输出</h3>
+<h4 id="1-使用-printf-输出"><a class="markdownIt-Anchor" href="#1-使用-printf-输出"></a> ① 使用 $ printf $ 输出：</h4>
+<pre class="line-numbers language-none"><code class="language-none">printf(&quot;$s&quot;,s1);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol>
-<li>用 ‘%s’ 格式输出时，$ printf $ 的输出项只能是字符串(字符数组)名称，而不能是数组元素。
-　　　</li>
+<li>用 ‘%s’ 格式输出时，$ printf $ 的输出项只能是字符串(字符数组)名称，而不能是数组元素。</li>
 <li>输出字符串不包括字符串结束标志符 ‘\0’ 。</li>
 </ol>
-<h4 id="②-使用-puts-输出："><a href="#②-使用-puts-输出：" class="headerlink" title="② 使用 $ puts $ 输出："></a>② 使用 $ puts $ 输出：</h4><pre class="line-numbers language-none"><code class="language-none">puts(s1);   &#x2F;&#x2F;和scanf(&quot;%s\n&quot;,s1);等价<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="四、字符串处理函数"><a href="#四、字符串处理函数" class="headerlink" title="四、字符串处理函数"></a>四、字符串处理函数</h2><div class="table-container">
+<h4 id="2-使用-puts-输出"><a class="markdownIt-Anchor" href="#2-使用-puts-输出"></a> ② 使用 $ puts $ 输出：</h4>
+<pre class="line-numbers language-none"><code class="language-none">puts(s1);   &#x2F;&#x2F;和scanf(&quot;%s\n&quot;,s1);等价<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="四-字符串处理函数"><a class="markdownIt-Anchor" href="#四-字符串处理函数"></a> 四、字符串处理函数</h2>
 <table>
 <thead>
 <tr>
@@ -437,7 +444,6 @@ scanf(&quot;%s&quot;,s1);
 </tr>
 </tbody>
 </table>
-</div>
 <p>使用以上函数，必须包含头文件 $ \color{red} {cstring} $ 。</p>
 
   </div>
@@ -523,7 +529,7 @@ scanf(&quot;%s&quot;,s1);
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">一、字符数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">二、字符与字符串的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text">三、字符串输入与输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%85%A0-%E8%BE%93%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text">Ⅰ. 输入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0-%E4%BD%BF%E7%94%A8-scanf-%E8%AF%BB%E5%85%A5%EF%BC%9A"><span class="toc-number">3.1.1.</span> <span class="toc-text">① 使用 $ scanf $ 读入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-%E4%BD%BF%E7%94%A8-gets-%E8%AF%BB%E5%85%A5%EF%BC%9A"><span class="toc-number">3.1.2.</span> <span class="toc-text">② 使用 $ gets $ 读入：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%85%A1-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.</span> <span class="toc-text">Ⅱ. 输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0-%E4%BD%BF%E7%94%A8-printf-%E8%BE%93%E5%87%BA%EF%BC%9A"><span class="toc-number">3.2.1.</span> <span class="toc-text">① 使用 $ printf $ 输出：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-%E4%BD%BF%E7%94%A8-puts-%E8%BE%93%E5%87%BA%EF%BC%9A"><span class="toc-number">3.2.2.</span> <span class="toc-text">② 使用 $ puts $ 输出：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">四、字符串处理函数</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text"> 一、字符数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AD%97%E7%AC%A6%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text"> 二、字符与字符串的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text"> 三、字符串输入与输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E8%BE%93%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text"> Ⅰ. 输入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-scanf-%E8%AF%BB%E5%85%A5"><span class="toc-number">3.1.1.</span> <span class="toc-text"> ① 使用 $ scanf $ 读入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-gets-%E8%AF%BB%E5%85%A5"><span class="toc-number">3.1.2.</span> <span class="toc-text"> ② 使用 $ gets $ 读入：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.</span> <span class="toc-text"> Ⅱ. 输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-printf-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.1.</span> <span class="toc-text"> ① 使用 $ printf $ 输出：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-puts-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.2.</span> <span class="toc-text"> ② 使用 $ puts $ 输出：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text"> 四、字符串处理函数</span></a></li></ol>
 </div>
             </main>
             <aside class="left-column">
@@ -588,7 +594,7 @@ scanf(&quot;%s&quot;,s1);
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">一、字符数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">二、字符与字符串的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text">三、字符串输入与输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%85%A0-%E8%BE%93%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text">Ⅰ. 输入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0-%E4%BD%BF%E7%94%A8-scanf-%E8%AF%BB%E5%85%A5%EF%BC%9A"><span class="toc-number">3.1.1.</span> <span class="toc-text">① 使用 $ scanf $ 读入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-%E4%BD%BF%E7%94%A8-gets-%E8%AF%BB%E5%85%A5%EF%BC%9A"><span class="toc-number">3.1.2.</span> <span class="toc-text">② 使用 $ gets $ 读入：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%85%A1-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.</span> <span class="toc-text">Ⅱ. 输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0-%E4%BD%BF%E7%94%A8-printf-%E8%BE%93%E5%87%BA%EF%BC%9A"><span class="toc-number">3.2.1.</span> <span class="toc-text">① 使用 $ printf $ 输出：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-%E4%BD%BF%E7%94%A8-puts-%E8%BE%93%E5%87%BA%EF%BC%9A"><span class="toc-number">3.2.2.</span> <span class="toc-text">② 使用 $ puts $ 输出：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">四、字符串处理函数</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text"> 一、字符数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AD%97%E7%AC%A6%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text"> 二、字符与字符串的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text"> 三、字符串输入与输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E8%BE%93%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text"> Ⅰ. 输入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-scanf-%E8%AF%BB%E5%85%A5"><span class="toc-number">3.1.1.</span> <span class="toc-text"> ① 使用 $ scanf $ 读入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-gets-%E8%AF%BB%E5%85%A5"><span class="toc-number">3.1.2.</span> <span class="toc-text"> ② 使用 $ gets $ 读入：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.</span> <span class="toc-text"> Ⅱ. 输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-printf-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.1.</span> <span class="toc-text"> ① 使用 $ printf $ 输出：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-puts-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.2.</span> <span class="toc-text"> ② 使用 $ puts $ 输出：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text"> 四、字符串处理函数</span></a></li></ol>
       </div>
     </article>
   
@@ -750,18 +756,6 @@ scanf(&quot;%s&quot;,s1);
       </a>
     
       <a 
-        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
-        title="二叉树">
-        <div class="tags-list-item">二叉树</div>
-      </a>
-    
-      <a 
-        href="/tags/KMP/" 
-        title="KMP">
-        <div class="tags-list-item">KMP</div>
-      </a>
-    
-      <a 
         href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
         title="字符串">
         <div class="tags-list-item">字符串</div>
@@ -789,6 +783,18 @@ scanf(&quot;%s&quot;,s1);
         href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
         title="最小生成树">
         <div class="tags-list-item">最小生成树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
       </a>
     
       <a 
@@ -833,7 +839,7 @@ scanf(&quot;%s&quot;,s1);
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">一、字符数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">二、字符与字符串的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text">三、字符串输入与输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%85%A0-%E8%BE%93%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text">Ⅰ. 输入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0-%E4%BD%BF%E7%94%A8-scanf-%E8%AF%BB%E5%85%A5%EF%BC%9A"><span class="toc-number">3.1.1.</span> <span class="toc-text">① 使用 $ scanf $ 读入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-%E4%BD%BF%E7%94%A8-gets-%E8%AF%BB%E5%85%A5%EF%BC%9A"><span class="toc-number">3.1.2.</span> <span class="toc-text">② 使用 $ gets $ 读入：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%85%A1-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.</span> <span class="toc-text">Ⅱ. 输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0-%E4%BD%BF%E7%94%A8-printf-%E8%BE%93%E5%87%BA%EF%BC%9A"><span class="toc-number">3.2.1.</span> <span class="toc-text">① 使用 $ printf $ 输出：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-%E4%BD%BF%E7%94%A8-puts-%E8%BE%93%E5%87%BA%EF%BC%9A"><span class="toc-number">3.2.2.</span> <span class="toc-text">② 使用 $ puts $ 输出：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">四、字符串处理函数</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text"> 一、字符数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AD%97%E7%AC%A6%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text"> 二、字符与字符串的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text"> 三、字符串输入与输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E8%BE%93%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text"> Ⅰ. 输入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-scanf-%E8%AF%BB%E5%85%A5"><span class="toc-number">3.1.1.</span> <span class="toc-text"> ① 使用 $ scanf $ 读入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-gets-%E8%AF%BB%E5%85%A5"><span class="toc-number">3.1.2.</span> <span class="toc-text"> ② 使用 $ gets $ 读入：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.</span> <span class="toc-text"> Ⅱ. 输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-printf-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.1.</span> <span class="toc-text"> ① 使用 $ printf $ 输出：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-puts-%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.2.</span> <span class="toc-text"> ② 使用 $ puts $ 输出：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text"> 四、字符串处理函数</span></a></li></ol>
     </article>
   
   

@@ -356,15 +356,19 @@
   <div 
     id="section" 
     class="post-content">
-    <h5 id="2019-2-16"><a href="#2019-2-16" class="headerlink" title="2019.2.16"></a>2019.2.16</h5><h1 id="长沙集训-Day-6"><a href="#长沙集训-Day-6" class="headerlink" title="长沙集训 $ Day 6 $"></a>长沙集训 $ Day 6 $</h1><p>今天没有模拟赛，而是介绍了一种神奇的算法，现在让我们一起了解一下 $ CDQ $ 分治的魅力。</p>
-<hr>
-<h2 id="三维偏序问题："><a href="#三维偏序问题：" class="headerlink" title="三维偏序问题："></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3810">三维偏序问题：</a></h2><p>共有 $ n $ 个元素，对于第 $ i $ 个元素，给出三个量：$ a_i \ \ , \ \ b_i \ \ ,\ \ c_i $ ,询问$       a_j&lt;a_i , b_j&lt;b_i , c_j&lt;c_i $ 的元素有多少个。</p>
+    <h5 id="2019216"><a class="markdownIt-Anchor" href="#2019216"></a> 2019.2.16</h5>
+<h1 id="长沙集训-day-6"><a class="markdownIt-Anchor" href="#长沙集训-day-6"></a> 长沙集训 $ Day 6 $</h1>
+<p>今天没有模拟赛，而是介绍了一种神奇的算法，现在让我们一起了解一下 $ CDQ $ 分治的魅力。</p>
+<hr />
+<h2 id="三维偏序问题"><a class="markdownIt-Anchor" href="#三维偏序问题"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3810">三维偏序问题：</a></h2>
+<p>共有 $ n $ 个元素，对于第 $ i $ 个元素，给出三个量：$ a_i \ \ , \ \ b_i \ \ ,\ \ c_i $ ,询问$       a_j&lt;a_i , b_j&lt;b_i , c_j&lt;c_i $ 的元素有多少个。</p>
 <p>如果 $ n $ 很小，我们可以用三维前缀和解决这个问题，但当 $ n=10000 $ 或者更大时，显然需要二维树形结构来维护，但树形结构消耗空间大，编程难度高，且处理时常数复杂度高。这时，我们便可以用 $ CDQ $ 分治来解决问题。</p>
 <p>先从二位偏序看起:</p>
 <p>要解决二维偏序，我们可以先使用快排将第一维处理为有序排列。之后再利用树状数组或分治在第二维上统计答案。（例如<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P1908">逆序对</a>）</p>
 <p>现在问题变成了三维，我们依然可以沿用解决二维偏序问题的思路。依然用快排处理第一维（例如将其从小到大排列），但这时不能直接将第二维再次排序，否则会打乱第一维的顺序。为解决这个问题，我们可以用分治将数列分成左右两份。注意到左边的 $ a_i $ 一定小于右边的 $ a_j $ ,此时我们将左右两边的 $ b $ 分别排成有序数列，虽然 $ a $ 的顺序会被打乱，但左边 $ a $ 一定是比右边 $ a $ 小。此时，我们便可以统计左边元素对右边元素的贡献。通过层层分治，可以求出所有贡献。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c710de31167e.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c710de31167e.png" class="lozad post-image"></p>
-<h3 id="如何排序"><a href="#如何排序" class="headerlink" title="如何排序"></a>如何排序</h3><p>对第二维元素可以用快排排序，这样的时间复杂度：</p>
+<p><img src="https://i.loli.net/2019/02/23/5c710de31167e.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c710de31167e.png" class="lozad post-image"></p>
+<h3 id="如何排序"><a class="markdownIt-Anchor" href="#如何排序"></a> 如何排序</h3>
+<p>对第二维元素可以用快排排序，这样的时间复杂度：</p>
 <ol>
 <li>快排 $ O(n \log n) $</li>
 <li>分治 $ O(\log n) $</li>
@@ -377,8 +381,10 @@
 <li>处理答案+排序 $ O(n) $</li>
 </ol>
 <p>总时间复杂度接近 $ O(n \log n) $</p>
-<h3 id="处理答案"><a href="#处理答案" class="headerlink" title="处理答案"></a>处理答案</h3><p>对答案的处理一般是使用树状数组进行统计，但其实我们可以再次利用 $ CDQ $ 分治的方法，继续对第三维进行分治，即在 $ b $ 排序后，再将区间分为两份，对 $ c $ 进行排序并统计答案。这种 $ CDQ $ 嵌套还可以继续进行，以解决四维、五维偏序问题。</p>
-<h3 id="程序（-CDQ-套-CDQ-）"><a href="#程序（-CDQ-套-CDQ-）" class="headerlink" title="程序（ $ CDQ $ 套 $ CDQ $ ）"></a>程序（ $ CDQ $ 套 $ CDQ $ ）</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program project1<span class="token punctuation">;</span>
+<h3 id="处理答案"><a class="markdownIt-Anchor" href="#处理答案"></a> 处理答案</h3>
+<p>对答案的处理一般是使用树状数组进行统计，但其实我们可以再次利用 $ CDQ $ 分治的方法，继续对第三维进行分治，即在 $ b $ 排序后，再将区间分为两份，对 $ c $ 进行排序并统计答案。这种 $ CDQ $ 嵌套还可以继续进行，以解决四维、五维偏序问题。</p>
+<h3 id="程序-cdq-套-cdq"><a class="markdownIt-Anchor" href="#程序-cdq-套-cdq"></a> 程序（ $ CDQ $ 套 $ CDQ $ ）</h3>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program project1<span class="token punctuation">;</span>
 type tp<span class="token operator">=</span>record
   a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">,</span>tot<span class="token punctuation">,</span>tf<span class="token punctuation">,</span>ans<span class="token operator">:</span>longint<span class="token punctuation">;</span>
   tfp<span class="token operator">:</span>boolean<span class="token punctuation">;</span>
@@ -596,7 +602,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-16"><span class="toc-number">1.</span> <span class="toc-text">2019.2.16</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-6"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 6 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E5%81%8F%E5%BA%8F%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">三维偏序问题：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%8E%92%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">如何排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E7%AD%94%E6%A1%88"><span class="toc-number"></span> <span class="toc-text">处理答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%EF%BC%88-CDQ-%E5%A5%97-CDQ-%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">程序（ $ CDQ $ 套 $ CDQ $ ）</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019216"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.16</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-6"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 6 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E5%81%8F%E5%BA%8F%E9%97%AE%E9%A2%98"><span class="toc-number"></span> <span class="toc-text"> 三维偏序问题：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%8E%92%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 如何排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E7%AD%94%E6%A1%88"><span class="toc-number"></span> <span class="toc-text"> 处理答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-cdq-%E5%A5%97-cdq"><span class="toc-number"></span> <span class="toc-text"> 程序（ $ CDQ $ 套 $ CDQ $ ）</span></a>
 </div>
             </main>
             <aside class="left-column">
@@ -661,7 +667,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-16"><span class="toc-number">1.</span> <span class="toc-text">2019.2.16</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-6"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 6 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E5%81%8F%E5%BA%8F%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">三维偏序问题：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%8E%92%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">如何排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E7%AD%94%E6%A1%88"><span class="toc-number"></span> <span class="toc-text">处理答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%EF%BC%88-CDQ-%E5%A5%97-CDQ-%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">程序（ $ CDQ $ 套 $ CDQ $ ）</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019216"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.16</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-6"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 6 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E5%81%8F%E5%BA%8F%E9%97%AE%E9%A2%98"><span class="toc-number"></span> <span class="toc-text"> 三维偏序问题：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%8E%92%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 如何排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E7%AD%94%E6%A1%88"><span class="toc-number"></span> <span class="toc-text"> 处理答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-cdq-%E5%A5%97-cdq"><span class="toc-number"></span> <span class="toc-text"> 程序（ $ CDQ $ 套 $ CDQ $ ）</span></a>
       </div>
     </article>
   
@@ -823,18 +829,6 @@ end<span class="token punctuation">.</span>
       </a>
     
       <a 
-        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
-        title="二叉树">
-        <div class="tags-list-item">二叉树</div>
-      </a>
-    
-      <a 
-        href="/tags/KMP/" 
-        title="KMP">
-        <div class="tags-list-item">KMP</div>
-      </a>
-    
-      <a 
         href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
         title="字符串">
         <div class="tags-list-item">字符串</div>
@@ -862,6 +856,18 @@ end<span class="token punctuation">.</span>
         href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
         title="最小生成树">
         <div class="tags-list-item">最小生成树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
       </a>
     
       <a 
@@ -906,7 +912,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-16"><span class="toc-number">1.</span> <span class="toc-text">2019.2.16</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-6"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 6 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E5%81%8F%E5%BA%8F%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">三维偏序问题：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%8E%92%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">如何排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E7%AD%94%E6%A1%88"><span class="toc-number"></span> <span class="toc-text">处理答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%EF%BC%88-CDQ-%E5%A5%97-CDQ-%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">程序（ $ CDQ $ 套 $ CDQ $ ）</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019216"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.16</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-6"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 6 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E5%81%8F%E5%BA%8F%E9%97%AE%E9%A2%98"><span class="toc-number"></span> <span class="toc-text"> 三维偏序问题：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%8E%92%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 如何排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E7%AD%94%E6%A1%88"><span class="toc-number"></span> <span class="toc-text"> 处理答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-cdq-%E5%A5%97-cdq"><span class="toc-number"></span> <span class="toc-text"> 程序（ $ CDQ $ 套 $ CDQ $ ）</span></a>
     </article>
   
   

@@ -356,12 +356,17 @@
   <div 
     id="section" 
     class="post-content">
-    <h5 id="2019-2-13"><a href="#2019-2-13" class="headerlink" title="2019.2.13"></a>2019.2.13</h5><h1 id="长沙集训-Day-3"><a href="#长沙集训-Day-3" class="headerlink" title="长沙集训 $ Day 3 $"></a>长沙集训 $ Day 3 $</h1><p>今天的题突然变得简单了，感觉比 $ Day 1 $ 还简单，但一看标题……</p>
+    <h5 id="2019213"><a class="markdownIt-Anchor" href="#2019213"></a> 2019.2.13</h5>
+<h1 id="长沙集训-day-3"><a class="markdownIt-Anchor" href="#长沙集训-day-3"></a> 长沙集训 $ Day 3 $</h1>
+<p>今天的题突然变得简单了，感觉比 $ Day 1 $ 还简单，但一看标题…</p>
 <p>$ NOIP $ 模拟赛！！！</p>
-<hr>
-<h2 id="T1-A"><a href="#T1-A" class="headerlink" title="T1 A"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62852">T1 A</a></h2><p>没错，今天的题目名称就是这么敷衍，甚至于题目描述也十分模糊……</p>
+<hr />
+<h2 id="t1-a"><a class="markdownIt-Anchor" href="#t1-a"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62852">T1 A</a></h2>
+<p>没错，今天的题目名称就是这么敷衍，甚至于题目描述也十分模糊…</p>
 <p>第一题是一道模拟水题，只要按照横坐标从左到右枚举一遍，取最大答案即可。</p>
-<h5 id="评测结果我只有-40-分，但是用数据自测答案却是正确的，在本地用-lemon-测就-AC-了！？此问题有待解决……"><a href="#评测结果我只有-40-分，但是用数据自测答案却是正确的，在本地用-lemon-测就-AC-了！？此问题有待解决……" class="headerlink" title="评测结果我只有 $ 40 $ 分，但是用数据自测答案却是正确的，在本地用 $ lemon $ 测就 $ AC $ 了！？此问题有待解决……"></a>评测结果我只有 $ 40 $ 分，但是用数据自测答案却是正确的，在本地用 $ lemon $ 测就 $ AC $ 了！？此问题有待解决……</h5><h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program a<span class="token punctuation">;</span>
+<h5 id="评测结果我只有-40-分但是用数据自测答案却是正确的在本地用-lemon-测就-ac-了此问题有待解决"><a class="markdownIt-Anchor" href="#评测结果我只有-40-分但是用数据自测答案却是正确的在本地用-lemon-测就-ac-了此问题有待解决"></a> 评测结果我只有 $ 40 $ 分，但是用数据自测答案却是正确的，在本地用 $ lemon $ 测就 $ AC $ 了！？此问题有待解决…</h5>
+<h3 id="程序"><a class="markdownIt-Anchor" href="#程序"></a> 程序</h3>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program a<span class="token punctuation">;</span>
 var
    m<span class="token punctuation">,</span>b<span class="token punctuation">,</span>n<span class="token operator">:</span>int64<span class="token punctuation">;</span>
    ans<span class="token operator">:</span>int64<span class="token punctuation">;</span>
@@ -405,14 +410,15 @@ begin
   n<span class="token operator">:</span><span class="token operator">=</span><span class="token function">abs</span><span class="token punctuation">(</span>m<span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
   main<span class="token punctuation">;</span>
 end<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="T2-B"><a href="#T2-B" class="headerlink" title="T2 B"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62853">T2 B</a></h2><p>此题虽是 $ T2 $ ，但难度却远超 $ T3 $ ，思路并不复杂，但代码就……</p>
+<h2 id="t2-b"><a class="markdownIt-Anchor" href="#t2-b"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62853">T2 B</a></h2>
+<p>此题虽是 $ T2 $ ，但难度却远超 $ T3 $ ，思路并不复杂，但代码就…</p>
 <p>一看到将区间覆盖成 $ 1 $ 或 $ 0 $ ，立刻就想到线段树，但如何维护？好在我做<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P2486">染色</a>和<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P2146">软件包管理器</a>时的处理方式给了我启发！</p>
 <p>对于 $ tree[t] $ :</p>
 <p>$ tree[t].l $ 维护 $ t $ 区间最左边连续 $ 0 $ 的个数</p>
 <p>$ tree[t].r $ 维护 $ t $ 区间最有边连续 $ 0 $ 的个数</p>
 <p>$ tree[t].p $ 维护 $ t $ 区间最多连续 $ 0 $ 的个数</p>
 <p>有了储存方式，接下来就是修改了：</p>
-<p><img src="https://i.loli.net/2019/02/13/5c64164a344f1.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/13/5c64164a344f1.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/02/13/5c64164a344f1.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/13/5c64164a344f1.png" class="lozad post-image"></p>
 <p>像如上这些区间的修改是一大难点</p>
 <p>修改 $ tree[t].p $ :</p>
 <p>$ tree[t].p = max(tree[t \ \ shl \ \ 1].r+tree[t \ \ shl \ \ 1 + 1].l,tree[t \ \ shl \ \ 1].p,tree[t \ \ shl \ \ 1 + 1].p) $</p>
@@ -430,7 +436,8 @@ end<span class="token punctuation">.</span><span aria-hidden="true" class="line-
 <li>$ tree[t].r&gt;=len $ 处理答案</li>
 </ol>
 <p>按照从 $ 1 $ 到 $ 5 $ 的步骤处理，随时下放懒标记</p>
-<h3 id="程序-1"><a href="#程序-1" class="headerlink" title="程序"></a>程序</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program b<span class="token punctuation">;</span>
+<h3 id="程序-2"><a class="markdownIt-Anchor" href="#程序-2"></a> 程序</h3>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program b<span class="token punctuation">;</span>
 type tp<span class="token operator">=</span>record
   l<span class="token punctuation">,</span>r<span class="token punctuation">,</span>p<span class="token operator">:</span>longint<span class="token punctuation">;</span>
 end<span class="token punctuation">;</span>
@@ -564,11 +571,13 @@ begin
   tree<span class="token operator">:</span><span class="token operator">=</span>tree_simple<span class="token punctuation">;</span>
   main<span class="token punctuation">;</span>
 end<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="T3-C"><a href="#T3-C" class="headerlink" title="T3 C"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62855">T3 C</a></h2><p>此题其实并不复杂，一看到字符串的循环，立刻就想到 $ KMP $ ，但是……</p>
-<p>我却敲不出 $ KMP $ 的代码，我好弱啊……</p>
+<h2 id="t3-c"><a class="markdownIt-Anchor" href="#t3-c"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62855">T3 C</a></h2>
+<p>此题其实并不复杂，一看到字符串的循环，立刻就想到 $ KMP $ ，但是…</p>
+<p>我却敲不出 $ KMP $ 的代码，我好弱啊…</p>
 <p>判断循环节方法：</p>
 <p>到第 $ i $ 位时，若 $ i \ \ mod \ \ (i-next[i])=0 $ 且 $ i \ \ div \ \ (i-next[i])&gt;1 $ ,则构成循环节。</p>
-<h3 id="程序-2"><a href="#程序-2" class="headerlink" title="程序"></a>程序</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program c<span class="token punctuation">;</span>
+<h3 id="程序-3"><a class="markdownIt-Anchor" href="#程序-3"></a> 程序</h3>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program c<span class="token punctuation">;</span>
 var
    s<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.1000005</span><span class="token punctuation">]</span>of <span class="token keyword">char</span><span class="token punctuation">;</span>
    next<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.1000005</span><span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
@@ -686,7 +695,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-13"><span class="toc-number">1.</span> <span class="toc-text">2019.2.13</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-3"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 3 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-A"><span class="toc-number"></span> <span class="toc-text">T1 A</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E6%88%91%E5%8F%AA%E6%9C%89-40-%E5%88%86%EF%BC%8C%E4%BD%86%E6%98%AF%E7%94%A8%E6%95%B0%E6%8D%AE%E8%87%AA%E6%B5%8B%E7%AD%94%E6%A1%88%E5%8D%B4%E6%98%AF%E6%AD%A3%E7%A1%AE%E7%9A%84%EF%BC%8C%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%94%A8-lemon-%E6%B5%8B%E5%B0%B1-AC-%E4%BA%86%EF%BC%81%EF%BC%9F%E6%AD%A4%E9%97%AE%E9%A2%98%E6%9C%89%E5%BE%85%E8%A7%A3%E5%86%B3%E2%80%A6%E2%80%A6"><span class="toc-number">1.</span> <span class="toc-text">评测结果我只有 $ 40 $ 分，但是用数据自测答案却是正确的，在本地用 $ lemon $ 测就 $ AC $ 了！？此问题有待解决……</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-B"><span class="toc-number"></span> <span class="toc-text">T2 B</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-C"><span class="toc-number"></span> <span class="toc-text">T3 C</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text">程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019213"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.13</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-3"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 3 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#t1-a"><span class="toc-number"></span> <span class="toc-text"> T1 A</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E6%88%91%E5%8F%AA%E6%9C%89-40-%E5%88%86%E4%BD%86%E6%98%AF%E7%94%A8%E6%95%B0%E6%8D%AE%E8%87%AA%E6%B5%8B%E7%AD%94%E6%A1%88%E5%8D%B4%E6%98%AF%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%94%A8-lemon-%E6%B5%8B%E5%B0%B1-ac-%E4%BA%86%E6%AD%A4%E9%97%AE%E9%A2%98%E6%9C%89%E5%BE%85%E8%A7%A3%E5%86%B3"><span class="toc-number">1.</span> <span class="toc-text"> 评测结果我只有 $ 40 $ 分，但是用数据自测答案却是正确的，在本地用 $ lemon $ 测就 $ AC $ 了！？此问题有待解决…</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2-b"><span class="toc-number"></span> <span class="toc-text"> T2 B</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3-c"><span class="toc-number"></span> <span class="toc-text"> T3 C</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a>
 </div>
             </main>
             <aside class="left-column">
@@ -751,7 +760,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-13"><span class="toc-number">1.</span> <span class="toc-text">2019.2.13</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-3"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 3 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-A"><span class="toc-number"></span> <span class="toc-text">T1 A</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E6%88%91%E5%8F%AA%E6%9C%89-40-%E5%88%86%EF%BC%8C%E4%BD%86%E6%98%AF%E7%94%A8%E6%95%B0%E6%8D%AE%E8%87%AA%E6%B5%8B%E7%AD%94%E6%A1%88%E5%8D%B4%E6%98%AF%E6%AD%A3%E7%A1%AE%E7%9A%84%EF%BC%8C%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%94%A8-lemon-%E6%B5%8B%E5%B0%B1-AC-%E4%BA%86%EF%BC%81%EF%BC%9F%E6%AD%A4%E9%97%AE%E9%A2%98%E6%9C%89%E5%BE%85%E8%A7%A3%E5%86%B3%E2%80%A6%E2%80%A6"><span class="toc-number">1.</span> <span class="toc-text">评测结果我只有 $ 40 $ 分，但是用数据自测答案却是正确的，在本地用 $ lemon $ 测就 $ AC $ 了！？此问题有待解决……</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-B"><span class="toc-number"></span> <span class="toc-text">T2 B</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-C"><span class="toc-number"></span> <span class="toc-text">T3 C</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text">程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019213"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.13</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-3"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 3 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#t1-a"><span class="toc-number"></span> <span class="toc-text"> T1 A</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E6%88%91%E5%8F%AA%E6%9C%89-40-%E5%88%86%E4%BD%86%E6%98%AF%E7%94%A8%E6%95%B0%E6%8D%AE%E8%87%AA%E6%B5%8B%E7%AD%94%E6%A1%88%E5%8D%B4%E6%98%AF%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%94%A8-lemon-%E6%B5%8B%E5%B0%B1-ac-%E4%BA%86%E6%AD%A4%E9%97%AE%E9%A2%98%E6%9C%89%E5%BE%85%E8%A7%A3%E5%86%B3"><span class="toc-number">1.</span> <span class="toc-text"> 评测结果我只有 $ 40 $ 分，但是用数据自测答案却是正确的，在本地用 $ lemon $ 测就 $ AC $ 了！？此问题有待解决…</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2-b"><span class="toc-number"></span> <span class="toc-text"> T2 B</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3-c"><span class="toc-number"></span> <span class="toc-text"> T3 C</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a>
       </div>
     </article>
   
@@ -913,18 +922,6 @@ end<span class="token punctuation">.</span>
       </a>
     
       <a 
-        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
-        title="二叉树">
-        <div class="tags-list-item">二叉树</div>
-      </a>
-    
-      <a 
-        href="/tags/KMP/" 
-        title="KMP">
-        <div class="tags-list-item">KMP</div>
-      </a>
-    
-      <a 
         href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
         title="字符串">
         <div class="tags-list-item">字符串</div>
@@ -952,6 +949,18 @@ end<span class="token punctuation">.</span>
         href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
         title="最小生成树">
         <div class="tags-list-item">最小生成树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
       </a>
     
       <a 
@@ -996,7 +1005,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-13"><span class="toc-number">1.</span> <span class="toc-text">2019.2.13</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-3"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 3 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-A"><span class="toc-number"></span> <span class="toc-text">T1 A</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E6%88%91%E5%8F%AA%E6%9C%89-40-%E5%88%86%EF%BC%8C%E4%BD%86%E6%98%AF%E7%94%A8%E6%95%B0%E6%8D%AE%E8%87%AA%E6%B5%8B%E7%AD%94%E6%A1%88%E5%8D%B4%E6%98%AF%E6%AD%A3%E7%A1%AE%E7%9A%84%EF%BC%8C%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%94%A8-lemon-%E6%B5%8B%E5%B0%B1-AC-%E4%BA%86%EF%BC%81%EF%BC%9F%E6%AD%A4%E9%97%AE%E9%A2%98%E6%9C%89%E5%BE%85%E8%A7%A3%E5%86%B3%E2%80%A6%E2%80%A6"><span class="toc-number">1.</span> <span class="toc-text">评测结果我只有 $ 40 $ 分，但是用数据自测答案却是正确的，在本地用 $ lemon $ 测就 $ AC $ 了！？此问题有待解决……</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-B"><span class="toc-number"></span> <span class="toc-text">T2 B</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-C"><span class="toc-number"></span> <span class="toc-text">T3 C</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text">程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019213"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.13</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-3"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 3 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#t1-a"><span class="toc-number"></span> <span class="toc-text"> T1 A</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E6%88%91%E5%8F%AA%E6%9C%89-40-%E5%88%86%E4%BD%86%E6%98%AF%E7%94%A8%E6%95%B0%E6%8D%AE%E8%87%AA%E6%B5%8B%E7%AD%94%E6%A1%88%E5%8D%B4%E6%98%AF%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%94%A8-lemon-%E6%B5%8B%E5%B0%B1-ac-%E4%BA%86%E6%AD%A4%E9%97%AE%E9%A2%98%E6%9C%89%E5%BE%85%E8%A7%A3%E5%86%B3"><span class="toc-number">1.</span> <span class="toc-text"> 评测结果我只有 $ 40 $ 分，但是用数据自测答案却是正确的，在本地用 $ lemon $ 测就 $ AC $ 了！？此问题有待解决…</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2-b"><span class="toc-number"></span> <span class="toc-text"> T2 B</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3-c"><span class="toc-number"></span> <span class="toc-text"> T3 C</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a>
     </article>
   
   

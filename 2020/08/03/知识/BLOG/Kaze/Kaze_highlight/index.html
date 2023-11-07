@@ -333,7 +333,7 @@
     
     
       <span class="dot"></span>
-      <span>748 字</span>
+      <span>751 字</span>
     
   </div>
   
@@ -369,17 +369,19 @@
   <div 
     id="section" 
     class="post-content">
-    <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><link rel="preload" href="/js/lib/prism/prism.min.css" as="style"></p>
-<p><link rel="preload" href="/js/lib/prism/prism-coy.min.css" as="style"></p>
-<p><link rel="preload" href="/js/lib/prism/prism-dark.min.css" as="style"></p>
-<p><link rel="preload" href="/js/lib/prism/prism-funky.min.css" as="style"></p>
-<p><link rel="preload" href="/js/lib/prism/prism-okaidia.min.css" as="style"></p>
-<p><link rel="preload" href="/js/lib/prism/prism-solarizedlight.min.css" as="style"></p>
-<p><link rel="preload" href="/js/lib/prism/prism-tomorrow.min.css" as="style"></p>
+    <h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h2>
+<link rel="preload" href="/js/lib/prism/prism.min.css" as="style">
+<link rel="preload" href="/js/lib/prism/prism-coy.min.css" as="style">
+<link rel="preload" href="/js/lib/prism/prism-dark.min.css" as="style">
+<link rel="preload" href="/js/lib/prism/prism-funky.min.css" as="style">
+<link rel="preload" href="/js/lib/prism/prism-okaidia.min.css" as="style">
+<link rel="preload" href="/js/lib/prism/prism-solarizedlight.min.css" as="style">
+<link rel="preload" href="/js/lib/prism/prism-tomorrow.min.css" as="style">
 <link rel="preload" href="/js/lib/prism/prism-twilight.min.css" as="style">
-
-<h3 id="高亮方案"><a href="#高亮方案" class="headerlink" title="高亮方案"></a>高亮方案</h3><p>本主题没有使用自定义高亮方式，高亮方案在Hexo本身支持的 <code>highlightjs</code> 和 <code>prismjs</code> 基础上修改得到</p>
-<h3 id="使用highlightjs"><a href="#使用highlightjs" class="headerlink" title="使用highlightjs"></a>使用highlightjs</h3><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">highlight</span><span class="token punctuation">:</span>
+<h3 id="高亮方案"><a class="markdownIt-Anchor" href="#高亮方案"></a> 高亮方案</h3>
+<p>本主题没有使用自定义高亮方式，高亮方案在Hexo本身支持的 <code>highlightjs</code> 和 <code>prismjs</code> 基础上修改得到</p>
+<h3 id="使用highlightjs"><a class="markdownIt-Anchor" href="#使用highlightjs"></a> 使用highlightjs</h3>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">highlight</span><span class="token punctuation">:</span>
   <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
   <span class="token key atrule">line_number</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
   <span class="token key atrule">auto_detect</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
@@ -393,14 +395,16 @@
 <p>在站点配置文件将 <code>highlight</code> 设置 <code>enable: true</code> 即可开启，<code>line_number</code> 选项本主题暂不支持显示</p>
 <p>若需要支持代码高亮可设置 <code>hljs: true</code>，该配色方案参考了 <code>tomorrow night</code> 等配色主题</p>
 <p>其他具体参数设置可参考 <a target="_blank" rel="noopener" href="https://hexo.io/docs/syntax-highlight">Hexo相关文档 </a></p>
-<h2 id="使用prismjs"><a href="#使用prismjs" class="headerlink" title="使用prismjs"></a>使用prismjs</h2><p>在 <code>prismjs</code> 中设置 <code>enable: true</code> 和 <code>preprocess: true</code> 即可开启 默认支持 <code>Line Numbers</code> 和 <code>Show Languages</code> 两个插件 如果需要其他插件支持可以设置 <code>preprocess: false</code></p>
+<h2 id="使用prismjs"><a class="markdownIt-Anchor" href="#使用prismjs"></a> 使用prismjs</h2>
+<p>在 <code>prismjs</code> 中设置 <code>enable: true</code> 和 <code>preprocess: true</code> 即可开启 默认支持 <code>Line Numbers</code> 和 <code>Show Languages</code> 两个插件 如果需要其他插件支持可以设置 <code>preprocess: false</code></p>
 <div class="post-note note-warning"><p>当前主题版本不支持 <code>preprocess: false</code> 自动引入相关文件 如有相关需求请自行引入相关 css 与 js 文件</p></div>
 <p>设置 <code>line_number: true</code> 即可显示行号</p>
-<h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><p>以下演示采用 <code>prism</code>，<code>highlight</code> 在主题效果可参见（TODO）</p>
+<h2 id="演示"><a class="markdownIt-Anchor" href="#演示"></a> 演示</h2>
+<p>以下演示采用 <code>prism</code>，<code>highlight</code> 在主题效果可参见（TODO）</p>
 <p>有八种高亮主题可选择</p>
-<button class="postbutton" style="color: #fff;">default</button> <button class="postbutton" style="color: #fff;">coy</button> <button class="postbutton" style="color: #fff;">dark</button> <button class="postbutton" style="color: #fff;">funky</button> <button class="postbutton" style="color: #fff;">okaidia</button> <button class="postbutton" style="color: #fff;">solarizedlight</button> <button class="postbutton" style="color: #fff;">tomorrow</button> <button class="postbutton" style="color: #fff;">twilight</button>
-
-<h3 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h3><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">smoothScrollToTop</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+<p><button class="postbutton" style="color: #fff;">default</button> <button class="postbutton" style="color: #fff;">coy</button> <button class="postbutton" style="color: #fff;">dark</button> <button class="postbutton" style="color: #fff;">funky</button> <button class="postbutton" style="color: #fff;">okaidia</button> <button class="postbutton" style="color: #fff;">solarizedlight</button> <button class="postbutton" style="color: #fff;">tomorrow</button> <button class="postbutton" style="color: #fff;">twilight</button></p>
+<h3 id="javascript"><a class="markdownIt-Anchor" href="#javascript"></a> Javascript</h3>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">smoothScrollToTop</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
   <span class="token keyword">let</span> yTopValve <span class="token operator">=</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>pageYOffset <span class="token operator">||</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>scrollTop <span class="token operator">||</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>scrollTop<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span>yTopValve <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>smoothScrollToTop<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -413,7 +417,8 @@
 <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
   document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'scrollbutton'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>onclick <span class="token operator">=</span> smoothScrollToTop<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;cstdio></span></span>
+<h3 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h3>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;cstdio></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;algorithm></span></span>
 <span class="token keyword">const</span> <span class="token keyword">int</span> maxn<span class="token operator">=</span><span class="token number">1050</span><span class="token punctuation">;</span>
@@ -435,7 +440,8 @@
 	cout<span class="token operator">&lt;&lt;</span>ans<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<h3 id="php"><a class="markdownIt-Anchor" href="#php"></a> PHP</h3>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'num'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token function">show_source</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -450,7 +456,8 @@
         <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'echo '</span><span class="token operator">.</span><span class="token variable">$str</span><span class="token operator">.</span><span class="token string single-quoted-string">';'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+<h3 id="json"><a class="markdownIt-Anchor" href="#json"></a> JSON</h3>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
   <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"hexo-theme-kaze"</span><span class="token punctuation">,</span>
   <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"hexo-theme-kaze"</span><span class="token punctuation">,</span>
   <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"theme-kaze"</span><span class="token punctuation">,</span>
@@ -460,7 +467,8 @@
   <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
   <span class="token property">"homepage"</span><span class="token operator">:</span> <span class="token string">"https://github.com/theme-kaze/hexo-theme-Kaze#readme"</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<h3 id="python"><a class="markdownIt-Anchor" href="#python"></a> Python</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
 <span class="token keyword">import</span> re
 <span class="token keyword">import</span> sys
 <span class="token keyword">import</span> os
@@ -477,7 +485,8 @@ content <span class="token operator">=</span> os<span class="token punctuation">
                    firstnum<span class="token operator">+</span><span class="token string">' '</span><span class="token operator">+</span>lastnum<span class="token operator">+</span><span class="token string">' 0 0'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
 q <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">'/verify.php'</span><span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'ans'</span><span class="token punctuation">:</span> content<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>q<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h3><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// backup my secret key into DB</span>
+<h3 id="go"><a class="markdownIt-Anchor" href="#go"></a> Go</h3>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// backup my secret key into DB</span>
 <span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">=</span> db<span class="token punctuation">.</span><span class="token function">Exec</span><span class="token punctuation">(</span>fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">`INSERT INTO secret(secret) VALUES('%s');`</span><span class="token punctuation">,</span> secretKey<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> err
@@ -599,7 +608,7 @@ q <span class="token operator">=</span> requests<span class="token punctuation">
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E4%BA%AE%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text">高亮方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8highlightjs"><span class="toc-number">1.2.</span> <span class="toc-text">使用highlightjs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8prismjs"><span class="toc-number">2.</span> <span class="toc-text">使用prismjs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">3.</span> <span class="toc-text">演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript"><span class="toc-number">3.1.</span> <span class="toc-text">Javascript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C"><span class="toc-number">3.2.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP"><span class="toc-number">3.3.</span> <span class="toc-text">PHP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON"><span class="toc-number">3.4.</span> <span class="toc-text">JSON</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python"><span class="toc-number">3.5.</span> <span class="toc-text">Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Go"><span class="toc-number">3.6.</span> <span class="toc-text">Go</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text"> 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E4%BA%AE%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text"> 高亮方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8highlightjs"><span class="toc-number">1.2.</span> <span class="toc-text"> 使用highlightjs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8prismjs"><span class="toc-number">2.</span> <span class="toc-text"> 使用prismjs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">3.</span> <span class="toc-text"> 演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript"><span class="toc-number">3.1.</span> <span class="toc-text"> Javascript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c"><span class="toc-number">3.2.</span> <span class="toc-text"> C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php"><span class="toc-number">3.3.</span> <span class="toc-text"> PHP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#json"><span class="toc-number">3.4.</span> <span class="toc-text"> JSON</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python"><span class="toc-number">3.5.</span> <span class="toc-text"> Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#go"><span class="toc-number">3.6.</span> <span class="toc-text"> Go</span></a></li></ol></li></ol>
 </div>
             </main>
             <aside class="left-column">
@@ -664,7 +673,7 @@ q <span class="token operator">=</span> requests<span class="token punctuation">
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E4%BA%AE%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text">高亮方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8highlightjs"><span class="toc-number">1.2.</span> <span class="toc-text">使用highlightjs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8prismjs"><span class="toc-number">2.</span> <span class="toc-text">使用prismjs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">3.</span> <span class="toc-text">演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript"><span class="toc-number">3.1.</span> <span class="toc-text">Javascript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C"><span class="toc-number">3.2.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP"><span class="toc-number">3.3.</span> <span class="toc-text">PHP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON"><span class="toc-number">3.4.</span> <span class="toc-text">JSON</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python"><span class="toc-number">3.5.</span> <span class="toc-text">Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Go"><span class="toc-number">3.6.</span> <span class="toc-text">Go</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text"> 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E4%BA%AE%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text"> 高亮方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8highlightjs"><span class="toc-number">1.2.</span> <span class="toc-text"> 使用highlightjs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8prismjs"><span class="toc-number">2.</span> <span class="toc-text"> 使用prismjs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">3.</span> <span class="toc-text"> 演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript"><span class="toc-number">3.1.</span> <span class="toc-text"> Javascript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c"><span class="toc-number">3.2.</span> <span class="toc-text"> C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php"><span class="toc-number">3.3.</span> <span class="toc-text"> PHP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#json"><span class="toc-number">3.4.</span> <span class="toc-text"> JSON</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python"><span class="toc-number">3.5.</span> <span class="toc-text"> Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#go"><span class="toc-number">3.6.</span> <span class="toc-text"> Go</span></a></li></ol></li></ol>
       </div>
     </article>
   
@@ -826,18 +835,6 @@ q <span class="token operator">=</span> requests<span class="token punctuation">
       </a>
     
       <a 
-        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
-        title="二叉树">
-        <div class="tags-list-item">二叉树</div>
-      </a>
-    
-      <a 
-        href="/tags/KMP/" 
-        title="KMP">
-        <div class="tags-list-item">KMP</div>
-      </a>
-    
-      <a 
         href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
         title="字符串">
         <div class="tags-list-item">字符串</div>
@@ -865,6 +862,18 @@ q <span class="token operator">=</span> requests<span class="token punctuation">
         href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
         title="最小生成树">
         <div class="tags-list-item">最小生成树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
       </a>
     
       <a 
@@ -909,7 +918,7 @@ q <span class="token operator">=</span> requests<span class="token punctuation">
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E4%BA%AE%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text">高亮方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8highlightjs"><span class="toc-number">1.2.</span> <span class="toc-text">使用highlightjs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8prismjs"><span class="toc-number">2.</span> <span class="toc-text">使用prismjs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">3.</span> <span class="toc-text">演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript"><span class="toc-number">3.1.</span> <span class="toc-text">Javascript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C"><span class="toc-number">3.2.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP"><span class="toc-number">3.3.</span> <span class="toc-text">PHP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON"><span class="toc-number">3.4.</span> <span class="toc-text">JSON</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python"><span class="toc-number">3.5.</span> <span class="toc-text">Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Go"><span class="toc-number">3.6.</span> <span class="toc-text">Go</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text"> 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E4%BA%AE%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text"> 高亮方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8highlightjs"><span class="toc-number">1.2.</span> <span class="toc-text"> 使用highlightjs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8prismjs"><span class="toc-number">2.</span> <span class="toc-text"> 使用prismjs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">3.</span> <span class="toc-text"> 演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript"><span class="toc-number">3.1.</span> <span class="toc-text"> Javascript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c"><span class="toc-number">3.2.</span> <span class="toc-text"> C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php"><span class="toc-number">3.3.</span> <span class="toc-text"> PHP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#json"><span class="toc-number">3.4.</span> <span class="toc-text"> JSON</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python"><span class="toc-number">3.5.</span> <span class="toc-text"> Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#go"><span class="toc-number">3.6.</span> <span class="toc-text"> Go</span></a></li></ol></li></ol>
     </article>
   
   

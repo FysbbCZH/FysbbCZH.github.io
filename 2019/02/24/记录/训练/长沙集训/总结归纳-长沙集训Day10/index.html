@@ -356,19 +356,26 @@
   <div 
     id="section" 
     class="post-content">
-    <h5 id="2019-2-20"><a href="#2019-2-20" class="headerlink" title="2019.2.20"></a>2019.2.20</h5><h1 id="长沙集训-Day-10"><a href="#长沙集训-Day-10" class="headerlink" title="长沙集训 $ Day 10 $"></a>长沙集训 $ Day 10 $</h1><p>昨天已经对网络流最大流有所了解，并且已经能够使用几种基本算法解题。虽然 $ Dinic $ 算法可以解决大部分问题，但如果遇到 $ n,m $ 较大的情况，还是需要更为优秀的算法。</p>
-<hr>
-<h2 id="网络最大流（加强版）："><a href="#网络最大流（加强版）：" class="headerlink" title="网络最大流（加强版）："></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P4722">网络最大流（加强版）：</a></h2><p>相较于普通版的最大流，本题的 $ n $ 有所减小，但 $ m $ 却增加了 $ 20000 $ ，并且出题人显然制作了针对普通 $ Dinic $ 的数据，所以我们需要更为快速的算法。</p>
-<h3 id="ISAP-算法"><a href="#ISAP-算法" class="headerlink" title="$ ISAP $ 算法"></a>$ ISAP $ 算法</h3><p>$ ISAP $ 算法是对普通 $ Dinic $ 的进一步优化，该算法先进行一次 $ BFS $ ，找出各节点到 $ T $ 的深度，之后在进行 $ DFS $ 搜索增广路径更新流量，同时更新深度，如果出现断层就结束算法。</p>
+    <h5 id="2019220"><a class="markdownIt-Anchor" href="#2019220"></a> 2019.2.20</h5>
+<h1 id="长沙集训-day-10"><a class="markdownIt-Anchor" href="#长沙集训-day-10"></a> 长沙集训 $ Day 10 $</h1>
+<p>昨天已经对网络流最大流有所了解，并且已经能够使用几种基本算法解题。虽然 $ Dinic $ 算法可以解决大部分问题，但如果遇到 $ n,m $ 较大的情况，还是需要更为优秀的算法。</p>
+<hr />
+<h2 id="网络最大流加强版"><a class="markdownIt-Anchor" href="#网络最大流加强版"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P4722">网络最大流（加强版）：</a></h2>
+<p>相较于普通版的最大流，本题的 $ n $ 有所减小，但 $ m $ 却增加了 $ 20000 $ ，并且出题人显然制作了针对普通 $ Dinic $ 的数据，所以我们需要更为快速的算法。</p>
+<h3 id="isap-算法"><a class="markdownIt-Anchor" href="#isap-算法"></a> $ ISAP $ 算法</h3>
+<p>$ ISAP $ 算法是对普通 $ Dinic $ 的进一步优化，该算法先进行一次 $ BFS $ ，找出各节点到 $ T $ 的深度，之后在进行 $ DFS $ 搜索增广路径更新流量，同时更新深度，如果出现断层就结束算法。</p>
 <p>更新节点深度：如果后续节点传回该节点的消耗总流量比当前节点可用流量上限小，即 $ flow_n&lt;dis $ ,则该节点在此高度已无法做出贡献，就将该节点的高度提高 $ 1 $ 。</p>
 <p>断层：如果某一深度（该深度小于 $ n $ ）没有节点，则视为出现断层，此时残量网络中已不存在增广路，结束算法。</p>
 <p>$ ISAP $ 算法的优点是只需运行一边 $ BFS $ ,无需为网络图重新分层，所以能极大加快处理速度。</p>
-<h3 id="HLPP-算法"><a href="#HLPP-算法" class="headerlink" title="$ HLPP $ 算法"></a>$ HLPP $ 算法</h3><p>实际上 $ ISAP $ 仍无法通过这道毒瘤题，我们看到了题目中所写的“预流推进”。我们之前所说的算法都是基于增广路进行扩展，而预流推进则类似手动模拟网络流的方式，先将所有的流量尽可能推给后续节点，如果流量超额，再通过反向网络推回。但直接这样进行推进可能会出现两个节点将流量互相-i推给对方，直到 $ TLE $ 为止。所以我们需要给每个节点标号，标号为 $ h_i $ 的节点只能将流量推给标号 $ h_i-1 $ 的节点，当一个节点存在超额流无法推出，就将其标号设为与其相连结点的最小标号+ $ 1 $ ,并将其压入队列，队列为空时结束算法。</p>
+<h3 id="hlpp-算法"><a class="markdownIt-Anchor" href="#hlpp-算法"></a> $ HLPP $ 算法</h3>
+<p>实际上 $ ISAP $ 仍无法通过这道毒瘤题，我们看到了题目中所写的“预流推进”。我们之前所说的算法都是基于增广路进行扩展，而预流推进则类似手动模拟网络流的方式，先将所有的流量尽可能推给后续节点，如果流量超额，再通过反向网络推回。但直接这样进行推进可能会出现两个节点将流量互相-i推给对方，直到 $ TLE $ 为止。所以我们需要给每个节点标号，标号为 $ h_i $ 的节点只能将流量推给标号 $ h_i-1 $ 的节点，当一个节点存在超额流无法推出，就将其标号设为与其相连结点的最小标号+ $ 1 $ ,并将其压入队列，队列为空时结束算法。</p>
 <p>为了加快速度，我们一般先从 $ T $ 开始进行一遍 $ BFS $ ,对节点进行预标号。同时如果处理过程中发现 $ h_i $ 的标号没有节点，那么此时标号比 $ h_i $ 高的节点就全部无法做出贡献，将它们的标号设为 $ n+1 $ 。</p>
 <p>以上是普通预流推进算法，而 $ HLPP $ 中最高标号的意思就是：每次从队列中取出标号最高的节点进行处理，这样做的时间复杂度接近 $ O(n^{2} \cdot \sqrt m) $ ，在 $ n $ 较小而 $ m $ 很大时有很高的效率。</p>
-<h3 id="各种算法的时间复杂度"><a href="#各种算法的时间复杂度" class="headerlink" title="各种算法的时间复杂度"></a>各种算法的时间复杂度</h3><p>虽然 $ HLPP $ 的理论时间复杂度比 $ Dinic $ 低，但因为 $ Dinic $ 处理随机图时的复杂度远低于上限，而 $ HLPP $ 的复杂度基本都在最高复杂度附近，所以在数据较小时 $ HLPP $ 与 $ Dinic $ 的速度并无太大差别。</p>
-<p><img src="https://i.loli.net/2019/02/24/5c727582c8a7a.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/24/5c727582c8a7a.png" class="lozad post-image"></p>
-<h3 id="HLPP-程序"><a href="#HLPP-程序" class="headerlink" title="$ HLPP $ 程序"></a>$ HLPP $ 程序</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program project1<span class="token punctuation">;</span>
+<h3 id="各种算法的时间复杂度"><a class="markdownIt-Anchor" href="#各种算法的时间复杂度"></a> 各种算法的时间复杂度</h3>
+<p>虽然 $ HLPP $ 的理论时间复杂度比 $ Dinic $ 低，但因为 $ Dinic $ 处理随机图时的复杂度远低于上限，而 $ HLPP $ 的复杂度基本都在最高复杂度附近，所以在数据较小时 $ HLPP $ 与 $ Dinic $ 的速度并无太大差别。</p>
+<p><img src="https://i.loli.net/2019/02/24/5c727582c8a7a.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/24/5c727582c8a7a.png" class="lozad post-image"></p>
+<h3 id="hlpp-程序"><a class="markdownIt-Anchor" href="#hlpp-程序"></a> $ HLPP $ 程序</h3>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program project1<span class="token punctuation">;</span>
 type tp<span class="token operator">=</span>record
   h<span class="token punctuation">,</span>pos<span class="token operator">:</span>longint<span class="token punctuation">;</span>
 end<span class="token punctuation">;</span>
@@ -645,7 +652,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-20"><span class="toc-number">1.</span> <span class="toc-text">2019.2.20</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-10"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 10 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%88%E5%8A%A0%E5%BC%BA%E7%89%88%EF%BC%89%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">网络最大流（加强版）：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ISAP-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">$ ISAP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HLPP-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">$ HLPP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number"></span> <span class="toc-text">各种算法的时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HLPP-%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">$ HLPP $ 程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019220"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.20</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-10"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 10 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81%E5%8A%A0%E5%BC%BA%E7%89%88"><span class="toc-number"></span> <span class="toc-text"> 网络最大流（加强版）：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#isap-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ ISAP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hlpp-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ HLPP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number"></span> <span class="toc-text"> 各种算法的时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hlpp-%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> $ HLPP $ 程序</span></a>
 </div>
             </main>
             <aside class="left-column">
@@ -710,7 +717,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-20"><span class="toc-number">1.</span> <span class="toc-text">2019.2.20</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-10"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 10 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%88%E5%8A%A0%E5%BC%BA%E7%89%88%EF%BC%89%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">网络最大流（加强版）：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ISAP-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">$ ISAP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HLPP-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">$ HLPP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number"></span> <span class="toc-text">各种算法的时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HLPP-%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">$ HLPP $ 程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019220"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.20</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-10"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 10 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81%E5%8A%A0%E5%BC%BA%E7%89%88"><span class="toc-number"></span> <span class="toc-text"> 网络最大流（加强版）：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#isap-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ ISAP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hlpp-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ HLPP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number"></span> <span class="toc-text"> 各种算法的时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hlpp-%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> $ HLPP $ 程序</span></a>
       </div>
     </article>
   
@@ -872,18 +879,6 @@ end<span class="token punctuation">.</span>
       </a>
     
       <a 
-        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
-        title="二叉树">
-        <div class="tags-list-item">二叉树</div>
-      </a>
-    
-      <a 
-        href="/tags/KMP/" 
-        title="KMP">
-        <div class="tags-list-item">KMP</div>
-      </a>
-    
-      <a 
         href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
         title="字符串">
         <div class="tags-list-item">字符串</div>
@@ -911,6 +906,18 @@ end<span class="token punctuation">.</span>
         href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
         title="最小生成树">
         <div class="tags-list-item">最小生成树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
       </a>
     
       <a 
@@ -955,7 +962,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-20"><span class="toc-number">1.</span> <span class="toc-text">2019.2.20</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-10"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 10 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%88%E5%8A%A0%E5%BC%BA%E7%89%88%EF%BC%89%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">网络最大流（加强版）：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ISAP-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">$ ISAP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HLPP-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">$ HLPP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number"></span> <span class="toc-text">各种算法的时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HLPP-%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">$ HLPP $ 程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019220"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.20</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-10"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 10 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81%E5%8A%A0%E5%BC%BA%E7%89%88"><span class="toc-number"></span> <span class="toc-text"> 网络最大流（加强版）：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#isap-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ ISAP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hlpp-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ HLPP $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number"></span> <span class="toc-text"> 各种算法的时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hlpp-%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> $ HLPP $ 程序</span></a>
     </article>
   
   
