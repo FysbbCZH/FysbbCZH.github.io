@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="That&#39;s♂good!">
+  <link 
+    rel="icon" 
+    href="/">
+  <title>NOIP2018赛后总结</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="NOIP2018赛后总结">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://blog.fysbbczh.top/posts/39015.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="/img/myavatar.jpg">
+    
+    
+      <meta 
+        property="og:img" 
+        content="That&#39;s♂good!">
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2018-11-23">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-11-08">
+      <meta 
+        property="og:article:author" 
+        content="FysbbCZH">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="Pascal">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+    
+    <link rel="prefetch" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" as="script">
+  
+  
+    
+    <link rel="prefetch" href="//unpkg.com/valine/dist/Valine.min.js" as="script">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+      <span class="navbar-logo-dsc">FysbbCZH'S BLOG</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          首页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          归档
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      NOIP2018赛后总结
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2018-11-22T16:00:00.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2018-11-23</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E8%AE%B0%E5%BD%95/" 
+          class="post-meta-link">
+          记录
+        </a>
+      
+        <a 
+          href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/" 
+          class="post-meta-link">
+          竞赛
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>1.7k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/Pascal/" 
+            class="post-meta-link">
+            Pascal
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h2 id="1题目难度个人理解"><a class="markdownIt-Anchor" href="#1题目难度个人理解"></a> 1.题目难度（个人理解）</h2>
+<p><img src="https://cdn.luogu.com.cn/upload/pic/44278.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://cdn.luogu.com.cn/upload/pic/44278.png" class="lozad post-image"></p>
+<h2 id="2考察算法"><a class="markdownIt-Anchor" href="#2考察算法"></a> 2.考察算法</h2>
+<p><strong>暴力枚举</strong></p>
+<p><strong>完全背包</strong></p>
+<p><strong>树上二分</strong></p>
+<p><strong>搜索DFS</strong></p>
+<p><strong>基环树？</strong></p>
+<p><strong>数学（找规律？）</strong></p>
+<p><strong>树上DP</strong></p>
+<p><strong>LCA倍增思想</strong></p>
+<p><strong>动态DP？</strong></p>
+<h2 id="3题目分析"><a class="markdownIt-Anchor" href="#3题目分析"></a> 3.题目分析</h2>
+<h3 id="day1t1铺设道路road"><a class="markdownIt-Anchor" href="#day1t1铺设道路road"></a> Day1T1.<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P5019">铺设道路（road）</a></h3>
+<h4 id="考察算法"><a class="markdownIt-Anchor" href="#考察算法"></a> 考察算法：</h4>
+<p>暴力枚举，<s>刷原题</s></p>
+<h4 id="解析"><a class="markdownIt-Anchor" href="#解析"></a> 解析：</h4>
+<p>其实这道题还是很有价值的，如果不是原题的话…</p>
+<p>这题和NOIP2013Day2T1<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P1969">积木大赛</a>一模一样，只是改了题面而已。</p>
+<p>不过对于没做过原题的我，在考场上也是思考了一个多小时…</p>
+<p>其实做法很简单，对于读入的第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span> 块道路，只需比较它和第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 块道路的深度，设 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 表示第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span> 块道路的深度， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> 表示第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 块道路的深度， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">ans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span></span></span></span> 为答案：</p>
+<p>若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo>≥</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i-1] \ge a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> ,则再填第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 块道路时，第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span> 块道路已经被填过了，所以不用进行任何操作。</p>
+<p>若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo>&lt;</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i-1] &lt; a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> ,则在填第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 块道路时，第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span> 块道路还有部分未被填完，此时需要将答案加上两块道路深度的差值，即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><mi>a</mi><mi>n</mi><mi>s</mi><mo>+</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>−</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">ans=ans+a[i]-a[i-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span></p>
+<p>像这样从头到尾枚举一遍，问题就解决了，最后输出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">ans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span></span></span></span> ,时间复杂度接近 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
+<h4 id="程序"><a class="markdownIt-Anchor" href="#程序"></a> 程序：</h4>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program road<span class="token punctuation">;</span>
+var
+   n<span class="token punctuation">,</span>i<span class="token punctuation">,</span>t<span class="token punctuation">,</span>d<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+   sum<span class="token operator">:</span>int64<span class="token punctuation">;</span>
+
+begin
+  <span class="token function">read</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  t<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to n <span class="token keyword">do</span> begin
+    <span class="token function">read</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> d<span class="token operator">></span>t then <span class="token function">inc</span><span class="token punctuation">(</span>sum<span class="token punctuation">,</span>d<span class="token operator">-</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    t<span class="token operator">:</span><span class="token operator">=</span>d<span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+  <span class="token function">writeln</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+end<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="day1t2货币系统money"><a class="markdownIt-Anchor" href="#day1t2货币系统money"></a> Day1T2.<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P5020">货币系统（money）</a></h3>
+<h4 id="考察算法-2"><a class="markdownIt-Anchor" href="#考察算法-2"></a> 考察算法：</h4>
+<p>装满型完全背包</p>
+<h4 id="解析-2"><a class="markdownIt-Anchor" href="#解析-2"></a> 解析：</h4>
+<p><strong>这题据说也是原题</strong>，不过我是不知道原题是啥。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.org/blog/user24425/solution-p5020">具体解析和程序点这里</a></p>
+<h3 id="day1t3赛道修建track"><a class="markdownIt-Anchor" href="#day1t3赛道修建track"></a> Day1T3.<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P5021">赛道修建（track）</a></h3>
+<h4 id="考察算法-3"><a class="markdownIt-Anchor" href="#考察算法-3"></a> 考察算法：</h4>
+<p>树上二分，树形DP</p>
+<h4 id="解析-3"><a class="markdownIt-Anchor" href="#解析-3"></a> 解析：</h4>
+<p><strong>有大佬说这题还是原题！<s>Day1原题大战？</s></strong></p>
+<p>这题算是很标准的树上二分题目，其实题目说道**“求最短路径的最大长度”**就已经可以明确是二分了，然而我在考场上打 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>h</mi><mi>e</mi><mi>c</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">check</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 函数打了将近两个小时，结果还炸了，看来以后也得加强编程能力啊！！！</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.org/blog/user24425/solution-p5021">具体解析和程序点这里</a></p>
+<h3 id="day2t1旅行travel"><a class="markdownIt-Anchor" href="#day2t1旅行travel"></a> Day2T1.<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P5022">旅行（travel）</a></h3>
+<h4 id="考察算法-4"><a class="markdownIt-Anchor" href="#考察算法-4"></a> 考察算法：</h4>
+<p>暴力枚举，搜索DFS，基环树？</p>
+<h4 id="解析-4"><a class="markdownIt-Anchor" href="#解析-4"></a> 解析：</h4>
+<h5 id="首先对于前-15-组数据"><a class="markdownIt-Anchor" href="#首先对于前-15-组数据"></a> 首先对于前 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>15</mn></mrow><annotation encoding="application/x-tex">15</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">5</span></span></span></span> 组数据：</h5>
+<p>这些数据的处理非常简单，只要从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 号节点开始，在扩展时优先选择编号小的节点，对树进行一次DFS即可。时间复杂度接近 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> 。</p>
+<h5 id="对于所有数据"><a class="markdownIt-Anchor" href="#对于所有数据"></a> 对于所有数据：</h5>
+<p>这些数据中，图是一棵基环树，简单的进行一次搜索无法得到正确答案。其实处理方法也很简单，我们先把通过搜索，把图中的环给找到，然后暴力断开环上的每一条边，并在每次断边后的图上进行一次DFS，最后取所有结果中的最优值即可。时间复杂度接近 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^{2})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 。</p>
+<h4 id="程序-2"><a class="markdownIt-Anchor" href="#程序-2"></a> 程序：</h4>
+<h5 id="期望60分"><a class="markdownIt-Anchor" href="#期望60分"></a> 期望60分：</h5>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program travel<span class="token punctuation">;</span>
+var
+   l<span class="token punctuation">,</span>v<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.10005</span><span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
+   r<span class="token punctuation">,</span>path<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.5005</span><span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
+   tf<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.5005</span><span class="token punctuation">]</span>of boolean<span class="token punctuation">;</span>
+   n<span class="token punctuation">,</span>m<span class="token punctuation">,</span>i<span class="token punctuation">,</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>t<span class="token punctuation">,</span>k<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+
+procedure <span class="token function">sc</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span>fa<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+var i<span class="token punctuation">,</span>next<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  <span class="token keyword">while</span> <span class="token boolean">true</span> <span class="token keyword">do</span> begin
+    next<span class="token operator">:</span><span class="token operator">=</span><span class="token number">100000</span><span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>tf<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span>next<span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span>fa<span class="token punctuation">)</span> then next<span class="token operator">:</span><span class="token operator">=</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> next<span class="token operator">=</span><span class="token number">100000</span> then exit<span class="token punctuation">;</span>
+    tf<span class="token punctuation">[</span>next<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token function">inc</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    path<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>next<span class="token punctuation">;</span>
+    <span class="token function">sc</span><span class="token punctuation">(</span>next<span class="token punctuation">,</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+begin
+  <span class="token function">read</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">fillchar</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">fillchar</span><span class="token punctuation">(</span>tf<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>tf<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">fillchar</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">fillchar</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">fillchar</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to m <span class="token keyword">do</span> begin
+    <span class="token function">read</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    t<span class="token operator">:</span><span class="token operator">=</span><span class="token number">2</span><span class="token operator">*</span>i<span class="token punctuation">;</span>
+    l<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    r<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>t<span class="token punctuation">;</span>
+    v<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>y<span class="token punctuation">;</span>
+    l<span class="token punctuation">[</span>t<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    r<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>t<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    v<span class="token punctuation">[</span>t<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>x<span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+  k<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+  path<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+  tf<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token function">sc</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to k <span class="token keyword">do</span> <span class="token function">write</span><span class="token punctuation">(</span>path<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token char">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+end<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="期望100分"><a class="markdownIt-Anchor" href="#期望100分"></a> 期望100分：</h5>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program project1<span class="token punctuation">;</span>
+var
+   r<span class="token punctuation">,</span>path<span class="token punctuation">,</span>father<span class="token punctuation">,</span>son<span class="token punctuation">,</span>ans<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.5005</span><span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
+   tf<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.5005</span><span class="token punctuation">]</span>of boolean<span class="token punctuation">;</span>
+   l<span class="token punctuation">,</span>v<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.10005</span><span class="token punctuation">]</span>of longint<span class="token punctuation">;</span>
+   n<span class="token punctuation">,</span>m<span class="token punctuation">,</span>i<span class="token punctuation">,</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>t<span class="token punctuation">,</span>k<span class="token punctuation">,</span>p<span class="token punctuation">,</span>fat<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+
+procedure <span class="token function">sc</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span>fa<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+var i<span class="token punctuation">,</span>next<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  <span class="token keyword">while</span> <span class="token boolean">true</span> <span class="token keyword">do</span> begin
+    next<span class="token operator">:</span><span class="token operator">=</span><span class="token number">100000</span><span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span>next<span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span>fa<span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>tf<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token function">and</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span> then next<span class="token operator">:</span><span class="token operator">=</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> next<span class="token operator">=</span><span class="token number">100000</span> then exit<span class="token punctuation">;</span>
+    tf<span class="token punctuation">[</span>next<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token function">inc</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    path<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>next<span class="token punctuation">;</span>
+    <span class="token function">sc</span><span class="token punctuation">(</span>next<span class="token punctuation">,</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+function min<span class="token operator">:</span>boolean<span class="token punctuation">;</span>
+var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to n <span class="token keyword">do</span>
+    <span class="token keyword">if</span> ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">></span>path<span class="token punctuation">[</span>i<span class="token punctuation">]</span> then <span class="token function">exit</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+      <span class="token keyword">else</span> <span class="token keyword">if</span> ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span>path<span class="token punctuation">[</span>i<span class="token punctuation">]</span> then <span class="token function">exit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">exit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+function <span class="token function">del</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span>fa<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token operator">:</span>boolean<span class="token punctuation">;</span>
+var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  del<span class="token operator">:</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">;</span>
+  i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    <span class="token keyword">if</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">></span>fa then begin
+      <span class="token keyword">if</span> father<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span> then father<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>f
+        <span class="token keyword">else</span> begin
+          p<span class="token operator">:</span><span class="token operator">=</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          fat<span class="token operator">:</span><span class="token operator">=</span>father<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+          father<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>f<span class="token punctuation">;</span>
+          son<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token function">exit</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        end<span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token function">del</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>f<span class="token punctuation">)</span><span class="token operator">=</span><span class="token boolean">true</span> then begin
+        son<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+      end<span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure <span class="token function">cut</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+var i<span class="token punctuation">,</span>j<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  i<span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span><span class="token number">0</span> <span class="token keyword">do</span> begin
+    <span class="token keyword">if</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>y then begin
+      v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> i mod <span class="token number">2</span><span class="token operator">=</span><span class="token number">0</span> then j<span class="token operator">:</span><span class="token operator">=</span>i<span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">else</span> j<span class="token operator">:</span><span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+      v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+      <span class="token function">fillchar</span><span class="token punctuation">(</span>tf<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>tf<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">fillchar</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      k<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+      path<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+      <span class="token function">sc</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> min<span class="token operator">=</span><span class="token boolean">true</span> then ans<span class="token operator">:</span><span class="token operator">=</span>path<span class="token punctuation">;</span>
+      v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>y<span class="token punctuation">;</span>
+      v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>x<span class="token punctuation">;</span>
+      exit<span class="token punctuation">;</span>
+    end<span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+procedure <span class="token function">point</span><span class="token punctuation">(</span>p<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
+begin
+  i<span class="token operator">:</span><span class="token operator">=</span>p<span class="token punctuation">;</span>
+  <span class="token function">cut</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>son<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  i<span class="token operator">:</span><span class="token operator">=</span>son<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token operator">></span>p <span class="token keyword">do</span> begin
+    <span class="token function">cut</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>son<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    i<span class="token operator">:</span><span class="token operator">=</span>son<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+end<span class="token punctuation">;</span>
+
+begin
+  <span class="token function">read</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">fillchar</span><span class="token punctuation">(</span>tf<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>tf<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">fillchar</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">fillchar</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">,</span>$<span class="token number">5f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  k<span class="token operator">:</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to m <span class="token keyword">do</span> begin
+    <span class="token function">read</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    t<span class="token operator">:</span><span class="token operator">=</span>i<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">;</span>
+    l<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    r<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>t<span class="token punctuation">;</span>
+    v<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>y<span class="token punctuation">;</span>
+    l<span class="token punctuation">[</span>t<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>r<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    r<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>t<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    v<span class="token punctuation">[</span>t<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span>x<span class="token punctuation">;</span>
+  end<span class="token punctuation">;</span>
+  <span class="token function">inc</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  path<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+  father<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> m<span class="token operator">=</span>n then begin
+    <span class="token function">del</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">point</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  end
+  <span class="token keyword">else</span> begin <span class="token function">sc</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>ans<span class="token operator">:</span><span class="token operator">=</span>path<span class="token punctuation">;</span> end<span class="token punctuation">;</span>
+  <span class="token keyword">for</span> i<span class="token operator">:</span><span class="token operator">=</span><span class="token number">1</span> to n <span class="token keyword">do</span> <span class="token function">write</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token char">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+end<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="此题还有更优的-on-log-n-算法具体解析和程序点这里"><a class="markdownIt-Anchor" href="#此题还有更优的-on-log-n-算法具体解析和程序点这里"></a> 此题还有更优的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> 算法：<a target="_blank" rel="noopener" href="https://www.luogu.org/blog/user24425/solution-p5049">具体解析和程序点这里</a></h4>
+<h3 id="day2t2填数游戏game"><a class="markdownIt-Anchor" href="#day2t2填数游戏game"></a> Day2T2.<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P5023">填数游戏（game）</a></h3>
+<h4 id="考察算法-5"><a class="markdownIt-Anchor" href="#考察算法-5"></a> 考察算法：</h4>
+<p>数学推导，找规律？</p>
+<h4 id="解析-5"><a class="markdownIt-Anchor" href="#解析-5"></a> 解析：</h4>
+<p>说实话，我在考场上真没想到这题能找规律，我一直以为这是一个状压DP。后来经过大佬指点，才发现其实是能通过找规律AC的。但这题究竟标算是什么，我到现在也不了解，毕竟NOIP不会出一道打表找规律的题吧?而且这题不管是手摸，还是打表，想发现规律都异常困难，如果真考找规律，这题也是十分毒瘤了！</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.org/blog/user24425/solution-p5023">具体解析和程序点这里</a></p>
+<h3 id="day2t3保卫王国defense"><a class="markdownIt-Anchor" href="#day2t3保卫王国defense"></a> Day2T3.<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P5024">保卫王国（defense）</a></h3>
+<h4 id="考察算法-6"><a class="markdownIt-Anchor" href="#考察算法-6"></a> 考察算法：</h4>
+<p>树上DP，LCA倍增思想，动态DP？</p>
+<h4 id="解析-6"><a class="markdownIt-Anchor" href="#解析-6"></a> 解析：</h4>
+<p>在考场上，我只想出了44分的暴力算法</p>
+<p>考后听说是动态DP模板，可动态DP是NOI的考察内容啊！如果这题考动态DP，那超纲也太严重了吧。一定还有别的做法，在考后我经过反复思考，结合大佬的提示，终于发现了用<strong>LCA倍增思想</strong>解决问题的方法。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.org/blog/user24425/solution-p5024">具体解析和程序点这里</a></p>
+
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/posts/14723.html" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">长沙集训Day1 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+</div>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+        appKey: '5tGe7WC9z2QaIOESWdymcByE',
+        placeholder: '有什么看法？来说说看吧......',
+        path: window.location.pathname,
+        avatar: 'identicon',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        
+        
+        
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
+
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E9%A2%98%E7%9B%AE%E9%9A%BE%E5%BA%A6%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text"> 1.题目难度（个人理解）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text"> 2.考察算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text"> 3.题目分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#day1t1%E9%93%BA%E8%AE%BE%E9%81%93%E8%B7%AFroad"><span class="toc-number">3.1.</span> <span class="toc-text"> Day1T1.铺设道路（road）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95"><span class="toc-number">3.1.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90"><span class="toc-number">3.1.2.</span> <span class="toc-text"> 解析：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number">3.1.3.</span> <span class="toc-text"> 程序：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day1t2%E8%B4%A7%E5%B8%81%E7%B3%BB%E7%BB%9Fmoney"><span class="toc-number">3.2.</span> <span class="toc-text"> Day1T2.货币系统（money）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-2"><span class="toc-number">3.2.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-2"><span class="toc-number">3.2.2.</span> <span class="toc-text"> 解析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day1t3%E8%B5%9B%E9%81%93%E4%BF%AE%E5%BB%BAtrack"><span class="toc-number">3.3.</span> <span class="toc-text"> Day1T3.赛道修建（track）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-3"><span class="toc-number">3.3.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-3"><span class="toc-number">3.3.2.</span> <span class="toc-text"> 解析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day2t1%E6%97%85%E8%A1%8Ctravel"><span class="toc-number">3.4.</span> <span class="toc-text"> Day2T1.旅行（travel）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-4"><span class="toc-number">3.4.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-4"><span class="toc-number">3.4.2.</span> <span class="toc-text"> 解析：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E5%AF%B9%E4%BA%8E%E5%89%8D-15-%E7%BB%84%E6%95%B0%E6%8D%AE"><span class="toc-number">3.4.2.1.</span> <span class="toc-text"> 首先对于前 151515 组数据：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE"><span class="toc-number">3.4.2.2.</span> <span class="toc-text"> 对于所有数据：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number">3.4.3.</span> <span class="toc-text"> 程序：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%9F%E6%9C%9B60%E5%88%86"><span class="toc-number">3.4.3.1.</span> <span class="toc-text"> 期望60分：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%9F%E6%9C%9B100%E5%88%86"><span class="toc-number">3.4.3.2.</span> <span class="toc-text"> 期望100分：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A4%E9%A2%98%E8%BF%98%E6%9C%89%E6%9B%B4%E4%BC%98%E7%9A%84-on-log-n-%E7%AE%97%E6%B3%95%E5%85%B7%E4%BD%93%E8%A7%A3%E6%9E%90%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%82%B9%E8%BF%99%E9%87%8C"><span class="toc-number">3.4.4.</span> <span class="toc-text"> 此题还有更优的 O(nlog⁡n)O(n \log n)O(nlogn) 算法：具体解析和程序点这里</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day2t2%E5%A1%AB%E6%95%B0%E6%B8%B8%E6%88%8Fgame"><span class="toc-number">3.5.</span> <span class="toc-text"> Day2T2.填数游戏（game）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-5"><span class="toc-number">3.5.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-5"><span class="toc-number">3.5.2.</span> <span class="toc-text"> 解析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day2t3%E4%BF%9D%E5%8D%AB%E7%8E%8B%E5%9B%BDdefense"><span class="toc-number">3.6.</span> <span class="toc-text"> Day2T3.保卫王国（defense）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-6"><span class="toc-number">3.6.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-6"><span class="toc-number">3.6.2.</span> <span class="toc-text"> 解析：</span></a></li></ol></li></ol></li></ol>
+</div>
+            </main>
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/img/myavatar.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">FysbbCZH</p>
+<p class="author-description">That's♂good!</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>32</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>14</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>20</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a href="mailto:2568858327@qq.com">
+          <i class="iconfont icon-mail society-icon"></i>
+        </a>
+      </div>
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198318522568">
+          <i class="iconfont icon-steam society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E9%A2%98%E7%9B%AE%E9%9A%BE%E5%BA%A6%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text"> 1.题目难度（个人理解）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text"> 2.考察算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text"> 3.题目分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#day1t1%E9%93%BA%E8%AE%BE%E9%81%93%E8%B7%AFroad"><span class="toc-number">3.1.</span> <span class="toc-text"> Day1T1.铺设道路（road）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95"><span class="toc-number">3.1.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90"><span class="toc-number">3.1.2.</span> <span class="toc-text"> 解析：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number">3.1.3.</span> <span class="toc-text"> 程序：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day1t2%E8%B4%A7%E5%B8%81%E7%B3%BB%E7%BB%9Fmoney"><span class="toc-number">3.2.</span> <span class="toc-text"> Day1T2.货币系统（money）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-2"><span class="toc-number">3.2.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-2"><span class="toc-number">3.2.2.</span> <span class="toc-text"> 解析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day1t3%E8%B5%9B%E9%81%93%E4%BF%AE%E5%BB%BAtrack"><span class="toc-number">3.3.</span> <span class="toc-text"> Day1T3.赛道修建（track）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-3"><span class="toc-number">3.3.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-3"><span class="toc-number">3.3.2.</span> <span class="toc-text"> 解析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day2t1%E6%97%85%E8%A1%8Ctravel"><span class="toc-number">3.4.</span> <span class="toc-text"> Day2T1.旅行（travel）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-4"><span class="toc-number">3.4.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-4"><span class="toc-number">3.4.2.</span> <span class="toc-text"> 解析：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E5%AF%B9%E4%BA%8E%E5%89%8D-15-%E7%BB%84%E6%95%B0%E6%8D%AE"><span class="toc-number">3.4.2.1.</span> <span class="toc-text"> 首先对于前 151515 组数据：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE"><span class="toc-number">3.4.2.2.</span> <span class="toc-text"> 对于所有数据：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number">3.4.3.</span> <span class="toc-text"> 程序：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%9F%E6%9C%9B60%E5%88%86"><span class="toc-number">3.4.3.1.</span> <span class="toc-text"> 期望60分：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%9F%E6%9C%9B100%E5%88%86"><span class="toc-number">3.4.3.2.</span> <span class="toc-text"> 期望100分：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A4%E9%A2%98%E8%BF%98%E6%9C%89%E6%9B%B4%E4%BC%98%E7%9A%84-on-log-n-%E7%AE%97%E6%B3%95%E5%85%B7%E4%BD%93%E8%A7%A3%E6%9E%90%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%82%B9%E8%BF%99%E9%87%8C"><span class="toc-number">3.4.4.</span> <span class="toc-text"> 此题还有更优的 O(nlog⁡n)O(n \log n)O(nlogn) 算法：具体解析和程序点这里</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day2t2%E5%A1%AB%E6%95%B0%E6%B8%B8%E6%88%8Fgame"><span class="toc-number">3.5.</span> <span class="toc-text"> Day2T2.填数游戏（game）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-5"><span class="toc-number">3.5.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-5"><span class="toc-number">3.5.2.</span> <span class="toc-text"> 解析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day2t3%E4%BF%9D%E5%8D%AB%E7%8E%8B%E5%9B%BDdefense"><span class="toc-number">3.6.</span> <span class="toc-text"> Day2T3.保卫王国（defense）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-6"><span class="toc-number">3.6.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-6"><span class="toc-number">3.6.2.</span> <span class="toc-text"> 解析：</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    
+
+<div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    <!-- 
+      <a href="/categories/%E7%9F%A5%E8%AF%86/">
+        <div class="categories-list-item">
+          知识
+          <span class="categories-list-item-badge">4</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/">
+        <div class="categories-list-item">
+          &gt;BLOG
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/">
+        <div class="categories-list-item">
+          &gt;&gt;Kaze
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+        <div class="categories-list-item">
+          &gt;数据结构
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+        <div class="categories-list-item">
+          编程语言
+          <span class="categories-list-item-badge">9</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">
+        <div class="categories-list-item">
+          &gt;C
+          <span class="categories-list-item-badge">9</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/">
+        <div class="categories-list-item">
+          记录
+          <span class="categories-list-item-badge">15</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/">
+        <div class="categories-list-item">
+          &gt;竞赛
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/">
+        <div class="categories-list-item">
+          &gt;训练
+          <span class="categories-list-item-badge">13</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/">
+        <div class="categories-list-item">
+          &gt;&gt;长沙集训
+          <span class="categories-list-item-badge">13</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/">
+        <div class="categories-list-item">
+          题解
+          <span class="categories-list-item-badge">4</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/">
+        <div class="categories-list-item">
+          &gt;吉林大学
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/">
+        <div class="categories-list-item">
+          &gt;&gt;数据结构课设
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86/">
+        <div class="categories-list-item">
+          &gt;杂题整理
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+     -->
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/BLOG/">BLOG</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/">Kaze</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/">竞赛</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/">训练</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/">长沙集训</a><span class="category-list-count">13</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/">吉林大学</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/">数据结构课设</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86/">杂题整理</a><span class="category-list-count">1</span></li></ul></li></ul> 
+  </div>
+</div>
+
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/Pascal/" 
+        title="Pascal">
+        <div class="tags-list-item">Pascal</div>
+      </a>
+    
+      <a 
+        href="/tags/C/" 
+        title="C++">
+        <div class="tags-list-item">C++</div>
+      </a>
+    
+      <a 
+        href="/tags/BLOG/" 
+        title="BLOG">
+        <div class="tags-list-item">BLOG</div>
+      </a>
+    
+      <a 
+        href="/tags/Kaze/" 
+        title="Kaze">
+        <div class="tags-list-item">Kaze</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" 
+        title="动态规划">
+        <div class="tags-list-item">动态规划</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
+        title="字符串">
+        <div class="tags-list-item">字符串</div>
+      </a>
+    
+      <a 
+        href="/tags/BFS/" 
+        title="BFS">
+        <div class="tags-list-item">BFS</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" 
+        title="快速排序">
+        <div class="tags-list-item">快速排序</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91Trie/" 
+        title="字典树Trie">
+        <div class="tags-list-item">字典树Trie</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
+        title="最小生成树">
+        <div class="tags-list-item">最小生成树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
+      </a>
+    
+      <a 
+        href="/tags/Hexo/" 
+        title="Hexo">
+        <div class="tags-list-item">Hexo</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" 
+        title="矩阵加速">
+        <div class="tags-list-item">矩阵加速</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" 
+        title="概率论">
+        <div class="tags-list-item">概率论</div>
+      </a>
+    
+      <a 
+        href="/tags/CCSP/" 
+        title="CCSP">
+        <div class="tags-list-item">CCSP</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E9%A2%98%E7%9B%AE%E9%9A%BE%E5%BA%A6%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text"> 1.题目难度（个人理解）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text"> 2.考察算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text"> 3.题目分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#day1t1%E9%93%BA%E8%AE%BE%E9%81%93%E8%B7%AFroad"><span class="toc-number">3.1.</span> <span class="toc-text"> Day1T1.铺设道路（road）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95"><span class="toc-number">3.1.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90"><span class="toc-number">3.1.2.</span> <span class="toc-text"> 解析：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number">3.1.3.</span> <span class="toc-text"> 程序：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day1t2%E8%B4%A7%E5%B8%81%E7%B3%BB%E7%BB%9Fmoney"><span class="toc-number">3.2.</span> <span class="toc-text"> Day1T2.货币系统（money）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-2"><span class="toc-number">3.2.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-2"><span class="toc-number">3.2.2.</span> <span class="toc-text"> 解析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day1t3%E8%B5%9B%E9%81%93%E4%BF%AE%E5%BB%BAtrack"><span class="toc-number">3.3.</span> <span class="toc-text"> Day1T3.赛道修建（track）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-3"><span class="toc-number">3.3.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-3"><span class="toc-number">3.3.2.</span> <span class="toc-text"> 解析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day2t1%E6%97%85%E8%A1%8Ctravel"><span class="toc-number">3.4.</span> <span class="toc-text"> Day2T1.旅行（travel）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-4"><span class="toc-number">3.4.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-4"><span class="toc-number">3.4.2.</span> <span class="toc-text"> 解析：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E5%AF%B9%E4%BA%8E%E5%89%8D-15-%E7%BB%84%E6%95%B0%E6%8D%AE"><span class="toc-number">3.4.2.1.</span> <span class="toc-text"> 首先对于前 151515 组数据：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE"><span class="toc-number">3.4.2.2.</span> <span class="toc-text"> 对于所有数据：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number">3.4.3.</span> <span class="toc-text"> 程序：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%9F%E6%9C%9B60%E5%88%86"><span class="toc-number">3.4.3.1.</span> <span class="toc-text"> 期望60分：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%9F%E6%9C%9B100%E5%88%86"><span class="toc-number">3.4.3.2.</span> <span class="toc-text"> 期望100分：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A4%E9%A2%98%E8%BF%98%E6%9C%89%E6%9B%B4%E4%BC%98%E7%9A%84-on-log-n-%E7%AE%97%E6%B3%95%E5%85%B7%E4%BD%93%E8%A7%A3%E6%9E%90%E5%92%8C%E7%A8%8B%E5%BA%8F%E7%82%B9%E8%BF%99%E9%87%8C"><span class="toc-number">3.4.4.</span> <span class="toc-text"> 此题还有更优的 O(nlog⁡n)O(n \log n)O(nlogn) 算法：具体解析和程序点这里</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day2t2%E5%A1%AB%E6%95%B0%E6%B8%B8%E6%88%8Fgame"><span class="toc-number">3.5.</span> <span class="toc-text"> Day2T2.填数游戏（game）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-5"><span class="toc-number">3.5.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-5"><span class="toc-number">3.5.2.</span> <span class="toc-text"> 解析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#day2t3%E4%BF%9D%E5%8D%AB%E7%8E%8B%E5%9B%BDdefense"><span class="toc-number">3.6.</span> <span class="toc-text"> Day2T3.保卫王国（defense）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E5%AF%9F%E7%AE%97%E6%B3%95-6"><span class="toc-number">3.6.1.</span> <span class="toc-text"> 考察算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-6"><span class="toc-number">3.6.2.</span> <span class="toc-text"> 解析：</span></a></li></ol></li></ol></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-11-06</div>
+        <a href="/posts/a7530484.html"><div class="recent-posts-item-content">CCSP2023游记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-06</div>
+        <a href="/posts/53500.html"><div class="recent-posts-item-content">CCSP2022T2抽卡题解</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-03-27</div>
+        <a href="/posts/43886.html"><div class="recent-posts-item-content">红黑树学习记录</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-03-11</div>
+        <a href="/posts/46746.html"><div class="recent-posts-item-content">学校数据结构2022-03-11上机题</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2020
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          FysbbCZH'S BLOG
+        </a>
+      </div>
+    </div>
+
+    
+      <div class="footer-dsc">
+        
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/theme-kaze" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;Kaze
+          </a>
+        
+      </div>
+    
+    
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+      
+
+  
+  
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+
+  
+ 
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>
