@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
+  <link rel="stylesheet" href="/css/iconfont.css">
   <meta charset="UTF-8">
   <meta 
     name="viewport"
@@ -313,97 +314,88 @@
       学校数据结构2022-03-11上机题
     </h1>
   </header>
+  <!-- 日期 -->
   <div class="post-meta post-show-meta">
     <time datetime="2022-03-10T16:00:00.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2022-03-11</span>
+      <i class="iconfont icon-calendar" style="margin-right: 4px;"></i><!-- 
+   --><span>创建日期 2022-03-11</span>
+      <span class="dot"></span>
+      <span>更新日期 2023-11-08</span>
     </time>
-    
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E9%A2%98%E8%A7%A3/" 
-          class="post-meta-link">
-          题解
-        </a>
-      
-        <a 
-          href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/" 
-          class="post-meta-link">
-          吉林大学
-        </a>
-      
-        <a 
-          href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/" 
-          class="post-meta-link">
-          数据结构课设
-        </a>
-      
-    
-    
-      <span class="dot"></span>
-      <span>2.3k 字</span>
-    
   </div>
+  <!-- 分类 -->
   
-    <div 
-      class="post-meta post-show-meta" 
-      style="margin-top: -10px;">
+    <div class="post-meta post-show-meta" style="margin-top: -10px;">
+      <i class="iconfont icon-fenlei" style="margin-right: 2px"></i><!-- 
+   --><!--
+     --><a href="/categories/%E9%A2%98%E8%A7%A3/" class="post-meta-link">题解</a>
+      <!--
+     --><a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/" class="post-meta-link">吉林大学</a>
+      <!--
+     --><a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/" class="post-meta-link">数据结构课设</a>
+      
+      
+        <span class="dot"></span>
+        <span>2.3k 字</span>
+      
+    </div>
+  
+  <!-- 标签 -->
+  
+    <div class="post-meta post-show-meta" style="margin-top: -10px;">
       <div style="display: flex; align-items: center;">
-        <i 
-          class="iconfont icon-biaoqian" 
-          style="margin-right: 2px; font-size: 1.15rem;">
-        </i>
+        <i class="iconfont icon-biaoqian" style="margin-right: 2px"></i>
+        <!--  -->
         
           
-          <a 
-            href="/tags/C/" 
-            class="post-meta-link">
+          <a href="/tags/C/" class="post-meta-link">
             C++
           </a>
         
           
             <span class="dot"></span>
           
-          <a 
-            href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" 
-            class="post-meta-link">
+          <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-meta-link">
             动态规划
           </a>
         
           
             <span class="dot"></span>
           
-          <a 
-            href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" 
-            class="post-meta-link">
+          <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" class="post-meta-link">
             快速排序
           </a>
         
           
             <span class="dot"></span>
           
-          <a 
-            href="/tags/BFS/" 
-            class="post-meta-link">
+          <a href="/tags/BFS/" class="post-meta-link">
             BFS
           </a>
         
           
             <span class="dot"></span>
           
-          <a 
-            href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
-            class="post-meta-link">
+          <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-meta-link">
             字符串
           </a>
         
       </div>
     </div>
   
+  <!-- 阅读数 -->
+  <div 
+    class="post-meta post-show-meta" 
+    style="margin-top: -10px;">
+    <div style="display: flex; align-items: center;">
+      <i 
+        class="iconfont icon-yanjing" 
+        style="font-size: 1.15rem;margin-right: 2px">
+      </i>
+      <!--  -->
+      <span style="margin-right: 2px">浏览</span><span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+    </div>
+  </div>
   </header>
   <div 
     id="section" 
@@ -641,6 +633,12 @@ while (head &lt; tail)     &#x2F;&#x2F;队列不空
         </a>
       </div>
     
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/24425">
+          <i class="iconfont icon-luogu society-icon"></i>
+        </a>
+      </div>
+    
   </div>
 
               </div>
@@ -817,6 +815,12 @@ while (head &lt; tail)     &#x2F;&#x2F;队列不空
       </a>
     
       <a 
+        href="/tags/CCSP/" 
+        title="CCSP">
+        <div class="tags-list-item">CCSP</div>
+      </a>
+    
+      <a 
         href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
         title="字符串">
         <div class="tags-list-item">字符串</div>
@@ -876,12 +880,6 @@ while (head &lt; tail)     &#x2F;&#x2F;队列不空
         <div class="tags-list-item">概率论</div>
       </a>
     
-      <a 
-        href="/tags/CCSP/" 
-        title="CCSP">
-        <div class="tags-list-item">CCSP</div>
-      </a>
-    
   </div>
 </div>
   </article>
@@ -921,7 +919,7 @@ while (head &lt; tail)     &#x2F;&#x2F;队列不空
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2023-10-06</div>
-        <a href="/posts/53500.html"><div class="recent-posts-item-content">CCSP2022T2抽卡题解</div></a>
+        <a href="/posts/53500.html"><div class="recent-posts-item-content">CCSP2021T2抽卡题解</div></a>
       </div>
     
       <div class="recent-posts-item">
