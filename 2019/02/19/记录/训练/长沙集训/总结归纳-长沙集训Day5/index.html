@@ -356,12 +356,9 @@
   <div 
     id="section" 
     class="post-content">
-    <h5 id="2019215"><a class="markdownIt-Anchor" href="#2019215"></a> 2019.2.15</h5>
-<h1 id="长沙集训-day-5"><a class="markdownIt-Anchor" href="#长沙集训-day-5"></a> 长沙集训 $ Day 5 $</h1>
-<p>今天的题目还是比较简单的，但是我的程序却出现了许多严重的 $ bug $ ,最终让我获得了 $ 20 $ 分的“好成绩”…</p>
-<hr />
-<h2 id="t1-modeq"><a class="markdownIt-Anchor" href="#t1-modeq"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62860">T1 modeq</a></h2>
-<p>这题可以说是扩展欧几里得算法的板子题了，分别套用一次 $ exgcd $ 求出最小 $ x,y $ ，然而我调试时把绝对值删了，后来又忘了改回去，最后 $ 100 \to 0 $</p>
+    <h5 id="2019-2-15"><a href="#2019-2-15" class="headerlink" title="2019.2.15"></a>2019.2.15</h5><h1 id="长沙集训-Day-5"><a href="#长沙集训-Day-5" class="headerlink" title="长沙集训 $ Day 5 $"></a>长沙集训 $ Day 5 $</h1><p>今天的题目还是比较简单的，但是我的程序却出现了许多严重的 $ bug $ ,最终让我获得了 $ 20 $ 分的“好成绩”…….</p>
+<hr>
+<h2 id="T1-modeq"><a href="#T1-modeq" class="headerlink" title="T1 modeq"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62860">T1 modeq</a></h2><p>这题可以说是扩展欧几里得算法的板子题了，分别套用一次 $ exgcd $ 求出最小 $ x,y $ ，然而我调试时把绝对值删了，后来又忘了改回去，最后 $ 100 \to 0 $</p>
 <p>求解方法：</p>
 <p>对于方程 $ a \cdot x + b \cdot y = c $</p>
 <ol>
@@ -369,8 +366,7 @@
 <li>若 $ exgcd $ 解出的 $ x $ 为负值，可用 $ x=(x+abs(b*n)) \ \ mod \ \ b $ 的方式将其变为正值</li>
 <li>$ \frac{(a \cdot x)}{m} +\frac{(b \cdot y)}{m} =\frac{c}{m} $ 此方程的解与原方程相同，所以可以先将方程化简在进行处理</li>
 </ol>
-<h3 id="程序"><a class="markdownIt-Anchor" href="#程序"></a> 程序</h3>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program modeq<span class="token punctuation">;</span>
+<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program modeq<span class="token punctuation">;</span>
 var t<span class="token punctuation">,</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>gd<span class="token operator">:</span>int64<span class="token punctuation">;</span>
 
 function <span class="token function">gcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token operator">:</span>int64<span class="token punctuation">)</span><span class="token operator">:</span>int64<span class="token punctuation">;</span>
@@ -429,8 +425,8 @@ begin
   main<span class="token punctuation">;</span>
 end<span class="token punctuation">.</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="t2-买卖"><a class="markdownIt-Anchor" href="#t2-买卖"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62861">T2 买卖</a></h2>
-<p>开始以为是个毒瘤 $ DP $ ，后来发现是贪心，只要找到能把当前可以买入的最便宜的物品卖出赚钱的商店就把物品卖出，如果之后又更优秀的方案，就进行更改：</p>
+<h2 id="T2-买卖"><a href="#T2-买卖" class="headerlink" title="T2 买卖"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62861">T2 买卖</a></h2><p>开始以为是个毒瘤 $ DP $ ，后来发现是贪心，只要找到能把当前可以买入的最便宜的物品卖出赚钱的商店就把物品卖出，如果之后又更优秀的方案，就进行更改：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -457,14 +453,13 @@ end<span class="token punctuation">.</span>
 </tr>
 </tbody>
 </table>
+</div>
 <ol>
 <li>在 $ A $ 处买入物品，在 $ B $ 出卖出价值 $ w=8-7=1 $ ，并将 $ A $ 处物品价格改为 $ 8 $</li>
 <li>发现在 $ C $ 出卖出是更优方案，相当于重新将物品买入，并在 $ C $ 处卖出，价值 $ w=12-8+1=12-7=5 $</li>
 <li>可买入物品的最小值可用<strong>小根堆/最小值线段树</strong>等数据结构维护</li>
 </ol>
-<h2 id="一定注意初始化"><a class="markdownIt-Anchor" href="#一定注意初始化"></a> 一定注意初始化</h2>
-<h3 id="程序-2"><a class="markdownIt-Anchor" href="#程序-2"></a> 程序</h3>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program buy<span class="token punctuation">;</span>
+<h2 id="一定注意初始化"><a href="#一定注意初始化" class="headerlink" title="一定注意初始化"></a>一定注意初始化</h2><h3 id="程序-1"><a href="#程序-1" class="headerlink" title="程序"></a>程序</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program buy<span class="token punctuation">;</span>
 var
    tree<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.400005</span><span class="token punctuation">]</span>of int64<span class="token punctuation">;</span>
    a<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.100005</span><span class="token punctuation">,</span><span class="token number">1.</span><span class="token number">.2</span><span class="token punctuation">]</span>of int64<span class="token punctuation">;</span>
@@ -533,13 +528,11 @@ begin
   main<span class="token punctuation">;</span>
 end<span class="token punctuation">.</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="t3-投资"><a class="markdownIt-Anchor" href="#t3-投资"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62862">T3 投资</a></h2>
-<p>这题看起来是个 $ DP $ ，其实是前缀和+小根堆。</p>
-<p><s>两题都是小根堆，可以复制代码了！！！</s></p>
+<h2 id="T3-投资"><a href="#T3-投资" class="headerlink" title="T3 投资"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62862">T3 投资</a></h2><p>这题看起来是个 $ DP $ ，其实是前缀和+小根堆。</p>
+<p><del>两题都是小根堆，可以复制代码了！！！</del></p>
 <p>设$ [l,r] $ 是连续天数的范围</p>
 <p>$ ans=max(sum[i]-min(sum[j])) \ \ \ \ j \in [i-r,i-l]$</p>
-<h3 id="程序-3"><a class="markdownIt-Anchor" href="#程序-3"></a> 程序</h3>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program invest<span class="token punctuation">;</span>
+<h3 id="程序-2"><a href="#程序-2" class="headerlink" title="程序"></a>程序</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program invest<span class="token punctuation">;</span>
 var
    a<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.100005</span><span class="token punctuation">]</span>of int64<span class="token punctuation">;</span>
    heap<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.100005</span><span class="token punctuation">,</span><span class="token number">1.</span><span class="token number">.2</span><span class="token punctuation">]</span>of int64<span class="token punctuation">;</span>
@@ -630,10 +623,8 @@ begin
   main<span class="token punctuation">;</span>
 end<span class="token punctuation">.</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="t4-游戏"><a class="markdownIt-Anchor" href="#t4-游戏"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62863">T4 游戏</a></h2>
-<p>先用 $ manacher $ 求出以每个位置为中心的最长回文串的半径，之后进行统计，半径为 $ t $ 的回文串个数 $ sum[t] $ 为半径大于等于 $ t $ 的回文串个数之和。统计个数后用快速幂计算答案，注意取模。</p>
-<h3 id="程序-4"><a class="markdownIt-Anchor" href="#程序-4"></a> 程序</h3>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program rehearse<span class="token punctuation">;</span>
+<h2 id="T4-游戏"><a href="#T4-游戏" class="headerlink" title="T4 游戏"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62863">T4 游戏</a></h2><p>先用 $ manacher $ 求出以每个位置为中心的最长回文串的半径，之后进行统计，半径为 $ t $ 的回文串个数 $ sum[t] $ 为半径大于等于 $ t $ 的回文串个数之和。统计个数后用快速幂计算答案，注意取模。</p>
+<h3 id="程序-3"><a href="#程序-3" class="headerlink" title="程序"></a>程序</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program rehearse<span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> p<span class="token operator">=</span><span class="token number">19930726</span><span class="token punctuation">;</span>
 
@@ -806,7 +797,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019215"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.15</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-5"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 5 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#t1-modeq"><span class="toc-number"></span> <span class="toc-text"> T1 modeq</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2-%E4%B9%B0%E5%8D%96"><span class="toc-number"></span> <span class="toc-text"> T2 买卖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%AE%9A%E6%B3%A8%E6%84%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number"></span> <span class="toc-text"> 一定注意初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3-%E6%8A%95%E8%B5%84"><span class="toc-number"></span> <span class="toc-text"> T3 投资</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t4-%E6%B8%B8%E6%88%8F"><span class="toc-number"></span> <span class="toc-text"> T4 游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-4"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-15"><span class="toc-number">1.</span> <span class="toc-text">2019.2.15</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-5"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 5 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-modeq"><span class="toc-number"></span> <span class="toc-text">T1 modeq</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-%E4%B9%B0%E5%8D%96"><span class="toc-number"></span> <span class="toc-text">T2 买卖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%AE%9A%E6%B3%A8%E6%84%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number"></span> <span class="toc-text">一定注意初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-%E6%8A%95%E8%B5%84"><span class="toc-number"></span> <span class="toc-text">T3 投资</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T4-%E6%B8%B8%E6%88%8F"><span class="toc-number"></span> <span class="toc-text">T4 游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number"></span> <span class="toc-text">程序</span></a>
 </div>
             </main>
             <aside class="left-column">
@@ -871,7 +862,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019215"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.15</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-5"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 5 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#t1-modeq"><span class="toc-number"></span> <span class="toc-text"> T1 modeq</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2-%E4%B9%B0%E5%8D%96"><span class="toc-number"></span> <span class="toc-text"> T2 买卖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%AE%9A%E6%B3%A8%E6%84%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number"></span> <span class="toc-text"> 一定注意初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3-%E6%8A%95%E8%B5%84"><span class="toc-number"></span> <span class="toc-text"> T3 投资</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t4-%E6%B8%B8%E6%88%8F"><span class="toc-number"></span> <span class="toc-text"> T4 游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-4"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-15"><span class="toc-number">1.</span> <span class="toc-text">2019.2.15</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-5"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 5 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-modeq"><span class="toc-number"></span> <span class="toc-text">T1 modeq</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-%E4%B9%B0%E5%8D%96"><span class="toc-number"></span> <span class="toc-text">T2 买卖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%AE%9A%E6%B3%A8%E6%84%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number"></span> <span class="toc-text">一定注意初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-%E6%8A%95%E8%B5%84"><span class="toc-number"></span> <span class="toc-text">T3 投资</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T4-%E6%B8%B8%E6%88%8F"><span class="toc-number"></span> <span class="toc-text">T4 游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number"></span> <span class="toc-text">程序</span></a>
       </div>
     </article>
   
@@ -1033,6 +1024,18 @@ end<span class="token punctuation">.</span>
       </a>
     
       <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
+      </a>
+    
+      <a 
         href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
         title="字符串">
         <div class="tags-list-item">字符串</div>
@@ -1060,18 +1063,6 @@ end<span class="token punctuation">.</span>
         href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
         title="最小生成树">
         <div class="tags-list-item">最小生成树</div>
-      </a>
-    
-      <a 
-        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
-        title="二叉树">
-        <div class="tags-list-item">二叉树</div>
-      </a>
-    
-      <a 
-        href="/tags/KMP/" 
-        title="KMP">
-        <div class="tags-list-item">KMP</div>
       </a>
     
       <a 
@@ -1116,7 +1107,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019215"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.15</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-5"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 5 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#t1-modeq"><span class="toc-number"></span> <span class="toc-text"> T1 modeq</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2-%E4%B9%B0%E5%8D%96"><span class="toc-number"></span> <span class="toc-text"> T2 买卖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%AE%9A%E6%B3%A8%E6%84%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number"></span> <span class="toc-text"> 一定注意初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3-%E6%8A%95%E8%B5%84"><span class="toc-number"></span> <span class="toc-text"> T3 投资</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t4-%E6%B8%B8%E6%88%8F"><span class="toc-number"></span> <span class="toc-text"> T4 游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-4"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-15"><span class="toc-number">1.</span> <span class="toc-text">2019.2.15</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-5"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 5 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-modeq"><span class="toc-number"></span> <span class="toc-text">T1 modeq</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-%E4%B9%B0%E5%8D%96"><span class="toc-number"></span> <span class="toc-text">T2 买卖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%AE%9A%E6%B3%A8%E6%84%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number"></span> <span class="toc-text">一定注意初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-%E6%8A%95%E8%B5%84"><span class="toc-number"></span> <span class="toc-text">T3 投资</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T4-%E6%B8%B8%E6%88%8F"><span class="toc-number"></span> <span class="toc-text">T4 游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number"></span> <span class="toc-text">程序</span></a>
     </article>
   
   

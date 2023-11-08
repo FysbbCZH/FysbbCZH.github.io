@@ -356,30 +356,23 @@
   <div 
     id="section" 
     class="post-content">
-    <h5 id="2019219"><a class="markdownIt-Anchor" href="#2019219"></a> 2019.2.19</h5>
-<h1 id="长沙集训-day-9"><a class="markdownIt-Anchor" href="#长沙集训-day-9"></a> 长沙集训 $ Day 9 $</h1>
-<p>今天并没有什么新内容，所以我自学了图论中的重要算法——网络最大流</p>
-<hr />
-<h2 id="网络最大流"><a class="markdownIt-Anchor" href="#网络最大流"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3376">网络最大流：</a></h2>
-<p>给定一个网络图，求网络中的最大流量。</p>
-<h3 id="反向网络"><a class="markdownIt-Anchor" href="#反向网络"></a> 反向网络</h3>
-<p>求解网络流最为暴力的算法就是通过一遍遍 $ BFS $ 来寻找是否有一条流量不为零的链连接源点（$ S <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>）和汇点（</mtext></mrow><annotation encoding="application/x-tex">）和汇点（</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cjk_fallback">）</span><span class="mord cjk_fallback">和</span><span class="mord cjk_fallback">汇</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">（</span></span></span></span> T $），如果有就进行更新并计算答案。这条链就是所谓的增广路。</p>
+    <h5 id="2019-2-19"><a href="#2019-2-19" class="headerlink" title="2019.2.19"></a>2019.2.19</h5><h1 id="长沙集训-Day-9"><a href="#长沙集训-Day-9" class="headerlink" title="长沙集训 $ Day 9 $"></a>长沙集训 $ Day 9 $</h1><p>今天并没有什么新内容，所以我自学了图论中的重要算法——网络最大流</p>
+<hr>
+<h2 id="网络最大流："><a href="#网络最大流：" class="headerlink" title="网络最大流："></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3376">网络最大流：</a></h2><p>给定一个网络图，求网络中的最大流量。</p>
+<h3 id="反向网络"><a href="#反向网络" class="headerlink" title="反向网络"></a>反向网络</h3><p>求解网络流最为暴力的算法就是通过一遍遍 $ BFS $ 来寻找是否有一条流量不为零的链连接源点（$ S $）和汇点（$ T $），如果有就进行更新并计算答案。这条链就是所谓的增广路。</p>
 <p>但这种方式有可能会走入错误的道路，如下图（网络图是有向图， $ 1 $ 为源点， $ 4 $ 为汇点）。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c71362a9b531.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c71362a9b531.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/02/23/5c71362a9b531.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c71362a9b531.png" class="lozad post-image"></p>
 <p>如果程序选择这条链为增广路，那计算出的最大流只有 $ 1 $ ，但实际最大流显然是 $ 2 $ 。该如何解决这个问题呢？其实很简单，那就是建立反向网络。（建立反向网络实际上是在原图中连反向边，这里为了表述清楚所以分开画图）</p>
-<p><img src="https://i.loli.net/2019/02/23/5c7136d86defe.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c7136d86defe.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/02/23/5c7136d86defe.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c7136d86defe.png" class="lozad post-image"></p>
 <p>初始时反向网络的所有边流量上限都为 $ 0 $ ，当找到一条增广路进行更新时，将原网络中的边减少流量上限，给反向网络中的边增加流量上限。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c7138594834a.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c7138594834a.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/02/23/5c7138594834a.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c7138594834a.png" class="lozad post-image"></p>
 <p>这样，即使第一遍走了 $ 1 \to 2 \to 3 \to 4 $ 这条路径，第二遍 $ BFS $ 时依然可以找到 $ 1 \to 3 \to 2 \to 4 $ 这条增广路，完美解决了之前的问题。事实上，建立反向网络是网络流算法普遍使用的处理方式。</p>
 <p>为什么这样做是对的呢？思考一下，走过刚刚的两条路径，实际上 $ 2 \to 3 $ 的路径上，流量上限仍未 $ 1 $ ,而 $ 3 \to 2 $ 路径的流量上限仍为 $ 0 $ 。相当于走了 $ 1 \to 2 \to 4 $ 和 $ 1 \to 3 \to 4 $ 这两条链。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c713b2e62573.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c713b2e62573.png" class="lozad post-image"></p>
-<h3 id="e-k-算法"><a class="markdownIt-Anchor" href="#e-k-算法"></a> $ E-K $ 算法</h3>
-<p>$ E-K $ 算法实际上就是上文说到的暴力 $ BFS $ ，每找到一条增广路就进行更新，复杂度极高，且容易被卡。</p>
-<h3 id="dinic-算法"><a class="markdownIt-Anchor" href="#dinic-算法"></a> $ Dinic $ 算法</h3>
-<p>$ Dinic $ 算法应该是使用最多的网络流增广路算法，实际上是对 $ E-K $ 算法的优化，具体做法是增加了分层图的处理。先用一次 $ BFS $ 给网络图分层，之后用 $ DFS $ 搜索增广路，相比之前的 $ BFS $ 暴力，效率已有很大的提高。</p>
+<p><img src="https://i.loli.net/2019/02/23/5c713b2e62573.png" alt="" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c713b2e62573.png" class="lozad post-image"></p>
+<h3 id="E-K-算法"><a href="#E-K-算法" class="headerlink" title="$ E-K $ 算法"></a>$ E-K $ 算法</h3><p>$ E-K $ 算法实际上就是上文说到的暴力 $ BFS $ ，每找到一条增广路就进行更新，复杂度极高，且容易被卡。</p>
+<h3 id="Dinic-算法"><a href="#Dinic-算法" class="headerlink" title="$ Dinic $ 算法"></a>$ Dinic $ 算法</h3><p>$ Dinic $ 算法应该是使用最多的网络流增广路算法，实际上是对 $ E-K $ 算法的优化，具体做法是增加了分层图的处理。先用一次 $ BFS $ 给网络图分层，之后用 $ DFS $ 搜索增广路，相比之前的 $ BFS $ 暴力，效率已有很大的提高。</p>
 <p>$ Dinic $ 算法的最差时间复杂度为 $ O(n^{2} \cdot m) $ ，但其实算法大部分情况下的复杂度都远低于上限，且大部分网络流题目的图都比较小， $ n $ 基本上是 $ [10^{2} , 10^{3}] $ 之间，熟练使用 $ Dinic $ 算法便可应对大部分题目。</p>
-<h3 id="dinic-算法程序"><a class="markdownIt-Anchor" href="#dinic-算法程序"></a> $ Dinic $ 算法程序</h3>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program project1<span class="token punctuation">;</span>
+<h3 id="Dinic-算法程序"><a href="#Dinic-算法程序" class="headerlink" title="$ Dinic $ 算法程序"></a>$ Dinic $ 算法程序</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program project1<span class="token punctuation">;</span>
 <span class="token keyword">const</span> max_n<span class="token operator">=</span><span class="token number">10005</span><span class="token punctuation">;</span>
       max_m<span class="token operator">=</span><span class="token number">100005</span><span class="token punctuation">;</span>
 
@@ -565,7 +558,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019219"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.19</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-9"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 9 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81"><span class="toc-number"></span> <span class="toc-text"> 网络最大流：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E7%BD%91%E7%BB%9C"><span class="toc-number"></span> <span class="toc-text"> 反向网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e-k-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ E-K $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dinic-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ Dinic $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dinic-%E7%AE%97%E6%B3%95%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> $ Dinic $ 算法程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-19"><span class="toc-number">1.</span> <span class="toc-text">2019.2.19</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-9"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 9 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">网络最大流：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E7%BD%91%E7%BB%9C"><span class="toc-number"></span> <span class="toc-text">反向网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-K-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">$ E-K $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dinic-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">$ Dinic $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dinic-%E7%AE%97%E6%B3%95%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">$ Dinic $ 算法程序</span></a>
 </div>
             </main>
             <aside class="left-column">
@@ -630,7 +623,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019219"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.19</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-9"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 9 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81"><span class="toc-number"></span> <span class="toc-text"> 网络最大流：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E7%BD%91%E7%BB%9C"><span class="toc-number"></span> <span class="toc-text"> 反向网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e-k-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ E-K $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dinic-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ Dinic $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dinic-%E7%AE%97%E6%B3%95%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> $ Dinic $ 算法程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-19"><span class="toc-number">1.</span> <span class="toc-text">2019.2.19</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-9"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 9 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">网络最大流：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E7%BD%91%E7%BB%9C"><span class="toc-number"></span> <span class="toc-text">反向网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-K-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">$ E-K $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dinic-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">$ Dinic $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dinic-%E7%AE%97%E6%B3%95%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">$ Dinic $ 算法程序</span></a>
       </div>
     </article>
   
@@ -792,6 +785,18 @@ end<span class="token punctuation">.</span>
       </a>
     
       <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
+      </a>
+    
+      <a 
         href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
         title="字符串">
         <div class="tags-list-item">字符串</div>
@@ -819,18 +824,6 @@ end<span class="token punctuation">.</span>
         href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
         title="最小生成树">
         <div class="tags-list-item">最小生成树</div>
-      </a>
-    
-      <a 
-        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
-        title="二叉树">
-        <div class="tags-list-item">二叉树</div>
-      </a>
-    
-      <a 
-        href="/tags/KMP/" 
-        title="KMP">
-        <div class="tags-list-item">KMP</div>
       </a>
     
       <a 
@@ -875,7 +868,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019219"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.19</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-9"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 9 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81"><span class="toc-number"></span> <span class="toc-text"> 网络最大流：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E7%BD%91%E7%BB%9C"><span class="toc-number"></span> <span class="toc-text"> 反向网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e-k-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ E-K $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dinic-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text"> $ Dinic $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dinic-%E7%AE%97%E6%B3%95%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> $ Dinic $ 算法程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-19"><span class="toc-number">1.</span> <span class="toc-text">2019.2.19</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-9"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 9 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">网络最大流：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E7%BD%91%E7%BB%9C"><span class="toc-number"></span> <span class="toc-text">反向网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-K-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">$ E-K $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dinic-%E7%AE%97%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">$ Dinic $ 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dinic-%E7%AE%97%E6%B3%95%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">$ Dinic $ 算法程序</span></a>
     </article>
   
   

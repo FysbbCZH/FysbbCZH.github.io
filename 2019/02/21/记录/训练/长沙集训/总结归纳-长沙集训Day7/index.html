@@ -356,12 +356,10 @@
   <div 
     id="section" 
     class="post-content">
-    <h5 id="2019217"><a class="markdownIt-Anchor" href="#2019217"></a> 2019.2.17</h5>
-<h1 id="长沙集训-day-7"><a class="markdownIt-Anchor" href="#长沙集训-day-7"></a> 长沙集训 $ Day 7 $</h1>
-<hr />
-<h2 id="t1-x国的军队"><a class="markdownIt-Anchor" href="#t1-x国的军队"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62996">T1 X国的军队</a></h2>
-<p>此题和<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P1080">国王游戏</a>类似，看似毒瘤 $ DP $ ，其实是贪心+排序。</p>
+    <h5 id="2019-2-17"><a href="#2019-2-17" class="headerlink" title="2019.2.17"></a>2019.2.17</h5><h1 id="长沙集训-Day-7"><a href="#长沙集训-Day-7" class="headerlink" title="长沙集训 $ Day 7 $"></a>长沙集训 $ Day 7 $</h1><hr>
+<h2 id="T1-X国的军队"><a href="#T1-X国的军队" class="headerlink" title="T1 X国的军队"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62996">T1 X国的军队</a></h2><p>此题和<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P1080">国王游戏</a>类似，看似毒瘤 $ DP $ ，其实是贪心+排序。</p>
 <p>先看简单的情况：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -383,6 +381,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>先打 $ A $ 再打 $ B $ ，需要总人数 $ sum_A=b_2-(b_1-a_1)+b_1 $</p>
 <p>先打 $ B $ 再打 $ A $ ，需要总人数 $ sum_B=b_1-(b_2-a_2)+b_2 $</p>
 <p>用两数相减比较大小：</p>
@@ -393,8 +392,7 @@
 </ol>
 <p>由此可知，不论何时， $ b-a $ 最大的据点一定是优先攻击的目标，只有这样我们才能以最小的人数攻击所有据点。</p>
 <p>只需将数据以 $ b-a $ 从大到小排序后计算答案即可。</p>
-<h3 id="程序"><a class="markdownIt-Anchor" href="#程序"></a> 程序</h3>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program army<span class="token punctuation">;</span>
+<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program army<span class="token punctuation">;</span>
 type tp<span class="token operator">=</span>record
   a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token operator">:</span>longint<span class="token punctuation">;</span>
 end<span class="token punctuation">;</span>
@@ -461,18 +459,16 @@ begin
   main<span class="token punctuation">;</span>
 end<span class="token punctuation">.</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="t2-排列组合"><a class="markdownIt-Anchor" href="#t2-排列组合"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62997">T2 排列组合</a></h2>
-<p>题目要我们对于每个给定 $ n $ 求这个式子的值：</p>
-<p>$ C_{n}^{1} \cdot C_{n}^{1} + C_{n}^{2} \cdot C_{n}^{2} + C_{n}^{3} \cdot C_{n}^{3} + \ … \  + C_{n}^{n} \cdot C_{n}^{n} $</p>
+<h2 id="T2-排列组合"><a href="#T2-排列组合" class="headerlink" title="T2 排列组合"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62997">T2 排列组合</a></h2><p>题目要我们对于每个给定 $ n $ 求这个式子的值：</p>
+<p>$ C<em>{n}^{1} \cdot C</em>{n}^{1} + C<em>{n}^{2} \cdot C</em>{n}^{2} + C<em>{n}^{3} \cdot C</em>{n}^{3} + \ … \  + C<em>{n}^{n} \cdot C</em>{n}^{n} $</p>
 <p>组合数公式：</p>
 <p>$ C_{n}^{m}=\frac{n!}{m! \cdot (n-m)!}$</p>
 <p>最简单的做法就是利用公式，对于每一个 $ n $ 求值，这样一次求值的时间复杂度是 $ O(n) $ ,有 $ T $ 次询问，总时间复杂度是 $ O(n \cdot T) $ ，保证 $ TLE $</p>
 <p>所以我们要 $ O(n) $ 求出所有式子的值，然后 $ O(1) $ 处理询问。</p>
 <p>这里要用到组合数平方和公式：</p>
-<p>$ C_{n}^{1} \cdot C_{n}^{1} + C_{n}^{2} \cdot C_{n}^{2} + C_{n}^{3} \cdot C_{n}^{3} + \ … \  + C_{n}^{n} \cdot C_{n}<sup>{n}=C_{2n}</sup>{n} $</p>
+<p>$ C<em>{n}^{1} \cdot C</em>{n}^{1} + C<em>{n}^{2} \cdot C</em>{n}^{2} + C<em>{n}^{3} \cdot C</em>{n}^{3} + \ … \  + C<em>{n}^{n} \cdot C</em>{n}^{n}=C_{2n}^{n} $</p>
 <p>对于此题，我们只要求出 $ C_{2n}^{n} \ \ \ , n \in [1,1000000] $  的值即可。</p>
-<h3 id="程序-2"><a class="markdownIt-Anchor" href="#程序-2"></a> 程序</h3>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program pc<span class="token punctuation">;</span>
+<h3 id="程序-1"><a href="#程序-1" class="headerlink" title="程序"></a>程序</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program pc<span class="token punctuation">;</span>
 <span class="token keyword">const</span> p<span class="token operator">=</span><span class="token number">1000000007</span><span class="token punctuation">;</span>
 
 var
@@ -516,8 +512,7 @@ begin
   main<span class="token punctuation">;</span>
 end<span class="token punctuation">.</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="t3-回文"><a class="markdownIt-Anchor" href="#t3-回文"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62998">T3 回文</a></h2>
-<p>看到求回文串，本来以为是要对 $ manacher $ 进行优化，最后发现正解和 $ manacher $ 一点关系都没有，而是毒瘤 $ DP $ ！</p>
+<h2 id="T3-回文"><a href="#T3-回文" class="headerlink" title="T3 回文"></a><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62998">T3 回文</a></h2><p>看到求回文串，本来以为是要对 $ manacher $ 进行优化，最后发现正解和 $ manacher $ 一点关系都没有，而是毒瘤 $ DP $ ！</p>
 <p>设 $ tf[i,j] $ 记录区间 $ [i,j] $ 是否为回文串：</p>
 <p>$ tf[i,j]=tf[i+1,j-1] \ \ and \ \ (s[i]=s[j]) $</p>
 <p>$ tf[i,j]=0 $ 表示区间未处理</p>
@@ -526,8 +521,7 @@ end<span class="token punctuation">.</span>
 <p>设 $ dp[i,j] $ 表示区间 $ [i,j] $ 的回文串个数：</p>
 <p>当 $ tf[i,j]=2 $ 时：$ dp[i,j]=dp[i+1,j]+dp[i,j-1]-dp[i+1,j-1] $</p>
 <p>当 $ tf[i,j]=1 $ 时：$ dp[i,j]=dp[i+1,j]+dp[i,j-1]-dp[i+1,j-1]+1 $</p>
-<h3 id="程序-3"><a class="markdownIt-Anchor" href="#程序-3"></a> 程序</h3>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program pal<span class="token punctuation">;</span>
+<h3 id="程序-2"><a href="#程序-2" class="headerlink" title="程序"></a>程序</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program pal<span class="token punctuation">;</span>
 var
    tf<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.5005</span><span class="token punctuation">,</span><span class="token number">0.</span><span class="token number">.5005</span><span class="token punctuation">]</span>of integer<span class="token punctuation">;</span>
    dp<span class="token operator">:</span>array<span class="token punctuation">[</span><span class="token number">0.</span><span class="token number">.5005</span><span class="token punctuation">,</span><span class="token number">0.</span><span class="token number">.5005</span><span class="token punctuation">]</span>of int64<span class="token punctuation">;</span>
@@ -684,7 +678,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019217"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.17</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-7"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 7 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#t1-x%E5%9B%BD%E7%9A%84%E5%86%9B%E9%98%9F"><span class="toc-number"></span> <span class="toc-text"> T1 X国的军队</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2-%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88"><span class="toc-number"></span> <span class="toc-text"> T2 排列组合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3-%E5%9B%9E%E6%96%87"><span class="toc-number"></span> <span class="toc-text"> T3 回文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-17"><span class="toc-number">1.</span> <span class="toc-text">2019.2.17</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-7"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 7 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-X%E5%9B%BD%E7%9A%84%E5%86%9B%E9%98%9F"><span class="toc-number"></span> <span class="toc-text">T1 X国的军队</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88"><span class="toc-number"></span> <span class="toc-text">T2 排列组合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-%E5%9B%9E%E6%96%87"><span class="toc-number"></span> <span class="toc-text">T3 回文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text">程序</span></a>
 </div>
             </main>
             <aside class="left-column">
@@ -749,7 +743,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019217"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.17</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-7"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 7 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#t1-x%E5%9B%BD%E7%9A%84%E5%86%9B%E9%98%9F"><span class="toc-number"></span> <span class="toc-text"> T1 X国的军队</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2-%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88"><span class="toc-number"></span> <span class="toc-text"> T2 排列组合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3-%E5%9B%9E%E6%96%87"><span class="toc-number"></span> <span class="toc-text"> T3 回文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-17"><span class="toc-number">1.</span> <span class="toc-text">2019.2.17</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-7"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 7 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-X%E5%9B%BD%E7%9A%84%E5%86%9B%E9%98%9F"><span class="toc-number"></span> <span class="toc-text">T1 X国的军队</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88"><span class="toc-number"></span> <span class="toc-text">T2 排列组合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-%E5%9B%9E%E6%96%87"><span class="toc-number"></span> <span class="toc-text">T3 回文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text">程序</span></a>
       </div>
     </article>
   
@@ -911,6 +905,18 @@ end<span class="token punctuation">.</span>
       </a>
     
       <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
+      </a>
+    
+      <a 
         href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
         title="字符串">
         <div class="tags-list-item">字符串</div>
@@ -938,18 +944,6 @@ end<span class="token punctuation">.</span>
         href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
         title="最小生成树">
         <div class="tags-list-item">最小生成树</div>
-      </a>
-    
-      <a 
-        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
-        title="二叉树">
-        <div class="tags-list-item">二叉树</div>
-      </a>
-    
-      <a 
-        href="/tags/KMP/" 
-        title="KMP">
-        <div class="tags-list-item">KMP</div>
       </a>
     
       <a 
@@ -994,7 +988,7 @@ end<span class="token punctuation">.</span>
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019217"><span class="toc-number">1.</span> <span class="toc-text"> 2019.2.17</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-day-7"><span class="toc-number"></span> <span class="toc-text"> 长沙集训 $ Day 7 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#t1-x%E5%9B%BD%E7%9A%84%E5%86%9B%E9%98%9F"><span class="toc-number"></span> <span class="toc-text"> T1 X国的军队</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2-%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88"><span class="toc-number"></span> <span class="toc-text"> T2 排列组合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3-%E5%9B%9E%E6%96%87"><span class="toc-number"></span> <span class="toc-text"> T3 回文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-3"><span class="toc-number"></span> <span class="toc-text"> 程序</span></a>
+<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#2019-2-17"><span class="toc-number">1.</span> <span class="toc-text">2019.2.17</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD-Day-7"><span class="toc-number"></span> <span class="toc-text">长沙集训 $ Day 7 $</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-X%E5%9B%BD%E7%9A%84%E5%86%9B%E9%98%9F"><span class="toc-number"></span> <span class="toc-text">T1 X国的军队</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88"><span class="toc-number"></span> <span class="toc-text">T2 排列组合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-1"><span class="toc-number"></span> <span class="toc-text">程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-%E5%9B%9E%E6%96%87"><span class="toc-number"></span> <span class="toc-text">T3 回文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-2"><span class="toc-number"></span> <span class="toc-text">程序</span></a>
     </article>
   
   
