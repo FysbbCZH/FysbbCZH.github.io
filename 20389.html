@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="That&#39;s♂good!">
+  <link 
+    rel="icon" 
+    href="/">
+  <title>基础语法-顺序结构</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="基础语法-顺序结构">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://blog.fysbbczh.top/20389.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="/img/myavatar.jpg">
+    
+    
+      <meta 
+        property="og:img" 
+        content="That&#39;s♂good!">
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2019-12-08">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-11-08">
+      <meta 
+        property="og:article:author" 
+        content="FysbbCZH">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="C++">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+    
+    <link rel="prefetch" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" as="script">
+  
+  
+    
+    <link rel="prefetch" href="//unpkg.com/valine/dist/Valine.min.js" as="script">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+      <span class="navbar-logo-dsc">FysbbCZH'S BLOG</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          首页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          归档
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      基础语法-顺序结构
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2019-12-07T16:00:00.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2019-12-08</span>
+    </time>
+    
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" 
+          class="post-meta-link">
+          编程语言
+        </a>
+      
+        <a 
+          href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/" 
+          class="post-meta-link">
+          C++
+        </a>
+      
+    
+    
+      <span class="dot"></span>
+      <span>1.8k 字</span>
+    
+  </div>
+  
+    <div 
+      class="post-meta post-show-meta" 
+      style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i 
+          class="iconfont icon-biaoqian" 
+          style="margin-right: 2px; font-size: 1.15rem;">
+        </i>
+        
+          
+          <a 
+            href="/tags/C/" 
+            class="post-meta-link">
+            C++
+          </a>
+        
+      </div>
+    </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h2 id="一-常量和变量"><a class="markdownIt-Anchor" href="#一-常量和变量"></a> 一、常量和变量</h2>
+<h3 id="i-常量"><a class="markdownIt-Anchor" href="#i-常量"></a> Ⅰ. 常量</h3>
+<h4 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义：</h4>
+<pre class="line-numbers language-none"><code class="language-none">const 常量类型 常量符号&#x3D;常量；
+const int a&#x3D;100;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="类型"><a class="markdownIt-Anchor" href="#类型"></a> 类型：</h4>
+<p>① 整形常量：</p>
+<p>十进制：$ 100_{(10)},-1_{(10)} $</p>
+<p>八进制：以 $ 0 $ 开头，后由 $ 0 \backsim 7 $ 的字符构成。如 $ 012 $ 表示 $ 12_{(8)} $</p>
+<p>十六进制：以 $ 0x $ 开头，后由 $ 0 \backsim F $ 的字符构成。如 $ 0xF1A $ 表示 $ F1A_{(16)} $ 。</p>
+<p>② 实型常量：</p>
+<p>实型有两种写法，其一是直接写出数值，如 $ 1.3,-0.18 $ ，第二种使用科学计数法表示，如：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>M</mi><mtext> </mtext><mi>E</mi><mtext> </mtext><mi>X</mi></mrow><annotation encoding="application/x-tex">M \ E \ X
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span></span></p>
+<p>其中 $ M $ 为一个实数， $ X $ 为一个整数。</p>
+<p>其意味着：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>M</mi><mo>×</mo><mn>1</mn><msup><mn>0</mn><mi>X</mi></msup></mrow><annotation encoding="application/x-tex">M \times 10^X
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8913309999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913309999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">X</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>1.52</mn><mtext> </mtext><mi>E</mi><mtext> </mtext><mn>2</mn><mo>=</mo><mn>1.52</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>2</mn></msup><mo>=</mo><mn>152</mn></mrow><annotation encoding="application/x-tex">1.52 \ E \ 2=1.52 \times 10^2 =152
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">.</span><span class="mord">5</span><span class="mord">2</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace"> </span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">.</span><span class="mord">5</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8641079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">5</span><span class="mord">2</span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>152</mn><mtext> </mtext><mi>E</mi><mtext> </mtext><mo>−</mo><mn>2</mn><mo>=</mo><mn>152</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>2</mn></mrow></msup><mo>=</mo><mn>1.52</mn></mrow><annotation encoding="application/x-tex">152 \ E \ -2=152 \times 10^{-2}=1.52
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">5</span><span class="mord">2</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">5</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.864108em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">.</span><span class="mord">5</span><span class="mord">2</span></span></span></span></span></p>
+<p>③ 字符型常量：</p>
+<p>如‘a’、‘1’、‘?’，注意 <code>&lt;font color='red'&gt;</code>‘’<code>&lt;/font&gt;</code>不能省去，且‘a’表示一个 <code>&lt;font color='red'&gt;</code>字符 <code>&lt;/font&gt;</code>，“a”表示一个 <code>&lt;font color='red'&gt;</code>字符串 <code>&lt;/font&gt;</code>。</p>
+<h3 id="ii-变量"><a class="markdownIt-Anchor" href="#ii-变量"></a> Ⅱ. 变量</h3>
+<h4 id="定义-2"><a class="markdownIt-Anchor" href="#定义-2"></a> 定义：</h4>
+<pre class="line-numbers language-none"><code class="language-none">变量类型 变量名，变量名，......；
+int a,b;
+char s,k;
+float n,m;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>和 $ Pascal $ 中不同， $ C++ $ 可以在定义时给变量赋值，如：</p>
+<pre class="line-numbers language-none"><code class="language-none">int a&#x3D;100;
+char s&#x3D;&#39;x&#39;;
+float n&#x3D;5E2;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="变量类型"><a class="markdownIt-Anchor" href="#变量类型"></a> 变量类型：</h4>
+<p>变量的类型可以是标准数据类型（$ int,long \ long,char,float,double,\cdots $），也可以是用户自定义的类型（结构体）。</p>
+<h2 id="二-标准数据类型"><a class="markdownIt-Anchor" href="#二-标准数据类型"></a> 二、标准数据类型</h2>
+<p>这些数据类型都是由系统定义的简单数据类型。</p>
+<h3 id="i-整形"><a class="markdownIt-Anchor" href="#i-整形"></a> Ⅰ. 整形</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:center">$ C++ $ 定义标识符</th>
+<th style="text-align:center">$ Pascal $ 定义标识符</th>
+<th style="text-align:center">占字节数</th>
+<th style="text-align:center">取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">短整型</td>
+<td style="text-align:center">$ short $</td>
+<td style="text-align:center">$ integer $</td>
+<td style="text-align:center">$ 2 $</td>
+<td style="text-align:center">$ [-2<sup>{15},2</sup>{15}-1] $</td>
+</tr>
+<tr>
+<td style="text-align:center">无符号短整型</td>
+<td style="text-align:center">$ unsigned \ short $</td>
+<td style="text-align:center">$ word $</td>
+<td style="text-align:center">$ 2 $</td>
+<td style="text-align:center">$ [0,2^{16}-1] $</td>
+</tr>
+<tr>
+<td style="text-align:center">长整型</td>
+<td style="text-align:center">$ long $</td>
+<td style="text-align:center">$ longint $</td>
+<td style="text-align:center">$ 4 $</td>
+<td style="text-align:center">$ [-2<sup>{31},2</sup>{31}-1] $</td>
+</tr>
+<tr>
+<td style="text-align:center">无符号长整形</td>
+<td style="text-align:center">$ unsigned \ long $</td>
+<td style="text-align:center">$ dword $</td>
+<td style="text-align:center">$ 4 $</td>
+<td style="text-align:center">$ [0,2^{32}-1] $</td>
+</tr>
+<tr>
+<td style="text-align:center">超长整形</td>
+<td style="text-align:center">$ long \ long $</td>
+<td style="text-align:center">$ int64 $</td>
+<td style="text-align:center">$ 8 $</td>
+<td style="text-align:center">$ [-2<sup>{63},2</sup>{63}-1] $</td>
+</tr>
+<tr>
+<td style="text-align:center">无符号超长整形</td>
+<td style="text-align:center">$ unsigned \ long \ long $</td>
+<td style="text-align:center">$ qword $</td>
+<td style="text-align:center">$ 8 $</td>
+<td style="text-align:center">$ [0,2^{64}-1] $</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ii-实型"><a class="markdownIt-Anchor" href="#ii-实型"></a> Ⅱ. 实型</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:center">$ C++ $ 定义标识符</th>
+<th style="text-align:center">$ Pascal $ 定义标识符</th>
+<th style="text-align:center">占字节数</th>
+<th style="text-align:center">取值范围</th>
+<th style="text-align:center">有效位数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">单精度实型</td>
+<td style="text-align:center">$ float $</td>
+<td style="text-align:center">$ real $</td>
+<td style="text-align:center">$ 4 $</td>
+<td style="text-align:center">$ [-3.4E+38,3.4E+38] $</td>
+<td style="text-align:center">$ 6 $</td>
+</tr>
+<tr>
+<td style="text-align:center">双精度实型</td>
+<td style="text-align:center">$ double $</td>
+<td style="text-align:center">$ double $</td>
+<td style="text-align:center">$ 8 $</td>
+<td style="text-align:center">$ [-1.7E+308,1.7E+308] $</td>
+<td style="text-align:center">$ 15 $</td>
+</tr>
+<tr>
+<td style="text-align:center">长双精度实型</td>
+<td style="text-align:center">$ long \ double $</td>
+<td style="text-align:center">$ extended $</td>
+<td style="text-align:center">$ 16 $</td>
+<td style="text-align:center">$ [-3.4E+4932,1.1E+4932] $</td>
+<td style="text-align:center">$ 18 $</td>
+</tr>
+<tr>
+<td style="text-align:center">布尔型</td>
+<td style="text-align:center">$ bool $</td>
+<td style="text-align:center">$ boolean $</td>
+<td style="text-align:center">$ 1 $</td>
+<td style="text-align:center">$ true,false $</td>
+<td style="text-align:center">$ \diagdown $</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iii-字符型"><a class="markdownIt-Anchor" href="#iii-字符型"></a> Ⅲ. 字符型</h3>
+<p>见 $ ASCLL $ 码表。</p>
+<p><img src="https://i.loli.net/2019/11/21/BeXINOMYndth7j8.png" alt="QQ截图20191121231556.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/11/21/BeXINOMYndth7j8.png" class="lozad post-image"></p>
+<h3 id="iv-强制类型转换"><a class="markdownIt-Anchor" href="#iv-强制类型转换"></a> Ⅳ. 强制类型转换</h3>
+<pre class="line-numbers language-none"><code class="language-none">(类型名)(表达式)
+(int)(4.7)&#x3D;4;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="三-输入与输出"><a class="markdownIt-Anchor" href="#三-输入与输出"></a> 三、输入与输出</h2>
+<h3 id="i-字符输入输出"><a class="markdownIt-Anchor" href="#i-字符输入输出"></a> Ⅰ. 字符输入输出</h3>
+<p>函数：$ getchar(),putchar() $</p>
+<p>使用此函数必须包含头文件 <code>&lt;font color='red'&gt;</code>cstdio <code>&lt;/font&gt;</code>。</p>
+<p>使用方式：</p>
+<pre class="line-numbers language-none"><code class="language-none">字符型变量&#x3D;getchar();
+putchar(字符型变量&#x2F;ASCLL码);
+
+char s;
+s&#x3D;getchar();
+putchar(s);
+putchar(66);
+
+输入：Z
+输出：ZB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>$ getchar() $ 输入的所有元素都按字符处理，且可以 <code>&lt;font color='red'&gt;</code>读入回车 <code>&lt;/font&gt;</code>。</p>
+<h3 id="ii-流输入输出"><a class="markdownIt-Anchor" href="#ii-流输入输出"></a> Ⅱ. 流输入输出</h3>
+<p>函数：$ cin,cout,endl $</p>
+<p>使用此函数必须包含头文件 <code>&lt;font color='red'&gt;</code>iostream <code>&lt;/font&gt;</code>，且需使用 <code>&lt;font color='red'&gt;</code>using namespace std;<code>&lt;/font&gt;</code>。</p>
+<p>使用方式：</p>
+<pre class="line-numbers language-none"><code class="language-none">cin&gt;&gt;变量；
+cout&lt;&lt;变量&#x2F;字符串；
+
+cin&gt;&gt;a&gt;&gt;b;
+cout&lt;&lt;&quot;a&#x3D;&quot;&lt;&lt;a&lt;&lt;&quot;\nb&#x3D;&quot;&lt;&lt;b&lt;&lt;endl;
+cout&lt;&lt;&quot;A&quot;;
+
+输入：1 A
+输出：
+a&#x3D;1
+b&#x3D;A
+A<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="iii-格式化输入输出"><a class="markdownIt-Anchor" href="#iii-格式化输入输出"></a> Ⅲ. 格式化输入输出</h3>
+<p>函数：$ scanf,printf $</p>
+<p>使用此函数必须包含头文件 <code>&lt;font color=&quot;red&quot;&gt;</code>cstdio <code>&lt;/font&gt;</code>。</p>
+<p>使用方法：</p>
+<pre class="line-numbers language-none"><code class="language-none">scanf(&quot;格式符 格式符&quot;,&amp;变量,&amp;变量);
+printf(&quot;格式符 格式符&quot;,变量,变量);
+
+scanf(&quot;%d%c&quot;,&amp;a,&amp;b);
+printf(&quot;a&#x3D;%d\nb&#x3D;%c\nA&quot;,a,b);
+
+输入：1A
+输出：
+a&#x3D;1
+b&#x3D;A
+A<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>$ scanf $ 中的 <code>&lt;font color=&quot;green&quot;&gt;</code>&amp;变量 <code>&lt;/font&gt;</code>是变量的内存地址，可以是变量地址，也可以是字符串首地址。</p>
+<h4 id="输入格式符"><a class="markdownIt-Anchor" href="#输入格式符"></a> 输入格式符：</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$ d $</td>
+<td style="text-align:center">输入十进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">$ u $</td>
+<td style="text-align:center">以无符号形式输入十进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">$ o $</td>
+<td style="text-align:center">输入八进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">$ x $</td>
+<td style="text-align:center">输入十六进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">$ c $</td>
+<td style="text-align:center">输入单个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">$ s $</td>
+<td style="text-align:center">输入字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">$ f $</td>
+<td style="text-align:center">输入实数</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">附加格式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$ l $</td>
+<td style="text-align:center">输入长整型数（$ ld,lo,lx $）和 $ double $ 型实数（$ lf $）</td>
+</tr>
+<tr>
+<td style="text-align:center">$ h $</td>
+<td style="text-align:center">输入短整型数（$ hd,ho,hx $）</td>
+</tr>
+<tr>
+<td style="text-align:center">域宽（一个整数）</td>
+<td style="text-align:center">指定输入所占列宽</td>
+</tr>
+<tr>
+<td style="text-align:center">$ * $</td>
+<td style="text-align:center">表示对应输入值不赋给变量</td>
+</tr>
+</tbody>
+</table>
+<h4 id="输出格式符"><a class="markdownIt-Anchor" href="#输出格式符"></a> 输出格式符</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$ d $</td>
+<td style="text-align:center">输出十进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">$ u $</td>
+<td style="text-align:center">以无符号形式输出十进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">$ o $</td>
+<td style="text-align:center">输出八进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">$ x $</td>
+<td style="text-align:center">输出十六进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">$ c $</td>
+<td style="text-align:center">输出单个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">$ s $</td>
+<td style="text-align:center">输出字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">$ f $</td>
+<td style="text-align:center">以小数形式输出实数</td>
+</tr>
+<tr>
+<td style="text-align:center">$ e $</td>
+<td style="text-align:center">以科学记数法形式输出实数</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$ m $</td>
+<td style="text-align:center">指定宽度，实际宽度不足$ m $ 时补空格，大于 $ m $ 时按实际宽度输出</td>
+</tr>
+<tr>
+<td style="text-align:center">$ .n $</td>
+<td style="text-align:center">不对整形使用，对于实型表示保留$ n $ 位小数，对于字符串表示最多含有 $ n $ 个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">$ - $</td>
+<td style="text-align:center">表示左对齐</td>
+</tr>
+<tr>
+<td style="text-align:center">$ l $</td>
+<td style="text-align:center">输出长整型</td>
+</tr>
+<tr>
+<td style="text-align:center">$ 0 $</td>
+<td style="text-align:center">跟$ m $ 一起使用，表示宽度不足 $ m $ 时补 $ 0 $</td>
+</tr>
+</tbody>
+</table>
+<p>使用格式：$ %,-,0,m,.n,l $</p>
+<pre class="line-numbers language-none"><code class="language-none">scanf(&quot;%2d%3d%4d&quot;,&amp;a,&amp;b,&amp;c);
+scanf(&quot;%f&quot;,&amp;d);
+scanf(&quot;%5s&quot;,&amp;s);
+printf(&quot;a&#x3D;%d\nb&#x3D;%d\nc&#x3D;%d\nd&#x3D;%.5f\ns&#x3D;%7.3s\n&quot;,a,b,c,d,s);
+
+输入：
+123456789
+512E-2
+abcdefg
+输出：
+a&#x3D;12
+b&#x3D;345
+c&#x3D;6789
+d&#x3D;5.12000
+s&#x3D;    abc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="四-运算符与表达式"><a class="markdownIt-Anchor" href="#四-运算符与表达式"></a> 四、运算符与表达式</h2>
+<h3 id="i-赋值语句"><a class="markdownIt-Anchor" href="#i-赋值语句"></a> Ⅰ. 赋值语句</h3>
+<pre class="line-numbers language-none"><code class="language-none">变量&#x3D;表达式;
+a&#x3D;10*19;
+a&#x3D;b&#x3D;c&#x3D;d&#x3D;100;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="ii-算术运算符"><a class="markdownIt-Anchor" href="#ii-算术运算符"></a> Ⅱ. 算术运算符</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">运算符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">加</td>
+<td style="text-align:center">$ + $</td>
+</tr>
+<tr>
+<td style="text-align:center">减</td>
+<td style="text-align:center">$ - $</td>
+</tr>
+<tr>
+<td style="text-align:center">乘</td>
+<td style="text-align:center">$ * $</td>
+</tr>
+<tr>
+<td style="text-align:center">除</td>
+<td style="text-align:center">$ / $</td>
+</tr>
+<tr>
+<td style="text-align:center">取模</td>
+<td style="text-align:center">$ % $</td>
+</tr>
+</tbody>
+</table>
+<pre class="line-numbers language-none"><code class="language-none">表达式+表达式
+表达式-表达式
+表达式*表达式
+表达式&#x2F;表达式
+表达式%表达式
+
+1+1&#x3D;2;
+1-1&#x3D;0;
+1*2&#x3D;2;
+5&#x2F;2&#x3D;2;
+5.0&#x2F;2&#x3D;2.5;
+5&#x2F;2.0&#x3D;2.5;
+5%2&#x3D;1;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>$ a++ $ 表示调用 $ a $ 后将 $ a+1 $ 。</p>
+<p>$ ++a $ 表示将 $ a+1 $ 后再调用 $ a $ 。（减法相同）</p>
+<h3 id="iii-关系运算符"><a class="markdownIt-Anchor" href="#iii-关系运算符"></a> Ⅲ. 关系运算符</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">运算符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">大于</td>
+<td style="text-align:center">$ &gt; $</td>
+</tr>
+<tr>
+<td style="text-align:center">小于</td>
+<td style="text-align:center">$ &lt; $</td>
+</tr>
+<tr>
+<td style="text-align:center">等于</td>
+<td style="text-align:center">$ == $</td>
+</tr>
+<tr>
+<td style="text-align:center">大于等于</td>
+<td style="text-align:center">$ &gt;= $</td>
+</tr>
+<tr>
+<td style="text-align:center">小于等于</td>
+<td style="text-align:center">$ &lt;= $</td>
+</tr>
+<tr>
+<td style="text-align:center">不等于</td>
+<td style="text-align:center">$ != $</td>
+</tr>
+</tbody>
+</table>
+<p>关系运算符的结果只能是 $ 0(false) $ 或 $ 1(true) $ 。</p>
+<h3 id="iv-逻辑运算符"><a class="markdownIt-Anchor" href="#iv-逻辑运算符"></a> Ⅳ. 逻辑运算符</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">运算符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">与</td>
+<td style="text-align:center">$ &amp;&amp; $</td>
+</tr>
+<tr>
+<td style="text-align:center">或</td>
+<td style="text-align:center">$</td>
+</tr>
+<tr>
+<td style="text-align:center">非</td>
+<td style="text-align:center">$ ! $</td>
+</tr>
+</tbody>
+</table>
+<p>与运算符(&amp;&amp;)和或运算符(||)均为双目运算符，具有左结合性。 非运算符(!)为单目运算符，具有右结合性。</p>
+<p>逻辑运算符的结果只能是 $ 0(false) $ 或 $ 1(true) $ 。</p>
+<h3 id="v-位运算符"><a class="markdownIt-Anchor" href="#v-位运算符"></a> Ⅴ. 位运算符</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">运算符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">按位与</td>
+<td style="text-align:center">$ &amp; $</td>
+</tr>
+<tr>
+<td style="text-align:center">按位或</td>
+<td style="text-align:center">$</td>
+</tr>
+<tr>
+<td style="text-align:center">按位异或</td>
+<td style="text-align:center">$ \land $</td>
+</tr>
+<tr>
+<td style="text-align:center">取反</td>
+<td style="text-align:center">$ \sim $</td>
+</tr>
+<tr>
+<td style="text-align:center">左移</td>
+<td style="text-align:center">$ &lt;&lt; $</td>
+</tr>
+<tr>
+<td style="text-align:center">右移</td>
+<td style="text-align:center">$ &gt;&gt; $</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vi-运算表达式简写"><a class="markdownIt-Anchor" href="#vi-运算表达式简写"></a> Ⅵ. 运算表达式简写</h3>
+<pre class="line-numbers language-none"><code class="language-none">变量&#x3D;变量 运算符 表达式
+变量 运算符&#x3D;表达式
+
+a&#x3D;a+2;
+a+&#x3D;2;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="vii-常用运算函数"><a class="markdownIt-Anchor" href="#vii-常用运算函数"></a> Ⅶ. 常用运算函数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">绝对值</td>
+<td style="text-align:center">$ abs(x) $</td>
+</tr>
+<tr>
+<td style="text-align:center">自然数指数$ e^x $</td>
+<td style="text-align:center">$ exp(x) $</td>
+</tr>
+<tr>
+<td style="text-align:center">下取整</td>
+<td style="text-align:center">$ floor(x) $</td>
+</tr>
+<tr>
+<td style="text-align:center">上取整</td>
+<td style="text-align:center">$ ceil(x) $</td>
+</tr>
+<tr>
+<td style="text-align:center">自然数对数$ \ln{x} $</td>
+<td style="text-align:center">$ log(x) $</td>
+</tr>
+<tr>
+<td style="text-align:center">指数函数$ x^t $</td>
+<td style="text-align:center">$ pow(x,t) $</td>
+</tr>
+<tr>
+<td style="text-align:center">随机函数（在$ [0,x-1] $ 生成随机数）</td>
+<td style="text-align:center">$ rand(x) $</td>
+</tr>
+<tr>
+<td style="text-align:center">平方根</td>
+<td style="text-align:center">$ sqrt(x) $</td>
+</tr>
+</tbody>
+</table>
+<p>使用这类函数时，必须包含头文件 <code>&lt;font color=&quot;red&quot;&gt;</code>cmath <code>&lt;/font&gt;</code>。</p>
+
+  </div>
+  <div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/26987.html" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">基础语法-选择结构 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/15963.html" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">写出第一个C++程序 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+        appKey: '5tGe7WC9z2QaIOESWdymcByE',
+        placeholder: '有什么看法？来说说看吧......',
+        path: window.location.pathname,
+        avatar: 'identicon',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'false',
+        highlight: true,
+        recordIP: false,
+        
+        
+        
+        enableQQ: 'false',
+        requiredFields: [],
+      });
+    };
+  </script>
+
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%B8%B8%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text"> 一、常量和变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E5%B8%B8%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> Ⅰ. 常量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 类型：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> Ⅱ. 变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 变量类型：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%A0%87%E5%87%86%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text"> 二、标准数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E6%95%B4%E5%BD%A2"><span class="toc-number">2.1.</span> <span class="toc-text"> Ⅰ. 整形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E5%AE%9E%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text"> Ⅱ. 实型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iii-%E5%AD%97%E7%AC%A6%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text"> Ⅲ. 字符型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iv-%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.4.</span> <span class="toc-text"> Ⅳ. 强制类型转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text"> 三、输入与输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">3.1.</span> <span class="toc-text"> Ⅰ. 字符输入输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E6%B5%81%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.</span> <span class="toc-text"> Ⅱ. 流输入输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iii-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">3.3.</span> <span class="toc-text"> Ⅲ. 格式化输入输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F%E7%AC%A6"><span class="toc-number">3.3.1.</span> <span class="toc-text"> 输入格式符：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E7%AC%A6"><span class="toc-number">3.3.2.</span> <span class="toc-text"> 输出格式符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text"> 四、运算符与表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E8%B5%8B%E5%80%BC%E8%AF%AD%E5%8F%A5"><span class="toc-number">4.1.</span> <span class="toc-text"> Ⅰ. 赋值语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.2.</span> <span class="toc-text"> Ⅱ. 算术运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iii-%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.3.</span> <span class="toc-text"> Ⅲ. 关系运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iv-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.4.</span> <span class="toc-text"> Ⅳ. 逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.5.</span> <span class="toc-text"> Ⅴ. 位运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vi-%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E5%86%99"><span class="toc-number">4.6.</span> <span class="toc-text"> Ⅵ. 运算表达式简写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vii-%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E5%87%BD%E6%95%B0"><span class="toc-number">4.7.</span> <span class="toc-text"> Ⅶ. 常用运算函数</span></a></li></ol></li></ol>
+</div>
+            </main>
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/img/myavatar.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">FysbbCZH</p>
+<p class="author-description">That's♂good!</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>32</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>14</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>20</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a href="mailto:2568858327@qq.com">
+          <i class="iconfont icon-mail society-icon"></i>
+        </a>
+      </div>
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198318522568">
+          <i class="iconfont icon-steam society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%B8%B8%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text"> 一、常量和变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E5%B8%B8%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> Ⅰ. 常量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 类型：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> Ⅱ. 变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 变量类型：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%A0%87%E5%87%86%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text"> 二、标准数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E6%95%B4%E5%BD%A2"><span class="toc-number">2.1.</span> <span class="toc-text"> Ⅰ. 整形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E5%AE%9E%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text"> Ⅱ. 实型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iii-%E5%AD%97%E7%AC%A6%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text"> Ⅲ. 字符型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iv-%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.4.</span> <span class="toc-text"> Ⅳ. 强制类型转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text"> 三、输入与输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">3.1.</span> <span class="toc-text"> Ⅰ. 字符输入输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E6%B5%81%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.</span> <span class="toc-text"> Ⅱ. 流输入输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iii-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">3.3.</span> <span class="toc-text"> Ⅲ. 格式化输入输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F%E7%AC%A6"><span class="toc-number">3.3.1.</span> <span class="toc-text"> 输入格式符：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E7%AC%A6"><span class="toc-number">3.3.2.</span> <span class="toc-text"> 输出格式符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text"> 四、运算符与表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E8%B5%8B%E5%80%BC%E8%AF%AD%E5%8F%A5"><span class="toc-number">4.1.</span> <span class="toc-text"> Ⅰ. 赋值语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.2.</span> <span class="toc-text"> Ⅱ. 算术运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iii-%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.3.</span> <span class="toc-text"> Ⅲ. 关系运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iv-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.4.</span> <span class="toc-text"> Ⅳ. 逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.5.</span> <span class="toc-text"> Ⅴ. 位运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vi-%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E5%86%99"><span class="toc-number">4.6.</span> <span class="toc-text"> Ⅵ. 运算表达式简写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vii-%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E5%87%BD%E6%95%B0"><span class="toc-number">4.7.</span> <span class="toc-text"> Ⅶ. 常用运算函数</span></a></li></ol></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    
+
+<div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    <!-- 
+      <a href="/categories/%E7%9F%A5%E8%AF%86/">
+        <div class="categories-list-item">
+          知识
+          <span class="categories-list-item-badge">4</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/">
+        <div class="categories-list-item">
+          &gt;BLOG
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/">
+        <div class="categories-list-item">
+          &gt;&gt;Kaze
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+        <div class="categories-list-item">
+          &gt;数据结构
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+        <div class="categories-list-item">
+          编程语言
+          <span class="categories-list-item-badge">9</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">
+        <div class="categories-list-item">
+          &gt;C
+          <span class="categories-list-item-badge">9</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/">
+        <div class="categories-list-item">
+          记录
+          <span class="categories-list-item-badge">15</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/">
+        <div class="categories-list-item">
+          &gt;竞赛
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/">
+        <div class="categories-list-item">
+          &gt;训练
+          <span class="categories-list-item-badge">13</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/">
+        <div class="categories-list-item">
+          &gt;&gt;长沙集训
+          <span class="categories-list-item-badge">13</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/">
+        <div class="categories-list-item">
+          题解
+          <span class="categories-list-item-badge">4</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/">
+        <div class="categories-list-item">
+          &gt;吉林大学
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/">
+        <div class="categories-list-item">
+          &gt;&gt;数据结构课设
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86/">
+        <div class="categories-list-item">
+          &gt;杂题整理
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+     -->
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/BLOG/">BLOG</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/">Kaze</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/">竞赛</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/">训练</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/">长沙集训</a><span class="category-list-count">13</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/">吉林大学</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/">数据结构课设</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86/">杂题整理</a><span class="category-list-count">1</span></li></ul></li></ul> 
+  </div>
+</div>
+
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/Pascal/" 
+        title="Pascal">
+        <div class="tags-list-item">Pascal</div>
+      </a>
+    
+      <a 
+        href="/tags/C/" 
+        title="C++">
+        <div class="tags-list-item">C++</div>
+      </a>
+    
+      <a 
+        href="/tags/BLOG/" 
+        title="BLOG">
+        <div class="tags-list-item">BLOG</div>
+      </a>
+    
+      <a 
+        href="/tags/Kaze/" 
+        title="Kaze">
+        <div class="tags-list-item">Kaze</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" 
+        title="动态规划">
+        <div class="tags-list-item">动态规划</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
+        title="字符串">
+        <div class="tags-list-item">字符串</div>
+      </a>
+    
+      <a 
+        href="/tags/BFS/" 
+        title="BFS">
+        <div class="tags-list-item">BFS</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" 
+        title="快速排序">
+        <div class="tags-list-item">快速排序</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91Trie/" 
+        title="字典树Trie">
+        <div class="tags-list-item">字典树Trie</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
+        title="最小生成树">
+        <div class="tags-list-item">最小生成树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
+      </a>
+    
+      <a 
+        href="/tags/Hexo/" 
+        title="Hexo">
+        <div class="tags-list-item">Hexo</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" 
+        title="矩阵加速">
+        <div class="tags-list-item">矩阵加速</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" 
+        title="概率论">
+        <div class="tags-list-item">概率论</div>
+      </a>
+    
+      <a 
+        href="/tags/CCSP/" 
+        title="CCSP">
+        <div class="tags-list-item">CCSP</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%B8%B8%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text"> 一、常量和变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E5%B8%B8%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> Ⅰ. 常量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 类型：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> Ⅱ. 变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 定义：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 变量类型：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%A0%87%E5%87%86%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text"> 二、标准数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E6%95%B4%E5%BD%A2"><span class="toc-number">2.1.</span> <span class="toc-text"> Ⅰ. 整形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E5%AE%9E%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text"> Ⅱ. 实型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iii-%E5%AD%97%E7%AC%A6%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text"> Ⅲ. 字符型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iv-%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.4.</span> <span class="toc-text"> Ⅳ. 强制类型转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.</span> <span class="toc-text"> 三、输入与输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">3.1.</span> <span class="toc-text"> Ⅰ. 字符输入输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E6%B5%81%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">3.2.</span> <span class="toc-text"> Ⅱ. 流输入输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iii-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">3.3.</span> <span class="toc-text"> Ⅲ. 格式化输入输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F%E7%AC%A6"><span class="toc-number">3.3.1.</span> <span class="toc-text"> 输入格式符：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E7%AC%A6"><span class="toc-number">3.3.2.</span> <span class="toc-text"> 输出格式符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text"> 四、运算符与表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E8%B5%8B%E5%80%BC%E8%AF%AD%E5%8F%A5"><span class="toc-number">4.1.</span> <span class="toc-text"> Ⅰ. 赋值语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ii-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.2.</span> <span class="toc-text"> Ⅱ. 算术运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iii-%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.3.</span> <span class="toc-text"> Ⅲ. 关系运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iv-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.4.</span> <span class="toc-text"> Ⅳ. 逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.5.</span> <span class="toc-text"> Ⅴ. 位运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vi-%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E5%86%99"><span class="toc-number">4.6.</span> <span class="toc-text"> Ⅵ. 运算表达式简写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vii-%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E5%87%BD%E6%95%B0"><span class="toc-number">4.7.</span> <span class="toc-text"> Ⅶ. 常用运算函数</span></a></li></ol></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-11-06</div>
+        <a href="/a7530484.html"><div class="recent-posts-item-content">CCSP2023游记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-06</div>
+        <a href="/53500.html"><div class="recent-posts-item-content">CCSP2022T2抽卡题解</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-03-27</div>
+        <a href="/43886.html"><div class="recent-posts-item-content">红黑树学习记录</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-03-11</div>
+        <a href="/46746.html"><div class="recent-posts-item-content">学校数据结构2022-03-11上机题</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2020
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          FysbbCZH'S BLOG
+        </a>
+      </div>
+    </div>
+
+    
+      <div class="footer-dsc">
+        
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/theme-kaze" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;Kaze
+          </a>
+        
+      </div>
+    
+    
+    
+    
+      <div class="footer-dsc">
+        
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站总访客数<span id="busuanzi_value_site_uv"></span>次
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+      
+
+  
+  
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+
+  
+ 
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+    
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>
