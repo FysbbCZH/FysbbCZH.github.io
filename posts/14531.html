@@ -202,8 +202,6 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
-    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
-  
   
   
   
@@ -366,7 +364,7 @@
 <hr />
 <h2 id="t1-十字形"><a class="markdownIt-Anchor" href="#t1-十字形"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62847">T1 十字形</a></h2>
 <p>在今天的模拟赛中，这题算非常简单了，最起码是随机数据。</p>
-<p><img src="https://i.loli.net/2019/02/12/5c62c8592dee4.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/12/5c62c8592dee4.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/02/12/5c62c8592dee4.png" alt="" /></p>
 <p>如此将线段分开存储，将 $ a $ 按照 $ len $ 从大到小排序。将 $ b $ 按照 $ p $ 从小到大， $ len $ 从大到小排序。之后枚举 $ a $ ，用二分查找与 $ b $ 的交点，计算答案，在 $ len &lt; 2 \cdot ans+1 $ 时退出。便可解决此题。</p>
 <p>其实还有更优的解法，可以对 $ ans $ 二分答案，将各线段两端减去 $ ans $ 的长度后，按 $ x $ 坐标枚举竖直线段，用扫描线+线段树进行维护，判断是否有交点。</p>
 <h2 id="t2-集合"><a class="markdownIt-Anchor" href="#t2-集合"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/CF251D">T2 集合</a></h2>
@@ -384,7 +382,7 @@ $ f $ 值为 $ 0 $ ，否则为 $ 1 $</p>
 <li>$ p[i]=0 $ ，直接记录</li>
 <li>$ p[i]&lt;&gt;0 $ ,将$ x \ \ xor \ \ p[i] $ ，再继续处理</li>
 </ol>
-<p><img src="https://i.loli.net/2019/02/13/5c63fbd92208e.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/13/5c63fbd92208e.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/02/13/5c63fbd92208e.png" alt="" /></p>
 <pre class="line-numbers language-pas" data-language="pas"><code class="language-pas">for t:&#x3D;62 downto 0 do
   if x shr t&lt;&gt;0 then begin
     if p[t]&#x3D;0 then begin p[t]:&#x3D;x;break; end
@@ -997,23 +995,6 @@ $ f $ 值为 $ 0 $ ，否则为 $ 1 $</p>
         loadScript('/js/lib/busuanzi.min.js') 
       </script>
      
-    
-      <script>
-        var addLazyload = function () {
-          var observer = lozad('.lozad', {
-            load: function (el) {
-              el.srcset = el.getAttribute('data-src')
-            },
-            loaded: function (el) {
-              el.classList.add('loaded')
-            },
-          })
-          observer.observe()
-        }
-      </script>
-      <script>
-        loadScript('/js/lib/lozad.min.js', addLazyload)
-      </script>
     
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>

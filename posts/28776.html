@@ -202,8 +202,6 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
-    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
-  
   
   
   
@@ -363,8 +361,8 @@
 <h4 id="得分-70-300"><a class="markdownIt-Anchor" href="#得分-70-300"></a> 得分： $ 70 / 300 $</h4>
 <hr />
 <h2 id="t1梦境"><a class="markdownIt-Anchor" href="#t1梦境"></a> T1梦境</h2>
-<p><img src="https://i.loli.net/2019/08/20/dRsy4f5PEeu9U7z.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/20/dRsy4f5PEeu9U7z.png" class="lozad post-image"></p>
-<p><img src="https://i.loli.net/2019/08/20/czmOlxPwntT3b8v.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/20/czmOlxPwntT3b8v.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/08/20/dRsy4f5PEeu9U7z.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/08/20/czmOlxPwntT3b8v.png" alt="" /></p>
 <h3 id="基本思路"><a class="markdownIt-Anchor" href="#基本思路"></a> 基本思路</h3>
 <p>此题是一个基本的贪心，将区间升序排序后，对于每个转折点，将包括该点的所有区间右端点放入小根堆中，取堆顶元素进行匹配后删除即可。</p>
 <h3 id="程序"><a class="markdownIt-Anchor" href="#程序"></a> 程序</h3>
@@ -500,8 +498,8 @@ begin
 end.
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="t2玩具"><a class="markdownIt-Anchor" href="#t2玩具"></a> T2玩具</h2>
-<p><img src="https://i.loli.net/2019/08/20/jBJDtA4bysCYVqZ.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/20/jBJDtA4bysCYVqZ.png" class="lozad post-image"></p>
-<p><img src="https://i.loli.net/2019/08/20/MKyaneHiOmWhwUF.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/20/MKyaneHiOmWhwUF.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/08/20/jBJDtA4bysCYVqZ.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/08/20/MKyaneHiOmWhwUF.png" alt="" /></p>
 <h3 id="基本思路-2"><a class="markdownIt-Anchor" href="#基本思路-2"></a> 基本思路</h3>
 <p>本题可以转化为，有一棵树，开始时只有一个根节点，之后有 $ n-1 $ 次操作，每次会将一个新的节点<strong>等概率</strong>的连接到一个已有的节点上，问操作完成后树的期望深度。</p>
 <p>显然的概率 $ Dp $ ，假设已放入 $ i $ 个节点后，形成的森林中深度最大的子树中有 $ j $ 个节点。用 $ Dp[i,j] $ 记录其概率，则该状态只可能由两种情况扩展得到，分别是 $ Dp[i-1,j] $ 和 $ Dp[i-1,j-1] $ ，可得转移方程：</p>
@@ -573,8 +571,8 @@ begin
 end.
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="t3飘雪圣域"><a class="markdownIt-Anchor" href="#t3飘雪圣域"></a> T3飘雪圣域</h2>
-<p><img src="https://i.loli.net/2019/08/20/NF4YSdHZ15yxlwA.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/20/NF4YSdHZ15yxlwA.png" class="lozad post-image"></p>
-<p><img src="https://i.loli.net/2019/08/20/Amw3NfvrEKZ1xPW.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/20/Amw3NfvrEKZ1xPW.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/08/20/NF4YSdHZ15yxlwA.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/08/20/Amw3NfvrEKZ1xPW.png" alt="" /></p>
 <h3 id="基本思路-3"><a class="markdownIt-Anchor" href="#基本思路-3"></a> 基本思路</h3>
 <p>这题看上去像是在树上找连通块，其实和树根本没啥关系。容易想到，在 $ k $ 个节点中，只要两个节点之间连边，则连通块就会减少 $ 1 $ 个，所以我们只要知道区间内节点之间连边的数量，就可以算出连通块个数。</p>
 <p>为了维护边的条数，可以将询问离线，将所有询问区间左端点升序排序，并将所有边按小顶点升序排序。之后用树状数组维护区间内边的条数，首先将所有边的大顶点放入树状数组，之后按照区间进行枚举，对于每一个区间，将小顶点小于区间左端点的边的大顶点从树状数组中删去，之后计算答案（$ l-r+1-边数 $)。</p>
@@ -1306,23 +1304,6 @@ end.
         loadScript('/js/lib/busuanzi.min.js') 
       </script>
      
-    
-      <script>
-        var addLazyload = function () {
-          var observer = lozad('.lozad', {
-            load: function (el) {
-              el.srcset = el.getAttribute('data-src')
-            },
-            loaded: function (el) {
-              el.classList.add('loaded')
-            },
-          })
-          observer.observe()
-        }
-      </script>
-      <script>
-        loadScript('/js/lib/lozad.min.js', addLazyload)
-      </script>
     
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>

@@ -202,8 +202,6 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
-    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
-  
   
   
   
@@ -421,7 +419,7 @@ end<span class="token punctuation">.</span><span aria-hidden="true" class="line-
 <p>$ tree[t].r $ 维护 $ t $ 区间最有边连续 $ 0 $ 的个数</p>
 <p>$ tree[t].p $ 维护 $ t $ 区间最多连续 $ 0 $ 的个数</p>
 <p>有了储存方式，接下来就是修改了：</p>
-<p><img src="https://i.loli.net/2019/02/13/5c64164a344f1.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/13/5c64164a344f1.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/02/13/5c64164a344f1.png" alt="" /></p>
 <p>像如上这些区间的修改是一大难点</p>
 <p>修改 $ tree[t].p $ :</p>
 <p>$ tree[t].p = max(tree[t \ \ shl \ \ 1].r+tree[t \ \ shl \ \ 1 + 1].l,tree[t \ \ shl \ \ 1].p,tree[t \ \ shl \ \ 1 + 1].p) $</p>
@@ -1215,23 +1213,6 @@ end<span class="token punctuation">.</span>
         loadScript('/js/lib/busuanzi.min.js') 
       </script>
      
-    
-      <script>
-        var addLazyload = function () {
-          var observer = lozad('.lozad', {
-            load: function (el) {
-              el.srcset = el.getAttribute('data-src')
-            },
-            loaded: function (el) {
-              el.classList.add('loaded')
-            },
-          })
-          observer.observe()
-        }
-      </script>
-      <script>
-        loadScript('/js/lib/lozad.min.js', addLazyload)
-      </script>
     
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>

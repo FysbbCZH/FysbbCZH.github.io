@@ -202,8 +202,6 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
-    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
-  
   
   
   
@@ -368,14 +366,14 @@
 <h3 id="反向网络"><a class="markdownIt-Anchor" href="#反向网络"></a> 反向网络</h3>
 <p>求解网络流最为暴力的算法就是通过一遍遍 $ BFS $ 来寻找是否有一条流量不为零的链连接源点（$ S <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>）和汇点（</mtext></mrow><annotation encoding="application/x-tex">）和汇点（</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cjk_fallback">）</span><span class="mord cjk_fallback">和</span><span class="mord cjk_fallback">汇</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">（</span></span></span></span> T $），如果有就进行更新并计算答案。这条链就是所谓的增广路。</p>
 <p>但这种方式有可能会走入错误的道路，如下图（网络图是有向图， $ 1 $ 为源点， $ 4 $ 为汇点）。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c71362a9b531.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c71362a9b531.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/02/23/5c71362a9b531.png" alt="" /></p>
 <p>如果程序选择这条链为增广路，那计算出的最大流只有 $ 1 $ ，但实际最大流显然是 $ 2 $ 。该如何解决这个问题呢？其实很简单，那就是建立反向网络。（建立反向网络实际上是在原图中连反向边，这里为了表述清楚所以分开画图）</p>
-<p><img src="https://i.loli.net/2019/02/23/5c7136d86defe.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c7136d86defe.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/02/23/5c7136d86defe.png" alt="" /></p>
 <p>初始时反向网络的所有边流量上限都为 $ 0 $ ，当找到一条增广路进行更新时，将原网络中的边减少流量上限，给反向网络中的边增加流量上限。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c7138594834a.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c7138594834a.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/02/23/5c7138594834a.png" alt="" /></p>
 <p>这样，即使第一遍走了 $ 1 \to 2 \to 3 \to 4 $ 这条路径，第二遍 $ BFS $ 时依然可以找到 $ 1 \to 3 \to 2 \to 4 $ 这条增广路，完美解决了之前的问题。事实上，建立反向网络是网络流算法普遍使用的处理方式。</p>
 <p>为什么这样做是对的呢？思考一下，走过刚刚的两条路径，实际上 $ 2 \to 3 $ 的路径上，流量上限仍未 $ 1 $ ,而 $ 3 \to 2 $ 路径的流量上限仍为 $ 0 $ 。相当于走了 $ 1 \to 2 \to 4 $ 和 $ 1 \to 3 \to 4 $ 这两条链。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c713b2e62573.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c713b2e62573.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/02/23/5c713b2e62573.png" alt="" /></p>
 <h3 id="e-k-算法"><a class="markdownIt-Anchor" href="#e-k-算法"></a> $ E-K $ 算法</h3>
 <p>$ E-K $ 算法实际上就是上文说到的暴力 $ BFS $ ，每找到一条增广路就进行更新，复杂度极高，且容易被卡。</p>
 <h3 id="dinic-算法"><a class="markdownIt-Anchor" href="#dinic-算法"></a> $ Dinic $ 算法</h3>
@@ -1085,23 +1083,6 @@ end<span class="token punctuation">.</span>
         loadScript('/js/lib/busuanzi.min.js') 
       </script>
      
-    
-      <script>
-        var addLazyload = function () {
-          var observer = lozad('.lozad', {
-            load: function (el) {
-              el.srcset = el.getAttribute('data-src')
-            },
-            loaded: function (el) {
-              el.classList.add('loaded')
-            },
-          })
-          observer.observe()
-        }
-      </script>
-      <script>
-        loadScript('/js/lib/lozad.min.js', addLazyload)
-      </script>
     
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>

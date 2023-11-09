@@ -202,8 +202,6 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
-    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
-  
   
   
   
@@ -376,7 +374,7 @@
 <p>以上是普通预流推进算法，而 $ HLPP $ 中最高标号的意思就是：每次从队列中取出标号最高的节点进行处理，这样做的时间复杂度接近 $ O(n^{2} \cdot \sqrt m) $ ，在 $ n $ 较小而 $ m $ 很大时有很高的效率。</p>
 <h3 id="各种算法的时间复杂度"><a class="markdownIt-Anchor" href="#各种算法的时间复杂度"></a> 各种算法的时间复杂度</h3>
 <p>虽然 $ HLPP $ 的理论时间复杂度比 $ Dinic $ 低，但因为 $ Dinic $ 处理随机图时的复杂度远低于上限，而 $ HLPP $ 的复杂度基本都在最高复杂度附近，所以在数据较小时 $ HLPP $ 与 $ Dinic $ 的速度并无太大差别。</p>
-<p><img src="https://i.loli.net/2019/02/24/5c727582c8a7a.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/24/5c727582c8a7a.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/02/24/5c727582c8a7a.png" alt="" /></p>
 <h3 id="hlpp-程序"><a class="markdownIt-Anchor" href="#hlpp-程序"></a> $ HLPP $ 程序</h3>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">program project1<span class="token punctuation">;</span>
 type tp<span class="token operator">=</span>record
@@ -1172,23 +1170,6 @@ end<span class="token punctuation">.</span>
         loadScript('/js/lib/busuanzi.min.js') 
       </script>
      
-    
-      <script>
-        var addLazyload = function () {
-          var observer = lozad('.lozad', {
-            load: function (el) {
-              el.srcset = el.getAttribute('data-src')
-            },
-            loaded: function (el) {
-              el.classList.add('loaded')
-            },
-          })
-          observer.observe()
-        }
-      </script>
-      <script>
-        loadScript('/js/lib/lozad.min.js', addLazyload)
-      </script>
     
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>

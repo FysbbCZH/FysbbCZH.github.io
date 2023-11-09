@@ -202,8 +202,6 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
-    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
-  
   
   
   
@@ -369,7 +367,7 @@
 <p>先从二位偏序看起:</p>
 <p>要解决二维偏序，我们可以先使用快排将第一维处理为有序排列。之后再利用树状数组或分治在第二维上统计答案。（例如<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P1908">逆序对</a>）</p>
 <p>现在问题变成了三维，我们依然可以沿用解决二维偏序问题的思路。依然用快排处理第一维（例如将其从小到大排列），但这时不能直接将第二维再次排序，否则会打乱第一维的顺序。为解决这个问题，我们可以用分治将数列分成左右两份。注意到左边的 $ a_i $ 一定小于右边的 $ a_j $ ,此时我们将左右两边的 $ b $ 分别排成有序数列，虽然 $ a $ 的顺序会被打乱，但左边 $ a $ 一定是比右边 $ a $ 小。此时，我们便可以统计左边元素对右边元素的贡献。通过层层分治，可以求出所有贡献。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c710de31167e.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c710de31167e.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/02/23/5c710de31167e.png" alt="" /></p>
 <h3 id="如何排序"><a class="markdownIt-Anchor" href="#如何排序"></a> 如何排序</h3>
 <p>对第二维元素可以用快排排序，这样的时间复杂度：</p>
 <ol>
@@ -1122,23 +1120,6 @@ end<span class="token punctuation">.</span>
         loadScript('/js/lib/busuanzi.min.js') 
       </script>
      
-    
-      <script>
-        var addLazyload = function () {
-          var observer = lozad('.lozad', {
-            load: function (el) {
-              el.srcset = el.getAttribute('data-src')
-            },
-            loaded: function (el) {
-              el.classList.add('loaded')
-            },
-          })
-          observer.observe()
-        }
-      </script>
-      <script>
-        loadScript('/js/lib/lozad.min.js', addLazyload)
-      </script>
     
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
