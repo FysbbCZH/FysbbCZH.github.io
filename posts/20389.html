@@ -204,6 +204,8 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
   
   
   
@@ -503,7 +505,7 @@ float n&#x3D;5E2;<span aria-hidden="true" class="line-numbers-rows"><span></span
 </table>
 <h3 id="iii-字符型"><a class="markdownIt-Anchor" href="#iii-字符型"></a> Ⅲ. 字符型</h3>
 <p>见 $ ASCLL $ 码表。</p>
-<p><img src="https://i.loli.net/2019/11/21/BeXINOMYndth7j8.png" alt="QQ截图20191121231556.png" /></p>
+<p><img src="https://i.loli.net/2019/11/21/BeXINOMYndth7j8.png" alt="QQ截图20191121231556.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/11/21/BeXINOMYndth7j8.png" class="lozad post-image"></p>
 <h3 id="iv-强制类型转换"><a class="markdownIt-Anchor" href="#iv-强制类型转换"></a> Ⅳ. 强制类型转换</h3>
 <pre class="line-numbers language-none"><code class="language-none">(类型名)(表达式)
 (int)(4.7)&#x3D;4;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -1271,12 +1273,6 @@ a+&#x3D;2;<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
       </a>
     
       <a 
-        href="/tags/Hexo/" 
-        title="Hexo">
-        <div class="tags-list-item">Hexo</div>
-      </a>
-    
-      <a 
         href="/tags/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" 
         title="矩阵加速">
         <div class="tags-list-item">矩阵加速</div>
@@ -1286,6 +1282,12 @@ a+&#x3D;2;<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
         href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" 
         title="概率论">
         <div class="tags-list-item">概率论</div>
+      </a>
+    
+      <a 
+        href="/tags/Hexo/" 
+        title="Hexo">
+        <div class="tags-list-item">Hexo</div>
       </a>
     
   </div>
@@ -1508,6 +1510,23 @@ a+&#x3D;2;<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
       </script>
     
 	
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
     

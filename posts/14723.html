@@ -204,6 +204,8 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
   
   
   
@@ -471,13 +473,13 @@ end<span class="token punctuation">.</span>
 <h2 id="t3泥泞的牧场"><a class="markdownIt-Anchor" href="#t3泥泞的牧场"></a> <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/U62245">T3泥泞的牧场</a></h2>
 <p>这题是二分图匹配的模板题。</p>
 <h3 id="二分图"><a class="markdownIt-Anchor" href="#二分图"></a> 二分图</h3>
-<p><img src="https://i.loli.net/2019/02/11/5c616a84c2947.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/02/11/5c616a84c2947.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/11/5c616a84c2947.png" class="lozad post-image"></p>
 <p>如此，像这种可以分成两份，每一份中的点互不相交的图就是二分图。</p>
 <h3 id="二分图匹配"><a class="markdownIt-Anchor" href="#二分图匹配"></a> 二分图匹配</h3>
-<p><img src="https://i.loli.net/2019/02/11/5c616bbabb9b2.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/02/11/5c616bbabb9b2.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/11/5c616bbabb9b2.png" class="lozad post-image"></p>
 <p>如此，连接像这样无公共顶点的两条边，就是一个二分图匹配。</p>
 <h3 id="最大匹配"><a class="markdownIt-Anchor" href="#最大匹配"></a> 最大匹配</h3>
-<p><img src="https://i.loli.net/2019/02/11/5c616c5c173f4.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/02/11/5c616c5c173f4.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/11/5c616c5c173f4.png" class="lozad post-image"></p>
 <p>最大匹配就是选择尽量多的边，使得选中的边中任意两条边均没有公共点。如果所有的点都是匹配点那就是一个完美匹配。</p>
 <p>上图的最大匹配便是 $ 3 $ 。</p>
 <p>求解二分图匹配的基本算法是<strong>匈牙利算法</strong>。</p>
@@ -487,22 +489,22 @@ end<span class="token punctuation">.</span>
 <p>匈牙利算法便是利用增广路进行处理。</p>
 <h4 id="处理方法"><a class="markdownIt-Anchor" href="#处理方法"></a> 处理方法</h4>
 <p>1.对于一个节点，遍历与其相连的节点，如果可以直接连接，就立即进行连接。</p>
-<p><img src="https://i.loli.net/2019/02/11/5c616ed223423.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/02/11/5c616ed223423.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/11/5c616ed223423.png" class="lozad post-image"></p>
 <p>2.继续下一个节点，发现直连节点已被占用。</p>
-<p><img src="https://i.loli.net/2019/02/11/5c616f49f33b5.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/02/11/5c616f49f33b5.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/11/5c616f49f33b5.png" class="lozad post-image"></p>
 <p>3.搜索到增广路。</p>
-<p><img src="https://i.loli.net/2019/02/11/5c616f6e5b06a.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/02/11/5c616f6e5b06a.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/11/5c616f6e5b06a.png" class="lozad post-image"></p>
 <p>4.依靠增广路进行扩展。</p>
-<p><img src="https://i.loli.net/2019/02/11/5c616fcfc2c8b.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/02/11/5c616fcfc2c8b.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/11/5c616fcfc2c8b.png" class="lozad post-image"></p>
 <p>5.非增广路，不进行扩展。</p>
-<p><img src="https://i.loli.net/2019/02/11/5c6170266968f.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/02/11/5c6170266968f.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/11/5c6170266968f.png" class="lozad post-image"></p>
 <p>6.无增广路，左侧无空节点，处理结束。</p>
-<p><img src="https://i.loli.net/2019/02/11/5c617090e7260.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/02/11/5c617090e7260.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/11/5c617090e7260.png" class="lozad post-image"></p>
 <h3 id="本题转化"><a class="markdownIt-Anchor" href="#本题转化"></a> 本题转化</h3>
 <p>本题题面虽与二分图无关，但可以通过奇妙的变化，转为二分图匹配问题。</p>
 <p>我们将连续行的 $ * $ 设为左侧图，连续列的 $ * $ 设为右侧图，行列的交点设为在两节点之间连了一条边。</p>
-<p><img src="https://i.loli.net/2019/02/11/5c617372afd5f.png" alt="" /><br />
-<img src="https://i.loli.net/2019/02/11/5c6173824a289.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/02/11/5c617372afd5f.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/11/5c617372afd5f.png" class="lozad post-image"><br />
+<img src="https://i.loli.net/2019/02/11/5c6173824a289.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/11/5c6173824a289.png" class="lozad post-image"></p>
 <p>之后我们要求出此图的最小顶点覆盖，因为我们在一行&amp;一列放上木板，相当于选取了图中的一个点，覆盖的泥地相当于图中与此顶点相连的边。所以用最少的木板覆盖全部泥地相当于选最少的顶点覆盖全部的边。</p>
 <p>根据二分图特点，最小顶点覆盖=最大匹配，求出该图的最大匹配就是答案。</p>
 <h3 id="程序-3"><a class="markdownIt-Anchor" href="#程序-3"></a> 程序</h3>
@@ -978,12 +980,6 @@ end<span class="token punctuation">.</span>
       </a>
     
       <a 
-        href="/tags/Hexo/" 
-        title="Hexo">
-        <div class="tags-list-item">Hexo</div>
-      </a>
-    
-      <a 
         href="/tags/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" 
         title="矩阵加速">
         <div class="tags-list-item">矩阵加速</div>
@@ -993,6 +989,12 @@ end<span class="token punctuation">.</span>
         href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" 
         title="概率论">
         <div class="tags-list-item">概率论</div>
+      </a>
+    
+      <a 
+        href="/tags/Hexo/" 
+        title="Hexo">
+        <div class="tags-list-item">Hexo</div>
       </a>
     
   </div>
@@ -1215,6 +1217,23 @@ end<span class="token punctuation">.</span>
       </script>
     
 	
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
     

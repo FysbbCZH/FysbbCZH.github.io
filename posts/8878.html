@@ -212,6 +212,8 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
   
   
   
@@ -450,7 +452,7 @@
 <p>在主题配置文件中 <code>animation config</code> 调整主题动画效果，目前仅支持控制回到顶部动画的开关</p>
 <h3 id="图标"><a class="markdownIt-Anchor" href="#图标"></a> 图标</h3>
 <p>主题图标依赖于 <a target="_blank" rel="noopener" href="https://www.iconfont.cn/">iconfont</a>，内置了一部分社交图标，您可以自定义其他icon文件或者解决方案来添加自定义图标</p>
-<img src="https://img.songhn.com/img/iconfont.png?imageslim">
+<img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://img.songhn.com/img/iconfont.png?imageslim" class="lozad post-image"src="https://img.songhn.com/img/iconfont.png?imageslim">
 <h3 id="站点访问量统计"><a class="markdownIt-Anchor" href="#站点访问量统计"></a> 站点访问量统计</h3>
 <p>访问量统计目前仅支持不蒜子</p>
 <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">footer</span><span class="token punctuation">:</span>
@@ -953,12 +955,6 @@
       </a>
     
       <a 
-        href="/tags/Hexo/" 
-        title="Hexo">
-        <div class="tags-list-item">Hexo</div>
-      </a>
-    
-      <a 
         href="/tags/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" 
         title="矩阵加速">
         <div class="tags-list-item">矩阵加速</div>
@@ -968,6 +964,12 @@
         href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" 
         title="概率论">
         <div class="tags-list-item">概率论</div>
+      </a>
+    
+      <a 
+        href="/tags/Hexo/" 
+        title="Hexo">
+        <div class="tags-list-item">Hexo</div>
       </a>
     
   </div>
@@ -1190,6 +1192,23 @@
       </script>
     
 	
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
     

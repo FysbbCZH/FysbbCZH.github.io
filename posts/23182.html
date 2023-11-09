@@ -212,6 +212,8 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
   
   
   
@@ -492,8 +494,8 @@ F-->|x|G</pre>
 <p>需要注意的是，在大量的输出数据的情况下，题目 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>60</mn><mi>m</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">60ms</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">0</span><span class="mord mathnormal">m</span><span class="mord mathnormal">s</span></span></span></span> 的时限非常紧促，建议程序中不要使用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>t</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">string</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span> 和其他库函数，最好加上 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>n</mi><mi>l</mi><mi>i</mi><mi>n</mi><mi>e</mi><mo separator="true">,</mo><mi>r</mi><mi>e</mi><mi>g</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>e</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">inline,register</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 等，整形较小时使用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>h</mi><mi>o</mi><mi>r</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">short</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">h</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">t</span></span></span></span> 而非 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><mi>n</mi><mi>g</mi><mtext> </mtext><mi>l</mi><mi>o</mi><mi>n</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">long\ long</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span> ，输入输出使用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mi>e</mi><mi>t</mi><mi>s</mi><mo separator="true">,</mo><mi>f</mi><mi>p</mi><mi>u</mi><mi>t</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">gets,fputs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">p</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span></span></span></span> 等较快的方式。（ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>c</mi><mi>a</mi><mi>n</mi><mi>f</mi><mo separator="true">,</mo><mi>p</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">scanf,printf</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">c</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span> 我都过不去）</p>
 <p>优化和卡常前后的速度对比：</p>
 <center>
-<p><img src="https://s2.loli.net/2022/03/04/PYnMeH3Ua7A8yls.png" alt="QQ截图20220304213752.png" /><br />
-<img src="https://s2.loli.net/2022/03/04/UZ3rWIYJqD4CV5v.png" alt="QQ截图20220304213703.png" /></p>
+<p><img src="https://s2.loli.net/2022/03/04/PYnMeH3Ua7A8yls.png" alt="QQ截图20220304213752.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/04/PYnMeH3Ua7A8yls.png" class="lozad post-image"><br />
+<img src="https://s2.loli.net/2022/03/04/UZ3rWIYJqD4CV5v.png" alt="QQ截图20220304213703.png" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://s2.loli.net/2022/03/04/UZ3rWIYJqD4CV5v.png" class="lozad post-image"></p>
 </center>
 
   </div>
@@ -860,12 +862,6 @@ F-->|x|G</pre>
       </a>
     
       <a 
-        href="/tags/Hexo/" 
-        title="Hexo">
-        <div class="tags-list-item">Hexo</div>
-      </a>
-    
-      <a 
         href="/tags/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" 
         title="矩阵加速">
         <div class="tags-list-item">矩阵加速</div>
@@ -875,6 +871,12 @@ F-->|x|G</pre>
         href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" 
         title="概率论">
         <div class="tags-list-item">概率论</div>
+      </a>
+    
+      <a 
+        href="/tags/Hexo/" 
+        title="Hexo">
+        <div class="tags-list-item">Hexo</div>
       </a>
     
   </div>
@@ -1097,6 +1099,23 @@ F-->|x|G</pre>
       </script>
     
 	
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
     

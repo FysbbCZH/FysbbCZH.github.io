@@ -204,6 +204,8 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
   
   
   
@@ -370,7 +372,7 @@
 <p>给出一棵树，询问树上有无距离为 $ k $ 的点对存在。</p>
 <p>对于此类问题，最基础的方法是 $ DFS $ 树上的每一条链，寻找有无链长为 $ k $ ,但是这样的做法时间复杂度为 $ O(n^{2}) $ ,肯定会 $ TLE $ 。这时，我们便可使用<strong>点分治</strong>来解决问题。</p>
 <p>实际上，如果选一个节点为根，树上的链可以分成两种，即<strong>经过树根</strong>和<strong>在子树中</strong>。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c71233a768a9.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/02/23/5c71233a768a9.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c71233a768a9.png" class="lozad post-image"></p>
 <p>而这便是点分治的基础，我们选择一个根，进行一次 $ DFS $ ，处理完所有经过根的路径，之后我们将根删除。原有的树被分为多棵子树，在所有子树中进行同样的操作，直到所有节点都被删除。</p>
 <p>但根节点的选择也是有技巧的，如上图中选择 $ R $ 为根和选择 $ K $ 为根，分治的次数是不同的，如何选取一个节点，使分治次数最少？事实上，这个点就是树的<strong>重心</strong>。</p>
 <h3 id="树的重心"><a class="markdownIt-Anchor" href="#树的重心"></a> 树的重心</h3>
@@ -397,7 +399,7 @@ begin
 end<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="分治处理"><a class="markdownIt-Anchor" href="#分治处理"></a> 分治处理</h3>
 <p>找到重心后，我们便可以通过DFS查找答案，但此时要注意这种特殊情况。</p>
-<p><img src="https://i.loli.net/2019/02/23/5c712aadc3dae.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/02/23/5c712aadc3dae.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/02/23/5c712aadc3dae.png" class="lozad post-image"></p>
 <p>像这样的两条链是不能将他们的长度加在一起的，但显然这种情况在记录答案时是不好处理的，所以我们可以跑两遍 $ DFS $ ，第一遍记录答案（不论正误），第二遍将错误的答案减掉。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">procedure <span class="token function">dfs</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span>fa<span class="token punctuation">,</span>len<span class="token operator">:</span>longint<span class="token punctuation">)</span><span class="token punctuation">;</span>
 var i<span class="token operator">:</span>longint<span class="token punctuation">;</span>
@@ -933,12 +935,6 @@ end<span class="token punctuation">.</span>
       </a>
     
       <a 
-        href="/tags/Hexo/" 
-        title="Hexo">
-        <div class="tags-list-item">Hexo</div>
-      </a>
-    
-      <a 
         href="/tags/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" 
         title="矩阵加速">
         <div class="tags-list-item">矩阵加速</div>
@@ -948,6 +944,12 @@ end<span class="token punctuation">.</span>
         href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" 
         title="概率论">
         <div class="tags-list-item">概率论</div>
+      </a>
+    
+      <a 
+        href="/tags/Hexo/" 
+        title="Hexo">
+        <div class="tags-list-item">Hexo</div>
       </a>
     
   </div>
@@ -1170,6 +1172,23 @@ end<span class="token punctuation">.</span>
       </script>
     
 	
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
     

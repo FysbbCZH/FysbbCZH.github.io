@@ -204,6 +204,8 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
   
   
   
@@ -366,10 +368,10 @@
 <h4 id="得分-193300"><a class="markdownIt-Anchor" href="#得分-193300"></a> 得分：$ 193/300 $</h4>
 <hr />
 <h2 id="t1-matrix"><a class="markdownIt-Anchor" href="#t1-matrix"></a> T1 $ Matrix $</h2>
-<p><img src="https://i.loli.net/2019/08/21/ERI3gOzW2SjCPGx.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/08/21/ERI3gOzW2SjCPGx.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/ERI3gOzW2SjCPGx.png" class="lozad post-image"></p>
 <h3 id="基本思路"><a class="markdownIt-Anchor" href="#基本思路"></a> 基本思路</h3>
 <p>此题可以用枚举解决，分别枚举每一列作为矩形中间点统计答案，最后取最大值。每次统计答案时，分别算出每一列相邻的 $ 1 $ 的个数 $ sum $：</p>
-<p><img src="https://i.loli.net/2019/08/21/VeirquZhHXjpPd4.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/08/21/VeirquZhHXjpPd4.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/VeirquZhHXjpPd4.png" class="lozad post-image"></p>
 <p>之后从该列向两边查找（其实只向一边也可以），如果当前枚举的列为 $ k $ ，查找到的列为 $ i $ ，则答案为 $ |i-j| \cdot sum[i] $ 。</p>
 <p>直接暴力查找的时间复杂度时 $ O(n \cdot m^2) $ ，为了加快速度，可以预处理出以 $ i $ 为中心的每行连续 $ 1 $ 的左右端点，之后计算 $ sum $ 时用前缀和处理。使时间复杂度降低为 $ O(n \cdot m) $ 。</p>
 <h3 id="程序"><a class="markdownIt-Anchor" href="#程序"></a> 程序</h3>
@@ -478,7 +480,7 @@ end.
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="t2-present"><a class="markdownIt-Anchor" href="#t2-present"></a> T2 $ Present $</h2>
-<p><img src="https://i.loli.net/2019/08/21/ZjITie9PNhWsE7a.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/08/21/ZjITie9PNhWsE7a.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/ZjITie9PNhWsE7a.png" class="lozad post-image"></p>
 <h3 id="基本思路-2"><a class="markdownIt-Anchor" href="#基本思路-2"></a> 基本思路</h3>
 <p>刚看到题面，第一反应：“这不是背包板子吗！”。看到数据范围：“。。。”。</p>
 <p>这三天的 $ T2 $ 都异常巧妙，昨天考了最小生成树，今天的 $ T2 $ 则是一个最短路径。从原题上完全看不出和图论的联系，但是却能根据题目的特点进行转化：</p>
@@ -560,8 +562,8 @@ end.
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="t3-mahjong"><a class="markdownIt-Anchor" href="#t3-mahjong"></a> T3 $ Mahjong $</h2>
-<p><img src="https://i.loli.net/2019/08/21/FI547kP6BDe9cXf.png" alt="" /></p>
-<p><img src="https://i.loli.net/2019/08/21/Y1b7rSeflECn5gH.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/08/21/FI547kP6BDe9cXf.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/FI547kP6BDe9cXf.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/08/21/Y1b7rSeflECn5gH.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/21/Y1b7rSeflECn5gH.png" class="lozad post-image"></p>
 <h3 id="基本思路-3"><a class="markdownIt-Anchor" href="#基本思路-3"></a> 基本思路</h3>
 <p>这是三天中最水的 $ T3 $ ，没有任何算法，就是按照题意模拟和枚举。主意好细节就可以，注意要先确定雀头，再查找顺子和刻子。对特殊牌型先行处理。</p>
 <p>这题说明了看题是多重要，我没看到“字牌不能成顺子”，结果 $ 100 \to 63 $ 。</p>
@@ -1167,12 +1169,6 @@ end.
       </a>
     
       <a 
-        href="/tags/Hexo/" 
-        title="Hexo">
-        <div class="tags-list-item">Hexo</div>
-      </a>
-    
-      <a 
         href="/tags/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" 
         title="矩阵加速">
         <div class="tags-list-item">矩阵加速</div>
@@ -1182,6 +1178,12 @@ end.
         href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" 
         title="概率论">
         <div class="tags-list-item">概率论</div>
+      </a>
+    
+      <a 
+        href="/tags/Hexo/" 
+        title="Hexo">
+        <div class="tags-list-item">Hexo</div>
       </a>
     
   </div>
@@ -1404,6 +1406,23 @@ end.
       </script>
     
 	
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
     

@@ -204,6 +204,8 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
   
   
   
@@ -366,7 +368,7 @@
 <h4 id="得分-105300"><a class="markdownIt-Anchor" href="#得分-105300"></a> 得分： $ 105/300 $</h4>
 <hr />
 <h2 id="t1-mine"><a class="markdownIt-Anchor" href="#t1-mine"></a> T1 $ mine $</h2>
-<p><img src="https://i.loli.net/2019/08/20/kPM6ewofBXEjWd5.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/08/20/kPM6ewofBXEjWd5.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/20/kPM6ewofBXEjWd5.png" class="lozad post-image"></p>
 <h3 id="基本思路"><a class="markdownIt-Anchor" href="#基本思路"></a> 基本思路</h3>
 <p>此题可以使用 $ Dp $ 解决，设 $ Dp[i,j,k] $ 表示当前处理到第 $ i $ 位，第 $ i $ 位字符为 $ j $ 类型，第 $ i-1 $ 为符号为 $ k $ 类型时的方案数。</p>
 <p>$ s_i=* \   \to \   j,k=1 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow></mrow><annotation encoding="application/x-tex">
@@ -447,8 +449,8 @@ begin
 end.
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="t2-water"><a class="markdownIt-Anchor" href="#t2-water"></a> T2 $ water $</h2>
-<p><img src="https://i.loli.net/2019/08/20/xpzRuDhcfOF2MQr.png" alt="" /></p>
-<p><img src="https://i.loli.net/2019/08/20/TNaLPhBo9EKe8Id.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/08/20/xpzRuDhcfOF2MQr.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/20/xpzRuDhcfOF2MQr.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/08/20/TNaLPhBo9EKe8Id.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/20/TNaLPhBo9EKe8Id.png" class="lozad post-image"></p>
 <h3 id="基本思路-2"><a class="markdownIt-Anchor" href="#基本思路-2"></a> 基本思路</h3>
 <p>这题是一道十分奇妙的图论题。首先考虑一个点的积水深度如何计算，假设这个点开始时有无限的水深，这些多出来的水肯定会沿着一某些路径流走，随着水深不断下降，显然当水深到达<strong>所有路径中最大点高度的最小值</strong>时，余下的水就无法流走了，这时的水深就是答案。</p>
 <p>现在的问题就是如何找出这个最小值。要求出最小值，首先要找到这条路径，所有点的路径是一棵<strong>瓶颈生成树</strong>。</p>
@@ -588,8 +590,8 @@ begin
 end.
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="t3-gcd"><a class="markdownIt-Anchor" href="#t3-gcd"></a> T3 $ gcd $</h2>
-<p><img src="https://i.loli.net/2019/08/20/fNYv3APwygLuBoH.png" alt="" /></p>
-<p><img src="https://i.loli.net/2019/08/20/NeIDafKvEiApUOo.png" alt="" /></p>
+<p><img src="https://i.loli.net/2019/08/20/fNYv3APwygLuBoH.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/20/fNYv3APwygLuBoH.png" class="lozad post-image"></p>
+<p><img src="https://i.loli.net/2019/08/20/NeIDafKvEiApUOo.png" alt="" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://i.loli.net/2019/08/20/NeIDafKvEiApUOo.png" class="lozad post-image"></p>
 <h3 id="基本思路-3"><a class="markdownIt-Anchor" href="#基本思路-3"></a> 基本思路</h3>
 <p>咕</p>
 
@@ -957,12 +959,6 @@ end.
       </a>
     
       <a 
-        href="/tags/Hexo/" 
-        title="Hexo">
-        <div class="tags-list-item">Hexo</div>
-      </a>
-    
-      <a 
         href="/tags/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" 
         title="矩阵加速">
         <div class="tags-list-item">矩阵加速</div>
@@ -972,6 +968,12 @@ end.
         href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" 
         title="概率论">
         <div class="tags-list-item">概率论</div>
+      </a>
+    
+      <a 
+        href="/tags/Hexo/" 
+        title="Hexo">
+        <div class="tags-list-item">Hexo</div>
       </a>
     
   </div>
@@ -1194,6 +1196,23 @@ end.
       </script>
     
 	
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
     

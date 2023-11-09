@@ -208,6 +208,8 @@
     <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
   
   
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
   
   
   
@@ -388,10 +390,10 @@
 <p>这次CSP认证出乎意料的顺利，T1和T2都是简单的前缀和，T3是个大模拟。而在区分度较大的最后两题，T4是一个数据结构，我并没有什么思路，当时已经只剩40分钟，就在我以为这次又得300分结束的时候，我发现<a target="_blank" rel="noopener" href="http://118.190.20.162/view.page?gpid=T171">T5</a>和<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5024">NOIP2018的保卫王国</a>几乎如出一辙，一样的树上DP，一样的单点修改，甚至连子任务分布都极为相似，所以我当场断定，这题一定是动态DP，虽然写不了正解，但是凭借记忆，我还是很快完成了60分的子任务，最终凭借着本次CSP的360分，我被学校CCSP队伍选中，获得了参加CCSP2023的资格。</p>
 <p>入队以后，我们每个成员负责分析一道CCSP历年题目，并完成报告。我负责研究<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/U266103">CCSP2021的抽卡</a>（<a href="https://blog.fysbbczh.top/posts/53500.html">题解点这</a>），但其实我并没有花很多时间在研究题目上，因为当时正好是中秋国庆假期，我已经回老家了。而且还先后去了曲阜、济南、泰山、蚌埠游玩（所以我说是真的游记嘛），我是在从济南回家以后，中途休息了三天，正好完成了题解，7号晚上在线上会议讲完题，第二天就又和哥哥去爬泰山了。下山后又去我哥学校逛了几天，正好他宿舍室友不在，我就拿他室友卡伪装成学生进去，住他寝室里，成功省了一笔住宿费。等回学校已经18号了，离比赛也没几天，剩下的时间我就把历年题的标程在Ubuntu下调了调，熟悉下环境。我并没有去动手写更多的代码，其实也有一个原因是CCSP的题目大多难度不高，但是解题过程非常繁琐，所以我也建议<font color='red'>大家在研究历年题时不要将过多的精力放在实现上，而是搞懂思路和流程就好</font>。(这里放几张旅游照片，泰山还是很壮丽啊)</p>
 <div style="position:relative;width:100%;padding-bottom:56.3%;">
-    <img src="/img/CCSP2023游记/泰山-1.jpg" style="position:absolute;left:3.7%;width:45%">
+    <img src="/img/CCSP2023游记/泰山-1.jpg" style="position:absolute;left:3.7%;width:45%" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/CCSP2023游记/泰山-1.jpg" class="lozad post-image">
     <div style="position:absolute;left:3.7%;top:54%;font-size:1vw">上 · 泰山日出</div>
     <div style="position:absolute;right:51.3%;top:54%;font-size:1vw">下 · 泰安夜景</div>
-    <img src="/img/CCSP2023游记/泰山-2.jpg" style="position:absolute;top:59%;left:3.7%;width:45%">
+    <img src="/img/CCSP2023游记/泰山-2.jpg" style="position:absolute;top:59%;left:3.7%;width:45%" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/CCSP2023游记/泰山-2.jpg" class="lozad post-image">
     <font style="position:absolute;left:49.3%;font-size:1vw">右</font>
     <font style="position:absolute;left:50.1%;top:4%;font-size:1vw">·</font>
     <font style="position:absolute;left:49.3%;top:8%;font-size:1vw">蚌</font>
@@ -399,13 +401,13 @@
     <font style="position:absolute;left:49.3%;top:16%;font-size:1vw">栖</font>
     <font style="position:absolute;left:49.3%;top:20%;font-size:1vw">岩</font>
     <font style="position:absolute;left:49.3%;top:24%;font-size:1vw">寺</font>
-    <img src="/img/CCSP2023游记/栖岩寺.jpg" style="position:absolute;left:51.4%;width:45%;height:100%">
+    <img src="/img/CCSP2023游记/栖岩寺.jpg" style="position:absolute;left:51.4%;width:45%;height:100%" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/CCSP2023游记/栖岩寺.jpg" class="lozad post-image">
 </div>
 <h1 id="day0"><a class="markdownIt-Anchor" href="#day0"></a> Day0</h1>
 <p>其实CCSP并没有Day0的概念，既没有热身赛，也不能提前试机，甚至连在考场门口拍照都不行，提前到达只是说为了养足精神。我们是中午从学校出发，下午四点到沈阳宾馆。接着去考场签到，顺便看考场，这时候就隐约感觉不妙，因为考场并不是想象中的大机房，而是一个类似会议室的房间，在里面摆了六七张大圆桌，每个桌子用隔板分成八份，各摆上一个笔记本。这环境可以说烂到爆了，人家蓝桥杯都是在机房，CCF收了这么多钱（CCSP报名费500）还搞这种比赛环境，也是真的难绷。</p>
 <div style="position:relative;width:100%;padding-bottom:36.3%;">
-    <img src="/img/CCSP2023游记/比赛环境1.jpg" style="position:absolute;left:3.7%;width:45%">
-    <img src="/img/CCSP2023游记/比赛环境2.jpg" style="position:absolute;left:49.7%;width:45%">
+    <img src="/img/CCSP2023游记/比赛环境1.jpg" style="position:absolute;left:3.7%;width:45%" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/CCSP2023游记/比赛环境1.jpg" class="lozad post-image">
+    <img src="/img/CCSP2023游记/比赛环境2.jpg" style="position:absolute;left:49.7%;width:45%" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/CCSP2023游记/比赛环境2.jpg" class="lozad post-image">
 </div>
 <p>晚上教练请我们吃了铁锅炖，不得不说东北的大杂烩还是挺好吃的。</p>
 <h2 id="ccsp特色1-携带电子资料"><a class="markdownIt-Anchor" href="#ccsp特色1-携带电子资料"></a> CCSP特色1-携带电子资料</h2>
@@ -422,7 +424,7 @@
 <p>除去这些外表上的落后，实际使用的细节更是拉跨，首先是fn键正好和Ctrl反转位置，导致我总是在保存的时候按倒fn，它“fn+S”的快捷键还是截屏，比赛结束我看图片目录下面得截了90多张图。然后就是缩小的方向键，左右键的上方还是“page up/down”，每次按方向键都可能误触，然后就给我疯狂翻页。最最难绷的还是那个触摸板，它接触不良到就算我的手不碰电脑，鼠标都会在那一直乱窜，必须要使劲按几下触摸板才能解决，关键是我还找不到怎么把触摸板关掉，甚至后来都严重到要使劲锤触摸板才能让鼠标稍微乖巧一点。</p>
 <p>上面还只是硬件，软件上提供了VSCode，看起来还不错，但是当我打开设置界面想调整一下，才发现设置全是空的，整个界面没有一个字母或图标，就算在搜索框搜索也找不到任何设置。后来还好找到了“settings.json”，凭借着记忆和自动补全直接编辑，把字体、格式化、自动保存等功能都打开了，不然就这破电脑加上白板VSC，还不知道得多难受。</p>
 <div style="text-align:center">
-    <img src="/img/CCSP2023游记/比赛现场照片.jpg" style="width:60%">
+    <img src="/img/CCSP2023游记/比赛现场照片.jpg" style="width:60%" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/CCSP2023游记/比赛现场照片.jpg" class="lozad post-image">
     <p>中间那个红色的就是我ヾ(≧▽≦*)o</p>
 </div>
 <h2 id="ccsp特色2-超长比赛时间"><a class="markdownIt-Anchor" href="#ccsp特色2-超长比赛时间"></a> CCSP特色2-超长比赛时间</h2>
@@ -433,7 +435,7 @@
 <h2 id="t3"><a class="markdownIt-Anchor" href="#t3"></a> T3</h2>
 <p>然后开始看T3，当时一看到那个“波动最大值的最小化”，我便立刻确定这题是二分答案，为什么呢？请看下图</p>
 <div style="text-align:center">
-    <img src="/img/CCSP2023游记/NOIP2018D1T3.png" style="width:60%">
+    <img src="/img/CCSP2023游记/NOIP2018D1T3.png" style="width:60%" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/CCSP2023游记/NOIP2018D1T3.png" class="lozad post-image">
     <p>因为对此一无所知，导致此题得分很低，当年差5分痛失省一</p>
     <br>
 </div>
@@ -442,8 +444,8 @@
 <p>看了一下榜，发现T3大部分都是拿10分20分的，而T2很多都AC了，那说明T2难度并不大。于是又回头看T2，觉得可以直接用组合数学硬推，然后就从第二个子任务开始，依次推导每种情况的式子。出乎意料的是，我这次居然没画图也没打表，纯靠推把几种情况都搞出来了。大概一个多小时就把T2正解搞出来了，拿了95分，有个点超时，后来用记忆化的方式优化一下就行了。</p>
 <div style="text-align:center">
     <div style="position:relative;width:100%;padding-bottom:34.3%;">
-        <img src="/img/CCSP2023游记/草稿1.jpg" style="position:absolute;left:3.7%;width:45%">
-        <img src="/img/CCSP2023游记/草稿2.jpg" style="position:absolute;left:49.7%;width:45%">
+        <img src="/img/CCSP2023游记/草稿1.jpg" style="position:absolute;left:3.7%;width:45%" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/CCSP2023游记/草稿1.jpg" class="lozad post-image">
+        <img src="/img/CCSP2023游记/草稿2.jpg" style="position:absolute;left:49.7%;width:45%" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/CCSP2023游记/草稿2.jpg" class="lozad post-image">
     </div>
     <p>整场比赛我就打了这么点草稿</p>
 </div>
@@ -475,8 +477,8 @@
 <p>参加CCSP可以免费参加CNCC大会，并且可以免费乘坐地铁，还有沈阳故宫等景点可以免费参观，可以说是非常赚了。上午签完到，我也没听报告，直接去景点转了一圈。不得不说沈阳故宫是真的小，建筑也不算豪华，旁边的张学良旧居比它要壮丽多了。</p>
 <div style="text-align:center">
     <div style="position:relative;width:100%;padding-bottom:30.3%;">
-        <img src="/img/CCSP2023游记/沈阳故宫.jpg" style="position:absolute;left:3.7%;width:45%">
-        <img src="/img/CCSP2023游记/张学良旧居.jpg" style="position:absolute;left:49.7%;width:45%">
+        <img src="/img/CCSP2023游记/沈阳故宫.jpg" style="position:absolute;left:3.7%;width:45%" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/CCSP2023游记/沈阳故宫.jpg" class="lozad post-image">
+        <img src="/img/CCSP2023游记/张学良旧居.jpg" style="position:absolute;left:49.7%;width:45%" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/CCSP2023游记/张学良旧居.jpg" class="lozad post-image">
     </div>
     <p>左边是沈阳故宫大政殿，右边是张学良旧居的大青楼（这名字挺奇怪蛤）</p>
     <br>
@@ -835,12 +837,6 @@
       </a>
     
       <a 
-        href="/tags/Hexo/" 
-        title="Hexo">
-        <div class="tags-list-item">Hexo</div>
-      </a>
-    
-      <a 
         href="/tags/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" 
         title="矩阵加速">
         <div class="tags-list-item">矩阵加速</div>
@@ -850,6 +846,12 @@
         href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" 
         title="概率论">
         <div class="tags-list-item">概率论</div>
+      </a>
+    
+      <a 
+        href="/tags/Hexo/" 
+        title="Hexo">
+        <div class="tags-list-item">Hexo</div>
       </a>
     
   </div>
@@ -1072,6 +1074,23 @@
       </script>
     
 	
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
     
