@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.fysbbczh.top/baidu_verify_codeva-BIeKAuBgrT.html</loc>
-    
-    <lastmod>2023-11-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.fysbbczh.top/posts/a7530484.html</loc>
     
     <lastmod>2023-11-08</lastmod>
@@ -137,7 +128,7 @@
   </url>
   
   <url>
-    <loc>https://blog.fysbbczh.top/posts/46746.html</loc>
+    <loc>https://blog.fysbbczh.top/posts/28776.html</loc>
     
     <lastmod>2023-11-08</lastmod>
     
@@ -146,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://blog.fysbbczh.top/posts/28776.html</loc>
+    <loc>https://blog.fysbbczh.top/posts/46746.html</loc>
     
     <lastmod>2023-11-08</lastmod>
     
@@ -547,13 +538,6 @@
   </url>
   
   <url>
-    <loc>https://blog.fysbbczh.top/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/</loc>
-    <lastmod>2023-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.fysbbczh.top/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -561,7 +545,7 @@
   </url>
   
   <url>
-    <loc>https://blog.fysbbczh.top/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/</loc>
+    <loc>https://blog.fysbbczh.top/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -569,6 +553,13 @@
   
   <url>
     <loc>https://blog.fysbbczh.top/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.fysbbczh.top/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
