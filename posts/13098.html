@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
+  <!-- 不蒜子统计修正，解决单篇文章被统计为全站数据的问题 -->
+  <meta name="referrer" content="no-referrer-when-downgrade">
   <!-- 引入自己的图标库 -->
   <link rel="stylesheet" href="/css/iconfont.css">
   <!-- 百度网站验证 -->
   <meta name="baidu-site-verification" content="codeva-BIeKAuBgrT">
-  <!-- 不蒜子统计修正，解决单篇文章被统计为全站数据的问题 -->
-  <meta name="referrer" content="always">
   <meta charset="UTF-8">
   <meta 
     name="viewport"
@@ -363,7 +363,10 @@
         style="font-size: 1.15rem;margin-right: 2px">
       </i>
       <!--  -->
-      <span id="busuanzi_container_page_pv" style='display: none'>浏览 <span id="busuanzi_value_page_pv"></span></span>
+      <span id="test1" class="leancloud_visitors" data-flag-title="Your Article Title">
+        <em class="post-meta-item-text">阅读量 </em>
+        <i class="leancloud-visitors-count"></i>
+      </span>
     </div>
   </div>
   </header>
@@ -490,14 +493,14 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
         meta: ["nick","mail","link"],
         pageSize: '10',
         lang: '',
-        visitor: 'false',
+        visitor: 'true',
         highlight: true,
-        recordIP: false,
+        recordIP: true,
         
         
         
-        enableQQ: 'false',
-        requiredFields: [],
+        enableQQ: 'true',
+        requiredFields: ["nick","mail"],
       });
     };
   </script>
@@ -740,15 +743,15 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
       </a>
     
       <a 
-        href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" 
-        title="动态规划">
-        <div class="tags-list-item">动态规划</div>
-      </a>
-    
-      <a 
         href="/tags/CCSP/" 
         title="CCSP">
         <div class="tags-list-item">CCSP</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" 
+        title="动态规划">
+        <div class="tags-list-item">动态规划</div>
       </a>
     
       <a 
@@ -800,15 +803,15 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
       </a>
     
       <a 
-        href="/tags/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" 
-        title="矩阵加速">
-        <div class="tags-list-item">矩阵加速</div>
+        href="/tags/%E7%AB%9E%E8%B5%9B/" 
+        title="竞赛">
+        <div class="tags-list-item">竞赛</div>
       </a>
     
       <a 
-        href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" 
-        title="概率论">
-        <div class="tags-list-item">概率论</div>
+        href="/tags/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" 
+        title="矩阵加速">
+        <div class="tags-list-item">矩阵加速</div>
       </a>
     
   </div>
@@ -1025,12 +1028,12 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
      
      
     <script src="/js/main.js"></script> 
-    
+	
       <script> 
         loadScript('/js/lib/busuanzi.min.js') 
       </script>
-     
     
+	
     <script src="//instant.page/5.1.0" type="module"
       integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
     
