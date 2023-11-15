@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <!-- 不蒜子统计修正，解决单篇文章被统计为全站数据的问题 -->
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <!-- 引入自己的图标库 -->
+  <link rel="stylesheet" href="/css/iconfont.css">
+  <!-- 百度网站验证 -->
+  <meta name="baidu-site-verification" content="codeva-BIeKAuBgrT">
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="That&#39;s♂good!">
+  <link 
+    rel="icon" 
+    href="/">
+  <title>用Hexo搭建Git Pages博客</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="用Hexo搭建Git Pages博客">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://blog.fysbbczh.top/posts/2663e422.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="/img/myavatar.jpg">
+    
+    
+      <meta 
+        property="og:img" 
+        content="本文讲述如何通过Hexo和Git Pages搭建自己的博客，并同步部署到Netlify，且可以绑定自己的域名进行访问">
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2021-11-10">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-11-15">
+      <meta 
+        property="og:article:author" 
+        content="FysbbCZH">
+      
+        
+          <meta 
+            property="og:article:tag" 
+            content="Hexo">
+        
+          <meta 
+            property="og:article:tag" 
+            content="BLOG">
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+      
+      
+      
+      
+        
+        
+        
+        <script>
+          function prismThemeChange() {
+            if(document.getElementById('theme-color').dataset.mode === 'dark') {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
+              } else {
+                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
+              }
+            } else {
+              if(document.querySelector('[data-prism]')) {
+                changeCSS('/js/lib/prism/prism.min.css', '[data-prism]', 'prism');
+              } else {
+                loadCSS('/js/lib/prism/prism.min.css', 'prism', 'prism');
+              }
+            }
+          }
+          prismThemeChange()
+        </script>
+      
+      
+        
+        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
+      
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+        prismThemeChange();
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+        prismThemeChange();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+    
+    <link rel="prefetch" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" as="script">
+  
+  
+    
+    <link rel="prefetch" href="//unpkg.com/valine/dist/Valine.min.js" as="script">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+      <span class="navbar-logo-dsc">FysbbCZH'S BLOG</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          首页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          归档
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      用Hexo搭建Git Pages博客
+    </h1>
+  </header>
+  <!-- 日期 -->
+  <div class="post-meta post-show-meta">
+    <time datetime="2021-11-09T16:00:00.000Z">
+      <i class="iconfont icon-calendar" style="margin-right: 4px;"></i><!-- 
+   --><span>创建日期 2021-11-10</span>
+      <span class="dot"></span>
+      <span>更新日期 2023-11-15</span>
+    </time>
+  </div>
+  <!-- 分类 -->
+  
+    <div class="post-meta post-show-meta" style="margin-top: -10px;">
+      <i class="iconfont icon-fenlei" style="margin-right: 2px"></i><!-- 
+   --><!--
+     --><a href="/categories/%E7%9F%A5%E8%AF%86/" class="post-meta-link">知识</a>
+      <!--
+     --><a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/" class="post-meta-link">BLOG</a>
+      <!--
+     --><a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Hexo/" class="post-meta-link">Hexo</a>
+      
+      
+        <span class="dot"></span>
+        <span>1.5k 字</span>
+      
+    </div>
+  
+  <!-- 标签 -->
+  
+    <div class="post-meta post-show-meta" style="margin-top: -10px;">
+      <div style="display: flex; align-items: center;">
+        <i class="iconfont icon-biaoqian" style="margin-right: 2px"></i>
+        <!--  -->
+        
+          
+          <a href="/tags/Hexo/" class="post-meta-link">
+            Hexo
+          </a>
+        
+          
+            <span class="dot"></span>
+          
+          <a href="/tags/BLOG/" class="post-meta-link">
+            BLOG
+          </a>
+        
+      </div>
+    </div>
+  
+  <!-- 阅读数 -->
+  <div 
+    class="post-meta post-show-meta" 
+    style="margin-top: -10px;">
+    <div style="display: flex; align-items: center;">
+      <i 
+        class="iconfont icon-yanjing" 
+        style="font-size: 1.15rem;margin-right: 3px">
+      </i>
+      <!--  -->
+      <span id="/posts/2663e422.html" class="leancloud_visitors" data-flag-title="用Hexo搭建Git Pages博客">
+        <em class="post-meta-item-text" style='font-style: normal'>阅读量 </em>
+        <i class="leancloud-visitors-count" style='font-style: normal'></i>
+      </span>
+    </div>
+  </div>
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h1 id="hexo"><a class="markdownIt-Anchor" href="#hexo"></a> Hexo</h1>
+<h2 id="我们的目标"><a class="markdownIt-Anchor" href="#我们的目标"></a> 我们的目标</h2>
+<p>hexo是一个简洁高效的博客框架，可以通过markdown生成静态页面，同时支持多种主题和插件，帮助我们快速创建一个美观的博客网站。</p>
+<p>这一步我们仅仅是在本地安装hexo，并初始化对应的目录，最终我们能够在本地生成和查看博客界面。</p>
+<h2 id="需要的软件"><a class="markdownIt-Anchor" href="#需要的软件"></a> 需要的软件</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/en">node.js@20.9.0</a></li>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/">git@2.42.0</a></li>
+</ul>
+<p>以上是此篇文章最后一次更新时，笔者电脑上的软件版本，理论上使用最新版本即可。</p>
+<h2 id="安装hexo"><a class="markdownIt-Anchor" href="#安装hexo"></a> 安装hexo</h2>
+<p>在任一目录下点击鼠标右键，打开git bash，然后输入：</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install hexo-cli -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>即可完成hexo安装</p>
+<h2 id="初始化博客"><a class="markdownIt-Anchor" href="#初始化博客"></a> 初始化博客</h2>
+<p>自己选一个目录作为博客的根目录，笔者这里用<code>D:\BLOG</code>作为演示。</p>
+<p>在<strong>博客根目录下</strong>打开git bash，或者用<code>cd D:\BLOG</code>指令更改当前目录，输入：</p>
+<pre class="line-numbers language-none"><code class="language-none">hexo init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>之后可以看到目录下多出来了很多文件，<font color='green'>请不要在不了解的情况下删除任何文件，同时这个目录就是我们博客所有内容存放的地方了，包括文章和主题配置等。所有的维护和更新都会在这个目录下进行，请一定要<b><font color='red'>及时备份</font></b>，不然万一博客目录损坏，你就必须重新走一遍安装和配置的流程，而且文章会丢失。</font></p>
+<div style='text-align:center'>
+    <img src='/img/用hexo搭建gitpages博客/博客根目录初始化.jpg' style='width:60%'>
+</div>
+<p>之后我们所有的指令<strong>全都默认在git bash中进行，且当前目录是博客根目录</strong>。</p>
+<h2 id="在本地查看博客"><a class="markdownIt-Anchor" href="#在本地查看博客"></a> 在本地查看博客</h2>
+<p>输入指令<code>hexo s</code>，你就可以看到本地服务器已经开始运行，打开浏览器访问<code>http://localhost:4000/</code>即可查看博客内容。想停止本地服务，在git bash中按<code>Ctrl+C</code>即可。</p>
+<div style='text-align:center'>
+    <div style='position:relative;width:100%;padding-bottom:34.3%;'>
+        <img src='/img/用hexo搭建gitpages博客/启动本地服务.jpg' style='position:absolute;left:3.7%;width:45%'>
+        <img src='/img/用hexo搭建gitpages博客/本地浏览博客.jpg' style='position:absolute;left:49.7%;width:45%'>
+    </div>
+</div>
+<p>笔者在安装过程中并未遇到任何错误，如果各位安装报错，可直接到谷歌搜索，Hexo的用户群很广，基础的问题很容易找到答案。</p>
+<h2 id="阶段总结"><a class="markdownIt-Anchor" href="#阶段总结"></a> 阶段总结</h2>
+<p>到这里我们已经完成了hexo在本地安装，并成功初始化博客目录。</p>
+<p>看到博客的界面，有的小伙伴可能已经准备动手写文了，又或是说“这个界面不好看，我想换个新的主题”，这个别着急，我们一步一步来。</p>
+<h1 id="将博客部署到git-pages并绑定自己的域名"><a class="markdownIt-Anchor" href="#将博客部署到git-pages并绑定自己的域名"></a> 将博客部署到Git Pages并绑定自己的域名</h1>
+<h2 id="我们的目标-2"><a class="markdownIt-Anchor" href="#我们的目标-2"></a> 我们的目标</h2>
+<p>我们已经在本地完成了搭建，现在要将它部署到git pages，这样朋友们才能通过浏览器随时访问到我们的博客。同时我们可以自己购买并绑定一个专属于自己的域名，更有助于别人记忆和访问，甚至根本看不出来博客使用git pages部署的，这样也有利于以后更换平台。</p>
+<h2 id="生成public内容"><a class="markdownIt-Anchor" href="#生成public内容"></a> 生成public内容</h2>
+<p>输入指令<code>hexo g</code>，之后可以发现目录下多了一个<code>public</code>目录。</p>
+<div style='text-align:center'>
+    <div style='position:relative;width:100%;padding-bottom:34.3%;'>
+        <img src='/img/用hexo搭建gitpages博客/生成public内容.jpg' style='position:absolute;left:3.7%;width:45%'>
+        <img src='/img/用hexo搭建gitpages博客/根目录下public.jpg' style='position:absolute;left:49.7%;width:45%'>
+    </div>
+</div>
+<p>这里先简单说一下，这个public才是最后上传github的文件，除此之外的东西都不会上传。在执行hexo g指令时，会通过source和themes中的内容生成public。</p>
+<ul>
+<li>source：存放我们写的文章和一下资源文件，其中markdown（.md）和html文件会通过主题模板生成页面（.html）文件，并按结构放置在public下。其他类型的文件（夹）会直接复制到public目录。</li>
+<li>themes：存放我们的主题，即生成页面的模板，也包括一些主题自带的CSS和JS等文件。</li>
+</ul>
+<p>输入指令<code>hexo clean</code>可以清空之前的生成，即删除<code>public</code>目录。<font color='red'>建议每次执行生成前，都清理一次</font></p>
+<h2 id="连接github仓库"><a class="markdownIt-Anchor" href="#连接github仓库"></a> 连接github仓库</h2>
+<h3 id="创建github仓库"><a class="markdownIt-Anchor" href="#创建github仓库"></a> 创建github仓库</h3>
+<p>首先要去github注册一个账号，然后在这个账号下新建一个仓库（Repositories），注意<strong>仓库名称要和用户名相同</strong>。</p>
+<div style='text-align:center'>
+    <img src='/img/用hexo搭建gitpages博客/新建仓库.jpg' style='width:60%'>
+</div>
+<p>这个创建好以后等待一段时间，之后可以用<code>用户名.github.io</code>直接访问这个仓库的页面。</p>
+<h3 id="配置ssh连接"><a class="markdownIt-Anchor" href="#配置ssh连接"></a> 配置SSH连接</h3>
+<p>首先输入指令<code>cd ~/.ssh</code>，然后输入指令<code>ls</code>，如果目录不存在，或者目录下没有任何文件，说明没有生成过ssh密钥，如果存在id_rsa.pub等文件，证明之前已经生成过ssh密钥，可以直接使用。</p>
+<div style='text-align:center'>
+    <img src='/img/用hexo搭建gitpages博客/查看ssh密钥是否存在.jpg' style='width:60%'>
+</div>
+<p>我这里之前已经生成过了，如果没有，则输入指令：</p>
+<pre class="line-numbers language-none"><code class="language-none">ssh-keygen -t rsa -C &quot;这里填你的邮件地址即可&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>确定密钥生成后，到<code>C:\Users\你的当前用户目录\.ssh</code>目录下，可以看到<code>id_rsa.pub</code>文件，用记事本打开，复制里面的内容。</p>
+<p>到github页面，点击右侧头像，弹出的列表里点击settings进入设置页面。点击SSH and GPG keys选项，点击new ssh key，title起一个你想要的名称，key把刚刚复制的东西粘贴进去，add ssh key即可。</p>
+<div style='text-align:center'>
+    <img src='/img/用hexo搭建gitpages博客/github进入设置.jpg' style='width:60%'>
+</div>
+<div style='text-align:center'>
+    <div style='position:relative;width:100%;padding-bottom:34.3%;'>
+        <img src='/img/用hexo搭建gitpages博客/找到ssh添加.jpg' style='position:absolute;left:3.7%;width:45%'>
+        <img src='/img/用hexo搭建gitpages博客/添加ssh.jpg' style='position:absolute;left:49.7%;width:45%'>
+    </div>
+</div>
+<p>输入指令<code>ssh -T git@github.com</code>，弹出提示输入yes，看到：</p>
+<pre class="line-numbers language-none"><code class="language-none">You’ve successfully authenticated, but GitHub does not provide shell access.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>说明SSH配置成功，接下来还需要输入指令：</p>
+<pre class="line-numbers language-none"><code class="language-none">git config --global user.name &quot;你的github用户名&quot;
+git config --global user.email  &quot;你的github邮箱&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>到此即完成了SSH连接github的配置，当然这只是<strong>单机、单用户、单SSH</strong>的配置，更多SSH的相关内容笔者不再介绍，各位可自行搜索学习。</p>
+<h3 id="配置hexo中_configyml"><a class="markdownIt-Anchor" href="#配置hexo中_configyml"></a> 配置hexo中_config.yml</h3>
+<p>注意这个文件有两个，一个在博客根目录下，另一个在主题目录下，我们现在要配置的是<strong>博客根目录</strong>下的文件。</p>
+<div style='text-align:center'>
+    <img src='/img/用hexo搭建gitpages博客/博客根目录下的配置文件.jpg' style='width:60%'>
+</div>
+<p>将最底下的deploy的内容改成：</p>
+<pre class="line-numbers language-none"><code class="language-none">deploy:
+  type: git
+  repository: git@github.com:XXX&#x2F;XXX.github.io.git #你的github仓库的SSH地址
+  branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<div style='text-align:center'>
+    <img src='/img/用hexo搭建gitpages博客/仓库ssh地址.jpg' style='width:30%'>
+</div>
+<h2 id="将博客推送到github仓库"><a class="markdownIt-Anchor" href="#将博客推送到github仓库"></a> 将博客推送到github仓库</h2>
+<p>首先输入指令<code>npm install hexo-deployer-git --save</code>安装插件，之后输入指令<code>hexo d</code>即可将public目录下的文件推送到仓库。</p>
+<h2 id="绑定域名"><a class="markdownIt-Anchor" href="#绑定域名"></a> 绑定域名</h2>
+<h3 id="购买和解析域名"><a class="markdownIt-Anchor" href="#购买和解析域名"></a> 购买和解析域名</h3>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-info copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            FysbbCZH
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://blog.fysbbczh.top/posts/2663e422.html">
+            https://blog.fysbbczh.top/posts/2663e422.html
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！如有问题请通过评论或邮件联系，感谢您的反馈。</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+    <div class="nav-item-prev">
+      <a 
+        href="/posts/52601.html" 
+        class="nav-link">
+        <i class="iconfont icon-left nav-prev-icon"></i>
+        <div>
+          <div class="nav-label">上一篇</div>
+          
+            <div class="nav-title">学校数据结构2021-12-13上机题 </div>
+          
+        </div>
+      </a>
+    </div>
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/posts/8878.html" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">下一篇</div>
+          
+            <div class="nav-title">Hexo_Kaze主题使用文档 </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+  <div 
+    class="card card-content comment-card" 
+    style="margin-top: 16px;">
+    <div class="comment-card-title">评论</div>
+    
+  <div id="vcomments"></div>
+  
+  <script>
+    loadScript("//unpkg.com/valine/dist/Valine.min.js");
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+      new Valine({
+        el: '#vcomments',
+        appId: 'zMwRuLIWaO52juXMoonVROzl-gzGzoHsz',
+        appKey: '5tGe7WC9z2QaIOESWdymcByE',
+        placeholder: '有什么看法？来说说看吧......',
+        path: window.location.pathname,
+        avatar: 'identicon',
+        meta: ["nick","mail","link"],
+        pageSize: '10',
+        lang: '',
+        visitor: 'true',
+        highlight: true,
+        recordIP: true,
+        
+        
+        
+        enableQQ: 'true',
+        requiredFields: ["nick","mail"],
+      });
+    };
+  </script>
+
+  </div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo"><span class="toc-number">1.</span> <span class="toc-text"> Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text"> 我们的目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E7%9A%84%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text"> 需要的软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85hexo"><span class="toc-number">1.3.</span> <span class="toc-text"> 安装hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.4.</span> <span class="toc-text"> 初始化博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E6%9C%AC%E5%9C%B0%E6%9F%A5%E7%9C%8B%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.5.</span> <span class="toc-text"> 在本地查看博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93"><span class="toc-number">1.6.</span> <span class="toc-text"> 阶段总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%86%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0git-pages%E5%B9%B6%E7%BB%91%E5%AE%9A%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text"> 将博客部署到Git Pages并绑定自己的域名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E7%9A%84%E7%9B%AE%E6%A0%87-2"><span class="toc-number">2.1.</span> <span class="toc-text"> 我们的目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90public%E5%86%85%E5%AE%B9"><span class="toc-number">2.2.</span> <span class="toc-text"> 生成public内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5github%E4%BB%93%E5%BA%93"><span class="toc-number">2.3.</span> <span class="toc-text"> 连接github仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAgithub%E4%BB%93%E5%BA%93"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 创建github仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEssh%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 配置SSH连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEhexo%E4%B8%AD_configyml"><span class="toc-number">2.3.3.</span> <span class="toc-text"> 配置hexo中_config.yml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E5%8D%9A%E5%AE%A2%E6%8E%A8%E9%80%81%E5%88%B0github%E4%BB%93%E5%BA%93"><span class="toc-number">2.4.</span> <span class="toc-text"> 将博客推送到github仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D"><span class="toc-number">2.5.</span> <span class="toc-text"> 绑定域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AD%E4%B9%B0%E5%92%8C%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D"><span class="toc-number">2.5.1.</span> <span class="toc-text"> 购买和解析域名</span></a></li></ol></li></ol></li></ol>
+</div>
+            </main>
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/img/myavatar.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">FysbbCZH</p>
+<p class="author-description">That's♂good!</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>33</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>15</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>20</span>
+    <span>标签</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a href="mailto:2568858327@qq.com">
+          <i class="iconfont icon-mail society-icon"></i>
+        </a>
+      </div>
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198318522568">
+          <i class="iconfont icon-steam society-icon"></i>
+        </a>
+      </div>
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/24425">
+          <i class="iconfont icon-luogu society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo"><span class="toc-number">1.</span> <span class="toc-text"> Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text"> 我们的目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E7%9A%84%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text"> 需要的软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85hexo"><span class="toc-number">1.3.</span> <span class="toc-text"> 安装hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.4.</span> <span class="toc-text"> 初始化博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E6%9C%AC%E5%9C%B0%E6%9F%A5%E7%9C%8B%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.5.</span> <span class="toc-text"> 在本地查看博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93"><span class="toc-number">1.6.</span> <span class="toc-text"> 阶段总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%86%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0git-pages%E5%B9%B6%E7%BB%91%E5%AE%9A%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text"> 将博客部署到Git Pages并绑定自己的域名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E7%9A%84%E7%9B%AE%E6%A0%87-2"><span class="toc-number">2.1.</span> <span class="toc-text"> 我们的目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90public%E5%86%85%E5%AE%B9"><span class="toc-number">2.2.</span> <span class="toc-text"> 生成public内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5github%E4%BB%93%E5%BA%93"><span class="toc-number">2.3.</span> <span class="toc-text"> 连接github仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAgithub%E4%BB%93%E5%BA%93"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 创建github仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEssh%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 配置SSH连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEhexo%E4%B8%AD_configyml"><span class="toc-number">2.3.3.</span> <span class="toc-text"> 配置hexo中_config.yml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E5%8D%9A%E5%AE%A2%E6%8E%A8%E9%80%81%E5%88%B0github%E4%BB%93%E5%BA%93"><span class="toc-number">2.4.</span> <span class="toc-text"> 将博客推送到github仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D"><span class="toc-number">2.5.</span> <span class="toc-text"> 绑定域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AD%E4%B9%B0%E5%92%8C%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D"><span class="toc-number">2.5.1.</span> <span class="toc-text"> 购买和解析域名</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    
+
+<div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    <!-- 
+      <a href="/categories/%E7%9F%A5%E8%AF%86/">
+        <div class="categories-list-item">
+          知识
+          <span class="categories-list-item-badge">5</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/">
+        <div class="categories-list-item">
+          &gt;BLOG
+          <span class="categories-list-item-badge">4</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Hexo/">
+        <div class="categories-list-item">
+          &gt;&gt;Hexo
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/">
+        <div class="categories-list-item">
+          &gt;&gt;Kaze
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+        <div class="categories-list-item">
+          &gt;数据结构
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+        <div class="categories-list-item">
+          编程语言
+          <span class="categories-list-item-badge">9</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">
+        <div class="categories-list-item">
+          &gt;C
+          <span class="categories-list-item-badge">9</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/">
+        <div class="categories-list-item">
+          记录
+          <span class="categories-list-item-badge">15</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/">
+        <div class="categories-list-item">
+          &gt;竞赛
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/">
+        <div class="categories-list-item">
+          &gt;训练
+          <span class="categories-list-item-badge">13</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/">
+        <div class="categories-list-item">
+          &gt;&gt;长沙集训
+          <span class="categories-list-item-badge">13</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/">
+        <div class="categories-list-item">
+          题解
+          <span class="categories-list-item-badge">4</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/">
+        <div class="categories-list-item">
+          &gt;吉林大学
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/">
+        <div class="categories-list-item">
+          &gt;&gt;数据结构课设
+          <span class="categories-list-item-badge">3</span>
+        </div>
+      </a>
+    
+      <a href="/categories/%E9%A2%98%E8%A7%A3/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86/">
+        <div class="categories-list-item">
+          &gt;杂题整理
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+     -->
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/BLOG/">BLOG</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/BLOG/Kaze/">Kaze</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E7%AB%9E%E8%B5%9B/">竞赛</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/">训练</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/%E8%AE%AD%E7%BB%83/%E9%95%BF%E6%B2%99%E9%9B%86%E8%AE%AD/">长沙集训</a><span class="category-list-count">13</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/">吉林大学</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE/">数据结构课设</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/%E6%9D%82%E9%A2%98%E6%95%B4%E7%90%86/">杂题整理</a><span class="category-list-count">1</span></li></ul></li></ul> 
+  </div>
+</div>
+
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/Pascal/" 
+        title="Pascal">
+        <div class="tags-list-item">Pascal</div>
+      </a>
+    
+      <a 
+        href="/tags/C/" 
+        title="C++">
+        <div class="tags-list-item">C++</div>
+      </a>
+    
+      <a 
+        href="/tags/BLOG/" 
+        title="BLOG">
+        <div class="tags-list-item">BLOG</div>
+      </a>
+    
+      <a 
+        href="/tags/Kaze/" 
+        title="Kaze">
+        <div class="tags-list-item">Kaze</div>
+      </a>
+    
+      <a 
+        href="/tags/Hexo/" 
+        title="Hexo">
+        <div class="tags-list-item">Hexo</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" 
+        title="动态规划">
+        <div class="tags-list-item">动态规划</div>
+      </a>
+    
+      <a 
+        href="/tags/CCSP/" 
+        title="CCSP">
+        <div class="tags-list-item">CCSP</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" 
+        title="字符串">
+        <div class="tags-list-item">字符串</div>
+      </a>
+    
+      <a 
+        href="/tags/BFS/" 
+        title="BFS">
+        <div class="tags-list-item">BFS</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" 
+        title="快速排序">
+        <div class="tags-list-item">快速排序</div>
+      </a>
+    
+      <a 
+        href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" 
+        title="二叉树">
+        <div class="tags-list-item">二叉树</div>
+      </a>
+    
+      <a 
+        href="/tags/KMP/" 
+        title="KMP">
+        <div class="tags-list-item">KMP</div>
+      </a>
+    
+      <a 
+        href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91Trie/" 
+        title="字典树Trie">
+        <div class="tags-list-item">字典树Trie</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" 
+        title="最小生成树">
+        <div class="tags-list-item">最小生成树</div>
+      </a>
+    
+      <a 
+        href="/tags/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F/" 
+        title="矩阵加速">
+        <div class="tags-list-item">矩阵加速</div>
+      </a>
+    
+      <a 
+        href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" 
+        title="概率论">
+        <div class="tags-list-item">概率论</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>目录
+</div>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo"><span class="toc-number">1.</span> <span class="toc-text"> Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text"> 我们的目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E7%9A%84%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text"> 需要的软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85hexo"><span class="toc-number">1.3.</span> <span class="toc-text"> 安装hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.4.</span> <span class="toc-text"> 初始化博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E6%9C%AC%E5%9C%B0%E6%9F%A5%E7%9C%8B%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.5.</span> <span class="toc-text"> 在本地查看博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93"><span class="toc-number">1.6.</span> <span class="toc-text"> 阶段总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%86%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0git-pages%E5%B9%B6%E7%BB%91%E5%AE%9A%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text"> 将博客部署到Git Pages并绑定自己的域名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E7%9A%84%E7%9B%AE%E6%A0%87-2"><span class="toc-number">2.1.</span> <span class="toc-text"> 我们的目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90public%E5%86%85%E5%AE%B9"><span class="toc-number">2.2.</span> <span class="toc-text"> 生成public内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5github%E4%BB%93%E5%BA%93"><span class="toc-number">2.3.</span> <span class="toc-text"> 连接github仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAgithub%E4%BB%93%E5%BA%93"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 创建github仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEssh%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 配置SSH连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEhexo%E4%B8%AD_configyml"><span class="toc-number">2.3.3.</span> <span class="toc-text"> 配置hexo中_config.yml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E5%8D%9A%E5%AE%A2%E6%8E%A8%E9%80%81%E5%88%B0github%E4%BB%93%E5%BA%93"><span class="toc-number">2.4.</span> <span class="toc-text"> 将博客推送到github仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D"><span class="toc-number">2.5.</span> <span class="toc-text"> 绑定域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AD%E4%B9%B0%E5%92%8C%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D"><span class="toc-number">2.5.1.</span> <span class="toc-text"> 购买和解析域名</span></a></li></ol></li></ol></li></ol>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-11-06</div>
+        <a href="/posts/a7530484.html"><div class="recent-posts-item-content">CCSP2023游记</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-06</div>
+        <a href="/posts/53500.html"><div class="recent-posts-item-content">CCSP2021T2抽卡题解</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-03-27</div>
+        <a href="/posts/43886.html"><div class="recent-posts-item-content">红黑树学习记录</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-03-11</div>
+        <a href="/posts/46746.html"><div class="recent-posts-item-content">学校数据结构2022-03-11上机题</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2020
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          FysbbCZH'S BLOG
+        </a>
+      </div>
+    </div>
+
+    
+      <div class="footer-dsc">
+        
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/theme-kaze" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;Kaze
+          </a>
+        
+      </div>
+    
+    
+    
+    
+      <div class="footer-dsc">
+        
+          本站被戳了<span id="busuanzi_value_site_pv"></span>次
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          本站迎接了<span id="busuanzi_value_site_uv"></span>位小伙伴
+        
+      </div>
+      
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+      
+
+  
+  
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+
+  
+ 
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+	
+      <script> 
+        loadScript('/js/lib/busuanzi.min.js') 
+      </script>
+    
+	
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+      <script>
+        setTimeout(() => {localSearch("search.json")}, 0)
+      </script>
+    
+  </body>
+</html>
